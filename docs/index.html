@@ -956,11 +956,51 @@
 
     <!-- Custom JS -->
     <script>
+        // Navigation Scroll Effect
+        const navbar = document.querySelector('.navbar');
+        let lastScroll = 0;
+
+        // Add scroll class to navbar
+        function handleScroll() {
+            const currentScroll = window.pageYOffset;
+            
+            // Add/remove scrolled class based on scroll position
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = 100;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
         // Mobile Menu Toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const mobileMenu = document.querySelector('.mobile-menu');
         const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
-        const mobileMenuLinks = document.querySelectorAll('.mobile-nav-link');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-nav-link, .navbar-link');
         
         // Toggle mobile menu
         function toggleMobileMenu() {
@@ -968,6 +1008,10 @@
             mobileMenu.classList.toggle('active');
             mobileMenuOverlay.classList.toggle('active');
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            
+            // Toggle aria-expanded for accessibility
+            const expanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenuToggle.setAttribute('aria-expanded', !expanded);
         }
         
         // Close menu when clicking on a link
@@ -977,6 +1021,7 @@
                 mobileMenu.classList.remove('active');
                 mobileMenuOverlay.classList.remove('active');
                 document.body.style.overflow = '';
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
             });
         });
         
@@ -993,10 +1038,16 @@
                 mobileMenu.classList.remove('active');
                 mobileMenuOverlay.classList.remove('active');
                 document.body.style.overflow = '';
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
             }
         }
         
+        // Initialize
+        window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleResize);
+        
+        // Initial check for scrolled state
+        handleScroll();
     </script>
     <script src="js/main.js"></script>
     <script src="scripts/mobile-micro-animations.js"></script>
