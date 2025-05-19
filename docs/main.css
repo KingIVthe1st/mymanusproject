@@ -215,9 +215,10 @@ h6 {
 /* Navigation Container */
 .navbar-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center the navigation links */
   align-items: center;
   padding: 0 2rem;
+  width: 100%;
 }
 
 .navbar-logo {
@@ -235,7 +236,11 @@ h6 {
 
 .navbar-links {
   display: flex;
-  gap: 2rem;
+  gap: 3rem; /* Increased gap for better spacing */
+  justify-content: center; /* Center the links */
+  width: 100%;
+  max-width: 1200px; /* Optional: limit the max width */
+  margin: 0 auto; /* Center the container */
 }
 
 .navbar-link {
