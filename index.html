@@ -22,6 +22,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/clean-mobile.css">
+    <link rel="stylesheet" href="styles/mobile-spacing.css">
     <link rel="stylesheet" href="styles/mobile-flourishes.css">
     <link rel="stylesheet" href="styles/circle-animation.css">
     <link rel="stylesheet" href="styles/premium-effects-enhanced.css">
@@ -41,7 +42,7 @@
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress"></div>
     
-    <!-- Navigation -->
+    <!-- Glassmorphic Navigation -->
     <nav class="navbar">
         <div class="navbar-container">
             <a href="#" class="navbar-logo">
@@ -54,35 +55,38 @@
                 <a href="#about" class="navbar-link">About</a>
                 <a href="#contact" class="navbar-link">Contact</a>
             </div>
-            <button class="navbar-mobile-toggle">
-                <i class="fas fa-bars"></i>
+            <button class="navbar-mobile-toggle" aria-label="Toggle menu">
+                <span class="hamburger"></span>
             </button>
         </div>
     </nav>
     
-    <!-- Mobile Menu -->
-    <div class="mobile-menu hidden">
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu">
         <div class="mobile-menu-container">
             <div class="mobile-menu-header">
-                <a href="#" class="navbar-logo">Amira Rahim</a>
-                <button class="mobile-menu-close">
-                    <i class="fas fa-times"></i>
+                <a href="#" class="navbar-logo">
+                    <img src="images/logo/amira-logo.webp" alt="Amira Rahim" class="logo-image">
+                </a>
+                <button class="mobile-menu-close" aria-label="Close menu">
+                    <span class="close-icon"></span>
                 </button>
             </div>
-            <div class="mobile-menu-links">
-                <a href="#artwork" class="mobile-menu-link">Artwork</a>
+            <nav class="mobile-menu-links">
                 <a href="#education" class="mobile-menu-link">Education</a>
                 <a href="#collaborate" class="mobile-menu-link">Collaborate</a>
                 <a href="#about" class="mobile-menu-link">About</a>
                 <a href="#contact" class="mobile-menu-link">Contact</a>
-            </div>
+            </nav>
         </div>
     </div>
     
     <div id="app" class="container mx-auto px-4">
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-bg"></div>
+            <div class="hero-bg">
+                <!-- Logo removed from hero -->
+            </div>
             <div class="decorative-circle decorative-circle-1"></div>
             <div class="decorative-circle decorative-circle-2"></div>
             
@@ -103,12 +107,14 @@
             </div>
         </section>
         
+        <div class="section-divider"></div>
+        
         <!-- Featured Originals Section -->
-        <section id="artwork" class="my-24 relative">
-            <div class="text-center mb-2">
-                <span class="inline-block px-4 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-semibold uppercase tracking-wide glass-pill">FEATURED WORK</span>
+        <section id="artwork" class="py-16 relative">
+            <div class="section-header">
+                <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-pink-100 to-purple-100 text-pink-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">FEATURED WORK</span>
+                <h2 class="text-4xl font-serif font-bold text-gray-800 text-scramble">Featured Originals</h2>
             </div>
-            <h2 class="text-3xl font-serif font-bold text-gray-800 mb-8 text-center text-scramble">Featured Originals</h2>
             
             <p class="text-center text-gray-700 max-w-3xl mx-auto mb-12">
                 Explore a selection of my original abstract paintings. Each piece is a unique expression of color, emotion, and creative energy.
@@ -116,74 +122,86 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Artwork 1 -->
-                <div class="artwork-card glass-card">
-                    <div class="artwork-image">
-                        <img src="images/artwork/rainbow_spectrum.jpeg" alt="Rainbow Spectrum" class="w-full h-full object-cover">
-                        <div class="artwork-overlay">
-                            <h3 class="artwork-title">Rainbow Spectrum</h3>
-                            <p class="artwork-description">Acrylic on canvas, 36" x 36"</p>
-                            <a href="https://shop.amirarahim.com/products/rainbow-spectrum-36x36-original-on-canvas" class="artwork-button">View Details</a>
-                        </div>
+                <div class="artwork-card">
+                    <div class="artwork-image-container">
+                        <img src="./deploy/artwork/rainbow_spectrum.jpeg" alt="Rainbow Spectrum" class="artwork-image">
+                    </div>
+                    <div class="artwork-content">
+                        <h3 class="artwork-title">Rainbow Spectrum</h3>
+                        <p class="artwork-description">Acrylic on canvas, 36" x 36"</p>
+                        <a href="https://shop.amirarahim.com/products/rainbow-spectrum-36x36-original-on-canvas" class="artwork-button">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Artwork 2 -->
-                <div class="artwork-card glass-card">
-                    <div class="artwork-image">
-                        <img src="images/artwork/eden_original_painting.jpeg" alt="Eden" class="w-full h-full object-cover">
-                        <div class="artwork-overlay">
-                            <h3 class="artwork-title">Eden</h3>
-                            <p class="artwork-description">Acrylic on canvas, 30" x 40"</p>
-                            <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">View Details</a>
-                        </div>
+                <div class="artwork-card">
+                    <div class="artwork-image-container">
+                        <img src="./deploy/artwork/eden_original_painting.jpeg" alt="Eden" class="artwork-image">
+                    </div>
+                    <div class="artwork-content">
+                        <h3 class="artwork-title">Eden</h3>
+                        <p class="artwork-description">Acrylic on canvas, 30" x 40"</p>
+                        <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Artwork 3 -->
-                <div class="artwork-card glass-card">
-                    <div class="artwork-image">
-                        <img src="images/artwork/festival_original_painting.jpeg" alt="Festival" class="w-full h-full object-cover">
-                        <div class="artwork-overlay">
-                            <h3 class="artwork-title">Festival</h3>
-                            <p class="artwork-description">Acrylic on canvas, 24" x 36"</p>
-                            <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">View Details</a>
-                        </div>
+                <div class="artwork-card">
+                    <div class="artwork-image-container">
+                        <img src="./deploy/artwork/festival_original_painting.jpeg" alt="Festival" class="artwork-image">
+                    </div>
+                    <div class="artwork-content">
+                        <h3 class="artwork-title">Festival</h3>
+                        <p class="artwork-description">Acrylic on canvas, 24" x 36"</p>
+                        <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Artwork 4 -->
-                <div class="artwork-card glass-card">
-                    <div class="artwork-image">
-                        <img src="images/artwork/jubilee_original_painting.jpeg" alt="Jubilee" class="w-full h-full object-cover">
-                        <div class="artwork-overlay">
-                            <h3 class="artwork-title">Jubilee</h3>
-                            <p class="artwork-description">Acrylic on canvas, 36" x 36"</p>
-                            <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">View Details</a>
-                        </div>
+                <div class="artwork-card">
+                    <div class="artwork-image-container">
+                        <img src="./deploy/artwork/jubilee_original_painting.jpeg" alt="Jubilee" class="artwork-image">
+                    </div>
+                    <div class="artwork-content">
+                        <h3 class="artwork-title">Jubilee</h3>
+                        <p class="artwork-description">Acrylic on canvas, 36" x 36"</p>
+                        <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Artwork 5 -->
-                <div class="artwork-card glass-card">
-                    <div class="artwork-image">
-                        <img src="images/artwork/bloom_original_painting.jpeg" alt="Bloom" class="w-full h-full object-cover">
-                        <div class="artwork-overlay">
-                            <h3 class="artwork-title">Bloom</h3>
-                            <p class="artwork-description">Acrylic on canvas, 24" x 30"</p>
-                            <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">View Details</a>
-                        </div>
+                <div class="artwork-card">
+                    <div class="artwork-image-container">
+                        <img src="./deploy/artwork/bloom_original_painting.jpeg" alt="Bloom" class="artwork-image">
+                    </div>
+                    <div class="artwork-content">
+                        <h3 class="artwork-title">Bloom</h3>
+                        <p class="artwork-description">Acrylic on canvas, 24" x 30"</p>
+                        <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Artwork 6 -->
-                <div class="artwork-card glass-card">
-                    <div class="artwork-image">
-                        <img src="images/artwork/radiance_original_painting.jpeg" alt="Radiance" class="w-full h-full object-cover">
-                        <div class="artwork-overlay">
-                            <h3 class="artwork-title">Radiance</h3>
-                            <p class="artwork-description">Acrylic on canvas, 30" x 30"</p>
-                            <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">View Details</a>
-                        </div>
+                <div class="artwork-card">
+                    <div class="artwork-image-container">
+                        <img src="./deploy/artwork/radiance_original_painting.jpeg" alt="Radiance" class="artwork-image">
+                    </div>
+                    <div class="artwork-content">
+                        <h3 class="artwork-title">Radiance</h3>
+                        <p class="artwork-description">Acrylic on canvas, 30" x 30"</p>
+                        <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -196,12 +214,65 @@
             </div>
         </section>
         
-        <!-- Featured In Section -->
-        <section class="my-20">
-            <div class="text-center mb-2">
-                <span class="inline-block px-4 py-1 rounded-full bg-gray-100 text-gray-700 text-xs font-semibold uppercase tracking-wide glass-pill">RECOGNITION</span>
+        <div class="section-divider"></div>
+        
+        <!-- About the Artist Section -->
+        <section id="about" class="py-16 relative overflow-hidden">
+            <div class="section-header">
+                <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-yellow-100 to-pink-100 text-yellow-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">THE ARTIST</span>
+                <h3 class="text-4xl font-serif font-bold text-gray-800 text-scramble">About Amira</h3>
             </div>
-            <h3 class="text-2xl font-serif font-bold text-gray-800 mb-8 text-center text-scramble">Featured In</h3>
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="relative">
+                        <div class="relative rounded-lg overflow-hidden shadow-2xl transform rotate-1">
+                            <img 
+                                src="images/amira-about.png" 
+                                alt="Amira Rahim" 
+                                class="w-full h-auto object-cover"
+                                style="min-height: 400px;"
+                            >
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-yellow-400 rounded-full z-0"></div>
+                    </div>
+                    <div class="relative z-10">
+                        <p class="text-gray-700 mb-6">
+                            Amira Rahim is an internationally collected abstract expressionist painter known for her vibrant use of color and energetic compositions. Born in New Jersey and now based between the US and UAE, her work has been featured in major publications and acquired by collectors worldwide.
+                        </p>
+                        <p class="text-gray-700 mb-6">
+                            Her artistic journey began at a young age, leading her to study Fine Art at Mason Gross School of the Arts at Rutgers University. After years of working in the corporate world, she returned to her true passion for painting, developing a distinctive style that blends abstract expressionism with contemporary design.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-pink-600 hover:text-pink-700 transition-colors">
+                                <span class="sr-only">Instagram</span>
+                                <i class="fab fa-instagram text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-pink-600 hover:text-pink-700 transition-colors">
+                                <span class="sr-only">Facebook</span>
+                                <i class="fab fa-facebook text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-pink-600 hover:text-pink-700 transition-colors">
+                                <span class="sr-only">Pinterest</span>
+                                <i class="fab fa-pinterest text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-pink-600 hover:text-pink-700 transition-colors">
+                                <span class="sr-only">YouTube</span>
+                                <i class="fab fa-youtube text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="section-divider"></div>
+        
+        <!-- Featured In Section -->
+        <section class="py-16">
+            <div class="section-header">
+                <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">RECOGNITION</span>
+                <h3 class="text-4xl font-serif font-bold text-gray-800 text-scramble">Featured In</h3>
+            </div>
             
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center px-4">
                 <div class="featured-logo p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
@@ -225,17 +296,19 @@
             </div>
         </section>
         
+        <div class="section-divider"></div>
+        
         <!-- Education Section -->
-        <section id="education" class="my-24 relative overflow-hidden">
+        <section id="education" class="py-16 relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-yellow-50 via-pink-50 to-purple-50 opacity-50"></div>
             <div class="decorative-circle decorative-circle-3"></div>
             <div class="decorative-circle decorative-circle-4"></div>
             
             <div class="relative z-10 max-w-7xl mx-auto px-4">
-                <div class="text-center mb-2">
-                    <span class="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold uppercase tracking-wide glass-pill">EDUCATION</span>
+                <div class="section-header">
+                    <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">EDUCATION</span>
+                    <h3 class="text-4xl font-serif font-bold text-gray-800 text-scramble">Transform Your Art Journey</h3>
                 </div>
-                <h3 class="text-2xl font-serif font-bold text-gray-800 mb-8 text-center text-scramble">Transform Your Art Journey</h3>
                 
                 <p class="text-center text-gray-700 max-w-3xl mx-auto mb-12">
                     Whether you're just starting out or looking to take your art to the next level, my educational offerings provide the guidance, community, and inspiration you need to thrive.
@@ -386,18 +459,21 @@
             </div>
         </section>
         
+        <div class="section-divider"></div>
+        
         <!-- Testimonial Section -->
         <section class="my-20 py-16 bg-gradient-to-r from-purple-600 to-purple-800 rounded-xl relative overflow-hidden testimonial-card">
             <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                <div class="md:col-span-2">
-                    <p class="text-white text-xl md:text-2xl italic font-serif leading-relaxed mb-6 testimonial-text">
-                        "Working with Amira transformed my approach to art. Her intuitive teaching style and wealth of knowledge helped me develop my unique style and launch my professional career. Better Than Art School™ provided everything I was missing from traditional education."
-                    </p>
-                    <div class="flex items-center">
-                        <div>
-                            <h4 class="text-white font-bold">Sarah Johnson</h4>
-                            <p class="text-purple-200">Abstract Artist, BTAS™ Graduate</p>
-                        </div>
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="inline-block p-4 bg-white bg-opacity-20 rounded-full mb-6">
+                        <i class="fas fa-quote-left text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-serif font-bold text-white mb-4">What Collectors Say</h3>
+                    <p class="text-purple-100 mb-6 text-lg">Discover why art lovers and collectors around the world are drawn to Amira's unique style.</p>
+                    <div class="flex space-x-2">
+                        <div class="w-4 h-1 bg-white rounded-full"></div>
+                        <div class="w-4 h-1 bg-white bg-opacity-50 rounded-full"></div>
+                        <div class="w-4 h-1 bg-white bg-opacity-30 rounded-full"></div>
                     </div>
                 </div>
                 <div class="hidden md:block">
@@ -406,17 +482,19 @@
             </div>
         </section>
         
+        <div class="section-divider"></div>
+        
         <!-- Collaboration Section -->
-        <section id="collaborate" class="my-24 relative overflow-hidden">
+        <section id="collaborate" class="py-16 relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-yellow-50 via-pink-50 to-purple-50 opacity-50"></div>
             <div class="decorative-circle decorative-circle-5"></div>
             <div class="decorative-circle decorative-circle-6"></div>
             
             <div class="relative z-10 max-w-7xl mx-auto px-4">
-                <div class="text-center mb-2">
-                    <span class="inline-block px-4 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-semibold uppercase tracking-wide glass-pill">OPPORTUNITIES</span>
+                <div class="section-header">
+                    <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-pink-100 to-rose-100 text-pink-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">OPPORTUNITIES</span>
+                    <h3 class="text-4xl font-serif font-bold text-gray-800 text-scramble">Collaborate & Connect</h3>
                 </div>
-                <h3 class="text-2xl font-serif font-bold text-gray-800 mb-8 text-center text-scramble">Collaborate & Connect</h3>
                 
                 <p class="text-center text-gray-700 max-w-3xl mx-auto mb-12">
                     Explore ways we can work together to bring vibrant art into various spaces and platforms, from custom commissions to licensing opportunities and speaking engagements.
@@ -611,12 +689,14 @@
             </div>
         </section>
         
+        <div class="section-divider"></div>
+        
         <!-- Contact Section -->
-        <section id="contact" class="my-20">
-            <div class="text-center mb-2">
-                <span class="inline-block px-4 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-semibold uppercase tracking-wide glass-pill">STAY CONNECTED</span>
+        <section id="contact" class="py-16">
+            <div class="section-header">
+                <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-rose-100 to-pink-100 text-rose-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">STAY CONNECTED</span>
+                <h3 class="text-4xl font-serif font-bold text-gray-800 text-scramble">Follow My Creative World</h3>
             </div>
-            <h3 class="text-2xl font-serif font-bold text-gray-800 mb-8 text-center text-scramble">Follow My Creative World</h3>
             
             <p class="text-center text-gray-700 max-w-3xl mx-auto mb-12">
                 Join my community to get exclusive updates, behind-the-scenes content, and early access to new collections and educational offerings.
@@ -748,50 +828,6 @@
                 </div>
             </div>
             
-            <!-- About Section -->
-            <section id="about" class="my-24 relative overflow-hidden">
-                <div class="text-center mb-2">
-                    <span class="inline-block px-4 py-1 rounded-full bg-gray-100 text-gray-700 text-xs font-semibold uppercase tracking-wide glass-pill">THE ARTIST</span>
-                </div>
-                <h3 class="text-2xl font-serif font-bold text-gray-800 mb-2 text-center text-scramble">About Amira</h3>
-                <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">Contemporary Abstract Expressionist</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div class="portrait-frame-about reveal">
-                        <img src="images/amira-about.png" alt="Amira Rahim in her studio" class="w-full">
-                    </div>
-                    
-                    <div class="about-content">
-                        <p class="text-gray-700 mb-6 leading-relaxed">
-                            Amira Rahim is an internationally collected abstract expressionist painter known for her vibrant use of color and energetic compositions. Born in New Jersey and now based between the US and UAE, her work has been featured in major publications and acquired by collectors worldwide.
-                        </p>
-                        
-                        <p class="text-gray-700 mb-6 leading-relaxed">
-                            With a background in International Relations and self-taught artistic skills, Amira brings a unique perspective to her work. Her paintings celebrate the joy of color and creative freedom, often inspired by her travels and multicultural experiences.
-                        </p>
-                        
-                        <p class="text-gray-700 mb-6 leading-relaxed">
-                            Beyond creating art, Amira is passionate about empowering other artists through education. Her signature program, Better Than Art School™, has helped hundreds of emerging artists develop their unique styles and build sustainable creative businesses.
-                        </p>
-                        
-                        <div class="flex flex-wrap gap-4 mt-8">
-                            <a href="https://www.instagram.com/amirarahimart/" class="social-icon">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="https://www.facebook.com/amirarahimart/" class="social-icon">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="https://www.pinterest.com/amirarahimart/" class="social-icon">
-                                <i class="fab fa-pinterest-p"></i>
-                            </a>
-                            <a href="https://www.youtube.com/c/AmiraRahim" class="social-icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
             <!-- Contact Form -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
                 <div>
@@ -863,52 +899,76 @@
     
     <!-- Footer -->
     <footer class="footer">
-        <div class="container mx-auto px-4">
-            <div class="footer-content">
-                <div>
-                    <div class="footer-logo">Amira Rahim</div>
-                    <p class="footer-description">
-                        Contemporary abstract expressionist painter creating vibrant artwork that celebrates color and creative freedom.
-                    </p>
-                </div>
+        <!-- Decorative Elements -->
+        <div class="footer-decor footer-decor-1">
+            <i class="fas fa-palette"></i>
+        </div>
+        <div class="footer-decor footer-decor-2">
+            <i class="fas fa-brush"></i>
+        </div>
+        
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">Amira Rahim</div>
+                <p class="footer-description">
+                    Contemporary abstract expressionist painter creating vibrant artwork that celebrates color and creative freedom.
+                </p>
                 
-                <div>
-                    <h5 class="footer-heading">Quick Links</h5>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="#artwork">Artwork</a></li>
-                        <li class="footer-link"><a href="#education">Education</a></li>
-                        <li class="footer-link"><a href="#collaborate">Collaborate</a></li>
-                        <li class="footer-link"><a href="#about">About</a></li>
-                        <li class="footer-link"><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h5 class="footer-heading">Shop</h5>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="https://shop.amirarahim.com/collections/available-originals-1">Original Paintings</a></li>
-                        <li class="footer-link"><a href="https://shop.amirarahim.com/collections/prints">Fine Art Prints</a></li>
-                        <li class="footer-link"><a href="https://shop.amirarahim.com/pages/commission">Commissions</a></li>
-                        <li class="footer-link"><a href="https://shop.amirarahim.com/pages/representation">Licensing</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h5 class="footer-heading">Connect</h5>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="https://www.instagram.com/amirarahimart/">Instagram</a></li>
-                        <li class="footer-link"><a href="https://www.facebook.com/amirarahimart/">Facebook</a></li>
-                        <li class="footer-link"><a href="https://www.pinterest.com/amirarahimart/">Pinterest</a></li>
-                        <li class="footer-link"><a href="https://www.youtube.com/c/AmiraRahim">YouTube</a></li>
-                    </ul>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/amirarahimart/" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/amirarahimart/" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.pinterest.com/amirarahimart/" class="social-link" aria-label="Pinterest">
+                        <i class="fab fa-pinterest-p"></i>
+                    </a>
+                    <a href="https://www.youtube.com/c/AmiraRahim" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <p class="footer-copyright">
-                    &copy; 2025 Amira Rahim. All rights reserved.
-                </p>
+            <div>
+                <h5 class="footer-heading">Quick Links</h5>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#artwork">Artwork</a></li>
+                    <li class="footer-link"><a href="#education">Education</a></li>
+                    <li class="footer-link"><a href="#collaborate">Collaborate</a></li>
+                    <li class="footer-link"><a href="#about">About</a></li>
+                    <li class="footer-link"><a href="#contact">Contact</a></li>
+                </ul>
             </div>
+            
+            <div>
+                <h5 class="footer-heading">Shop</h5>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="https://shop.amirarahim.com/collections/available-originals-1">Original Paintings</a></li>
+                    <li class="footer-link"><a href="https://shop.amirarahim.com/collections/prints">Fine Art Prints</a></li>
+                    <li class="footer-link"><a href="https://shop.amirarahim.com/pages/commission">Commissions</a></li>
+                    <li class="footer-link"><a href="https://shop.amirarahim.com/pages/representation">Licensing</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-newsletter">
+                <h5 class="footer-heading">Stay Updated</h5>
+                <p class="footer-description">Subscribe for exclusive updates and early access to new collections.</p>
+                
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="footer-copyright">
+                &copy; 2025 Amira Rahim. All rights reserved.
+            </p>
         </div>
     </footer>
     
@@ -924,5 +984,6 @@
     <!-- Custom JS -->
     <script src="scripts/main.js"></script>
     <script src="scripts/mobile-micro-animations.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 </html>

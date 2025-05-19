@@ -39,12 +39,37 @@
     margin-bottom: 0.75rem;
   }
   
-  /* Section spacing */
-  section {
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+  /* Content spacing */
+  .content-section {
+    padding: 1.5rem 0 !important;
+  }
+  
+  /* About section specific */
+  .about-content {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  /* Artwork grid */
+  .artwork-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  /* Testimonials */
+  .testimonial {
+    margin: 1.5rem 0 !important;
+    padding: 1.25rem !important;
+  }
+  
+  /* Contact form */
+  .contact-form {
+    padding: 1.25rem !important;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 2rem 1rem !important;
   }
   
   /* Typography adjustments */

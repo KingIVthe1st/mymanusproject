@@ -1,0 +1,250 @@
+/* Clean mobile styles without parallax or advanced effects */
+@media (max-width: 768px) {
+  /* Basic mobile layout fixes */
+  .container {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Fix grid layouts */
+  .grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .grid-cols-2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  
+  .grid-cols-3, .grid-cols-4, .grid-cols-5 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  
+  /* Featured In section fixes */
+  .featured-logos-container {
+    padding: 1.5rem;
+  }
+  
+  .featured-logo-item {
+    padding: 0.75rem 0;
+    text-align: center;
+  }
+  
+  /* Button fixes */
+  .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+  
+  /* Content spacing */
+  .content-section {
+    padding: 1.5rem 0 !important;
+  }
+  
+  /* About section specific */
+  .about-content {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  /* Artwork grid */
+  .artwork-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  /* Testimonials */
+  .testimonial {
+    margin: 1.5rem 0 !important;
+    padding: 1.25rem !important;
+  }
+  
+  /* Contact form */
+  .contact-form {
+    padding: 1.25rem !important;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 2rem 1rem !important;
+  }
+  
+  /* Typography adjustments */
+  h1 {
+    font-size: 2.25rem;
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: 1.875rem;
+    line-height: 1.2;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* Fix image sizing */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Fix form elements */
+  input, textarea, select {
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  /* Fix navigation */
+  .navbar-container {
+    padding: 0.75rem 1rem;
+  }
+  
+  /* Fix footer */
+  .footer-content {
+    display: block;
+  }
+  
+  .footer-column {
+    margin-bottom: 2rem;
+  }
+  
+  /* Remove all animations and effects */
+  * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  
+  /* Remove parallax */
+  .parallax, [class*="parallax"] {
+    background-attachment: scroll !important;
+    transform: none !important;
+  }
+  
+  /* Remove floating elements */
+  .floating-element, [class*="float"] {
+    animation: none !important;
+    transform: none !important;
+  }
+  
+  /* Remove 3D effects */
+  .card-3d-effect, [class*="3d"] {
+    transform-style: flat !important;
+    perspective: none !important;
+  }
+  
+  /* Remove backdrop filters for better performance */
+  [class*="backdrop"] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  /* Remove gradient animations */
+  [class*="gradient"] {
+    background-size: 100% 100% !important;
+    animation: none !important;
+  }
+  
+  /* Fix artwork grid */
+  .artwork-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  
+  /* Fix collaboration cards */
+  .collaboration-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  
+  /* Fix podcast cards */
+  .media-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Fix contact section */
+  .contact-content {
+    display: block;
+  }
+  
+  .contact-form {
+    margin-top: 2rem;
+  }
+  
+  /* Fix hero section */
+  .hero {
+    padding: 6rem 0 3rem;
+  }
+  
+  .hero-content {
+    text-align: center;
+  }
+  
+  .hero-cta {
+    display: block;
+  }
+  
+  /* Fix about section */
+  .about-content {
+    display: block;
+  }
+  
+  .about-image {
+    margin-bottom: 2rem;
+  }
+  
+  /* Fix text overflow */
+  * {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+}
+
+/* iPhone-specific fixes */
+@media (max-width: 428px) {
+  /* Featured In section fixes */
+  .featured-logos-container {
+    padding: 1rem;
+  }
+  
+  .featured-logo-item div {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  
+  /* Fix grid for Featured In */
+  .featured-logos-container .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  /* Fix spacing */
+  section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Fix hero section */
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
