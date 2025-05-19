@@ -45,12 +45,9 @@
     <!-- Glassmorphic Navigation -->
     <nav class="navbar">
         <div class="navbar-container">
-            <!-- Mobile menu toggle button (hidden on desktop) -->
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                <span class="menu-icon"></span>
-            </button>
-            
-            <!-- Desktop Navigation -->
+            <a href="#" class="navbar-logo">
+                <img src="images/logo/amira-logo.webp" alt="Amira Rahim" class="logo-image">
+            </a>
             <div class="navbar-links">
                 <a href="#artwork" class="navbar-link">Artwork</a>
                 <a href="#education" class="navbar-link">Education</a>
@@ -58,41 +55,96 @@
                 <a href="#about" class="navbar-link">About</a>
                 <a href="#contact" class="navbar-link">Contact</a>
             </div>
-            
-            <!-- Mobile Menu (hidden by default) -->
-            <div class="mobile-menu">
-                <div class="mobile-menu-content">
-                    <a href="#artwork" class="mobile-nav-link">Artwork</a>
-                    <a href="#education" class="mobile-nav-link">Education</a>
-                    <a href="#collaborate" class="mobile-nav-link">Collaborate</a>
-                    <a href="#about" class="mobile-nav-link">About</a>
-                    <a href="#contact" class="mobile-nav-link">Contact</a>
-                </div>
-            </div>
+            <button class="navbar-mobile-toggle" aria-label="Toggle menu">
+                <span class="hamburger"></span>
+            </button>
         </div>
     </nav>
     
     <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
     <div class="mobile-menu">
         <div class="mobile-menu-container">
             <div class="mobile-menu-header">
-                <a href="#" class="navbar-logo">
+                <a href="#" class="mobile-logo">
                     <img src="images/logo/amira-logo.webp" alt="Amira Rahim" class="logo-image">
                 </a>
-                <button class="mobile-menu-close" aria-label="Close menu">
-                    <span class="close-icon"></span>
+                <button class="mobile-close-btn" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
                 </button>
             </div>
-            <!-- Mobile menu links have been removed -->
-            <nav class="mobile-menu-links">
-                <!-- Navigation links removed -->
+            <nav class="mobile-nav">
+                <a href="#artwork" class="mobile-nav-link">
+                    <i class="fas fa-palette"></i>
+                    <span>Artwork</span>
+                </a>
+                <a href="#education" class="mobile-nav-link">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Education</span>
+                </a>
+                <a href="#collaborate" class="mobile-nav-link">
+                    <i class="fas fa-handshake"></i>
+                    <span>Collaborate</span>
+                </a>
+                <a href="#about" class="mobile-nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>About</span>
+                </a>
+                <a href="#contact" class="mobile-nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
             </nav>
+            <div class="mobile-social">
+                <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+            </div>
         </div>
     </div>
+    
+    <!-- Mobile Menu Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileToggle = document.querySelector('.navbar-mobile-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileClose = document.querySelector('.mobile-close-btn');
+        
+        // Toggle mobile menu
+        function toggleMenu() {
+            mobileToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.querySelector('.mobile-menu-overlay').classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        }
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+        
+        // Event listeners
+        mobileToggle.addEventListener('click', toggleMenu);
+        if (mobileClose) {
+            mobileClose.addEventListener('click', toggleMenu);
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('active') && 
+                !e.target.closest('.mobile-menu') && 
+                !e.target.closest('.navbar-mobile-toggle')) {
+                toggleMenu();
+            }
+        });
+    });
+    </script>
     
     <div id="app" class="container mx-auto px-4">
         <!-- Hero Section -->
         <section class="hero">
+            <div class="hero-bg"></div>
             <div class="decorative-circle decorative-circle-1"></div>
             <div class="decorative-circle decorative-circle-2"></div>
             
@@ -951,105 +1003,8 @@
         </div>
     </div>
 
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay"></div>
-
     <!-- Custom JS -->
-    <script>
-        // Navigation Scroll Effect
-        const navbar = document.querySelector('.navbar');
-        let lastScroll = 0;
-
-        // Add scroll class to navbar
-        function handleScroll() {
-            const currentScroll = window.pageYOffset;
-            
-            // Add/remove scrolled class based on scroll position
-            if (currentScroll > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            
-            lastScroll = currentScroll;
-        }
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    const headerOffset = 100;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Mobile Menu Toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
-        const mobileMenuLinks = document.querySelectorAll('.mobile-nav-link, .navbar-link');
-        
-        // Toggle mobile menu
-        function toggleMobileMenu() {
-            mobileMenuToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            mobileMenuOverlay.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-            
-            // Toggle aria-expanded for accessibility
-            const expanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true' || false;
-            mobileMenuToggle.setAttribute('aria-expanded', !expanded);
-        }
-        
-        // Close menu when clicking on a link
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                mobileMenuOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
-            });
-        });
-        
-        // Close menu when clicking overlay
-        mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
-        
-        // Toggle menu when clicking the button
-        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-        
-        // Close menu when resizing to desktop
-        function handleResize() {
-            if (window.innerWidth > 1024) {
-                mobileMenuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                mobileMenuOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
-            }
-        }
-        
-        // Initialize
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleResize);
-        
-        // Initial check for scrolled state
-        handleScroll();
-    </script>
-    <script src="js/main.js"></script>
+    <script src="scripts/main.js"></script>
     <script src="scripts/mobile-micro-animations.js"></script>
     <script src="js/navigation.js"></script>
 </body>
