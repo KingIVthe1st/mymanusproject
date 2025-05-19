@@ -45,7 +45,12 @@
     <!-- Glassmorphic Navigation -->
     <nav class="navbar">
         <div class="navbar-container">
-            <!-- Logo removed from navigation bar -->
+            <!-- Mobile menu toggle button (hidden on desktop) -->
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span class="menu-icon"></span>
+            </button>
+            
+            <!-- Desktop Navigation -->
             <div class="navbar-links">
                 <a href="#artwork" class="navbar-link">Artwork</a>
                 <a href="#education" class="navbar-link">Education</a>
@@ -53,9 +58,17 @@
                 <a href="#about" class="navbar-link">About</a>
                 <a href="#contact" class="navbar-link">Contact</a>
             </div>
-            <button class="navbar-mobile-toggle" aria-label="Toggle menu">
-                <span class="hamburger"></span>
-            </button>
+            
+            <!-- Mobile Menu (hidden by default) -->
+            <div class="mobile-menu">
+                <div class="mobile-menu-content">
+                    <a href="#artwork" class="mobile-nav-link">Artwork</a>
+                    <a href="#education" class="mobile-nav-link">Education</a>
+                    <a href="#collaborate" class="mobile-nav-link">Collaborate</a>
+                    <a href="#about" class="mobile-nav-link">About</a>
+                    <a href="#contact" class="mobile-nav-link">Contact</a>
+                </div>
+            </div>
         </div>
     </nav>
     
@@ -938,8 +951,54 @@
         </div>
     </div>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
     <!-- Custom JS -->
-    <script src="scripts/main.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-nav-link');
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            mobileMenuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        // Close menu when clicking on a link
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking overlay
+        mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+        
+        // Toggle menu when clicking the button
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        
+        // Close menu when resizing to desktop
+        function handleResize() {
+            if (window.innerWidth > 1024) {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        window.addEventListener('resize', handleResize);
+    </script>
+    <script src="js/main.js"></script>
     <script src="scripts/mobile-micro-animations.js"></script>
     <script src="js/navigation.js"></script>
 </body>
