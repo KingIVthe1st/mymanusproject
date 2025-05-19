@@ -1064,11 +1064,9 @@ h6 {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-}
-
-.navbar-logo {
-  display: flex;
-  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
 }
 
 .navbar-logo img {
@@ -1085,6 +1083,43 @@ h6 {
   display: none;
 }
 
+@media (min-width: 1024px) {
+  .navbar-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  
+  .navbar-link {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: width 0.3s ease;
+  }
+  
+  .navbar-link:hover::after {
+    width: 100%;
+  }
+  
+  .navbar-link:hover {
+    color: #fff;
+  }
+}
+
 /* Mobile Menu Toggle Button */
 .navbar-mobile-toggle {
   display: flex;
@@ -1095,9 +1130,8 @@ h6 {
   height: 48px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
+  border-radius: 12px;
   cursor: pointer;
-  padding: 0;
   z-index: 1001;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -1106,14 +1140,12 @@ h6 {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1),
               inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   overflow: hidden;
-  /* Frosted glass effect with subtle gradient */
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.1) 0%,
     rgba(255, 255, 255, 0.05) 100%
   );
   will-change: transform, box-shadow, background;
-  /* Subtle border highlight */
   border: 1px solid var(--glass-border);
   border-top: 1px solid var(--glass-border-highlight);
   border-left: 1px solid var(--glass-border-highlight);
@@ -1148,7 +1180,7 @@ h6 {
   display: block;
   width: 20px;
   height: 2px;
-  background: #333;
+  background: #fff;
   position: relative;
   transition: all 0.3s ease;
 }
@@ -1159,7 +1191,7 @@ h6 {
   position: absolute;
   width: 20px;
   height: 2px;
-  background: #333;
+  background: #fff;
   left: 0;
   transition: all 0.3s ease;
   border-radius: 2px;
@@ -1185,6 +1217,16 @@ h6 {
 .navbar-mobile-toggle.active .hamburger::after {
   transform: rotate(-45deg);
   background: #fff;
+}
+
+@media (min-width: 1024px) {
+  .navbar-mobile-toggle {
+    display: none; /* Hide on desktop */
+  }
+  
+  .navbar-links {
+    display: flex; /* Show nav links on desktop */
+  }
 }
 
 /* Mobile Menu */
