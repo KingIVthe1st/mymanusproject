@@ -1248,6 +1248,25 @@ h6 {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.hero-label {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1a1a1a; /* Darker text for better contrast */
+  background: rgba(255, 255, 255, 0.8); /* More opaque background */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Slightly darker border */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
 .mobile-logo img {
   height: 36px;
   width: auto;
