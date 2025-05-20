@@ -208,3 +208,27 @@ body { background-color: transparent !important; }
     background: linear-gradient(90deg, #8B5CF6, #EC4899);
     border-radius: 2px;
 }
+
+/* Mobile wrap fix */
+/* Fix spacing between words in text-reveal headings */
+.featured-logos-title.text-reveal span {
+  margin-right: 0.15em !important;
+  display: inline-block !important;
+}
+
+@media (max-width: 767px) {
+  .featured-logos-title.text-reveal span {
+    margin-right: 0.2em !important;
+    margin-left: 0.05em !important;
+  }
+  
+  .featured-logos-title {
+    white-space: normal !important;
+    word-break: break-word !important;
+    word-spacing: 0.5em !important;
+    letter-spacing: 0.1em !important;
+    font-size: 1.8rem !important;
+    line-height: 1.4 !important;
+    padding: 0 1rem !important;
+  }
+}
