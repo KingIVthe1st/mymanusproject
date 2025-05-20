@@ -156,10 +156,24 @@ body { background-color: transparent !important; }
 #app .featured-logos-section .featured-logos-grid .featured-logo-item img,
 #app .featured-logos-section .featured-logos-grid a.featured-logo img {
     filter: none !important;
-    max-height: 2.5rem !important;
+    max-height: 3.5rem !important;
     width: auto !important;
     opacity: 1 !important;
     transition: transform 0.3s ease !important;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 767px) {
+    #app .featured-logos-section .featured-logos-grid .featured-logo img,
+    #app .featured-logos-section .featured-logos-grid .featured-logo-item img,
+    #app .featured-logos-section .featured-logos-grid a.featured-logo img {
+        max-height: 4rem !important;
+    }
+    
+    #app .featured-logos-section .featured-logos-grid .featured-logo-text,
+    #app .featured-logos-section .featured-logos-grid a.featured-logo .featured-logo-text {
+        font-size: 1.5rem !important;
+    }
 }
 
 #app .featured-logos-section .featured-logos-grid .featured-logo:hover img,
