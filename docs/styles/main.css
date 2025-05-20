@@ -96,6 +96,241 @@
   background-color: rgba(236, 72, 153, 0.3);
 }
 
+/* Table Styles */
+.about-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.about-table tbody {
+    display: block;
+    width: 100%;
+}
+
+.about-table tr {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    transition: all 0.3s ease;
+    border-radius: 0.75rem;
+    margin-bottom: 0.75rem;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.about-table td {
+    padding: 1.25rem 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Table Container */
+.about-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.75rem;
+  margin: 1.5rem 0;
+}
+
+/* Table Rows & Cells */
+.about-table tr {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-table td {
+  padding: 0;
+  vertical-align: middle;
+  border: 1px solid #e5e7eb;
+  background: white;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-table tr:first-child td {
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
+.about-table tr:last-child td {
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+}
+
+.about-table tr:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+/* Table Cell Content */
+.about-table .table-cell {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem 1.75rem;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+/* Hover Effects */
+.about-table tr:hover td {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  border-color: #e0e7ff;
+}
+
+/* Icon Styling */
+.about-table .table-icon {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, #f9f9ff 0%, #f0f4ff 100%);
+  box-shadow: 0 2px 8px -1px rgba(0, 0, 0, 0.04);
+}
+
+.about-table tr:hover .table-icon {
+  transform: scale(1.05) rotate(5deg);
+  box-shadow: 0 4px 12px -1px rgba(0, 0, 0, 0.08);
+}
+
+.about-table .table-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #4f46e5;
+}
+
+/* Content Styling */
+.about-table .table-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.about-table .table-title {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.about-table .table-description {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-weight: 400;
+  margin: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/* Link Styling */
+.about-table .table-description a {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.about-table .table-description a:hover {
+  color: #4338ca;
+  border-bottom-color: currentColor;
+}
+
+/* Emphasis Text */
+.about-table .table-description em {
+  font-style: normal;
+  color: #7c3aed;
+  font-weight: 500;
+  background: linear-gradient(120deg, #e0e7ff 0%, #e9d5ff 100%);
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+  margin: 0 0.1rem;
+}
+
+/* Responsive adjustments will go here */
+
+/* Hover effects */
+.about-table tr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.about-table tr:hover .table-icon {
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .about-table tr {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .about-table td {
+        width: 50%;
+        padding: 1.5rem 2rem;
+    }
+    
+    .about-table .table-icon {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .about-table .table-icon svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    .about-table .table-title {
+        font-size: 1.2rem;
+    }
+    
+    .about-table .table-description {
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 768px) {
+  .about-table .table-cell {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .about-table .table-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  
+  .about-table .table-icon svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+  
+  .about-table .table-title {
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .about-table .table-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .about-table .table-description a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  .about-table .table-description a::after {
+    display: none;
+  }
+}
+
 /* Global Styles */
 html {
   scroll-behavior: smooth;
