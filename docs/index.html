@@ -40,6 +40,42 @@
     <link rel="stylesheet" href="styles/floating-particles-fix.css">
     <link rel="stylesheet" href="styles/featured-logos.css?v=1.1">
     <link rel="stylesheet" href="styles/about-section.css">
+    <style>
+        /* Inline styles for featured logos to ensure they take effect */
+        .featured-logos-grid > a.featured-logo {
+            background: linear-gradient(135deg, rgba(245,240,255,0.9), rgba(235,230,250,0.9)) !important;
+            backdrop-filter: blur(8px) !important;
+            border-radius: 12px !important;
+            padding: 1.5rem !important;
+            width: 100% !important;
+            aspect-ratio: 1.5/1 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.3s ease !important;
+            border: 1px solid rgba(211, 195, 247, 0.7) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+        }
+        
+        .featured-logos-grid > a.featured-logo:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+            border-color: #C5A8F0 !important;
+            background: linear-gradient(135deg, rgba(235,230,250,0.95), rgba(225,220,245,0.95)) !important;
+        }
+        
+        .featured-logos-grid > a.featured-logo img {
+            filter: none !important;
+            max-height: 2.5rem !important;
+            width: auto !important;
+            opacity: 1 !important;
+            transition: transform 0.3s ease !important;
+        }
+        
+        .featured-logos-grid > a.featured-logo:hover img {
+            transform: scale(1.1) !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Rainbow Cursor Effect -->
