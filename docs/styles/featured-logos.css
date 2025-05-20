@@ -127,8 +127,10 @@ body { background-color: transparent !important; }
 }
 
 /* Force featured logo styles */
-#app .featured-logos-section .featured-logos-grid .featured-logo {
-    background: #FBF9FF !important;
+#app .featured-logos-section .featured-logos-grid .featured-logo,
+#app .featured-logos-section .featured-logos-grid .featured-logo-item {
+    background: linear-gradient(135deg, rgba(245,240,255,0.8), rgba(235,230,250,0.8)) !important;
+    backdrop-filter: blur(8px) !important;
     border-radius: 12px !important;
     padding: 1.25rem !important;
     width: 100% !important;
@@ -137,28 +139,62 @@ body { background-color: transparent !important; }
     align-items: center !important;
     justify-content: center !important;
     transition: all 0.3s ease !important;
-    border: 1px solid #E9D8FD !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+    border: 1px solid #D3C3F7 !important;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.04), 0 2px 4px -1px rgba(0,0,0,0.02) !important;
 }
 
-#app .featured-logos-section .featured-logos-grid .featured-logo:hover {
+#app .featured-logos-section .featured-logos-grid .featured-logo:hover,
+#app .featured-logos-section .featured-logos-grid .featured-logo-item:hover {
     transform: translateY(-4px) !important;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.04) !important;
-    border-color: #D9BBF7 !important;
-    background: #F6F2FF !important;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.06), 0 4px 6px -2px rgba(0,0,0,0.03) !important;
+    border-color: #C5A8F0 !important;
+    background: linear-gradient(135deg, rgba(235,230,250,0.9), rgba(225,220,245,0.9)) !important;
 }
 
 /* Ensure logos are in color */
-#app .featured-logos-section .featured-logos-grid .featured-logo img {
+#app .featured-logos-section .featured-logos-grid .featured-logo img,
+#app .featured-logos-section .featured-logos-grid .featured-logo-item img,
+#app .featured-logos-section .featured-logos-grid a.featured-logo img {
     filter: none !important;
     max-height: 2.5rem !important;
     width: auto !important;
-    filter: none !important; /* Ensure logos are in color */
+    opacity: 1 !important;
     transition: transform 0.3s ease !important;
 }
 
-.featured-logo:hover img {
+#app .featured-logos-section .featured-logos-grid .featured-logo:hover img,
+#app .featured-logos-section .featured-logos-grid .featured-logo-item:hover img,
+#app .featured-logos-section .featured-logos-grid a.featured-logo:hover img {
     transform: scale(1.1) !important;
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+/* Force glassy gradient background for all logo containers */
+#app .featured-logos-section .featured-logos-grid > a.featured-logo,
+#app .featured-logos-section .featured-logos-grid .featured-logo-item,
+#app .featured-logos-section .featured-logos-grid .featured-logo {
+    background: linear-gradient(135deg, rgba(245,240,255,0.9), rgba(235,230,250,0.9)) !important;
+    backdrop-filter: blur(8px) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    width: 100% !important;
+    aspect-ratio: 1.5/1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+    border: 1px solid rgba(211, 195, 247, 0.7) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+}
+
+#app .featured-logos-section .featured-logos-grid > a.featured-logo:hover,
+#app .featured-logos-section .featured-logos-grid .featured-logo-item:hover,
+#app .featured-logos-section .featured-logos-grid .featured-logo:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+    border-color: #C5A8F0 !important;
+    background: linear-gradient(135deg, rgba(235,230,250,0.95), rgba(225,220,245,0.95)) !important;
 }
 
 /* Text-based logos */
