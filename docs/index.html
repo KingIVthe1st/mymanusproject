@@ -97,6 +97,206 @@
                 font-size: 1.5rem !important;
             }
         }
+        
+        /* CRITICAL NAVBAR FIX - HIGHEST PRIORITY */
+        body .navbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            z-index: 1000 !important;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px) saturate(200%) !important;
+            -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+            padding: 1rem 0 !important;
+            margin: 0 !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+
+        body .navbar .navbar-container {
+            display: grid !important;
+            grid-template-columns: 200px 1fr 200px !important;
+            align-items: center !important;
+            width: 100% !important;
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem !important;
+            gap: 2rem !important;
+            position: relative !important;
+        }
+
+        body .navbar .navbar-logo {
+            display: block !important;
+            justify-self: start !important;
+            grid-column: 1 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        body .navbar .navbar-logo img {
+            display: block !important;
+            height: 40px !important;
+            width: auto !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        body .navbar .navbar-links {
+            display: flex !important;
+            gap: 2.5rem !important;
+            align-items: center !important;
+            justify-content: center !important;
+            grid-column: 2 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        body .navbar .navbar-link {
+            display: inline-block !important;
+            color: #000000 !important;
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            padding: 0.5rem 0 !important;
+            position: relative !important;
+            letter-spacing: 0.03em !important;
+            text-transform: uppercase !important;
+            transition: all 0.4s ease !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        body .navbar .navbar-mobile-toggle {
+            display: none !important;
+            grid-column: 3 !important;
+        }
+
+        /* Mobile layout */
+        @media (max-width: 767px) {
+            body .navbar .navbar-container {
+                display: flex !important;
+                justify-content: space-between !important;
+                grid-template-columns: none !important;
+            }
+            
+            body .navbar .navbar-logo {
+                grid-column: unset !important;
+                justify-self: unset !important;
+            }
+            
+            body .navbar .navbar-links {
+                display: none !important;
+            }
+
+            body .navbar .navbar-mobile-toggle {
+                display: flex !important;
+                grid-column: unset !important;
+            }
+        }
+        
+        /* Hero spacing fix */
+        .hero {
+            padding-top: 6rem !important;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 5rem !important;
+            }
+        }
+    </style>
+    
+    <!-- EMERGENCY NAVIGATION FIX -->
+    <style>
+        /* Nuclear option - force navigation layout */
+        .navbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100vw !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            z-index: 1000 !important;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px) !important;
+            padding: 1rem 0 !important;
+        }
+        
+        .navbar-container {
+            display: grid !important;
+            grid-template-columns: 200px 1fr 200px !important;
+            width: 100% !important;
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem !important;
+            align-items: center !important;
+            position: relative !important;
+            left: 0 !important;
+            transform: none !important;
+            justify-items: center !important;
+        }
+        
+        .navbar-logo {
+            grid-column: 1 !important;
+            justify-self: start !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+        
+        .navbar-logo img {
+            height: 50px !important;
+            width: auto !important;
+            display: block !important;
+        }
+        
+        .navbar-links {
+            grid-column: 2 !important;
+            display: flex !important;
+            gap: 1.5rem !important;
+            justify-content: center !important;
+            align-items: center !important;
+            white-space: nowrap !important;
+            min-width: 0 !important;
+            flex-wrap: nowrap !important;
+        }
+        
+        .navbar-link {
+            display: inline-block !important;
+            color: #000 !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            padding: 0.5rem 0.5rem !important;
+            text-transform: uppercase !important;
+            font-size: 0.85rem !important;
+            white-space: nowrap !important;
+        }
+        
+        .navbar-mobile-toggle {
+            grid-column: 3 !important;
+            justify-self: end !important;
+            display: none !important;
+        }
+        
+        @media (max-width: 767px) {
+            .navbar-container {
+                display: flex !important;
+                justify-content: space-between !important;
+                grid-template-columns: none !important;
+            }
+            .navbar-links {
+                display: none !important;
+            }
+            .navbar-mobile-toggle {
+                display: flex !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -111,6 +311,98 @@
     
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress"></div>
+    
+    <!-- COMPLETELY NEW NAVIGATION -->
+    <nav id="main-navbar" style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 1000 !important; background: rgba(255, 255, 255, 0.95) !important; backdrop-filter: blur(20px) !important; padding: 1rem 0 !important; display: flex !important; justify-content: center !important; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; transform: translateY(0) !important; opacity: 1 !important;">
+        <div style="display: flex !important; align-items: center !important; justify-content: space-between !important; width: 100% !important; max-width: 1200px !important; padding: 0 2rem !important;">
+            <!-- Logo -->
+            <a href="#" style="display: flex !important; align-items: center !important; transition: all 0.3s ease !important;">
+                <img src="images/logo/amira-logo.webp" alt="Amira Rahim" style="height: 50px !important; width: auto !important; transition: all 0.3s ease !important;">
+            </a>
+            
+            <!-- Navigation Links -->
+            <div style="display: flex !important; gap: 2rem !important; align-items: center !important;">
+                <a href="#artwork" style="color: #000 !important; text-decoration: none !important; font-weight: 500 !important; text-transform: uppercase !important; font-size: 0.9rem !important; transition: all 0.3s ease !important;">Artwork</a>
+                <a href="#education" style="color: #000 !important; text-decoration: none !important; font-weight: 500 !important; text-transform: uppercase !important; font-size: 0.9rem !important; transition: all 0.3s ease !important;">Education</a>
+                <a href="#collaborate" style="color: #000 !important; text-decoration: none !important; font-weight: 500 !important; text-transform: uppercase !important; font-size: 0.9rem !important; transition: all 0.3s ease !important;">Collaborate</a>
+                <a href="#about" style="color: #000 !important; text-decoration: none !important; font-weight: 500 !important; text-transform: uppercase !important; font-size: 0.9rem !important; transition: all 0.3s ease !important;">About</a>
+                <a href="#contact" style="color: #000 !important; text-decoration: none !important; font-weight: 500 !important; text-transform: uppercase !important; font-size: 0.9rem !important; transition: all 0.3s ease !important;">Contact</a>
+            </div>
+            
+            <!-- Mobile toggle (hidden on desktop) -->
+            <button style="display: none !important;">☰</button>
+        </div>
+    </nav>
+    
+    <!-- Smooth Scroll Navigation Script -->
+    <script>
+        (function() {
+            let lastScrollTop = 0;
+            let navbar = document.getElementById('main-navbar');
+            let isScrolling = false;
+            let scrollTimer = null;
+            
+            // Debounced scroll handler for better performance
+            function handleScroll() {
+                if (!isScrolling) {
+                    window.requestAnimationFrame(function() {
+                        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                        
+                        // Clear any existing timer
+                        if (scrollTimer) {
+                            clearTimeout(scrollTimer);
+                        }
+                        
+                        if (scrollTop > 100) { // Start hiding after 100px scroll
+                            if (scrollTop > lastScrollTop) {
+                                // Scrolling down - hide navbar with elegant fade
+                                navbar.style.transform = 'translateY(-100%)';
+                                navbar.style.opacity = '0';
+                            } else {
+                                // Scrolling up - show navbar with elegant fade
+                                navbar.style.transform = 'translateY(0)';
+                                navbar.style.opacity = '1';
+                            }
+                        } else {
+                            // Near top - always show navbar
+                            navbar.style.transform = 'translateY(0)';
+                            navbar.style.opacity = '1';
+                        }
+                        
+                        lastScrollTop = scrollTop;
+                        
+                        // Set timer to show navbar after scrolling stops
+                        scrollTimer = setTimeout(function() {
+                            navbar.style.transform = 'translateY(0)';
+                            navbar.style.opacity = '1';
+                        }, 1500); // Show navbar 1.5 seconds after scrolling stops
+                        
+                        isScrolling = false;
+                    });
+                }
+                isScrolling = true;
+            }
+            
+            // Add scroll event listener with passive flag for better performance
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            // Show navbar on mouse movement near top
+            document.addEventListener('mousemove', function(e) {
+                if (e.clientY < 100) { // Mouse near top 100px
+                    navbar.style.transform = 'translateY(0)';
+                    navbar.style.opacity = '1';
+                }
+            });
+            
+            // Always show navbar when hovering over it
+            navbar.addEventListener('mouseenter', function() {
+                navbar.style.transform = 'translateY(0)';
+                navbar.style.opacity = '1';
+            });
+        })();
+    </script>
+    
+
     
     <!-- Glassmorphic Navigation -->
     <nav class="navbar">
@@ -179,6 +471,98 @@
     
     <!-- Mobile Menu Script -->
     <script>
+    // Navigation Fix - Apply immediately on DOM load
+    function fixNavigation() {
+        const navContainer = document.querySelector('.navbar-container');
+        const navLinks = document.querySelector('.navbar-links');
+        const navLogo = document.querySelector('.navbar-logo');
+        const mobileToggle = document.querySelector('.navbar-mobile-toggle');
+        
+        // Fix main navbar first
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            navbar.style.setProperty('display', 'flex', 'important');
+            navbar.style.setProperty('justify-content', 'center', 'important');
+            navbar.style.setProperty('align-items', 'center', 'important');
+            navbar.style.setProperty('position', 'fixed', 'important');
+            navbar.style.setProperty('top', '0', 'important');
+            navbar.style.setProperty('left', '0', 'important');
+            navbar.style.setProperty('right', '0', 'important');
+            navbar.style.setProperty('width', '100%', 'important');
+        }
+        
+        if (navContainer) {
+            navContainer.style.setProperty('display', 'grid', 'important');
+            navContainer.style.setProperty('grid-template-columns', '200px 1fr 200px', 'important');
+            navContainer.style.setProperty('justify-content', 'center', 'important');
+            navContainer.style.setProperty('align-items', 'center', 'important');
+            navContainer.style.setProperty('width', '100%', 'important');
+            navContainer.style.setProperty('max-width', '1200px', 'important');
+            navContainer.style.setProperty('margin', '0 auto', 'important');
+            navContainer.style.setProperty('padding', '0 2rem', 'important');
+            navContainer.style.setProperty('position', 'relative', 'important');
+            navContainer.style.setProperty('left', '0', 'important');
+            navContainer.style.setProperty('right', '0', 'important');
+            navContainer.style.setProperty('transform', 'none', 'important');
+        }
+        
+        if (navLogo) {
+            navLogo.style.setProperty('grid-column', '1', 'important');
+            navLogo.style.setProperty('justify-self', 'start', 'important');
+            navLogo.style.setProperty('display', 'flex', 'important');
+            navLogo.style.setProperty('align-items', 'center', 'important');
+            
+            const logoImg = navLogo.querySelector('img');
+            if (logoImg) {
+                logoImg.style.setProperty('height', '50px', 'important');
+                logoImg.style.setProperty('width', 'auto', 'important');
+                logoImg.style.setProperty('display', 'block', 'important');
+                logoImg.style.setProperty('opacity', '1', 'important');
+                logoImg.style.setProperty('visibility', 'visible', 'important');
+            }
+        }
+        
+        if (navLinks) {
+            navLinks.style.setProperty('grid-column', '2', 'important');
+            navLinks.style.setProperty('display', 'flex', 'important');
+            navLinks.style.setProperty('justify-content', 'center', 'important');
+            navLinks.style.setProperty('align-items', 'center', 'important');
+            navLinks.style.setProperty('gap', '2rem', 'important');
+            navLinks.style.setProperty('margin', '0', 'important');
+            navLinks.style.setProperty('padding', '0', 'important');
+        }
+        
+        if (mobileToggle) {
+            mobileToggle.style.setProperty('grid-column', '3', 'important');
+            mobileToggle.style.setProperty('justify-self', 'end', 'important');
+            mobileToggle.style.setProperty('display', 'none', 'important');
+        }
+        
+        // Apply mobile styles conditionally
+        if (window.innerWidth <= 767) {
+            if (navContainer) {
+                navContainer.style.setProperty('display', 'flex', 'important');
+                navContainer.style.setProperty('justify-content', 'space-between', 'important');
+                navContainer.style.setProperty('grid-template-columns', 'none', 'important');
+            }
+            if (navLinks) {
+                navLinks.style.setProperty('display', 'none', 'important');
+            }
+            if (mobileToggle) {
+                mobileToggle.style.setProperty('display', 'flex', 'important');
+            }
+        }
+    }
+    
+    // Apply fix immediately
+    fixNavigation();
+    
+    // Apply fix after page load
+    document.addEventListener('DOMContentLoaded', fixNavigation);
+    
+    // Apply fix on window resize
+    window.addEventListener('resize', fixNavigation);
+    
     document.addEventListener('DOMContentLoaded', function() {
         const mobileToggle = document.querySelector('.navbar-mobile-toggle');
         const mobileMenu = document.querySelector('.mobile-menu');
