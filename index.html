@@ -20,18 +20,398 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/clean-mobile.css">
+    <link rel="stylesheet" href="styles/main.css?v=1.1">
+    <!-- <link rel="stylesheet" href="styles/nav-styles.css"> --> 
+    <link rel="stylesheet" href="styles/hero-styles.css">
+    <link rel="stylesheet" href="styles/about-section.css">
+    <link rel="stylesheet" href="styles/artwork-section.css">
+    <link rel="stylesheet" href="styles/licensing-section.css">
+    <link rel="stylesheet" href="styles/featured-logos.css?v=1.1">
+    <link rel="stylesheet" href="styles/education-section.css">
+    <link rel="stylesheet" href="styles/name-gradient.css">
+    <link rel="stylesheet" href="styles/artwork-text-fix.css">
+    <!-- <link rel="stylesheet" href="styles/nav-override.css"> -->
     <link rel="stylesheet" href="styles/mobile-spacing.css">
     <link rel="stylesheet" href="styles/mobile-flourishes.css">
     <link rel="stylesheet" href="styles/circle-animation.css">
     <link rel="stylesheet" href="styles/premium-effects-enhanced.css">
     <link rel="stylesheet" href="styles/luxury-typography.css">
     <link rel="stylesheet" href="styles/logo-styles.css">
+    <link rel="stylesheet" href="styles/hamburger-fix.css">
+    <link rel="stylesheet" href="styles/footer-enhancement.css">
+    <link rel="stylesheet" href="styles/table-animations.css">
+    <link rel="stylesheet" href="styles/floating-particles-fix.css">
+    <link rel="stylesheet" href="styles/about-section.css">
+    <link rel="stylesheet" href="styles/licensing-section.css">
+    <!-- Navbar fix CSS moved to end with cache buster -->
+    <style>
+        /* Inline styles for featured logos to ensure they take effect */
+        .featured-logos-grid > a.featured-logo {
+            background: linear-gradient(135deg, rgba(245,240,255,0.9), rgba(235,230,250,0.9)) !important;
+            backdrop-filter: blur(8px) !important;
+            border-radius: 12px !important;
+            padding: 1.5rem !important;
+            width: 100% !important;
+            aspect-ratio: 1.5/1 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.3s ease !important;
+            border: 1px solid rgba(211, 195, 247, 0.7) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+        }
+        
+        .featured-logos-grid > a.featured-logo:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+            border-color: #C5A8F0 !important;
+            background: linear-gradient(135deg, rgba(235,230,250,0.95), rgba(225,220,245,0.95)) !important;
+        }
+        
+        .featured-logos-grid > a.featured-logo img {
+            filter: none !important;
+            max-height: 3.5rem !important;
+            width: auto !important;
+            opacity: 1 !important;
+            transition: transform 0.3s ease !important;
+        }
+        
+        .featured-logos-grid > a.featured-logo:hover img {
+            transform: scale(1.1) !important;
+        }
+        
+        /* Mobile-specific styles */
+        @media (max-width: 767px) {
+            .featured-logos-grid > a.featured-logo {
+                padding: 1.25rem !important;
+                aspect-ratio: 1.3/1 !important;
+            }
+            
+            .featured-logos-grid > a.featured-logo img {
+                max-height: 4rem !important;
+            }
+            
+            .featured-logos-grid .featured-logo-text {
+                font-size: 1.5rem !important;
+            }
+        }
+        
+        /* CRITICAL NAVBAR FIX - HIGHEST PRIORITY */
+        body .navbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            z-index: 1000 !important;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px) saturate(200%) !important;
+            -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+            padding: 1rem 0 !important;
+            margin: 0 !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+
+        body .navbar .navbar-container {
+            display: grid !important;
+            grid-template-columns: 200px 1fr 200px !important;
+            align-items: center !important;
+            width: 100% !important;
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem !important;
+            gap: 2rem !important;
+            position: relative !important;
+        }
+
+        body .navbar .navbar-logo {
+            display: block !important;
+            justify-self: start !important;
+            grid-column: 1 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        body .navbar .navbar-logo img {
+            display: block !important;
+            height: 40px !important;
+            width: auto !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        body .navbar .navbar-links {
+            display: flex !important;
+            gap: 2.5rem !important;
+            align-items: center !important;
+            justify-content: center !important;
+            grid-column: 2 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        body .navbar .navbar-link {
+            display: inline-block !important;
+            color: #000000 !important;
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            padding: 0.5rem 0 !important;
+            position: relative !important;
+            letter-spacing: 0.03em !important;
+            text-transform: uppercase !important;
+            transition: all 0.4s ease !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        body .navbar .navbar-mobile-toggle {
+            display: none !important;
+            grid-column: 3 !important;
+        }
+
+        /* Mobile layout */
+        @media (max-width: 767px) {
+            body .navbar .navbar-container {
+                display: flex !important;
+                justify-content: space-between !important;
+                grid-template-columns: none !important;
+            }
+            
+            body .navbar .navbar-logo {
+                grid-column: unset !important;
+                justify-self: unset !important;
+            }
+            
+            body .navbar .navbar-links {
+                display: none !important;
+            }
+
+            body .navbar .navbar-mobile-toggle {
+                display: flex !important;
+                grid-column: unset !important;
+            }
+        }
+        
+        /* Hero spacing fix */
+        .hero {
+            padding-top: 6rem !important;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 5rem !important;
+            }
+        }
+        
+        /* ULTIMATE NAVBAR FIX - OVERRIDES ALL OTHER CSS */
+        html body .navbar .navbar-container {
+            display: grid !important;
+            grid-template-columns: 200px 1fr 200px !important;
+            justify-content: unset !important;
+        }
+        
+        html body .navbar .navbar-links {
+            display: flex !important;
+            justify-content: center !important;
+            grid-column: 2 !important;
+        }
+        
+        html body .navbar .navbar-logo {
+            display: block !important;
+            grid-column: 1 !important;
+        }
+        
+        html body .navbar .navbar-mobile-toggle {
+            grid-column: 3 !important;
+        }
+        
+        @media (min-width: 768px) {
+            html body .navbar .navbar-links {
+                display: flex !important;
+            }
+            html body .navbar .navbar-mobile-toggle {
+                display: none !important;
+            }
+        }
+    </style>
+    
+    <!-- Critical Navigation Fixes - Load Last -->
+    <link rel="stylesheet" href="styles/navbar-fix.css?v=2.0">
+    <link rel="stylesheet" href="styles/hero-spacing-fix.css?v=2.0">
+    <link rel="stylesheet" href="styles/mobile-spacing.css?v=2.0">
+    
+    <!-- FINAL NAVIGATION FIX - MAXIMUM SPECIFICITY -->
+    <style id="navbar-final-fix">
+        /* Force navigation layout with maximum CSS specificity */
+        html body div#app .navbar[class] .navbar-container[class] {
+            display: grid !important;
+            grid-template-columns: 200px 1fr 200px !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100% !important;
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem !important;
+            position: relative !important;
+            left: 0 !important;
+            right: 0 !important;
+            transform: none !important;
+        }
+        
+        html body div#app .navbar[class] .navbar-logo[class] {
+            display: flex !important;
+            grid-column: 1 !important;
+            justify-self: start !important;
+            align-items: center !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        html body div#app .navbar[class] .navbar-logo[class] img {
+            display: block !important;
+            height: 50px !important;
+            width: auto !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        html body div#app .navbar[class] .navbar-links[class] {
+            display: flex !important;
+            grid-column: 2 !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 2rem !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        html body div#app .navbar[class] .navbar-link[class] {
+            display: inline-block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        html body div#app .navbar[class] .navbar-mobile-toggle[class] {
+            display: none !important;
+            grid-column: 3 !important;
+            justify-self: end !important;
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 767px) {
+            html body div#app .navbar[class] .navbar-container[class] {
+                display: flex !important;
+                justify-content: space-between !important;
+                grid-template-columns: none !important;
+            }
+            
+            html body div#app .navbar[class] .navbar-links[class] {
+                display: none !important;
+            }
+            
+            html body div#app .navbar[class] .navbar-mobile-toggle[class] {
+                display: flex !important;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="custom-cursor"></div>
+    <!-- EMERGENCY NAVIGATION FIX -->
+    <style>
+        /* Nuclear option - force navigation layout */
+        .navbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100vw !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            z-index: 1000 !important;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px) !important;
+            padding: 1rem 0 !important;
+        }
+        
+        .navbar-container {
+            display: grid !important;
+            grid-template-columns: 200px 1fr 200px !important;
+            width: 100% !important;
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem !important;
+            align-items: center !important;
+            position: relative !important;
+            left: 0 !important;
+            transform: none !important;
+            justify-items: center !important;
+        }
+        
+        .navbar-logo {
+            grid-column: 1 !important;
+            justify-self: start !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+        
+        .navbar-logo img {
+            height: 50px !important;
+            width: auto !important;
+            display: block !important;
+        }
+        
+        .navbar-links {
+            grid-column: 2 !important;
+            display: flex !important;
+            gap: 1.5rem !important;
+            justify-content: center !important;
+            align-items: center !important;
+            white-space: nowrap !important;
+            min-width: 0 !important;
+            flex-wrap: nowrap !important;
+        }
+        
+        .navbar-link {
+            display: inline-block !important;
+            color: #000 !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            padding: 0.5rem 0.5rem !important;
+            text-transform: uppercase !important;
+            font-size: 0.85rem !important;
+            white-space: nowrap !important;
+        }
+        
+        .navbar-mobile-toggle {
+            grid-column: 3 !important;
+            justify-self: end !important;
+            display: none !important;
+        }
+        
+        @media (max-width: 767px) {
+            .navbar-container {
+                display: flex !important;
+                justify-content: space-between !important;
+                grid-template-columns: none !important;
+            }
+            .navbar-links {
+                display: none !important;
+            }
+            .navbar-mobile-toggle {
+                display: flex !important;
+            }
+        }
+    </style>
+    <!-- Rainbow Cursor Effect -->
+    <script src="scripts/rainbow-cursor.js"></script>
     
     <!-- Background Shapes -->
     <div class="bg-shape bg-shape-1"></div>
@@ -42,51 +422,343 @@
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress"></div>
     
-    <!-- Glassmorphic Navigation -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="#" class="navbar-logo">
-                <img src="images/logo/amira-logo.webp" alt="Amira Rahim" class="logo-image">
+    <!-- COMPLETELY NEW NAVIGATION -->
+    <nav id="main-navbar" style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 1000 !important; background: rgba(255, 255, 255, 0.95) !important; backdrop-filter: blur(20px) !important; padding: 1rem 0 !important; display: flex !important; justify-content: center !important; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; transform: translateY(0) !important; opacity: 1 !important;">
+        <div style="display: flex !important; align-items: center !important; justify-content: space-between !important; width: 100% !important; max-width: 1200px !important; padding: 0 2rem !important;">
+            <!-- Logo -->
+            <a href="#" style="display: flex !important; align-items: center !important; transition: all 0.3s ease !important;">
+                <img src="images/logo/amira-logo.webp" alt="Amira Rahim" style="height: 50px !important; width: auto !important; transition: all 0.3s ease !important;">
             </a>
-            <div class="navbar-links">
-                <a href="#artwork" class="navbar-link">Artwork</a>
-                <a href="#education" class="navbar-link">Education</a>
-                <a href="#collaborate" class="navbar-link">Collaborate</a>
-                <a href="#about" class="navbar-link">About</a>
-                <a href="#contact" class="navbar-link">Contact</a>
+            
+            <!-- Navigation Links -->
+            <div style="display: flex !important; gap: 2rem !important; align-items: center !important;">
+                <a href="#artwork" style="color: #000 !important; text-decoration: none !important; font-weight: 500 !important; text-transform: uppercase !important; font-size: 0.9rem !important; transition: all 0.3s ease !important;">Artwork</a>
+                <a href="#education" style="color: #000 !important; text-decoration: none !important; font-weight: 500 !important; text-transform: uppercase !important; font-size: 0.9rem !important; transition: all 0.3s ease !important;">Education</a>
+                <a href="#collaborate" style="color: #000 !important; text-decoration: none !important; font-weight: 500 !important; text-transform: uppercase !important; font-size: 0.9rem !important; transition: all 0.3s ease !important;">Collaborate</a>
+                <a href="#about" style="color: #000 !important; text-decoration: none !important; font-weight: 500 !important; text-transform: uppercase !important; font-size: 0.9rem !important; transition: all 0.3s ease !important;">About</a>
+                <a href="#contact" style="color: #000 !important; text-decoration: none !important; font-weight: 500 !important; text-transform: uppercase !important; font-size: 0.9rem !important; transition: all 0.3s ease !important;">Contact</a>
             </div>
-            <button class="navbar-mobile-toggle" aria-label="Toggle menu">
-                <span class="hamburger"></span>
-            </button>
+            
+            <!-- Mobile toggle (hidden on desktop) -->
+            <button style="display: none !important;">☰</button>
         </div>
     </nav>
     
+    <!-- Smooth Scroll Navigation Script -->
+    <script>
+        (function() {
+            let lastScrollTop = 0;
+            let navbar = document.getElementById('main-navbar');
+            let isScrolling = false;
+            let scrollTimer = null;
+            
+            // Debounced scroll handler for better performance
+            function handleScroll() {
+                if (!isScrolling) {
+                    window.requestAnimationFrame(function() {
+                        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                        
+                        // Clear any existing timer
+                        if (scrollTimer) {
+                            clearTimeout(scrollTimer);
+                        }
+                        
+                        if (scrollTop > 100) { // Start hiding after 100px scroll
+                            if (scrollTop > lastScrollTop) {
+                                // Scrolling down - hide navbar with elegant fade
+                                navbar.style.transform = 'translateY(-100%)';
+                                navbar.style.opacity = '0';
+                            } else {
+                                // Scrolling up - show navbar with elegant fade
+                                navbar.style.transform = 'translateY(0)';
+                                navbar.style.opacity = '1';
+                            }
+                        } else {
+                            // Near top - always show navbar
+                            navbar.style.transform = 'translateY(0)';
+                            navbar.style.opacity = '1';
+                        }
+                        
+                        lastScrollTop = scrollTop;
+                        
+                        // Set timer to show navbar after scrolling stops
+                        scrollTimer = setTimeout(function() {
+                            navbar.style.transform = 'translateY(0)';
+                            navbar.style.opacity = '1';
+                        }, 1500); // Show navbar 1.5 seconds after scrolling stops
+                        
+                        isScrolling = false;
+                    });
+                }
+                isScrolling = true;
+            }
+            
+            // Add scroll event listener with passive flag for better performance
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            // Show navbar on mouse movement near top
+            document.addEventListener('mousemove', function(e) {
+                if (e.clientY < 100) { // Mouse near top 100px
+                    navbar.style.transform = 'translateY(0)';
+                    navbar.style.opacity = '1';
+                }
+            });
+            
+            // Always show navbar when hovering over it
+            navbar.addEventListener('mouseenter', function() {
+                navbar.style.transform = 'translateY(0)';
+                navbar.style.opacity = '1';
+            });
+        })();
+    </script>
+    
+
+    
     <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
     <div class="mobile-menu">
         <div class="mobile-menu-container">
             <div class="mobile-menu-header">
-                <a href="#" class="navbar-logo">
+                <a href="#" class="mobile-logo">
                     <img src="images/logo/amira-logo.webp" alt="Amira Rahim" class="logo-image">
                 </a>
-                <button class="mobile-menu-close" aria-label="Close menu">
-                    <span class="close-icon"></span>
+                <button class="mobile-close-btn" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
                 </button>
             </div>
-            <nav class="mobile-menu-links">
-                <a href="#education" class="mobile-menu-link">Education</a>
-                <a href="#collaborate" class="mobile-menu-link">Collaborate</a>
-                <a href="#about" class="mobile-menu-link">About</a>
-                <a href="#contact" class="mobile-menu-link">Contact</a>
+            <nav class="mobile-nav">
+                <div class="nav-links">
+                    <a href="#artwork" class="mobile-nav-link">
+                        <span class="link-text">Artwork</span>
+                        <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="#education" class="mobile-nav-link">
+                        <span class="link-text">Education</span>
+                        <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="#collaborate" class="mobile-nav-link">
+                        <span class="link-text">Collaborate</span>
+                        <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="#about" class="mobile-nav-link">
+                        <span class="link-text">About</span>
+                        <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="#contact" class="mobile-nav-link">
+                        <span class="link-text">Contact</span>
+                        <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                </div>
+                <div class="mobile-social">
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
             </nav>
         </div>
     </div>
     
+    <!-- Mobile Menu Script -->
+    <script>
+    // Navigation Fix - Apply immediately on DOM load
+    function fixNavigation() {
+        const navContainer = document.querySelector('.navbar-container');
+        const navLinks = document.querySelector('.navbar-links');
+        const navLogo = document.querySelector('.navbar-logo');
+        const mobileToggle = document.querySelector('.navbar-mobile-toggle');
+        
+        // Fix main navbar first
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            navbar.style.setProperty('display', 'flex', 'important');
+            navbar.style.setProperty('justify-content', 'center', 'important');
+            navbar.style.setProperty('align-items', 'center', 'important');
+            navbar.style.setProperty('position', 'fixed', 'important');
+            navbar.style.setProperty('top', '0', 'important');
+            navbar.style.setProperty('left', '0', 'important');
+            navbar.style.setProperty('right', '0', 'important');
+            navbar.style.setProperty('width', '100%', 'important');
+        }
+        
+        if (navContainer) {
+            navContainer.style.setProperty('display', 'grid', 'important');
+            navContainer.style.setProperty('grid-template-columns', '200px 1fr 200px', 'important');
+            navContainer.style.setProperty('justify-content', 'center', 'important');
+            navContainer.style.setProperty('align-items', 'center', 'important');
+            navContainer.style.setProperty('width', '100%', 'important');
+            navContainer.style.setProperty('max-width', '1200px', 'important');
+            navContainer.style.setProperty('margin', '0 auto', 'important');
+            navContainer.style.setProperty('padding', '0 2rem', 'important');
+            navContainer.style.setProperty('position', 'relative', 'important');
+            navContainer.style.setProperty('left', '0', 'important');
+            navContainer.style.setProperty('right', '0', 'important');
+            navContainer.style.setProperty('transform', 'none', 'important');
+        }
+        
+        if (navLogo) {
+            navLogo.style.setProperty('grid-column', '1', 'important');
+            navLogo.style.setProperty('justify-self', 'start', 'important');
+            navLogo.style.setProperty('display', 'flex', 'important');
+            navLogo.style.setProperty('align-items', 'center', 'important');
+            
+            const logoImg = navLogo.querySelector('img');
+            if (logoImg) {
+                logoImg.style.setProperty('height', '50px', 'important');
+                logoImg.style.setProperty('width', 'auto', 'important');
+                logoImg.style.setProperty('display', 'block', 'important');
+                logoImg.style.setProperty('opacity', '1', 'important');
+                logoImg.style.setProperty('visibility', 'visible', 'important');
+            }
+        }
+        
+        if (navLinks) {
+            navLinks.style.setProperty('grid-column', '2', 'important');
+            navLinks.style.setProperty('display', 'flex', 'important');
+            navLinks.style.setProperty('justify-content', 'center', 'important');
+            navLinks.style.setProperty('align-items', 'center', 'important');
+            navLinks.style.setProperty('gap', '2rem', 'important');
+            navLinks.style.setProperty('margin', '0', 'important');
+            navLinks.style.setProperty('padding', '0', 'important');
+        }
+        
+        if (mobileToggle) {
+            mobileToggle.style.setProperty('grid-column', '3', 'important');
+            mobileToggle.style.setProperty('justify-self', 'end', 'important');
+            mobileToggle.style.setProperty('display', 'none', 'important');
+        }
+        
+        // Apply mobile styles conditionally
+        if (window.innerWidth <= 767) {
+            if (navContainer) {
+                navContainer.style.setProperty('display', 'flex', 'important');
+                navContainer.style.setProperty('justify-content', 'space-between', 'important');
+                navContainer.style.setProperty('grid-template-columns', 'none', 'important');
+            }
+            if (navLinks) {
+                navLinks.style.setProperty('display', 'none', 'important');
+            }
+            if (mobileToggle) {
+                mobileToggle.style.setProperty('display', 'flex', 'important');
+            }
+        }
+    }
+    
+    // Apply fix immediately
+    fixNavigation();
+    
+    // Apply fix after page load
+    document.addEventListener('DOMContentLoaded', fixNavigation);
+    
+    // Apply fix on window resize
+    window.addEventListener('resize', fixNavigation);
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileToggle = document.querySelector('.navbar-mobile-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        const closeButton = document.querySelector('.mobile-close-btn');
+        
+        // Toggle menu function
+        function toggleMenu() {
+            const isOpening = !mobileMenu.classList.contains('active');
+            
+            // Toggle active classes
+            mobileToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            
+            // Toggle body scroll
+            document.body.classList.toggle('menu-open');
+            
+            // Add/remove event listeners based on menu state
+            if (isOpening) {
+                document.addEventListener('keydown', handleEscape);
+                mobileOverlay.addEventListener('click', closeMenu);
+                closeButton.addEventListener('click', closeMenu);
+                
+                // Add animation class for menu items
+                mobileLinks.forEach((link, index) => {
+                    link.style.animation = `fadeInRight 0.4s ease-out ${index * 0.08}s forwards`;
+                    link.style.opacity = '0';
+                    link.style.transform = 'translateX(20px)';
+                });
+            } else {
+                document.removeEventListener('keydown', handleEscape);
+                mobileOverlay.removeEventListener('click', closeMenu);
+                closeButton.removeEventListener('click', closeMenu);
+                
+                // Reset animations
+                mobileLinks.forEach(link => {
+                    link.style.animation = '';
+                    link.style.opacity = '';
+                    link.style.transform = '';
+                });
+            }
+        }
+        
+        // Close menu function
+        function closeMenu() {
+            if (mobileMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        }
+        
+        // Handle escape key
+        function handleEscape(e) {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        }
+        
+        // Event listeners
+        mobileToggle.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking on a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+            
+            // Add hover/active state effects
+            link.addEventListener('mousedown', () => {
+                link.classList.add('active');
+            });
+            
+            link.addEventListener('mouseup', () => {
+                link.classList.remove('active');
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                link.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (
+                !e.target.closest('.mobile-menu') && 
+                !e.target.closest('.navbar-mobile-toggle') &&
+                mobileMenu.classList.contains('active')
+            ) {
+                closeMenu();
+            }
+        });
+        
+        // Prevent body scroll when menu is open
+        document.addEventListener('scroll', (e) => {
+            if (document.body.classList.contains('menu-open')) {
+                e.preventDefault();
+                window.scrollTo(0, 0);
+                return false;
+            }
+        }, { passive: false });
+    });
+    </script>
+    
     <div id="app" class="container mx-auto px-4">
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-bg">
-                <!-- Logo removed from hero -->
-            </div>
+            <div class="hero-bg"></div>
             <div class="decorative-circle decorative-circle-1"></div>
             <div class="decorative-circle decorative-circle-2"></div>
             
@@ -122,86 +794,74 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Artwork 1 -->
-                <div class="artwork-card">
-                    <div class="artwork-image-container">
-                        <img src="./deploy/artwork/rainbow_spectrum.jpeg" alt="Rainbow Spectrum" class="artwork-image">
-                    </div>
-                    <div class="artwork-content">
-                        <h3 class="artwork-title">Rainbow Spectrum</h3>
-                        <p class="artwork-description">Acrylic on canvas, 36" x 36"</p>
-                        <a href="https://shop.amirarahim.com/products/rainbow-spectrum-36x36-original-on-canvas" class="artwork-button">
-                            View Details <i class="fas fa-arrow-right"></i>
-                        </a>
+                <div class="artwork-card glass-card">
+                    <div class="artwork-image">
+                        <img src="images/artwork/rainbow_spectrum.jpeg" alt="Rainbow Spectrum" class="w-full h-full object-cover">
+                        <div class="artwork-overlay">
+                            <h3 class="artwork-title">Rainbow Spectrum</h3>
+                            <p class="artwork-description">Acrylic on canvas, 36" x 36"</p>
+                            <a href="https://shop.amirarahim.com/products/rainbow-spectrum-36x36-original-on-canvas" class="artwork-button">View Details</a>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Artwork 2 -->
-                <div class="artwork-card">
-                    <div class="artwork-image-container">
-                        <img src="./deploy/artwork/eden_original_painting.jpeg" alt="Eden" class="artwork-image">
-                    </div>
-                    <div class="artwork-content">
-                        <h3 class="artwork-title">Eden</h3>
-                        <p class="artwork-description">Acrylic on canvas, 30" x 40"</p>
-                        <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">
-                            View Details <i class="fas fa-arrow-right"></i>
-                        </a>
+                <div class="artwork-card glass-card">
+                    <div class="artwork-image">
+                        <img src="images/artwork/eden_original_painting.jpeg" alt="Eden" class="w-full h-full object-cover">
+                        <div class="artwork-overlay">
+                            <h3 class="artwork-title">Eden</h3>
+                            <p class="artwork-description">Acrylic on canvas, 30" x 40"</p>
+                            <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">View Details</a>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Artwork 3 -->
-                <div class="artwork-card">
-                    <div class="artwork-image-container">
-                        <img src="./deploy/artwork/festival_original_painting.jpeg" alt="Festival" class="artwork-image">
-                    </div>
-                    <div class="artwork-content">
-                        <h3 class="artwork-title">Festival</h3>
-                        <p class="artwork-description">Acrylic on canvas, 24" x 36"</p>
-                        <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">
-                            View Details <i class="fas fa-arrow-right"></i>
-                        </a>
+                <div class="artwork-card glass-card">
+                    <div class="artwork-image">
+                        <img src="images/artwork/festival_original_painting.jpeg" alt="Festival" class="w-full h-full object-cover">
+                        <div class="artwork-overlay">
+                            <h3 class="artwork-title">Festival</h3>
+                            <p class="artwork-description">Acrylic on canvas, 24" x 36"</p>
+                            <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">View Details</a>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Artwork 4 -->
-                <div class="artwork-card">
-                    <div class="artwork-image-container">
-                        <img src="./deploy/artwork/jubilee_original_painting.jpeg" alt="Jubilee" class="artwork-image">
-                    </div>
-                    <div class="artwork-content">
-                        <h3 class="artwork-title">Jubilee</h3>
-                        <p class="artwork-description">Acrylic on canvas, 36" x 36"</p>
-                        <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">
-                            View Details <i class="fas fa-arrow-right"></i>
-                        </a>
+                <div class="artwork-card glass-card">
+                    <div class="artwork-image">
+                        <img src="images/artwork/jubilee_original_painting.jpeg" alt="Jubilee" class="w-full h-full object-cover">
+                        <div class="artwork-overlay">
+                            <h3 class="artwork-title">Jubilee</h3>
+                            <p class="artwork-description">Acrylic on canvas, 36" x 36"</p>
+                            <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">View Details</a>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Artwork 5 -->
-                <div class="artwork-card">
-                    <div class="artwork-image-container">
-                        <img src="./deploy/artwork/bloom_original_painting.jpeg" alt="Bloom" class="artwork-image">
-                    </div>
-                    <div class="artwork-content">
-                        <h3 class="artwork-title">Bloom</h3>
-                        <p class="artwork-description">Acrylic on canvas, 24" x 30"</p>
-                        <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">
-                            View Details <i class="fas fa-arrow-right"></i>
-                        </a>
+                <div class="artwork-card glass-card">
+                    <div class="artwork-image">
+                        <img src="images/artwork/bloom_original_painting.jpeg" alt="Bloom" class="w-full h-full object-cover">
+                        <div class="artwork-overlay">
+                            <h3 class="artwork-title">Bloom</h3>
+                            <p class="artwork-description">Acrylic on canvas, 24" x 30"</p>
+                            <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">View Details</a>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Artwork 6 -->
-                <div class="artwork-card">
-                    <div class="artwork-image-container">
-                        <img src="./deploy/artwork/radiance_original_painting.jpeg" alt="Radiance" class="artwork-image">
-                    </div>
-                    <div class="artwork-content">
-                        <h3 class="artwork-title">Radiance</h3>
-                        <p class="artwork-description">Acrylic on canvas, 30" x 30"</p>
-                        <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">
-                            View Details <i class="fas fa-arrow-right"></i>
-                        </a>
+                <div class="artwork-card glass-card">
+                    <div class="artwork-image">
+                        <img src="images/artwork/radiance_original_painting.jpeg" alt="Radiance" class="w-full h-full object-cover">
+                        <div class="artwork-overlay">
+                            <h3 class="artwork-title">Radiance</h3>
+                            <p class="artwork-description">Acrylic on canvas, 30" x 30"</p>
+                            <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">View Details</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -217,268 +877,217 @@
         <div class="section-divider"></div>
         
         <!-- About the Artist Section -->
-        <section id="about" class="py-16 relative overflow-hidden">
-            <div class="section-header">
-                <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-yellow-100 to-pink-100 text-yellow-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">THE ARTIST</span>
-                <h3 class="text-4xl font-serif font-bold text-gray-800 text-scramble">About Amira</h3>
-            </div>
-            <div class="max-w-4xl mx-auto px-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div class="relative">
-                        <div class="relative rounded-lg overflow-hidden shadow-2xl transform rotate-1">
-                            <img 
-                                src="images/amira-about.png" 
-                                alt="Amira Rahim" 
-                                class="w-full h-auto object-cover"
-                                style="min-height: 400px;"
-                            >
-                        </div>
-                        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-yellow-400 rounded-full z-0"></div>
-                    </div>
-                    <div class="relative z-10">
-                        <p class="text-gray-700 mb-6">
-                            Amira Rahim is an internationally collected abstract expressionist painter known for her vibrant use of color and energetic compositions. Born in New Jersey and now based between the US and UAE, her work has been featured in major publications and acquired by collectors worldwide.
-                        </p>
-                        <p class="text-gray-700 mb-6">
-                            Her artistic journey began at a young age, leading her to study Fine Art at Mason Gross School of the Arts at Rutgers University. After years of working in the corporate world, she returned to her true passion for painting, developing a distinctive style that blends abstract expressionism with contemporary design.
-                        </p>
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-pink-600 hover:text-pink-700 transition-colors">
-                                <span class="sr-only">Instagram</span>
-                                <i class="fab fa-instagram text-2xl"></i>
-                            </a>
-                            <a href="#" class="text-pink-600 hover:text-pink-700 transition-colors">
-                                <span class="sr-only">Facebook</span>
-                                <i class="fab fa-facebook text-2xl"></i>
-                            </a>
-                            <a href="#" class="text-pink-600 hover:text-pink-700 transition-colors">
-                                <span class="sr-only">Pinterest</span>
-                                <i class="fab fa-pinterest text-2xl"></i>
-                            </a>
-                            <a href="#" class="text-pink-600 hover:text-pink-700 transition-colors">
-                                <span class="sr-only">YouTube</span>
-                                <i class="fab fa-youtube text-2xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <div class="section-divider"></div>
-        
-        <!-- Featured In Section -->
-        <section class="py-16">
-            <div class="section-header">
-                <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">RECOGNITION</span>
-                <h3 class="text-4xl font-serif font-bold text-gray-800 text-scramble">Featured In</h3>
-            </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center px-4">
-                <div class="featured-logo p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-                    <img src="images/press/wayfair_logo.png" alt="Wayfair" class="h-8 w-auto max-h-12 object-contain">
-                </div>
-                <div class="featured-logo p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-                    <img src="images/press/target_logo.png" alt="Target" class="h-8 w-auto max-h-12 object-contain">
-                </div>
-                <div class="featured-logo p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-                    <img src="images/press/homegoods_logo.png" alt="HomeGoods" class="h-8 w-auto max-h-12 object-contain">
-                </div>
-                <div class="featured-logo p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 bg-gray-50 flex items-center justify-center">
-                    <span class="text-lg font-bold text-gray-700">Forbes</span>
-                </div>
-                <div class="featured-logo p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 bg-gray-50 flex items-center justify-center">
-                    <span class="text-lg font-bold text-gray-700">Vogue</span>
-                </div>
-                <div class="featured-logo p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-                    <img src="images/logo/amira-logo.webp" alt="Amira Rahim" class="h-8 w-auto max-h-12 object-contain">
-                </div>
-            </div>
-        </section>
-        
-        <div class="section-divider"></div>
-        
-        <!-- Education Section -->
-        <section id="education" class="py-16 relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-yellow-50 via-pink-50 to-purple-50 opacity-50"></div>
-            <div class="decorative-circle decorative-circle-3"></div>
-            <div class="decorative-circle decorative-circle-4"></div>
+        <section id="about" class="py-16 relative overflow-hidden" aria-label="About the Artist">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-50"></div>
+            <div class="decorative-circle decorative-circle-1"></div>
+            <div class="decorative-circle decorative-circle-2"></div>
             
             <div class="relative z-10 max-w-7xl mx-auto px-4">
                 <div class="section-header">
-                    <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">EDUCATION</span>
-                    <h3 class="text-4xl font-serif font-bold text-gray-800 text-scramble">Transform Your Art Journey</h3>
+                    <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-yellow-100 to-pink-100 text-yellow-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">THE ARTIST</span>
+                    <h3 class="text-4xl font-serif font-bold text-gray-800 text-scramble">About the Artist</h3>
                 </div>
-                
-                <p class="text-center text-gray-700 max-w-3xl mx-auto mb-12">
-                    Whether you're just starting out or looking to take your art to the next level, my educational offerings provide the guidance, community, and inspiration you need to thrive.
-                </p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Better Than Art School -->
-                    <div class="reveal">
-                        <div class="relative overflow-hidden rounded-lg shadow-xl transition-all duration-500 hover:shadow-2xl glass-card">
-                            <div class="p-8">
-                                <div class="text-center mb-4">
-                                    <span class="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold uppercase tracking-wide glass-pill">SIGNATURE PROGRAM</span>
-                                </div>
-                                
-                                <div class="flex justify-center mb-6">
-                                    <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center">
-                                        <i class="fas fa-graduation-cap text-blue-500 text-2xl"></i>
+                <div class="max-w-5xl mx-auto px-6">
+                    <!-- Full Width Bio Text -->
+                    <div class="prose max-w-4xl mx-auto mb-12">
+                        <p class="text-gray-700 text-lg leading-relaxed text-center">
+                            Amira Rahim traded a legal career for a paintbrush, inspired by <em>The Art of Getting By</em>. Her bold, abstract expressionist works, bursting with vibrant color, are celebrated worldwide—collected by the Royal Family of Abu Dhabi and licensed by Wayfair and Amazon. As the author of <em>Paint to Prosper</em> (2023, 4.8/5 stars on Amazon), Amira empowers artists to turn passion into profit through her transformative courses and creative mentorship.
+                        </p>
+                    </div>
+
+                    <!-- Image and Table Grid -->
+                    <div class="flex flex-col lg:grid lg:grid-cols-2 gap-8">
+                        <!-- Amira's Image -->
+                        <div class="lg:sticky lg:top-8">
+                            <div class="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all hover:scale-[1.01] group h-full">
+                                <img 
+                                    src="images/amira-about.png" 
+                                    alt="Amira Rahim" 
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                    loading="lazy"
+                                    style="min-height: 500px;"
+                                >
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Premium Anamorphic Table -->
+                        <div class="relative w-full">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Card 1: Royal Collection -->
+                                <div class="relative group bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border border-purple-100 hover:border-pink-200">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-purple-100 to-pink-100 text-purple-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-gray-800 mb-1">Collected by Royalty</h3>
+                                            <p class="text-gray-600">Amira Rahim's vibrant masterpieces are proudly collected by the prestigious Royal Family of Abu Dhabi.</p>
+                                        </div>
                                     </div>
                                 </div>
-                                
-                                <h4 class="text-xl font-serif font-bold text-gray-800 mb-4 text-center">Better Than Art School™</h4>
-                                
-                                <p class="text-gray-700 mb-6 leading-relaxed">
-                                    A comprehensive 12-week program designed to help you develop your unique artistic style and build a sustainable creative business.
-                                </p>
-                                
-                                <ul class="mb-6">
-                                    <li class="flex items-center mb-3">
-                                        <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                                        <span class="text-gray-700">Weekly live sessions</span>
-                                    </li>
-                                    <li class="flex items-center mb-3">
-                                        <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                                        <span class="text-gray-700">Personalized feedback</span>
-                                    </li>
-                                    <li class="flex items-center mb-3">
-                                        <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                                        <span class="text-gray-700">Supportive community</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                                        <span class="text-gray-700">Business guidance</span>
-                                    </li>
-                                </ul>
-                                
-                                <a href="#" class="inline-flex items-center justify-center w-full px-6 py-3 bg-blue-500 text-white font-medium rounded-full hover:bg-blue-600 transition-all duration-300 glass-button">
-                                    Learn More
-                                    <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+
+                                <!-- Card 2: Media Spotlight -->
+                                <div class="relative group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border border-blue-100 hover:border-cyan-200">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-blue-100 to-cyan-100 text-blue-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-gray-800 mb-1">Media Spotlight</h3>
+                                            <p class="text-gray-600">Featured in renowned outlets like <span class="font-medium">Ebony Magazine</span>, <span class="font-medium">Huffington Post</span>, and <span class="font-medium">Being Boss</span>.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card 3: Acclaimed Author -->
+                                <div class="relative group bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border border-yellow-100 hover:border-amber-200">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-yellow-100 to-amber-100 text-yellow-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.497 5.754 18 7.5 18s3.332.497 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.497 4.5 1.253v13C19.832 18.497 18.247 18 16.5 18c-1.746 0-3.332.497-4.5 1.253" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-gray-800 mb-1">Acclaimed Author</h3>
+                                            <p class="text-gray-600">Creator of the celebrated <span class="font-medium">Paint to Prosper (2023)</span>, rated <span class="font-bold text-amber-600">4.8/5</span> on Amazon.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card 4: Transformative Courses -->
+                                <div class="relative group bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border border-green-100 hover:border-emerald-200">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-green-100 to-emerald-100 text-green-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-gray-800 mb-1">Transformative Courses</h3>
+                                            <p class="text-gray-600">Inspiring programs like <span class="font-medium">Better Than Art School</span> and <span class="font-medium">Color Mastery</span>, with more to explore.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Full-width Shop CTA -->
+                            <div class="mt-8 group">
+                                <a href="#" class="block w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white text-center font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
+                                    <div class="flex items-center justify-center space-x-2">
+                                        <span>Shop Her Art</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-sm font-normal mt-1 opacity-90">Discover originals and prints available for purchase</p>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Self-Paced Courses -->
-                    <div class="reveal">
-                        <div class="relative overflow-hidden rounded-lg shadow-xl transition-all duration-500 hover:shadow-2xl glass-card">
-                            <div class="p-8">
-                                <div class="text-center mb-4">
-                                    <span class="inline-block px-4 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-semibold uppercase tracking-wide glass-pill">FLEXIBLE LEARNING</span>
-                                </div>
-                                
-                                <div class="flex justify-center mb-6">
-                                    <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center">
-                                        <i class="fas fa-laptop text-purple-500 text-2xl"></i>
-                                    </div>
-                                </div>
-                                
-                                <h4 class="text-xl font-serif font-bold text-gray-800 mb-4 text-center">Self-Paced Courses</h4>
-                                
-                                <p class="text-gray-700 mb-6 leading-relaxed">
-                                    Learn at your own pace with focused courses on specific techniques, color theory, composition, and more.
-                                </p>
-                                
-                                <ul class="mb-6">
-                                    <li class="flex items-center mb-3">
-                                        <i class="fas fa-check-circle text-purple-500 mr-2"></i>
-                                        <span class="text-gray-700">Lifetime access</span>
-                                    </li>
-                                    <li class="flex items-center mb-3">
-                                        <i class="fas fa-check-circle text-purple-500 mr-2"></i>
-                                        <span class="text-gray-700">Step-by-step tutorials</span>
-                                    </li>
-                                    <li class="flex items-center mb-3">
-                                        <i class="fas fa-check-circle text-purple-500 mr-2"></i>
-                                        <span class="text-gray-700">Practical exercises</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-check-circle text-purple-500 mr-2"></i>
-                                        <span class="text-gray-700">Results-oriented approach</span>
-                                    </li>
-                                </ul>
-                                
-                                <a href="#" class="inline-flex items-center justify-center w-full px-6 py-3 bg-purple-500 text-white font-medium rounded-full hover:bg-purple-600 transition-all duration-300 glass-button">
-                                    Explore Courses
-                                    <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <!-- 1:1 Creative Consultation -->
-                    <div class="reveal">
-                        <div class="relative overflow-hidden rounded-lg shadow-xl transition-all duration-500 hover:shadow-2xl glass-card">
-                            <div class="p-8">
-                                <div class="text-center mb-4">
-                                    <span class="inline-block px-4 py-1 rounded-full bg-yellow-100 text-yellow-700 text-xs font-semibold uppercase tracking-wide glass-pill">FEATURED PROGRAM</span>
-                                </div>
-                                
-                                <div class="flex justify-center mb-6">
-                                    <div class="w-16 h-16 rounded-full bg-yellow-100 flex items-center justify-center">
-                                        <i class="fas fa-comments text-yellow-500 text-2xl"></i>
-                                    </div>
-                                </div>
-                                
-                                <h4 class="text-xl font-serif font-bold text-gray-800 mb-4 text-center">1:1 Creative Consultation</h4>
-                                
-                                <p class="text-gray-700 mb-6 leading-relaxed">
-                                    Get personalized guidance and feedback through a one-on-one consultation session tailored to your needs.
-                                </p>
-                                
-                                <ul class="mb-6">
-                                    <li class="flex items-center mb-3">
-                                        <i class="fas fa-check-circle text-yellow-500 mr-2"></i>
-                                        <span class="text-gray-700">Personalized attention</span>
-                                    </li>
-                                    <li class="flex items-center mb-3">
-                                        <i class="fas fa-check-circle text-yellow-500 mr-2"></i>
-                                        <span class="text-gray-700">Custom feedback</span>
-                                    </li>
-                                    <li class="flex items-center mb-3">
-                                        <i class="fas fa-check-circle text-yellow-500 mr-2"></i>
-                                        <span class="text-gray-700">Portfolio review</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-check-circle text-yellow-500 mr-2"></i>
-                                        <span class="text-gray-700">Strategic career planning</span>
-                                    </li>
-                                </ul>
-                                
-                                <a href="#" class="inline-flex items-center justify-center w-full px-6 py-3 bg-yellow-500 text-white font-medium rounded-full hover:bg-yellow-600 transition-all duration-300 glass-button">
-                                    Book a Session
-                                    <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <!-- SEO Meta Keywords (added to head section) -->
+        <meta name="keywords" content="Amira Rahim abstract art, Paint to Prosper, abstract expressionist artist, contemporary abstract paintings, art mentorship, art business, artist education">
+        
+        <div class="section-divider"></div>
+        
+        <!-- NEW Education Section -->
+        <section id="education" class="py-20 md:py-28 relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+            <div class="absolute inset-0 opacity-10">
+                <!-- Subtle background pattern or shapes can go here if desired -->
+            </div>
+            <div class="decorative-circle decorative-circle-education-1"></div>
+            <div class="decorative-circle decorative-circle-education-2"></div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 md:mb-20">
+                    <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-purple-100 via-pink-50 to-rose-100 text-purple-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">EDUCATION</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4 text-scramble">Unlock Your Artistic Potential</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-500 mx-auto rounded-full mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        Discover programs and resources designed to elevate your art, sharpen your skills, and build a flourishing career.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+                    <!-- Card 1: Better Than Art School -->
+                    <div class="education-card group bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200/50 p-8 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <div class="mb-6 text-center">
+                            <div class="inline-block p-4 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 text-white shadow-lg group-hover:scale-105 transition-transform">
+                                <i class="fas fa-graduation-cap fa-2x"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-800 mb-4 text-center">Better Than Art School</h3>
+                        <p class="text-gray-600 mb-6 flex-grow text-center">
+                            A transformative 3-month intensive to find your unique voice, master techniques, and build a thriving art business.
+                        </p>
+                        <div class="mt-auto text-center">
+                            <a href="#" class="inline-block bg-gradient-to-r from-purple-600 to-indigo-700 text-white font-medium py-3 px-8 rounded-lg shadow-md hover:shadow-lg hover:from-purple-700 hover:to-indigo-800 transition-all duration-300 transform hover:scale-105">
+                                Learn More
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Apply to Better Than Art School -->
+                    <div class="education-card group bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200/50 p-8 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <div class="mb-6 text-center">
+                            <div class="inline-block p-4 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 text-white shadow-lg group-hover:scale-105 transition-transform">
+                                <i class="fas fa-paper-plane fa-2x"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-800 mb-4 text-center">Apply to BTAS</h3>
+                        <p class="text-gray-600 mb-6 flex-grow text-center">
+                            Ready to elevate your art journey? Submit your application for the next cohort of Better Than Art School.
+                        </p>
+                        <div class="mt-auto text-center">
+                            <a href="#" class="inline-block bg-gradient-to-r from-pink-600 to-rose-700 text-white font-medium py-3 px-8 rounded-lg shadow-md hover:shadow-lg hover:from-pink-700 hover:to-rose-800 transition-all duration-300 transform hover:scale-105">
+                                Apply Now
+                                <i class="fas fa-edit ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Free Webinar - Color Mastery -->
+                    <div class="education-card group bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200/50 p-8 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <div class="mb-6 text-center">
+                            <div class="inline-block p-4 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-lg group-hover:scale-105 transition-transform">
+                                <i class="fas fa-chalkboard-teacher fa-2x"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-800 mb-4 text-center">Free Webinar: Color Mastery</h3>
+                        <p class="text-gray-600 mb-6 flex-grow text-center">
+                            Unlock the secrets to vibrant palettes and confident color mixing in this exclusive free session.
+                        </p>
+                        <div class="mt-auto text-center">
+                            <a href="#" class="inline-block bg-gradient-to-r from-amber-600 to-orange-700 text-white font-medium py-3 px-8 rounded-lg shadow-md hover:shadow-lg hover:from-amber-700 hover:to-orange-800 transition-all duration-300 transform hover:scale-105">
+                                Register Free
+                                <i class="fas fa-ticket-alt ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END NEW Education Section -->
         
         <div class="section-divider"></div>
         
         <!-- Testimonial Section -->
-        <section class="my-20 py-16 bg-gradient-to-r from-purple-600 to-purple-800 rounded-xl relative overflow-hidden testimonial-card">
-            <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                <div class="glass-card p-8 rounded-2xl">
-                    <div class="inline-block p-4 bg-white bg-opacity-20 rounded-full mb-6">
-                        <i class="fas fa-quote-left text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-3xl font-serif font-bold text-white mb-4">What Collectors Say</h3>
-                    <p class="text-purple-100 mb-6 text-lg">Discover why art lovers and collectors around the world are drawn to Amira's unique style.</p>
-                    <div class="flex space-x-2">
-                        <div class="w-4 h-1 bg-white rounded-full"></div>
-                        <div class="w-4 h-1 bg-white bg-opacity-50 rounded-full"></div>
-                        <div class="w-4 h-1 bg-white bg-opacity-30 rounded-full"></div>
-                    </div>
-                </div>
-                <div class="hidden md:block">
-                    <img src="images/artwork/eden_original_painting.jpeg" alt="Art studio with colorful abstract paintings" class="rounded-lg shadow-lg w-full h-64 object-cover">
-                </div>
+        <section class="my-20 py-16 bg-gradient-to-r from-purple-600 to-purple-800 rounded-xl relative overflow-hidden testimonial-card" data-component-name="<section />">
+            <div class="max-w-6xl mx-auto px-6" data-component-name="<div />">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-12 text-center text-reveal"><span data-component-name="<span />">Hear </span><span>from </span><span>Our </span><span>Collectors </span></h2>
+                <div class="senja-embed" data-id="6a3e2a3d-0648-4ec0-bbeb-8dbca588b22a" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
             </div>
         </section>
         
@@ -490,70 +1099,113 @@
             <div class="decorative-circle decorative-circle-5"></div>
             <div class="decorative-circle decorative-circle-6"></div>
             
-            <div class="relative z-10 max-w-7xl mx-auto px-4">
-                <div class="section-header">
-                    <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-pink-100 to-rose-100 text-pink-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">OPPORTUNITIES</span>
-                    <h3 class="text-4xl font-serif font-bold text-gray-800 text-scramble">Collaborate & Connect</h3>
+            <!-- Decorative elements -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute -right-40 -top-40 w-80 h-80 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+                <div class="absolute -left-40 -bottom-40 w-96 h-96 bg-yellow-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            </div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 py-24" data-component-name="<div />">
+                <div class="text-center max-w-4xl mx-auto mb-20" data-component-name="<div />">
+                    <div class="inline-block mb-6" data-aos="fade-up" data-aos-duration="600">
+                        <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-pink-100 to-rose-100 text-rose-700 text-sm font-semibold uppercase tracking-wide glass-pill shadow-sm">OPPORTUNITIES</span>
+                    </div>
+                    <h2 class="text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-6 leading-tight" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-rose-500">Collaborate</span> & Connect
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+                        Explore ways we can work together to bring vibrant art into various spaces and platforms, from custom commissions to licensing opportunities and speaking engagements.
+                    </p>
                 </div>
                 
-                <p class="text-center text-gray-700 max-w-3xl mx-auto mb-12">
-                    Explore ways we can work together to bring vibrant art into various spaces and platforms, from custom commissions to licensing opportunities and speaking engagements.
-                </p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 relative z-10" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
                     <!-- Licensing & Wholesale -->
-                    <div class="overflow-hidden rounded-lg shadow-lg transition-all duration-500 hover:shadow-xl glass-card">
-                        <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 relative">
-                            <img src="images/artwork/rainbow_spectrum.jpeg" alt="Licensing & Wholesale" class="w-full h-full object-cover opacity-30 mix-blend-overlay">
-                            <div class="absolute inset-0 flex items-end p-6">
-                                <span class="text-white text-sm font-semibold uppercase tracking-wide glass-pill px-3 py-1 rounded-full">PARTNERSHIP</span>
+                    <div class="group relative overflow-hidden rounded-2xl bg-white shadow-2xl transition-all duration-500 hover:shadow-3xl hover:-translate-y-2 glass-card transform-gpu">
+                        <div class="relative h-64 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/70 to-purple-700/70 opacity-70"></div>
+                            <img 
+                                src="images/education/amiraartscreen.png" 
+                                alt="Art Workshop" 
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-white bg-white/20 backdrop-blur-sm border border-white/20">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-purple-300 mr-2"></span>
+                                    LICENSING
+                                </span>
                             </div>
                         </div>
-                        <div class="bg-white p-8">
-                            <div class="flex items-center mb-4">
-                                <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4">
-                                    <i class="fas fa-copyright text-purple-500"></i>
+                        <div class="p-8 bg-white/80 backdrop-blur-sm" data-component-name="<div />">
+                            <div class="flex items-start mb-6">
+                                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center mr-4 flex-shrink-0 shadow-sm">
+                                    <i class="fas fa-copyright text-xl text-purple-600"></i>
                                 </div>
-                                <h4 class="text-xl font-serif font-bold text-gray-800">Licensing & Wholesale</h4>
+                                <div>
+                                    <h4 class="text-2xl font-serif font-bold text-gray-900 leading-tight">Licensing & Wholesale</h4>
+                                    <div class="h-1 w-12 bg-gradient-to-r from-purple-400 to-pink-400 mt-2 rounded-full"></div>
+                                </div>
                             </div>
                             
-                            <p class="text-gray-700 mb-6">
+                            <p class="text-gray-600 mb-8 text-lg leading-relaxed">
                                 Partner with me to add vibrant, contemporary artwork to your product lines, retail spaces, hospitality venues, or commercial projects.
                             </p>
                             
-                            <h5 class="text-gray-800 font-medium mb-3">What to expect:</h5>
-                            <ul class="mb-6">
-                                <li class="flex items-center mb-3">
-                                    <i class="fas fa-check-circle text-purple-500 mr-2"></i>
-                                    <span class="text-gray-700">Exclusive access to collections</span>
-                                </li>
-                                <li class="flex items-center mb-3">
-                                    <i class="fas fa-check-circle text-purple-500 mr-2"></i>
-                                    <span class="text-gray-700">Customization options available</span>
-                                </li>
-                                <li class="flex items-center mb-3">
-                                    <i class="fas fa-check-circle text-purple-500 mr-2"></i>
-                                    <span class="text-gray-700">High-resolution artwork files</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check-circle text-purple-500 mr-2"></i>
-                                    <span class="text-gray-700">Dedicated support throughout the licensing process</span>
-                                </li>
-                            </ul>
+                            <div class="mb-8">
+                                <h5 class="text-gray-800 font-semibold mb-4 flex items-center text-lg">
+                                    <svg class="w-5 h-5 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                    What to expect:
+                                </h5>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-600">Exclusive access to collections</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-600">High-resolution artwork files</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-600">Dedicated support throughout the process</span>
+                                    </li>
+                                </ul>
+                            </div>
                             
-                            <a href="https://shop.amirarahim.com/pages/representation" class="inline-flex items-center justify-center w-full px-6 py-3 bg-purple-500 text-white font-medium rounded-full hover:bg-purple-600 transition-all duration-300 glass-button">
+                            <a href="https://shop.amirarahim.com/pages/representation" class="group inline-flex items-center justify-center w-full px-8 py-4 text-base font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl hover:shadow-lg hover:shadow-purple-200 hover:-translate-y-0.5 transition-all duration-300 transform-gpu">
                                 Inquire Now
-                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                                <svg class="w-4 h-4 ml-2 transition-transform duration-300 transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
                             </a>
                         </div>
                     </div>
                     
                     <!-- Custom Artwork -->
-                    <div class="overflow-hidden rounded-lg shadow-lg transition-all duration-500 hover:shadow-xl glass-card">
-                        <div class="h-48 bg-gradient-to-br from-pink-400 to-pink-600 relative">
-                            <img src="images/artwork/eden_original_painting.jpeg" alt="Custom Artwork" class="w-full h-full object-cover opacity-30 mix-blend-overlay">
-                            <div class="absolute inset-0 flex items-end p-6">
-                                <span class="text-white text-sm font-semibold uppercase tracking-wide glass-pill px-3 py-1 rounded-full">PARTNERSHIP</span>
+                    <div class="group relative overflow-hidden rounded-2xl bg-white shadow-2xl transition-all duration-500 hover:shadow-3xl hover:-translate-y-2 glass-card transform-gpu" data-component-name="<div />">
+                        <div class="relative h-64 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-pink-500 to-rose-600 opacity-90"></div>
+                            <img 
+                                src="images/education/amiraspeaking.jpeg" 
+                                alt="Art Workshop" 
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-white bg-white/20 backdrop-blur-sm border border-white/20" data-component-name="<span />">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-rose-300 mr-2"></span>
+                                    PARTNERSHIP
+                                </span>
                             </div>
                         </div>
                         <div class="bg-white p-8">
@@ -596,11 +1248,21 @@
                     </div>
                     
                     <!-- Media & Speaking -->
-                    <div class="overflow-hidden rounded-lg shadow-lg transition-all duration-500 hover:shadow-xl glass-card">
-                        <div class="h-48 bg-gradient-to-br from-yellow-400 to-yellow-600 relative">
-                            <img src="images/artwork/festival_original_painting.jpeg" alt="Media & Speaking" class="w-full h-full object-cover opacity-30 mix-blend-overlay">
-                            <div class="absolute inset-0 flex items-end p-6">
-                                <span class="text-white text-sm font-semibold uppercase tracking-wide glass-pill px-3 py-1 rounded-full">PARTNERSHIP</span>
+                    <div class="group relative overflow-hidden rounded-2xl bg-white shadow-2xl transition-all duration-500 hover:shadow-3xl hover:-translate-y-2 glass-card transform-gpu">
+                        <div class="relative h-64 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-amber-500 to-yellow-600 opacity-90"></div>
+                            <img 
+                                src="images/education/amirainfrontofclass.jpeg" 
+                                alt="Media & Speaking" 
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-white bg-white/20 backdrop-blur-sm border border-white/20">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-yellow-300 mr-2"></span>
+                                    PARTNERSHIP
+                                </span>
                             </div>
                         </div>
                         <div class="bg-white p-8">
@@ -899,76 +1561,67 @@
     
     <!-- Footer -->
     <footer class="footer">
-        <!-- Decorative Elements -->
-        <div class="footer-decor footer-decor-1">
-            <i class="fas fa-palette"></i>
-        </div>
-        <div class="footer-decor footer-decor-2">
-            <i class="fas fa-brush"></i>
-        </div>
-        
-        <div class="footer-content">
-            <div class="footer-about">
-                <div class="footer-logo">Amira Rahim</div>
-                <p class="footer-description">
-                    Contemporary abstract expressionist painter creating vibrant artwork that celebrates color and creative freedom.
-                </p>
+        <div class="container mx-auto px-4">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Amira Rahim</div>
+                    <p class="footer-description">
+                        Contemporary abstract expressionist painter creating vibrant artwork that celebrates color and creative freedom.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/amirarahimart/" class="footer-social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/amirarahimart/" class="footer-social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.pinterest.com/amirarahimart/" class="footer-social-link" aria-label="Pinterest">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                        <a href="https://www.youtube.com/c/AmiraRahim" class="footer-social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
                 
-                <div class="social-links">
-                    <a href="https://www.instagram.com/amirarahimart/" class="social-link" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.facebook.com/amirarahimart/" class="social-link" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.pinterest.com/amirarahimart/" class="social-link" aria-label="Pinterest">
-                        <i class="fab fa-pinterest-p"></i>
-                    </a>
-                    <a href="https://www.youtube.com/c/AmiraRahim" class="social-link" aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
+                <div>
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#artwork">Artwork</a></li>
+                        <li class="footer-link"><a href="#education">Education</a></li>
+                        <li class="footer-link"><a href="#collaborate">Collaborate</a></li>
+                        <li class="footer-link"><a href="#about">About</a></li>
+                        <li class="footer-link"><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="footer-heading">Shop</h5>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="https://shop.amirarahim.com/collections/available-originals-1">Original Paintings</a></li>
+                        <li class="footer-link"><a href="https://shop.amirarahim.com/collections/prints">Fine Art Prints</a></li>
+                        <li class="footer-link"><a href="https://shop.amirarahim.com/pages/commission">Commissions</a></li>
+                        <li class="footer-link"><a href="https://shop.amirarahim.com/pages/representation">Licensing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="footer-heading">Connect</h5>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#contact">Contact</a></li>
+                        <li class="footer-link"><a href="#about">About</a></li>
+                        <li class="footer-link"><a href="#artwork">Portfolio</a></li>
+                        <li class="footer-link"><a href="#education">Workshops</a></li>
+                        <li class="footer-link"><a href="#collaborate">Collaborate</a></li>
+                    </ul>
                 </div>
             </div>
             
-            <div>
-                <h5 class="footer-heading">Quick Links</h5>
-                <ul class="footer-links">
-                    <li class="footer-link"><a href="#artwork">Artwork</a></li>
-                    <li class="footer-link"><a href="#education">Education</a></li>
-                    <li class="footer-link"><a href="#collaborate">Collaborate</a></li>
-                    <li class="footer-link"><a href="#about">About</a></li>
-                    <li class="footer-link"><a href="#contact">Contact</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    &copy; 2025 Amira Rahim. All rights reserved.
+                </p>
             </div>
-            
-            <div>
-                <h5 class="footer-heading">Shop</h5>
-                <ul class="footer-links">
-                    <li class="footer-link"><a href="https://shop.amirarahim.com/collections/available-originals-1">Original Paintings</a></li>
-                    <li class="footer-link"><a href="https://shop.amirarahim.com/collections/prints">Fine Art Prints</a></li>
-                    <li class="footer-link"><a href="https://shop.amirarahim.com/pages/commission">Commissions</a></li>
-                    <li class="footer-link"><a href="https://shop.amirarahim.com/pages/representation">Licensing</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-newsletter">
-                <h5 class="footer-heading">Stay Updated</h5>
-                <p class="footer-description">Subscribe for exclusive updates and early access to new collections.</p>
-                
-                <form class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
-                    <button type="submit" class="newsletter-btn">
-                        <i class="fas fa-paper-plane"></i>
-                        Subscribe
-                    </button>
-                </form>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p class="footer-copyright">
-                &copy; 2025 Amira Rahim. All rights reserved.
-            </p>
         </div>
     </footer>
     
@@ -985,5 +1638,15 @@
     <script src="scripts/main.js"></script>
     <script src="scripts/mobile-micro-animations.js"></script>
     <script src="js/navigation.js"></script>
+    
+    <!-- Paint Cursor Effect -->
+    <script src="scripts/cursor-effect.js"></script>
+    
+    <!-- Education Form Handler -->
+    <script src="scripts/education-form.js"></script>
+    
+    <!-- Education Tabs -->
+    <script src="scripts/education-tabs.js"></script>
+    <script src="https://widget.senja.io/widget/6a3e2a3d-0648-4ec0-bbeb-8dbca588b22a/platform.js" type="text/javascript" async></script>
 </body>
 </html>

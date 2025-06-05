@@ -3,24 +3,6 @@
  * Designed with billion-dollar quality and luxury aesthetics
  */
 
-// Custom Cursor
-const cursor = document.createElement('div');
-cursor.classList.add('custom-cursor');
-document.body.appendChild(cursor);
-
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = `${e.clientX}px`;
-    cursor.style.top = `${e.clientY}px`;
-});
-
-document.addEventListener('mousedown', () => {
-    cursor.classList.add('active');
-});
-
-document.addEventListener('mouseup', () => {
-    cursor.classList.remove('active');
-});
-
 // Scroll Progress Indicator
 const scrollProgress = document.createElement('div');
 scrollProgress.classList.add('scroll-progress');
@@ -346,154 +328,37 @@ if (filterButtons.length > 0 && artworkItems.length > 0) {
     });
 }
 
-// Enhanced Lightbox Gallery with Glassmorphism
-function initLightbox() {
-    // Create lightbox if it doesn't exist
-    let lightbox = document.getElementById('lightbox');
+// Lightbox Gallery
+const initLightbox = () => {
+    const lightbox = document.createElement('div');
+    lightbox.id = 'lightbox';
+    lightbox.classList.add('fixed', 'inset-0', 'bg-black/90', 'flex', 'items-center', 'justify-center', 'z-50', 'hidden');
+    document.body.appendChild(lightbox);
     
-    if (!lightbox) {
-        lightbox = document.createElement('div');
-        lightbox.id = 'lightbox';
-        lightbox.className = 'lightbox';
-        lightbox.innerHTML = `
-            <span class="lightbox-close">&times;</span>
-            <div class="lightbox-content">
-                <img id="lightbox-img" src="" alt="">
-                <div id="lightbox-caption" class="lightbox-caption"></div>
-            </div>
-        `;
-        document.body.appendChild(lightbox);
-    }
-
-    // Add glassmorphic container to all artwork images
-    const artworkImages = document.querySelectorAll('.artwork-item img');
-    artworkImages.forEach(img => {
-        // Skip if already wrapped
-        if (img.closest('.glass-image-container')) return;
-        
-        const container = document.createElement('div');
-        container.className = 'glass-image-container';
-        img.parentNode.insertBefore(container, img);
-        container.appendChild(img);
-        
-        // Add click handler for lightbox
-        container.addEventListener('click', (e) => {
-            e.preventDefault();
-            openLightbox(img.src, img.alt);
+    const lightboxImage = document.createElement('img');
+    lightboxImage.classList.add('max-h-[90vh]', 'max-w-[90vw]', 'object-contain');
+    lightbox.appendChild(lightboxImage);
+    
+    const closeButton = document.createElement('button');
+    closeButton.classList.add('absolute', 'top-4', 'right-4', 'text-white', 'text-3xl');
+    closeButton.innerHTML = '&times;';
+    closeButton.addEventListener('click', () => {
+        lightbox.classList.add('hidden');
+    });
+    lightbox.appendChild(closeButton);
+    
+    document.querySelectorAll('.artwork-item img').forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => {
+            lightboxImage.src = img.src;
+            lightbox.classList.remove('hidden');
         });
     });
     
-    // Add glassmorphic container to other images
-    const galleryImages = document.querySelectorAll('img:not(.artwork-item img):not(.logo-image):not([src*="logo"])');
-    galleryImages.forEach(img => {
-        // Skip if already wrapped or in lightbox
-        if (img.closest('.glass-image-container') || img.id === 'lightbox-img') return;
-        
-        const container = document.createElement('div');
-        container.className = 'glass-image-container';
-        img.parentNode.insertBefore(container, img);
-        container.appendChild(img);
-        
-        // Add click handler for lightbox
-        container.addEventListener('click', (e) => {
-            e.preventDefault();
-            openLightbox(img.src, img.alt);
-        });
-    });
-    
-    // Lightbox elements
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxCaption = document.getElementById('lightbox-caption');
-    const closeBtn = document.querySelector('.lightbox-close');
-    
-    // Open lightbox function
-    function openLightbox(src, alt) {
-        lightboxImg.src = src;
-        lightboxImg.alt = alt;
-        lightboxCaption.textContent = alt;
-        document.body.style.overflow = 'hidden';
-        document.body.style.paddingRight = window.innerWidth - document.documentElement.clientWidth + 'px';
-        document.documentElement.classList.add('lightbox-open');
-        
-        // Trigger reflow
-        void lightbox.offsetWidth;
-        lightbox.classList.add('show');
-        
-        // Add keyboard navigation
-        document.addEventListener('keydown', handleKeyDown);
-    }
-    
-    // Close lightbox function
-    function closeLightbox() {
-        lightbox.classList.remove('show');
-        document.body.style.overflow = '';
-        document.body.style.paddingRight = '';
-        document.documentElement.classList.remove('lightbox-open');
-        document.removeEventListener('keydown', handleKeyDown);
-        
-        // Wait for transition to complete before removing src
-        setTimeout(() => {
-            lightboxImg.src = '';
-            lightboxImg.alt = '';
-            lightboxCaption.textContent = '';
-        }, 300);
-    }
-    
-    // Keyboard navigation
-    function handleKeyDown(e) {
-        if (e.key === 'Escape') {
-            closeLightbox();
-        } else if (e.key === 'ArrowRight') {
-            // Navigate to next image
-            navigate(1);
-        } else if (e.key === 'ArrowLeft') {
-            // Navigate to previous image
-            navigate(-1);
-        }
-    }
-    
-    // Navigation between images
-    function navigate(direction) {
-        const images = Array.from(document.querySelectorAll('.glass-image-container img'));
-        const currentIndex = images.findIndex(img => img.src === lightboxImg.src);
-        
-        if (currentIndex !== -1) {
-            let newIndex = currentIndex + direction;
-            
-            // Loop around
-            if (newIndex < 0) newIndex = images.length - 1;
-            if (newIndex >= images.length) newIndex = 0;
-            
-            // Fade out current image
-            lightboxImg.style.opacity = '0';
-            
-            // Load new image after fade out
-            setTimeout(() => {
-                const newImg = images[newIndex];
-                lightboxImg.src = newImg.src;
-                lightboxImg.alt = newImg.alt;
-                lightboxCaption.textContent = newImg.alt;
-                
-                // Fade in new image
-                setTimeout(() => {
-                    lightboxImg.style.opacity = '1';
-                }, 50);
-            }, 200);
-        }
-    }
-    
-    // Event listeners
-    closeBtn.addEventListener('click', closeLightbox);
-    
-    lightbox.addEventListener('click', (e) => {
+    lightbox.addEventListener('click', e => {
         if (e.target === lightbox) {
-            closeLightbox();
+            lightbox.classList.add('hidden');
         }
-    });
-    
-    // Prevent lightbox from closing when clicking on the image or caption
-    lightbox.querySelector('.lightbox-content').addEventListener('click', (e) => {
-        e.stopPropagation();
     });
 };
 

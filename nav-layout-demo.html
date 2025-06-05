@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Layout Visualizer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        /* CSS Grid Layout Demo */
+        .grid-demo {
+            display: grid;
+            grid-template-columns: 200px 1fr 200px;
+            gap: 2rem;
+            align-items: center;
+            background: #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .grid-logo {
+            background: #ff6b6b;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        
+        .grid-links {
+            background: #4ecdc4;
+            color: white;
+            padding: 15px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+        }
+        
+        .grid-spacer {
+            background: #95e1d3;
+            color: #333;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        
+        /* Flexbox Layout Demo */
+        .flex-demo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .flex-logo {
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+        }
+        
+        .flex-links {
+            background: #4ecdc4;
+            color: white;
+            padding: 15px;
+            display: flex;
+            gap: 20px;
+            flex: 1;
+            justify-content: center;
+            margin: 0 30px;
+            border-radius: 5px;
+        }
+        
+        .flex-toggle {
+            background: #95e1d3;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .link-item {
+            padding: 5px 15px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 3px;
+        }
+        
+        /* Visual guides */
+        .center-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: red;
+            z-index: 10;
+        }
+        
+        .demo-wrapper {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        
+        .note {
+            background: #ffeaa7;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>Navigation Layout Solutions</h1>
+        
+        <div class="note">
+            <strong>Current Issue:</strong> Navigation links appear left-aligned instead of centered on desktop.
+        </div>
+        
+        <h2>Solution 1: CSS Grid (Recommended)</h2>
+        <div class="demo-wrapper">
+            <div class="center-line"></div>
+            <div class="grid-demo">
+                <div class="grid-logo">LOGO</div>
+                <div class="grid-links">
+                    <div class="link-item">Artwork</div>
+                    <div class="link-item">Education</div>
+                    <div class="link-item">Collaborate</div>
+                    <div class="link-item">About</div>
+                    <div class="link-item">Contact</div>
+                </div>
+                <div class="grid-spacer">Spacer</div>
+            </div>
+        </div>
+        <pre><code>.navbar-container {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    align-items: center;
+    gap: 2rem;
+}
+
+.navbar-logo {
+    justify-self: start;
+}
+
+.navbar-links {
+    justify-content: center;
+    grid-column: 2;
+}
+
+.navbar-mobile-toggle {
+    display: none; /* Hidden spacer on desktop */
+    grid-column: 3;
+}</code></pre>
+        
+        <h2>Solution 2: Flexbox with Equal Spacing</h2>
+        <div class="demo-wrapper">
+            <div class="center-line"></div>
+            <div class="flex-demo">
+                <div class="flex-logo">LOGO</div>
+                <div class="flex-links">
+                    <div class="link-item">Artwork</div>
+                    <div class="link-item">Education</div>
+                    <div class="link-item">Collaborate</div>
+                    <div class="link-item">About</div>
+                    <div class="link-item">Contact</div>
+                </div>
+                <div class="flex-toggle">Hidden</div>
+            </div>
+        </div>
+        <pre><code>.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo,
+.navbar-mobile-toggle {
+    flex: 0 0 200px; /* Equal width */
+}
+
+.navbar-links {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .navbar-mobile-toggle {
+        visibility: hidden; /* Keep space but hide */
+    }
+}</code></pre>
+        
+        <h2>What the Fix Does:</h2>
+        <ul>
+            <li>Creates a balanced 3-column layout on desktop</li>
+            <li>Centers navigation links in the middle column</li>
+            <li>Keeps logo on the left</li>
+            <li>Maintains responsive behavior for mobile</li>
+        </ul>
+    </div>
+</body>
+</html>

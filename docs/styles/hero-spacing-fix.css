@@ -1,0 +1,18 @@
+/* Hero Section Spacing Fix */
+/* Since navbar is now at top: 0 instead of top: 2rem, we need to adjust hero padding */
+
+.hero {
+  padding-top: 6rem !important; /* Increased padding to account for fixed navbar */
+}
+
+/* Ensure first section after navbar has proper spacing */
+#app > section:first-child {
+  margin-top: 0 !important;
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 5rem !important;
+  }
+}
