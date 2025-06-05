@@ -312,100 +312,8 @@
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress"></div>
     
-    <!-- COMPLETELY NEW NAVIGATION -->
-    <nav id="main-navbar" style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 1000 !important; background: rgba(255, 255, 255, 0.95) !important; backdrop-filter: blur(20px) !important; padding: 1rem 0 !important; display: flex !important; justify-content: center !important; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; transform: translateY(0) !important; opacity: 1 !important;">
-        <div style="display: flex !important; align-items: center !important; justify-content: space-between !important; width: 100% !important; max-width: 1200px !important; padding: 0 2rem !important;">
-            <!-- Logo -->
-            <a href="#" style="display: flex !important; align-items: center !important; transition: all 0.3s ease !important;">
-                <img src="images/logo/amira-logo.webp" alt="Amira Rahim" style="height: 50px !important; width: auto !important; transition: all 0.3s ease !important;">
-            </a>
-            
-            <!-- Navigation Links -->
-            <div style="display: flex !important; gap: 2rem !important; align-items: center !important;">
-                <a href="#artwork" style="color: #000 !important; text-decoration: none !important; font-weight: 500 !important; text-transform: uppercase !important; font-size: 0.9rem !important; transition: all 0.3s ease !important;">Artwork</a>
-                <a href="#education" style="color: #000 !important; text-decoration: none !important; font-weight: 500 !important; text-transform: uppercase !important; font-size: 0.9rem !important; transition: all 0.3s ease !important;">Education</a>
-                <a href="#collaborate" style="color: #000 !important; text-decoration: none !important; font-weight: 500 !important; text-transform: uppercase !important; font-size: 0.9rem !important; transition: all 0.3s ease !important;">Collaborate</a>
-                <a href="#about" style="color: #000 !important; text-decoration: none !important; font-weight: 500 !important; text-transform: uppercase !important; font-size: 0.9rem !important; transition: all 0.3s ease !important;">About</a>
-                <a href="#contact" style="color: #000 !important; text-decoration: none !important; font-weight: 500 !important; text-transform: uppercase !important; font-size: 0.9rem !important; transition: all 0.3s ease !important;">Contact</a>
-            </div>
-            
-            <!-- Mobile toggle (hidden on desktop) -->
-            <button style="display: none !important;">☰</button>
-        </div>
-    </nav>
-    
-    <!-- Smooth Scroll Navigation Script -->
-    <script>
-        (function() {
-            let lastScrollTop = 0;
-            let navbar = document.getElementById('main-navbar');
-            let isScrolling = false;
-            let scrollTimer = null;
-            
-            // Debounced scroll handler for better performance
-            function handleScroll() {
-                if (!isScrolling) {
-                    window.requestAnimationFrame(function() {
-                        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                        
-                        // Clear any existing timer
-                        if (scrollTimer) {
-                            clearTimeout(scrollTimer);
-                        }
-                        
-                        if (scrollTop > 100) { // Start hiding after 100px scroll
-                            if (scrollTop > lastScrollTop) {
-                                // Scrolling down - hide navbar with elegant fade
-                                navbar.style.transform = 'translateY(-100%)';
-                                navbar.style.opacity = '0';
-                            } else {
-                                // Scrolling up - show navbar with elegant fade
-                                navbar.style.transform = 'translateY(0)';
-                                navbar.style.opacity = '1';
-                            }
-                        } else {
-                            // Near top - always show navbar
-                            navbar.style.transform = 'translateY(0)';
-                            navbar.style.opacity = '1';
-                        }
-                        
-                        lastScrollTop = scrollTop;
-                        
-                        // Set timer to show navbar after scrolling stops
-                        scrollTimer = setTimeout(function() {
-                            navbar.style.transform = 'translateY(0)';
-                            navbar.style.opacity = '1';
-                        }, 1500); // Show navbar 1.5 seconds after scrolling stops
-                        
-                        isScrolling = false;
-                    });
-                }
-                isScrolling = true;
-            }
-            
-            // Add scroll event listener with passive flag for better performance
-            window.addEventListener('scroll', handleScroll, { passive: true });
-            
-            // Show navbar on mouse movement near top
-            document.addEventListener('mousemove', function(e) {
-                if (e.clientY < 100) { // Mouse near top 100px
-                    navbar.style.transform = 'translateY(0)';
-                    navbar.style.opacity = '1';
-                }
-            });
-            
-            // Always show navbar when hovering over it
-            navbar.addEventListener('mouseenter', function() {
-                navbar.style.transform = 'translateY(0)';
-                navbar.style.opacity = '1';
-            });
-        })();
-    </script>
-    
-
-    
     <!-- Glassmorphic Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="main-navbar">
         <div class="navbar-container">
             <a href="#" class="navbar-logo">
                 <img src="images/logo/amira-logo.webp" alt="Amira Rahim" class="logo-image">
@@ -471,6 +379,97 @@
     
     <!-- Mobile Menu Script -->
     <script>
+    // Enhanced Navigation Scroll Behavior
+    function initializeScrollBehavior() {
+        let lastScrollTop = 0;
+        let navbar = document.getElementById('main-navbar');
+        let isScrolling = false;
+        let scrollTimer = null;
+        
+        // Ensure navbar exists before setting up scroll behavior
+        if (!navbar) {
+            console.warn('Navigation element not found');
+            return;
+        }
+        
+        // Add transition to navbar for smooth animations
+        navbar.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        function handleScroll() {
+            if (!isScrolling) {
+                window.requestAnimationFrame(function() {
+                    if (!navbar) return;
+                    
+                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    // Clear any existing timer
+                    if (scrollTimer) {
+                        clearTimeout(scrollTimer);
+                    }
+                    
+                    if (scrollTop > 100) { // Start hiding after 100px scroll
+                        if (scrollTop > lastScrollTop && Math.abs(scrollTop - lastScrollTop) > 5) {
+                            // Scrolling down - hide navbar
+                            navbar.style.transform = 'translateY(-100%)';
+                            navbar.style.opacity = '0.8';
+                        } else if (scrollTop < lastScrollTop && Math.abs(scrollTop - lastScrollTop) > 5) {
+                            // Scrolling up - show navbar
+                            navbar.style.transform = 'translateY(0)';
+                            navbar.style.opacity = '1';
+                        }
+                    } else {
+                        // Near top - always show navbar
+                        navbar.style.transform = 'translateY(0)';
+                        navbar.style.opacity = '1';
+                    }
+                    
+                    lastScrollTop = scrollTop;
+                    
+                    // Show navbar after scrolling stops
+                    scrollTimer = setTimeout(function() {
+                        if (navbar) {
+                            navbar.style.transform = 'translateY(0)';
+                            navbar.style.opacity = '1';
+                        }
+                    }, 1500);
+                    
+                    isScrolling = false;
+                });
+            }
+            isScrolling = true;
+        }
+        
+        // Throttled scroll event listener
+        let scrollTimeout;
+        function throttledScroll() {
+            if (!scrollTimeout) {
+                scrollTimeout = setTimeout(function() {
+                    handleScroll();
+                    scrollTimeout = null;
+                }, 16); // ~60fps
+            }
+        }
+        
+        // Add scroll event listener
+        window.addEventListener('scroll', throttledScroll, { passive: true });
+        
+        // Show navbar on mouse movement near top
+        document.addEventListener('mousemove', function(e) {
+            if (e.clientY < 100 && navbar) {
+                navbar.style.transform = 'translateY(0)';
+                navbar.style.opacity = '1';
+            }
+        });
+        
+        // Always show navbar when hovering over it
+        if (navbar) {
+            navbar.addEventListener('mouseenter', function() {
+                navbar.style.transform = 'translateY(0)';
+                navbar.style.opacity = '1';
+            });
+        }
+    }
+    
     // Navigation Fix - Apply immediately on DOM load
     function fixNavigation() {
         const navContainer = document.querySelector('.navbar-container');
@@ -489,6 +488,7 @@
             navbar.style.setProperty('left', '0', 'important');
             navbar.style.setProperty('right', '0', 'important');
             navbar.style.setProperty('width', '100%', 'important');
+            navbar.style.setProperty('z-index', '1000', 'important');
         }
         
         if (navContainer) {
@@ -554,16 +554,15 @@
         }
     }
     
-    // Apply fix immediately
-    fixNavigation();
-    
-    // Apply fix after page load
-    document.addEventListener('DOMContentLoaded', fixNavigation);
-    
-    // Apply fix on window resize
-    window.addEventListener('resize', fixNavigation);
-    
+    // Initialize everything when DOM is ready
     document.addEventListener('DOMContentLoaded', function() {
+        // Apply navigation fixes first
+        fixNavigation();
+        
+        // Initialize scroll behavior
+        setTimeout(initializeScrollBehavior, 100);
+        
+        // Mobile menu functionality
         const mobileToggle = document.querySelector('.navbar-mobile-toggle');
         const mobileMenu = document.querySelector('.mobile-menu');
         const mobileOverlay = document.querySelector('.mobile-menu-overlay');
@@ -572,12 +571,14 @@
         
         // Toggle menu function
         function toggleMenu() {
+            if (!mobileMenu) return;
+            
             const isOpening = !mobileMenu.classList.contains('active');
             
             // Toggle active classes
-            mobileToggle.classList.toggle('active');
+            if (mobileToggle) mobileToggle.classList.toggle('active');
             mobileMenu.classList.toggle('active');
-            mobileOverlay.classList.toggle('active');
+            if (mobileOverlay) mobileOverlay.classList.toggle('active');
             
             // Toggle body scroll
             document.body.classList.toggle('menu-open');
@@ -585,8 +586,8 @@
             // Add/remove event listeners based on menu state
             if (isOpening) {
                 document.addEventListener('keydown', handleEscape);
-                mobileOverlay.addEventListener('click', closeMenu);
-                closeButton.addEventListener('click', closeMenu);
+                if (mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+                if (closeButton) closeButton.addEventListener('click', closeMenu);
                 
                 // Add animation class for menu items
                 mobileLinks.forEach((link, index) => {
@@ -596,8 +597,8 @@
                 });
             } else {
                 document.removeEventListener('keydown', handleEscape);
-                mobileOverlay.removeEventListener('click', closeMenu);
-                closeButton.removeEventListener('click', closeMenu);
+                if (mobileOverlay) mobileOverlay.removeEventListener('click', closeMenu);
+                if (closeButton) closeButton.removeEventListener('click', closeMenu);
                 
                 // Reset animations
                 mobileLinks.forEach(link => {
@@ -610,7 +611,7 @@
         
         // Close menu function
         function closeMenu() {
-            if (mobileMenu.classList.contains('active')) {
+            if (mobileMenu && mobileMenu.classList.contains('active')) {
                 toggleMenu();
             }
         }
@@ -623,7 +624,9 @@
         }
         
         // Event listeners
-        mobileToggle.addEventListener('click', toggleMenu);
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', toggleMenu);
+        }
         
         // Close menu when clicking on a link
         mobileLinks.forEach(link => {
@@ -648,7 +651,7 @@
             if (
                 !e.target.closest('.mobile-menu') && 
                 !e.target.closest('.navbar-mobile-toggle') &&
-                mobileMenu.classList.contains('active')
+                mobileMenu && mobileMenu.classList.contains('active')
             ) {
                 closeMenu();
             }
@@ -663,6 +666,9 @@
             }
         }, { passive: false });
     });
+    
+    // Apply fixes on window resize
+    window.addEventListener('resize', fixNavigation);
     </script>
     
     <div id="app" class="container mx-auto px-4">
