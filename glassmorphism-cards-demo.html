@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphism Cards V2 Demo: Premium Frosted Design Foundation</title>
+    <link rel="stylesheet" href="styles/passioncolorjoy-elevation.css">
+    <link rel="stylesheet" href="styles/glassmorphism-cards-v2.css">
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0;
+            /* Enhanced animated background for glassmorphism effect */
+            background: linear-gradient(135deg, 
+                #667eea 0%, 
+                #764ba2 15%, 
+                #f093fb 30%, 
+                #f5576c 45%, 
+                #4facfe 60%,
+                #00f2fe 75%,
+                #a8edea 90%,
+                #fed6e3 100%
+            );
+            background-size: 400% 400%;
+            animation: luxuryBackgroundShift 20s ease infinite;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Enhanced animated background */
+        @keyframes luxuryBackgroundShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 50% 100%; }
+            75% { background-position: 50% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Sophisticated pattern overlay for better glass effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.15) 2px, transparent 2px),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 1px, transparent 1px),
+                radial-gradient(circle at 40% 70%, rgba(212,175,55,0.08) 3px, transparent 3px);
+            background-size: 120px 120px, 60px 60px, 90px 90px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .demo-header {
+            text-align: center;
+            padding: var(--glass-space-2xl) 0 var(--glass-space-xl) 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .section-spacing {
+            margin: var(--glass-space-3xl) 0;
+        }
+        
+        /* Enhanced demo text for visibility on colorful background */
+        .demo-header h1,
+        .demo-header p {
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Performance indicator */
+        .glass-performance-info {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-family: var(--font-elegant-sans);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Header -->
+    <div class="demo-header">
+        <h1 class="premium-headline">Glassmorphism Cards V2</h1>
+        <p class="collector-tagline" style="color: white; font-weight: 600; font-size: var(--text-subhead);">
+            Premium Frosted Glass as Primary Design Foundation
+        </p>
+        <p class="elegant-sans" style="color: rgba(255,255,255,0.9); max-width: 600px; margin: var(--glass-space-lg) auto 0;">
+            Completely redesigned with glassmorphism at the core. Each card is crafted from the ground up 
+            with luxury frosted glass effects as the primary aesthetic language.
+        </p>
+    </div>
+
+    <!-- Hero Glass Card - Ultra Premium -->
+    <div class="glass-grid glass-grid-hero section-spacing">
+        <div class="glass-hero-card glass-reveal glass-shimmer glass-radial-tracking">
+            <div class="glass-card-header">
+                <h2 class="collector-rainbow-text">Investment-Grade Abstract Art</h2>
+                <p class="royal-credentials">Al Nahyan Royal Family Collection</p>
+                <p class="glass-card-subtitle">Internationally Exhibited • Museum Quality • Six-Figure Sales</p>
+            </div>
+            <div class="glass-card-content">
+                <p class="glass-card-text" style="font-size: var(--text-body-large); max-width: 700px; margin: 0 auto;">
+                    Experience the future of luxury art presentation through our premium glassmorphism interface. 
+                    Each frosted glass card embodies the sophisticated craftsmanship and international recognition 
+                    that defines museum-quality abstract expressionism.
+                </p>
+            </div>
+            <div class="glass-card-footer">
+                <a href="#" class="pcj-gradient-button">Explore Portfolio</a>
+                <a href="#" class="pcj-secondary-button pcj-gradient-button">Private Consultation</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credential Glass Cards - Prestigious Pearl -->
+    <div class="glass-grid glass-grid-3 section-spacing">
+        <div class="glass-credential-card glass-reveal glass-shimmer">
+            <div class="glass-card-header">
+                <h3 class="glass-card-title">Royal Recognition</h3>
+                <p class="glass-card-subtitle">Prestigious Collections</p>
+            </div>
+            <div class="glass-card-content">
+                <p class="glass-card-text">
+                    Through premium glassmorphism design, we present work acquired by the Al Nahyan Royal Family. 
+                    Each frosted interface reflects the prestige and exclusivity of royal collection status.
+                </p>
+            </div>
+        </div>
+
+        <div class="glass-credential-card glass-reveal glass-shimmer">
+            <div class="glass-card-header">
+                <h3 class="glass-card-title">International Media</h3>
+                <p class="glass-card-subtitle">40+ Publications</p>
+            </div>
+            <div class="glass-card-content">
+                <p class="glass-card-text">
+                    Anamorphic glass design principles showcase recognition across luxury lifestyle magazines 
+                    and art publications. Our frosted aesthetic mirrors the sophisticated media coverage.
+                </p>
+            </div>
+        </div>
+
+        <div class="glass-credential-card glass-reveal glass-shimmer">
+            <div class="glass-card-header">
+                <h3 class="glass-card-title">Investment Returns</h3>
+                <p class="glass-card-subtitle">Six-Figure Performance</p>
+            </div>
+            <div class="glass-card-content">
+                <p class="glass-card-text">
+                    Premium glass interfaces reflecting premium results. Our glassmorphism foundation 
+                    represents the same attention to detail that achieves six-figure market performance.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Glass Cards - Artistic Frames -->
+    <div class="glass-portfolio-grid section-spacing">
+        <div class="glass-portfolio-card glass-reveal glass-shimmer">
+            <div class="glass-artwork-frame">
+                <div style="height: 220px; background: var(--gradient-sunset-premium); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 1.1rem; text-align: center;">
+                    "Passionate Dawn"<br>48" × 36"<br>Oil on Canvas
+                </div>
+            </div>
+            <h4 class="glass-card-title" style="font-size: var(--text-subhead); margin-bottom: var(--glass-space-xs);">Passionate Dawn</h4>
+            <p class="elegant-sans" style="color: var(--gold-luxury); font-size: var(--text-body); font-weight: 600; margin: 0;">
+                Investment Grade • $125,000
+            </p>
+        </div>
+
+        <div class="glass-portfolio-card glass-reveal glass-shimmer">
+            <div class="glass-artwork-frame">
+                <div style="height: 220px; background: var(--gradient-royal-depth); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 1.1rem; text-align: center;">
+                    "Royal Dreams"<br>60" × 48"<br>Mixed Media
+                </div>
+            </div>
+            <h4 class="glass-card-title" style="font-size: var(--text-subhead); margin-bottom: var(--glass-space-xs);">Royal Dreams</h4>
+            <p class="elegant-sans" style="color: var(--gold-luxury); font-size: var(--text-body); font-weight: 600; margin: 0;">
+                Collector Series • $180,000
+            </p>
+        </div>
+
+        <div class="glass-portfolio-card glass-reveal glass-shimmer">
+            <div class="glass-artwork-frame">
+                <div style="height: 220px; background: var(--gradient-passion-flow); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 1.1rem; text-align: center;">
+                    "Vibrant Soul"<br>36" × 24"<br>Acrylic & Gold Leaf
+                </div>
+            </div>
+            <h4 class="glass-card-title" style="font-size: var(--text-subhead); margin-bottom: var(--glass-space-xs);">Vibrant Soul</h4>
+            <p class="elegant-sans" style="color: var(--gold-luxury); font-size: var(--text-body); font-weight: 600; margin: 0;">
+                Limited Edition • $95,000
+            </p>
+        </div>
+
+        <div class="glass-portfolio-card glass-reveal glass-shimmer">
+            <div class="glass-artwork-frame">
+                <div style="height: 220px; background: linear-gradient(45deg, #FF6B9D, #C44569, #F8B500); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 1.1rem; text-align: center;">
+                    "Luxury Essence"<br>42" × 30"<br>Oil & Metallic
+                </div>
+            </div>
+            <h4 class="glass-card-title" style="font-size: var(--text-subhead); margin-bottom: var(--glass-space-xs);">Luxury Essence</h4>
+            <p class="elegant-sans" style="color: var(--gold-luxury); font-size: var(--text-body); font-weight: 600; margin: 0;">
+                Gallery Premium • $145,000
+            </p>
+        </div>
+    </div>
+
+    <!-- Testimonial Glass Cards - Elegant Quotations -->
+    <div class="glass-grid glass-grid-2 section-spacing">
+        <div class="glass-testimonial-card glass-reveal glass-shimmer">
+            <div class="glass-card-content">
+                <p class="glass-card-text" style="font-style: italic; font-size: var(--text-body-large);">
+                    The glassmorphism presentation perfectly captures the ethereal quality of Amira's work. 
+                    These pieces transcend traditional boundaries between digital sophistication and artistic mastery. 
+                    The frosted interface becomes part of the artistic experience itself.
+                </p>
+                <p class="elegant-sans" style="color: var(--gold-luxury); font-weight: 600; margin-top: var(--glass-space-md); font-style: normal;">
+                    — H.H. Sheikh, Private Collector
+                </p>
+            </div>
+        </div>
+
+        <div class="glass-testimonial-card glass-reveal glass-shimmer">
+            <div class="glass-card-content">
+                <p class="glass-card-text" style="font-style: italic; font-size: var(--text-body-large);">
+                    The premium frosted interface reflects the investment quality of the artwork itself. 
+                    A remarkable fusion of contemporary design methodology and timeless artistic value. 
+                    This is how luxury art should be presented in the digital age.
+                </p>
+                <p class="elegant-sans" style="color: var(--gold-luxury); font-weight: 600; margin-top: var(--glass-space-md); font-style: normal;">
+                    — Gallery Director, International Art Fair
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Glass Card - Premium Luxury -->
+    <div class="glass-grid glass-grid-hero section-spacing">
+        <div class="glass-contact-card glass-reveal glass-shimmer glass-radial-tracking">
+            <div class="glass-card-header">
+                <h3 class="passion-flow-text luxury-serif" style="font-size: var(--text-display);">
+                    Private Collector Consultations
+                </h3>
+                <p class="glass-card-subtitle">Exclusive Access • Premium Glass Experience</p>
+            </div>
+            <div class="glass-card-content">
+                <p class="glass-card-text" style="max-width: 600px; margin: 0 auto;">
+                    Experience luxury art collection through our comprehensive glassmorphism interface. 
+                    Each consultation is designed with the same sophisticated attention to detail 
+                    as our premium frosted glass presentation system.
+                </p>
+            </div>
+            <div class="glass-card-footer">
+                <a href="#" class="pcj-gradient-button">Schedule Private Viewing</a>
+                <a href="#" class="pcj-outline-button pcj-gradient-button">Download Glass Portfolio</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Feature Summary -->
+    <div class="glass-credential-card section-spacing glass-shimmer" style="max-width: 1000px; margin: var(--glass-space-3xl) auto;">
+        <div class="glass-card-header">
+            <h3 class="collector-rainbow-text">Glassmorphism V2: Foundation Complete ✨</h3>
+            <p class="glass-card-subtitle">Premium Frosted Glass as Primary Design Language</p>
+        </div>
+        <div class="glass-card-content">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--glass-space-lg); margin-top: var(--glass-space-lg);">
+                <div>
+                    <h4 class="luxury-serif" style="color: var(--gold-luxury); margin-bottom: var(--glass-space-sm); font-size: var(--text-subhead);">Core Glass System</h4>
+                    <ul class="elegant-sans" style="line-height: 1.6; margin: 0; padding-left: var(--glass-space-md);">
+                        <li>✅ 4-level backdrop blur hierarchy</li>
+                        <li>✅ Premium glass transparency system</li>
+                        <li>✅ Luxury gradient backgrounds</li>
+                        <li>✅ Anamorphic light effects</li>
+                        <li>✅ Glass border & shadow depth</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="luxury-serif" style="color: var(--gold-luxury); margin-bottom: var(--glass-space-sm); font-size: var(--text-subhead);">Card Specializations</h4>
+                    <ul class="elegant-sans" style="line-height: 1.6; margin: 0; padding-left: var(--glass-space-md);">
+                        <li>✅ Hero Card: Ultra-premium dramatic</li>
+                        <li>✅ Portfolio: Artistic glass frames</li>
+                        <li>✅ Credential: Prestigious pearl frost</li>
+                        <li>✅ Testimonial: Elegant quotations</li>
+                        <li>✅ Contact: Premium luxury interface</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="luxury-serif" style="color: var(--gold-luxury); margin-bottom: var(--glass-space-sm); font-size: var(--text-subhead);">Premium Interactions</h4>
+                    <ul class="elegant-sans" style="line-height: 1.6; margin: 0; padding-left: var(--glass-space-md);">
+                        <li>✅ Glass shimmer hover effects</li>
+                        <li>✅ Radial tracking interactions</li>
+                        <li>✅ Enhanced reveal animations</li>
+                        <li>✅ Responsive glass scaling</li>
+                        <li>✅ Performance optimizations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance Info -->
+    <div class="glass-performance-info">
+        Glassmorphism V2 | 60fps | Optimized Blur
+    </div>
+
+    <script>
+        // Enhanced intersection observer for glass reveals
+        const glassObserverOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const glassObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    // Add enhanced glass effect on reveal
+                    setTimeout(() => {
+                        entry.target.classList.add('glass-enhanced');
+                    }, 300);
+                }
+            });
+        }, glassObserverOptions);
+        
+        document.querySelectorAll('.glass-reveal').forEach(card => {
+            glassObserver.observe(card);
+        });
+        
+        // Enhanced mouse tracking for radial glass effects
+        document.querySelectorAll('.glass-radial-tracking').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                
+                card.style.setProperty('--mouse-x', `${x}%`);
+                card.style.setProperty('--mouse-y', `${y}%`);
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.setProperty('--mouse-x', '50%');
+                card.style.setProperty('--mouse-y', '50%');
+            });
+        });
+        
+        // Performance monitoring
+        let frameCount = 0;
+        let lastTime = performance.now();
+        
+        function updatePerformance() {
+            frameCount++;
+            const currentTime = performance.now();
+            
+            if (currentTime - lastTime >= 1000) {
+                const fps = Math.round(frameCount * 1000 / (currentTime - lastTime));
+                const performanceInfo = document.querySelector('.glass-performance-info');
+                if (performanceInfo) {
+                    performanceInfo.textContent = `Glassmorphism V2 | ${fps}fps | Optimized Blur`;
+                }
+                frameCount = 0;
+                lastTime = currentTime;
+            }
+            
+            requestAnimationFrame(updatePerformance);
+        }
+        
+        requestAnimationFrame(updatePerformance);
+        
+        // Preload optimization
+        document.addEventListener('DOMContentLoaded', () => {
+            // Force hardware acceleration
+            document.body.style.transform = 'translateZ(0)';
+            
+            // Initialize glass effects
+            document.querySelectorAll('.glass-card-base, [class*="glass-"]').forEach(el => {
+                el.style.willChange = 'transform, backdrop-filter';
+            });
+        });
+    </script>
+</body>
+</html>

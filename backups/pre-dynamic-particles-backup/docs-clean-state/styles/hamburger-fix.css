@@ -1,0 +1,44 @@
+/* Hamburger Menu Fixes */
+.navbar-mobile-toggle .hamburger {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #1a1a1a !important;
+  position: relative;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.navbar-mobile-toggle .hamburger::before,
+.navbar-mobile-toggle .hamburger::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background: #1a1a1a !important;
+  left: 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.navbar-mobile-toggle .hamburger::before {
+  transform: translateY(-8px);
+}
+
+.navbar-mobile-toggle .hamburger::after {
+  transform: translateY(8px);
+}
+
+.navbar-mobile-toggle.active .hamburger {
+  background: transparent !important;
+}
+
+.navbar-mobile-toggle.active .hamburger::before {
+  transform: rotate(45deg);
+  background: #1a1a1a !important;
+}
+
+.navbar-mobile-toggle.active .hamburger::after {
+  transform: rotate(-45deg);
+  background: #1a1a1a !important;
+}

@@ -1,0 +1,59 @@
+/* Standardize all artwork buttons to match Rainbow Spectrum style */
+.artwork-button {
+  display: inline-block !important;
+  padding: 0.6rem 1.5rem !important;
+  /* Earthy/muted brown style to match Rainbow Spectrum */
+  background: rgba(101, 67, 33, 0.85) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(139, 95, 56, 0.4) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  border-radius: 30px !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.05em !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+}
+
+.artwork-button:hover {
+  background: rgba(139, 95, 56, 0.9) !important;
+  border-color: rgba(160, 116, 81, 0.6) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(101, 67, 33, 0.4) !important;
+  color: #fff !important;
+}
+
+/* More specific selectors to ensure consistency */
+.artwork-card .artwork-button,
+.artwork-overlay .artwork-button,
+section .artwork-button,
+#artwork .artwork-button {
+  background: rgba(101, 67, 33, 0.85) !important;
+  border: 1px solid rgba(139, 95, 56, 0.4) !important;
+  color: #fff !important;
+}
+
+.artwork-card .artwork-button:hover,
+.artwork-overlay .artwork-button:hover,
+section .artwork-button:hover,
+#artwork .artwork-button:hover {
+  background: rgba(139, 95, 56, 0.9) !important;
+  border-color: rgba(160, 116, 81, 0.6) !important;
+  color: #fff !important;
+}
+
+/* Even more specific targeting */
+.artwork-card:hover .artwork-button {
+  background: rgba(101, 67, 33, 0.85) !important;
+  border: 1px solid rgba(139, 95, 56, 0.4) !important;
+  color: #fff !important;
+}
+
+.artwork-card:hover .artwork-button:hover {
+  background: rgba(139, 95, 56, 0.9) !important;
+  border-color: rgba(160, 116, 81, 0.6) !important;
+  color: #fff !important;
+}

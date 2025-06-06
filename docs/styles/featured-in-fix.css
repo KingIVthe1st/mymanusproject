@@ -1,0 +1,99 @@
+/* Fixed Featured In Section - Static Cards with Subtle Hover Effects */
+
+/* Override the problematic animations */
+.featured-item {
+  /* Make cards always visible and static */
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  animation: none !important;
+  
+  /* Base card styling */
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: visible;
+  
+  /* Ensure content stays visible */
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Remove any problematic pseudo-elements that might hide content */
+.featured-item::before,
+.featured-item::after {
+  display: none !important;
+}
+
+/* Subtle hover effects - only gentle lift and shadow */
+.featured-item:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.12),
+    0 4px 15px rgba(0, 0, 0, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Ensure all content inside cards stays visible */
+.featured-item h4,
+.featured-item p,
+.featured-item ul,
+.featured-item li,
+.featured-item a,
+.featured-item i {
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* Remove staggered animation delays that cause issues */
+.featured-item:nth-child(1),
+.featured-item:nth-child(2), 
+.featured-item:nth-child(3),
+.featured-item:nth-child(4) {
+  animation: none !important;
+  animation-delay: 0s !important;
+  opacity: 1 !important;
+}
+
+/* Touch-friendly interactions for mobile */
+@media (hover: none) {
+  .featured-item:active {
+    transform: translateY(-2px) !important;
+    box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.1),
+      0 3px 12px rgba(0, 0, 0, 0.06);
+  }
+}
+
+/* Override any fade animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility: respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .featured-item {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  
+  .featured-item:hover {
+    transform: none !important;
+    box-shadow: 
+      0 6px 20px rgba(0, 0, 0, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+}

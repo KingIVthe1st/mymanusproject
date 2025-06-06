@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Frosted Cards V3: Premium Sophisticated Design</title>
+    <link rel="stylesheet" href="styles/passioncolorjoy-elevation.css">
+    <link rel="stylesheet" href="styles/luxury-frosted-v3.css">
+    <link rel="stylesheet" href="styles/luxury-buttons-v2.css">
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0;
+            /* Sophisticated luxury background - less colorful, more elegant */
+            background: linear-gradient(135deg, 
+                #f8f9fa 0%, 
+                #e9ecef 15%, 
+                #dee2e6 30%, 
+                #ced4da 45%, 
+                #adb5bd 60%,
+                #6c757d 75%,
+                #495057 90%,
+                #343a40 100%
+            );
+            background-size: 300% 300%;
+            animation: sophisticatedBackgroundShift 30s ease infinite;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Slower, more sophisticated animation */
+        @keyframes sophisticatedBackgroundShift {
+            0% { background-position: 0% 50%; }
+            33% { background-position: 100% 30%; }
+            66% { background-position: 50% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Elegant pattern overlay for luxury frosted effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.2) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(212,175,55,0.1) 1px, transparent 1px),
+                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 3px, transparent 3px);
+            background-size: 150px 150px, 80px 80px, 120px 120px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .demo-header {
+            text-align: center;
+            padding: var(--luxury-space-2xl) 0 var(--luxury-space-xl) 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .section-spacing {
+            margin: var(--luxury-space-3xl) 0;
+        }
+        
+        /* Enhanced luxury text with better contrast */
+        .demo-header h1 {
+            background: linear-gradient(135deg, 
+                #212529 0%,
+                #495057 30%,
+                #6c757d 70%,
+                #212529 100%
+            );
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            font-size: var(--text-hero);
+            font-weight: 700;
+        }
+        
+        .demo-header p {
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            color: #343a40;
+            font-weight: 600;
+        }
+        
+        /* Luxury performance indicator */
+        .luxury-performance-info {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(33, 37, 41, 0.9);
+            color: #f8f9fa;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-family: var(--font-elegant-sans);
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Reduced rainbow gradients, focus on luxury gold accents */
+        .luxury-accent-text {
+            background: linear-gradient(135deg, 
+                #212529 0%,
+                #6c757d 30%,
+                #d4af37 50%,
+                #6c757d 70%,
+                #212529 100%
+            );
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: luxuryTextShift 4s ease infinite;
+        }
+        
+        @keyframes luxuryTextShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Header -->
+    <div class="demo-header">
+        <h1>Luxury Frosted Cards V3</h1>
+        <p style="font-size: var(--text-subhead); color: #495057; font-weight: 600; margin-bottom: var(--luxury-space-md);">
+            Premium Sophisticated Frosted Design
+        </p>
+        <p class="elegant-sans" style="color: #6c757d; max-width: 600px; margin: var(--luxury-space-lg) auto 0; font-size: var(--text-body-large);">
+            Luxury frosted glass aesthetic with sophisticated tones. Enhanced opacity, deeper blur effects, 
+            and premium champagne gold accents replace rainbow elements for museum-gallery elegance.
+        </p>
+    </div>
+
+    <!-- Luxury Hero Frosted Card -->
+    <div class="luxury-frosted-grid luxury-frosted-grid-hero section-spacing">
+        <div class="luxury-hero-frosted luxury-frosted-reveal luxury-frost-shimmer">
+            <div class="luxury-frosted-header">
+                <h2 class="luxury-accent-text luxury-serif" style="font-size: var(--text-display); margin-bottom: var(--luxury-space-sm);">
+                    Investment-Grade Abstract Art
+                </h2>
+                <p class="royal-credentials">Al Nahyan Royal Family Collection</p>
+                <p class="luxury-frosted-subtitle">Museum Quality • International Recognition • Six-Figure Performance</p>
+            </div>
+            <div class="luxury-frosted-content">
+                <p class="luxury-frosted-text" style="font-size: var(--text-body-large); max-width: 700px; margin: var(--luxury-space-lg) auto;">
+                    Experience luxury art collection through our premium frosted glass interface. 
+                    Each sophisticated card embodies museum-quality presentation with enhanced frosted aesthetics 
+                    designed for serious collectors and gallery-level sophistication.
+                </p>
+            </div>
+            <div class="luxury-frosted-footer" style="display: flex; justify-content: center; gap: var(--luxury-space-md); flex-wrap: wrap;">
+                <a href="#" class="pcj-gradient-button" style="background: linear-gradient(135deg, #6c757d 0%, #495057 50%, #212529 100%);">Explore Collection</a>
+                <a href="#" class="pcj-secondary-button pcj-gradient-button" style="background: linear-gradient(135deg, #d4af37 0%, #b8860b 50%, #8b7355 100%);">Private Access</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Luxury Credential Frosted Cards -->
+    <div class="luxury-frosted-grid luxury-frosted-grid-3 section-spacing">
+        <div class="luxury-credential-frosted luxury-frosted-reveal luxury-frost-shimmer">
+            <div class="luxury-frosted-header">
+                <h3 class="luxury-frosted-title">Royal Recognition</h3>
+                <p class="luxury-frosted-subtitle">Prestigious Collections</p>
+            </div>
+            <div class="luxury-frosted-content">
+                <p class="luxury-frosted-text">
+                    Premium frosted interface showcasing work acquired by the Al Nahyan Royal Family. 
+                    Enhanced opacity and sophisticated blur effects reflect the exclusivity and prestige 
+                    of royal collection status through luxury design methodology.
+                </p>
+            </div>
+        </div>
+
+        <div class="luxury-credential-frosted luxury-frosted-reveal luxury-frost-shimmer">
+            <div class="luxury-frosted-header">
+                <h3 class="luxury-frosted-title">International Media</h3>
+                <p class="luxury-frosted-subtitle">40+ Publications</p>
+            </div>
+            <div class="luxury-frosted-content">
+                <p class="luxury-frosted-text">
+                    Sophisticated frosted design principles showcase recognition across luxury lifestyle 
+                    magazines and art publications. Our enhanced glass aesthetic mirrors the 
+                    sophisticated editorial coverage and gallery-level presentation standards.
+                </p>
+            </div>
+        </div>
+
+        <div class="luxury-credential-frosted luxury-frosted-reveal luxury-frost-shimmer">
+            <div class="luxury-frosted-header">
+                <h3 class="luxury-frosted-title">Investment Performance</h3>
+                <p class="luxury-frosted-subtitle">Six-Figure Returns</p>
+            </div>
+            <div class="luxury-frosted-content">
+                <p class="luxury-frosted-text">
+                    Premium frosted interfaces reflecting premium market results. Our sophisticated 
+                    glass methodology represents the same attention to luxury detail that achieves 
+                    consistent six-figure collector and institutional sales performance.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Luxury Portfolio Frosted Cards -->
+    <div class="luxury-portfolio-frosted-grid section-spacing">
+        <div class="luxury-portfolio-frosted luxury-frosted-reveal luxury-frost-shimmer">
+            <div class="luxury-artwork-frame">
+                <div style="height: 240px; background: var(--gradient-sunset-premium); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 1.1rem; text-align: center;">
+                    "Passionate Dawn"<br>48" × 36"<br>Oil on Canvas
+                </div>
+            </div>
+            <h4 class="luxury-frosted-title" style="font-size: var(--text-subhead); margin-bottom: var(--luxury-space-xs);">Passionate Dawn</h4>
+            <p class="elegant-sans" style="color: var(--gold-luxury); font-size: var(--text-body); font-weight: 600; margin: 0;">
+                Investment Grade • $125,000
+            </p>
+        </div>
+
+        <div class="luxury-portfolio-frosted luxury-frosted-reveal luxury-frost-shimmer">
+            <div class="luxury-artwork-frame">
+                <div style="height: 240px; background: linear-gradient(135deg, #495057 0%, #6c757d 50%, #adb5bd 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 1.1rem; text-align: center;">
+                    "Sophisticated Depth"<br>60" × 48"<br>Mixed Media
+                </div>
+            </div>
+            <h4 class="luxury-frosted-title" style="font-size: var(--text-subhead); margin-bottom: var(--luxury-space-xs);">Sophisticated Depth</h4>
+            <p class="elegant-sans" style="color: var(--gold-luxury); font-size: var(--text-body); font-weight: 600; margin: 0;">
+                Collector Series • $180,000
+            </p>
+        </div>
+
+        <div class="luxury-portfolio-frosted luxury-frosted-reveal luxury-frost-shimmer">
+            <div class="luxury-artwork-frame">
+                <div style="height: 240px; background: linear-gradient(135deg, #d4af37 0%, #b8860b 50%, #8b7355 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 1.1rem; text-align: center;">
+                    "Luxury Essence"<br>36" × 24"<br>Gold Leaf & Oil
+                </div>
+            </div>
+            <h4 class="luxury-frosted-title" style="font-size: var(--text-subhead); margin-bottom: var(--luxury-space-xs);">Luxury Essence</h4>
+            <p class="elegant-sans" style="color: var(--gold-luxury); font-size: var(--text-body); font-weight: 600; margin: 0;">
+                Limited Edition • $95,000
+            </p>
+        </div>
+
+        <div class="luxury-portfolio-frosted luxury-frosted-reveal luxury-frost-shimmer">
+            <div class="luxury-artwork-frame">
+                <div style="height: 240px; background: linear-gradient(135deg, #343a40 0%, #495057 30%, #6c757d 70%, #adb5bd 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 1.1rem; text-align: center;">
+                    "Gallery Prestige"<br>42" × 30"<br>Premium Mixed Media
+                </div>
+            </div>
+            <h4 class="luxury-frosted-title" style="font-size: var(--text-subhead); margin-bottom: var(--luxury-space-xs);">Gallery Prestige</h4>
+            <p class="elegant-sans" style="color: var(--gold-luxury); font-size: var(--text-body); font-weight: 600; margin: 0;">
+                Gallery Premium • $145,000
+            </p>
+        </div>
+    </div>
+
+    <!-- Luxury Testimonial Frosted Cards -->
+    <div class="luxury-frosted-grid luxury-frosted-grid-2 section-spacing">
+        <div class="luxury-testimonial-frosted luxury-frosted-reveal luxury-frost-shimmer">
+            <div class="luxury-frosted-content">
+                <p class="luxury-frosted-text" style="font-style: italic; font-size: var(--text-body-large);">
+                    The sophisticated frosted presentation perfectly captures the museum-quality essence of Amira's work. 
+                    These pieces transcend traditional boundaries between digital sophistication and artistic mastery. 
+                    The enhanced frosted interface becomes an integral part of the luxury collection experience.
+                </p>
+                <p class="elegant-sans" style="color: var(--gold-luxury); font-weight: 600; margin-top: var(--luxury-space-md); font-style: normal;">
+                    — H.H. Sheikh, Private Collector
+                </p>
+            </div>
+        </div>
+
+        <div class="luxury-testimonial-frosted luxury-frosted-reveal luxury-frost-shimmer">
+            <div class="luxury-frosted-content">
+                <p class="luxury-frosted-text" style="font-style: italic; font-size: var(--text-body-large);">
+                    The premium frosted interface reflects the investment quality and sophisticated positioning of the artwork. 
+                    A remarkable fusion of contemporary luxury design methodology and timeless artistic value. 
+                    This represents the future of how museum-quality art should be presented digitally.
+                </p>
+                <p class="elegant-sans" style="color: var(--gold-luxury); font-weight: 600; margin-top: var(--luxury-space-md); font-style: normal;">
+                    — Gallery Director, International Art Fair
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Luxury Contact Frosted Card -->
+    <div class="luxury-frosted-grid luxury-frosted-grid-hero section-spacing">
+        <div class="luxury-contact-frosted luxury-frosted-reveal luxury-frost-shimmer">
+            <div class="luxury-frosted-header">
+                <h3 class="luxury-accent-text luxury-serif" style="font-size: var(--text-display);">
+                    Private Collector Consultations
+                </h3>
+                <p class="luxury-frosted-subtitle">Exclusive Access • Premium Frosted Experience</p>
+            </div>
+            <div class="luxury-frosted-content">
+                <p class="luxury-frosted-text" style="max-width: 600px; margin: 0 auto;">
+                    Experience luxury art collection through our comprehensive frosted glass interface. 
+                    Each consultation is designed with the sophisticated attention to luxury detail 
+                    as our premium frosted presentation methodology and museum-level curation standards.
+                </p>
+            </div>
+            <div class="luxury-frosted-footer" style="display: flex; justify-content: center; gap: var(--luxury-space-md); flex-wrap: wrap;">
+                <a href="#" class="pcj-gradient-button" style="background: linear-gradient(135deg, #d4af37 0%, #b8860b 50%, #8b7355 100%);">Schedule Private Viewing</a>
+                <a href="#" class="pcj-outline-button pcj-gradient-button" style="background: transparent; border: 2px solid #6c757d; color: #495057;">Download Portfolio</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Feature Summary -->
+    <div class="luxury-credential-frosted section-spacing luxury-frost-shimmer" style="max-width: 1000px; margin: var(--luxury-space-3xl) auto;">
+        <div class="luxury-frosted-header">
+            <h3 class="luxury-accent-text">Luxury Frosted V3: Sophisticated Enhancement ✨</h3>
+            <p class="luxury-frosted-subtitle">Premium Frosted Glass with Reduced Rainbow Elements</p>
+        </div>
+        <div class="luxury-frosted-content">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--luxury-space-lg); margin-top: var(--luxury-space-lg);">
+                <div>
+                    <h4 class="luxury-serif" style="color: var(--gold-luxury); margin-bottom: var(--luxury-space-sm); font-size: var(--text-subhead);">Enhanced Frosted System</h4>
+                    <ul class="elegant-sans" style="line-height: 1.7; margin: 0; padding-left: var(--luxury-space-md);">
+                        <li>✅ Deeper blur effects (16px-40px)</li>
+                        <li>✅ Enhanced opacity (20%-60%)</li>
+                        <li>✅ Sophisticated background tones</li>
+                        <li>✅ Luxury champagne gold accents</li>
+                        <li>✅ Premium frosted shadows</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="luxury-serif" style="color: var(--gold-luxury); margin-bottom: var(--luxury-space-sm); font-size: var(--text-subhead);">Luxury Refinements</h4>
+                    <ul class="elegant-sans" style="line-height: 1.7; margin: 0; padding-left: var(--luxury-space-md);">
+                        <li>✅ Reduced rainbow gradients</li>
+                        <li>✅ Museum-gallery sophistication</li>
+                        <li>✅ Enhanced frosted interactions</li>
+                        <li>✅ Slower, elegant animations</li>
+                        <li>✅ Premium luxury aesthetic</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="luxury-serif" style="color: var(--gold-luxury); margin-bottom: var(--luxury-space-sm); font-size: var(--text-subhead);">Sophisticated Features</h4>
+                    <ul class="elegant-sans" style="line-height: 1.7; margin: 0; padding-left: var(--luxury-space-md);">
+                        <li>✅ Enhanced shimmer effects</li>
+                        <li>✅ Luxury border treatments</li>
+                        <li>✅ Sophisticated reveal sequences</li>
+                        <li>✅ Premium responsive scaling</li>
+                        <li>✅ Museum-quality presentation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Luxury Performance Info -->
+    <div class="luxury-performance-info">
+        Luxury Frosted V3 | Enhanced Blur | Sophisticated Design
+    </div>
+
+    <script>
+        // Enhanced luxury frosted interactions
+        const luxuryObserverOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
+        };
+        
+        const luxuryObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    // Enhanced luxury frosted effect on reveal
+                    setTimeout(() => {
+                        entry.target.classList.add('luxury-enhanced');
+                    }, 400);
+                }
+            });
+        }, luxuryObserverOptions);
+        
+        document.querySelectorAll('.luxury-frosted-reveal').forEach(card => {
+            luxuryObserver.observe(card);
+        });
+        
+        // Sophisticated performance monitoring
+        let frameCount = 0;
+        let lastTime = performance.now();
+        
+        function updateLuxuryPerformance() {
+            frameCount++;
+            const currentTime = performance.now();
+            
+            if (currentTime - lastTime >= 1000) {
+                const fps = Math.round(frameCount * 1000 / (currentTime - lastTime));
+                const performanceInfo = document.querySelector('.luxury-performance-info');
+                if (performanceInfo) {
+                    performanceInfo.textContent = `Luxury Frosted V3 | ${fps}fps | Enhanced Blur`;
+                }
+                frameCount = 0;
+                lastTime = currentTime;
+            }
+            
+            requestAnimationFrame(updateLuxuryPerformance);
+        }
+        
+        requestAnimationFrame(updateLuxuryPerformance);
+        
+        // Luxury optimization
+        document.addEventListener('DOMContentLoaded', () => {
+            // Enhanced hardware acceleration for luxury
+            document.body.style.transform = 'translateZ(0)';
+            document.body.style.backfaceVisibility = 'hidden';
+            
+            // Initialize luxury frosted effects
+            document.querySelectorAll('[class*="luxury-frosted"]').forEach(el => {
+                el.style.willChange = 'transform, backdrop-filter, opacity';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -27,12 +27,9 @@
     <link rel="stylesheet" href="styles/artwork-section.css">
     <link rel="stylesheet" href="styles/licensing-section.css">
     <link rel="stylesheet" href="styles/featured-logos.css?v=1.1">
-    <link rel="stylesheet" href="styles/education-section.css">
     <link rel="stylesheet" href="styles/featured-in-section.css">
-    <!-- Fix for Featured In section hover issues -->
-    <link rel="stylesheet" href="styles/featured-in-fix.css">
-    <link rel="stylesheet" href="styles/living-gradient-background.css">
-    <link rel="stylesheet" href="styles/micro-interactions.css">
+    <link rel="stylesheet" href="styles/education-section.css">
+    <link rel="stylesheet" href="styles/education-visibility-fix.css">
     <link rel="stylesheet" href="styles/name-gradient.css">
     <link rel="stylesheet" href="styles/artwork-text-fix.css">
     <link rel="stylesheet" href="styles/nav-override.css">
@@ -51,12 +48,12 @@
     <link rel="stylesheet" href="styles/navbar-fix.css">
     <link rel="stylesheet" href="styles/hero-spacing-fix.css">
     <link rel="stylesheet" href="styles/mobile-spacing.css">
+    <!-- Collaboration Symmetry Fix -->
     <link rel="stylesheet" href="styles/collaboration-symmetry-fix.css">
-    <!-- Disable Section Title Animations -->
-    <link rel="stylesheet" href="styles/disable-animations.css">
-    <link rel="stylesheet" href="styles/hero-cta-fix.css">
-    <link rel="stylesheet" href="styles/button-text-fix.css">
-    <link rel="stylesheet" href="styles/artwork-button-standardization.css">
+    <!-- Dynamic Particle System -->
+    <link rel="stylesheet" href="styles/dynamic-particle-system.css">
+    <!-- Living Gradient Background -->
+    <link rel="stylesheet" href="styles/living-gradient-background.css">
     <style>
         /* Inline styles for featured logos to ensure they take effect */
         .featured-logos-grid > a.featured-logo {
@@ -311,23 +308,19 @@
     </style>
 </head>
 <body>
-    <!-- Living Gradient Background -->
+    <!-- Living Gradient Background System -->
     <div class="living-gradient-bg"></div>
-    
-    <!-- Disable Text Animations Script -->
-    <script src="scripts/disable-animations.js"></script>
+    <div class="living-gradient-secondary"></div>
+    <div class="living-gradient-tertiary"></div>
     
     <!-- Rainbow Cursor Effect -->
     <script src="scripts/rainbow-cursor.js"></script>
     
-    <!-- Enhanced Micro-Interactions & Paint Cursor -->
-    <script src="scripts/micro-interactions.js"></script>
+    <!-- Living Gradient Background Interactions -->
+    <script src="scripts/living-gradient-interactions.js"></script>
     
-    <!-- Background Shapes -->
-    <div class="bg-shape bg-shape-1"></div>
-    <div class="bg-shape bg-shape-2"></div>
-    <div class="bg-shape bg-shape-3"></div>
-    <div class="bg-shape bg-shape-4"></div>
+    <!-- Dynamic Particle System (replaces static background shapes) -->
+    <!-- Particle canvas will be dynamically created by the JavaScript -->
     
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress"></div>
@@ -700,8 +693,7 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-bg"></div>
-            <div class="decorative-circle decorative-circle-1"></div>
-            <div class="decorative-circle decorative-circle-2"></div>
+            <div class="living-gradient-hero"></div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="hero-content">
@@ -709,7 +701,7 @@
                     <h1 class="hero-title">Vibrant Abstract Art by <span class="text-gradient">Amira Rahim</span></h1>
                     <p class="hero-subtitle">Internationally collected artist creating vibrant abstract paintings that celebrate color and creative freedom.</p>
                     <div class="hero-cta">
-                            <a href="#artwork" class="btn btn-primary magnetic-btn glass-button">View Artwork</a>
+                        <a href="#artwork" class="btn btn-primary magnetic-btn glass-button">View Artwork</a>
                         <a href="#contact" class="btn btn-secondary magnetic-btn glass-button">Commission Art</a>
                     </div>
                 </div>
@@ -723,10 +715,11 @@
         <div class="section-divider"></div>
         
         <!-- Featured Originals Section -->
-        <section id="artwork" class="py-16 relative">
+        <section id="artwork" class="py-16 relative artwork">
+            <div class="living-gradient-artwork"></div>
             <div class="section-header">
                 <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-pink-100 to-purple-100 text-pink-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">FEATURED WORK</span>
-                <h2 class="text-4xl font-serif font-bold text-gray-800">Featured Originals</h2>
+                <h2 class="text-4xl font-serif font-bold text-gray-800 text-scramble">Featured Originals</h2>
             </div>
             
             <p class="text-center text-gray-700 max-w-3xl mx-auto mb-12">
@@ -818,15 +811,14 @@
         <div class="section-divider"></div>
         
         <!-- About the Artist Section -->
-        <section id="about" class="py-16 relative overflow-hidden" aria-label="About the Artist">
+        <section id="about" class="py-16 relative overflow-hidden about" aria-label="About the Artist">
             <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-50"></div>
-            <div class="decorative-circle decorative-circle-1"></div>
-            <div class="decorative-circle decorative-circle-2"></div>
+            <div class="living-gradient-about"></div>
             
             <div class="relative z-10 max-w-7xl mx-auto px-4">
                 <div class="section-header">
                     <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-yellow-100 to-pink-100 text-yellow-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">THE ARTIST</span>
-                    <h3 class="text-4xl font-serif font-bold text-gray-800">About the Artist</h3>
+                    <h3 class="text-4xl font-serif font-bold text-gray-800 text-scramble">About the Artist</h3>
                 </div>
                 <div class="max-w-5xl mx-auto px-6">
                     <!-- Full Width Bio Text -->
@@ -910,7 +902,7 @@
                                         </div>
                                         <div>
                                             <h3 class="text-lg font-semibold text-gray-800 mb-1">Transformative Courses</h3>
-                                            <p class="text-gray-600">Inspiring programs like <span class="font-medium">Better Than Art School</span> and <span class="font-medium">Color Mastery</span>, with more to explore.</p>
+                                            <p class="text-gray-600">Inspiring programs like <span class="font-medium">Better Than Art School</span> and <span class="font-medium">Crown Expansion Webinar</span>, with more to explore.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -943,122 +935,144 @@
         <div class="section-divider"></div>
         
         <!-- Featured In Section -->
-        <section id="featured-in" class="py-16 relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
-            <div class="decorative-circle decorative-circle-3"></div>
-            <div class="decorative-circle decorative-circle-4"></div>
+        <section id="featured-in" class="py-16 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-50 via-pink-50 to-amber-50 opacity-50"></div>
             
-            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-purple-100 via-pink-50 to-rose-100 text-purple-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">MEDIA PRESENCE</span>
-                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">Featured In</h2>
-                    <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-500 mx-auto rounded-full mb-6"></div>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                        Press, Podcasts & Recognition
-                    </p>
+            <div class="relative z-10 max-w-7xl mx-auto px-4">
+                <div class="section-header">
+                    <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-purple-100 to-amber-100 text-purple-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">MEDIA PRESENCE</span>
+                    <h2 class="text-4xl font-serif font-bold text-gray-800 text-scramble">Featured In</h2>
+                    <p class="text-xl text-gray-600 text-center mt-4 max-w-2xl mx-auto">Press, Podcasts & Recognition</p>
                 </div>
-
-                <!-- Hero Quote -->
-                <div class="glass-card max-w-4xl mx-auto text-center mb-16 p-8">
-                    <blockquote class="text-2xl md:text-3xl font-serif font-medium text-gray-800 mb-4">
-                        "Getting money from my art? Getting paid for my work? That makes me feel like a boss."
-                    </blockquote>
-                    <cite class="text-purple-600 font-medium">— Being Boss Podcast</cite>
+                
+                <!-- Hero Quote Card -->
+                <div class="max-w-4xl mx-auto mb-16">
+                    <div class="glass-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 md:p-12 border border-purple-100 shadow-xl transform hover:scale-[1.02] transition-all duration-300">
+                        <div class="text-center">
+                            <blockquote class="text-2xl md:text-3xl font-serif italic text-gray-800 mb-6 leading-relaxed">
+                                "Getting money from my art? Getting paid for my work? That makes me feel like a boss."
+                            </blockquote>
+                            <div class="flex items-center justify-center">
+                                <div class="w-1 h-12 bg-gradient-to-b from-purple-400 to-pink-400 mr-4"></div>
+                                <cite class="text-lg font-medium text-purple-700">Being Boss Podcast</cite>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Three-Column Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-                    <!-- Publications -->
-                    <div class="featured-item glass-card p-8 text-center">
-                        <div class="inline-block p-4 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-lg mb-6">
-                            <i class="fas fa-newspaper fa-2x"></i>
+                
+                <!-- Three Category Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                    <!-- Major Publications -->
+                    <div class="glass-card bg-white/80 backdrop-blur-lg rounded-2xl p-8 border border-gray-200/50 shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <div class="mb-6">
+                            <div class="inline-block p-4 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-lg mb-4">
+                                <i class="fas fa-newspaper fa-2x"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-gray-800 mb-2">Major Publications</h3>
+                            <div class="w-16 h-1 bg-gradient-to-r from-purple-400 to-purple-500 rounded-full"></div>
                         </div>
-                        <h4 class="text-xl font-serif font-bold text-gray-800 mb-4">Major Publications</h4>
-                        <ul class="text-gray-600 space-y-2 text-left">
-                            <li class="flex items-start">
-                                <i class="fas fa-star text-purple-400 mt-1 mr-2 text-sm"></i>
-                                <span><strong>Ebony Magazine</strong> (October 2016)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-star text-purple-400 mt-1 mr-2 text-sm"></i>
-                                <span><strong>HuffPost</strong> - "Inside The Whimsical World" (June 2016)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-star text-purple-400 mt-1 mr-2 text-sm"></i>
-                                <span><strong>The National UAE</strong> - "Artist's Quest for Colour" (2014)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-star text-purple-400 mt-1 mr-2 text-sm"></i>
-                                <span><strong>Chicago Tribune</strong> - "Celebrating Muslim Artist" (2018)</span>
-                            </li>
-                        </ul>
+                        
+                        <div class="space-y-4">
+                            <div class="featured-item p-4 rounded-xl bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 transition-all duration-300 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">Ebony Magazine</h4>
+                                <p class="text-sm text-gray-600">October 2016</p>
+                            </div>
+                            
+                            <div class="featured-item p-4 rounded-xl bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 transition-all duration-300 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">HuffPost</h4>
+                                <p class="text-sm text-gray-600">"Inside The Whimsical World" (June 2016)</p>
+                            </div>
+                            
+                            <div class="featured-item p-4 rounded-xl bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 transition-all duration-300 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">The National UAE</h4>
+                                <p class="text-sm text-gray-600">"Artist's Quest for Colour" (2014)</p>
+                            </div>
+                            
+                            <div class="featured-item p-4 rounded-xl bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 transition-all duration-300 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">Chicago Tribune</h4>
+                                <p class="text-sm text-gray-600">"Celebrating Muslim Artist" (2018)</p>
+                            </div>
+                        </div>
                     </div>
-
-                    <!-- Podcasts -->
-                    <div class="featured-item glass-card p-8 text-center">
-                        <div class="inline-block p-4 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 text-white shadow-lg mb-6">
-                            <i class="fas fa-microphone fa-2x"></i>
+                    
+                    <!-- Podcast Appearances -->
+                    <div class="glass-card bg-white/80 backdrop-blur-lg rounded-2xl p-8 border border-gray-200/50 shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <div class="mb-6">
+                            <div class="inline-block p-4 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 text-white shadow-lg mb-4">
+                                <i class="fas fa-microphone fa-2x"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-gray-800 mb-2">Podcast Appearances</h3>
+                            <div class="w-16 h-1 bg-gradient-to-r from-pink-400 to-pink-500 rounded-full"></div>
                         </div>
-                        <h4 class="text-xl font-serif font-bold text-gray-800 mb-4">Podcast Appearances</h4>
-                        <ul class="text-gray-600 space-y-2 text-left">
-                            <li class="flex items-start">
-                                <i class="fas fa-podcast text-pink-400 mt-1 mr-2 text-sm"></i>
-                                <span><strong>Being Boss</strong> - "Life & Work as Full-Time Artist"</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-podcast text-pink-400 mt-1 mr-2 text-sm"></i>
-                                <span><strong>Creative Genius</strong> - "Intuitively, On Purpose" (Ep. 41)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-podcast text-pink-400 mt-1 mr-2 text-sm"></i>
-                                <span><strong>Art & Cocktails</strong> - Create! Magazine</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-podcast text-pink-400 mt-1 mr-2 text-sm"></i>
-                                <span><strong>The Strategy Hour</strong> - "Instagram All-Star"</span>
-                            </li>
-                        </ul>
+                        
+                        <div class="space-y-4">
+                            <div class="featured-item p-4 rounded-xl bg-gradient-to-r from-pink-50 to-pink-100 hover:from-pink-100 hover:to-pink-200 transition-all duration-300 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">Being Boss</h4>
+                                <p class="text-sm text-gray-600">"Life & Work as Full-Time Artist"</p>
+                            </div>
+                            
+                            <div class="featured-item p-4 rounded-xl bg-gradient-to-r from-pink-50 to-pink-100 hover:from-pink-100 hover:to-pink-200 transition-all duration-300 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">Creative Genius</h4>
+                                <p class="text-sm text-gray-600">"Intuitively, On Purpose" (Ep. 41)</p>
+                            </div>
+                            
+                            <div class="featured-item p-4 rounded-xl bg-gradient-to-r from-pink-50 to-pink-100 hover:from-pink-100 hover:to-pink-200 transition-all duration-300 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">Art & Cocktails</h4>
+                                <p class="text-sm text-gray-600">Create! Magazine</p>
+                            </div>
+                            
+                            <div class="featured-item p-4 rounded-xl bg-gradient-to-r from-pink-50 to-pink-100 hover:from-pink-100 hover:to-pink-200 transition-all duration-300 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">The Strategy Hour</h4>
+                                <p class="text-sm text-gray-600">"Instagram All-Star"</p>
+                            </div>
+                        </div>
                     </div>
-
-                    <!-- Achievements -->
-                    <div class="featured-item glass-card p-8 text-center">
-                        <div class="inline-block p-4 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 text-white shadow-lg mb-6">
-                            <i class="fas fa-trophy fa-2x"></i>
+                    
+                    <!-- Achievements & Features -->
+                    <div class="glass-card bg-white/80 backdrop-blur-lg rounded-2xl p-8 border border-gray-200/50 shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <div class="mb-6">
+                            <div class="inline-block p-4 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 text-white shadow-lg mb-4">
+                                <i class="fas fa-trophy fa-2x"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-gray-800 mb-2">Achievements</h3>
+                            <div class="w-16 h-1 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full"></div>
                         </div>
-                        <h4 class="text-xl font-serif font-bold text-gray-800 mb-4">Achievements</h4>
-                        <ul class="text-gray-600 space-y-2 text-left mb-6">
-                            <li class="flex items-start">
-                                <i class="fas fa-award text-amber-400 mt-1 mr-2 text-sm"></i>
-                                <span><strong>60,000+</strong> Instagram Followers</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-award text-amber-400 mt-1 mr-2 text-sm"></i>
-                                <span><strong>$100K Sales</strong> in Second Year</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-award text-amber-400 mt-1 mr-2 text-sm"></i>
-                                <span><strong>Licensed by</strong> Wayfair, HomeGoods & Amazon</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-award text-amber-400 mt-1 mr-2 text-sm"></i>
-                                <span><strong>U.S. Embassy</strong> Abu Dhabi Exhibition</span>
-                            </li>
-                        </ul>
-                        <a href="#" class="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105">
-                            <i class="fas fa-folder-open mr-2"></i>
+                        
+                        <div class="space-y-4">
+                            <div class="featured-item p-4 rounded-xl bg-gradient-to-r from-amber-50 to-amber-100 hover:from-amber-100 hover:to-amber-200 transition-all duration-300 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">60,000+ Instagram Followers</h4>
+                                <p class="text-sm text-gray-600">Growing art community</p>
+                            </div>
+                            
+                            <div class="featured-item p-4 rounded-xl bg-gradient-to-r from-amber-50 to-amber-100 hover:from-amber-100 hover:to-amber-200 transition-all duration-300 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">$100K Sales in Second Year</h4>
+                                <p class="text-sm text-gray-600">Business milestone achievement</p>
+                            </div>
+                            
+                            <div class="featured-item p-4 rounded-xl bg-gradient-to-r from-amber-50 to-amber-100 hover:from-amber-100 hover:to-amber-200 transition-all duration-300 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">Licensed by Major Retailers</h4>
+                                <p class="text-sm text-gray-600">Wayfair, HomeGoods & Amazon</p>
+                            </div>
+                            
+                            <div class="featured-item p-4 rounded-xl bg-gradient-to-r from-amber-50 to-amber-100 hover:from-amber-100 hover:to-amber-200 transition-all duration-300 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">U.S. Embassy Abu Dhabi</h4>
+                                <p class="text-sm text-gray-600">Exhibition & Royal Collection</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bottom CTA -->
+                <div class="text-center">
+                    <div class="glass-card bg-gradient-to-r from-purple-100 to-amber-100 rounded-2xl p-8 max-w-3xl mx-auto border border-purple-200 shadow-lg">
+                        <h3 class="text-2xl font-serif font-bold text-gray-800 mb-4">From law student to internationally collected artist</h3>
+                        <p class="text-gray-700 mb-6">Discover how Amira transformed her passion into a thriving art business featured in major publications worldwide.</p>
+                        <a href="#" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-amber-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 transform-gpu">
+                            <i class="fas fa-folder-open mr-3"></i>
                             View Full Press Kit
+                            <i class="fas fa-arrow-right ml-3"></i>
                         </a>
                     </div>
-                </div>
-
-                <!-- Bottom CTA -->
-                <div class="text-center mt-16">
-                    <p class="text-lg text-gray-600 mb-6">
-                        From law student to internationally collected artist
-                    </p>
-                    <a href="#contact" class="inline-block bg-gradient-to-r from-amber-500 to-orange-600 text-white font-medium py-4 px-8 rounded-xl shadow-lg hover:shadow-xl hover:from-amber-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105">
-                        Start Your Art Journey
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
                 </div>
             </div>
         </section>
@@ -1070,13 +1084,11 @@
             <div class="absolute inset-0 opacity-10">
                 <!-- Subtle background pattern or shapes can go here if desired -->
             </div>
-            <div class="decorative-circle decorative-circle-education-1"></div>
-            <div class="decorative-circle decorative-circle-education-2"></div>
 
             <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16 md:mb-20">
                     <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-purple-100 via-pink-50 to-rose-100 text-purple-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">EDUCATION</span>
-                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">Unlock Your Artistic Potential</h2>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4 text-scramble">Unlock Your Artistic Potential</h2>
                     <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-500 mx-auto rounded-full mb-6"></div>
                     <p class="text-lg text-gray-600 max-w-3xl mx-auto">
                         Discover programs and resources designed to elevate your art, sharpen your skills, and build a flourishing career.
@@ -1129,12 +1141,12 @@
                                 <i class="fas fa-chalkboard-teacher fa-2x"></i>
                             </div>
                         </div>
-                        <h3 class="text-2xl font-serif font-bold text-gray-800 mb-4 text-center">Free Webinar: Color Mastery</h3>
+                        <h3 class="text-2xl font-serif font-bold text-gray-800 mb-4 text-center">Crown Expansion Webinar</h3>
                         <p class="text-gray-600 mb-6 flex-grow text-center">
-                            Unlock the secrets to vibrant palettes and confident color mixing in this exclusive free session.
+                            Create from vision. Heal through color. Be seen worldwide. Watch Amira paint "Crown Expansion" over an existing piece and discover the power of artistic evolution.
                         </p>
                         <div class="mt-auto text-center">
-                            <a href="#" class="inline-block bg-gradient-to-r from-amber-600 to-orange-700 text-white font-medium py-3 px-8 rounded-lg shadow-md hover:shadow-lg hover:from-amber-700 hover:to-orange-800 transition-all duration-300 transform hover:scale-105">
+                            <a href="https://colors.betterthanartschool.com/opt-in-page" class="inline-block bg-gradient-to-r from-amber-600 to-orange-700 text-white font-medium py-3 px-8 rounded-lg shadow-md hover:shadow-lg hover:from-amber-700 hover:to-orange-800 transition-all duration-300 transform hover:scale-105">
                                 Register Free
                                 <i class="fas fa-ticket-alt ml-2"></i>
                             </a>
@@ -1160,8 +1172,6 @@
         <!-- Collaboration Section -->
         <section id="collaborate" class="py-16 relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-yellow-50 via-pink-50 to-purple-50 opacity-50"></div>
-            <div class="decorative-circle decorative-circle-5"></div>
-            <div class="decorative-circle decorative-circle-6"></div>
             
             <!-- Decorative elements -->
             <div class="absolute inset-0 overflow-hidden pointer-events-none">
@@ -1421,7 +1431,7 @@
         <section id="contact" class="py-16">
             <div class="section-header">
                 <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-rose-100 to-pink-100 text-rose-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">STAY CONNECTED</span>
-                <h3 class="text-4xl font-serif font-bold text-gray-800">Follow My Creative World</h3>
+                <h3 class="text-4xl font-serif font-bold text-gray-800 text-scramble">Follow My Creative World</h3>
             </div>
             
             <p class="text-center text-gray-700 max-w-3xl mx-auto mb-12">
@@ -1652,6 +1662,7 @@
                     <h5 class="footer-heading">Quick Links</h5>
                     <ul class="footer-links">
                         <li class="footer-link"><a href="#artwork">Artwork</a></li>
+                        <li class="footer-link"><a href="#featured-in">Featured In</a></li>
                         <li class="footer-link"><a href="#education">Education</a></li>
                         <li class="footer-link"><a href="#collaborate">Collaborate</a></li>
                         <li class="footer-link"><a href="#about">About</a></li>
@@ -1712,6 +1723,12 @@
     <!-- Education Tabs -->
     <script src="scripts/education-tabs.js"></script>
     <script src="https://widget.senja.io/widget/6a3e2a3d-0648-4ec0-bbeb-8dbca588b22a/platform.js" type="text/javascript" async></script>
-    <script src="scripts/commission-button-fix.js"></script>
+    
+    <!-- Dynamic Particle System JavaScript -->
+    <script src="scripts/dynamic-particle-system.js"></script>
+    
+    <!-- Senja Testimonials Widget -->
+    <script async type="text/javascript" src="https://widget.senja.io"></script>
+    
 </body>
 </html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 4: Collector-Focused Content Integration - Investment-Grade Positioning</title>
+    <link rel="stylesheet" href="styles/passioncolorjoy-elevation.css">
+    <link rel="stylesheet" href="styles/museum-vitrine-v1.css">
+    <link rel="stylesheet" href="styles/premium-interactions-v4-smooth.css">
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0;
+            background: linear-gradient(135deg, 
+                #F8F6F2 0%, #FAFAFA 25%, #F4F4F6 50%, #F0F0F2 75%, #F8F6F2 100%
+            );
+            min-height: 100vh;
+            position: relative;
+            transform: translate3d(0, 0, 0);
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(201, 169, 97, 0.03) 1px, transparent 1px),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 200px 200px, 100px 100px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .page-header {
+            text-align: center;
+            padding: var(--gallery-space-2xl) 0 var(--gallery-space-xl) 0;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .page-title {
+            font-family: var(--font-luxury-serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            color: var(--charcoal-primary);
+            margin-bottom: var(--gallery-space-sm);
+            letter-spacing: -0.01em;
+        }
+        
+        .page-subtitle {
+            font-family: var(--font-elegant-sans);
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            color: var(--charcoal-secondary);
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .investment-accent {
+            color: var(--investment-gold);
+            font-weight: 500;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: var(--gallery-space-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Content hierarchy indicators */
+        .content-hierarchy {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(248, 246, 242, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            font-family: var(--font-elegant-sans);
+            font-size: 0.8rem;
+            color: var(--charcoal-primary);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            max-width: 280px;
+        }
+        
+        .hierarchy-title {
+            font-weight: 600;
+            color: var(--investment-gold);
+            margin-bottom: 0.5rem;
+        }
+        
+        .hierarchy-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .hierarchy-item {
+            padding: 0.3rem 0;
+            border-left: 3px solid transparent;
+            padding-left: 0.5rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .hierarchy-item.primary {
+            border-left-color: var(--investment-gold);
+            font-weight: 500;
+        }
+        
+        .hierarchy-item.secondary {
+            border-left-color: #ccc;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Content Hierarchy Guide -->
+    <div class="content-hierarchy">
+        <div class="hierarchy-title">Content Hierarchy</div>
+        <ul class="hierarchy-list">
+            <li class="hierarchy-item primary">1. Royal Collection Authority</li>
+            <li class="hierarchy-item primary">2. Investment Performance</li>
+            <li class="hierarchy-item primary">3. Gallery Exhibitions</li>
+            <li class="hierarchy-item primary">4. Media Recognition</li>
+            <li class="hierarchy-item primary">5. Collector Services</li>
+            <li class="hierarchy-item secondary">6. Artist Authority</li>
+            <li class="hierarchy-item secondary">7. Education Programs</li>
+        </ul>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">Phase 4: Collector-Focused Content</h1>
+        <p class="page-subtitle">
+            Strategic content integration with <span class="investment-accent">investment-grade messaging</span> 
+            while maintaining educational value as secondary positioning.
+        </p>
+    </div>
+
+    <div class="gallery-layout">
+        
+        <!-- 1. HERO VITRINE - Investment-Grade Lead -->
+        <section class="gallery-hero scroll-reveal">
+            <div class="vitrine-hero vitrine-breathing" data-interaction="Investment-Grade Hero">
+                <h1 class="vitrine-title-hero">Investment-Grade Contemporary Art</h1>
+                <p class="vitrine-subtitle">Al Nahyan Royal Family Collection • Six-Figure Sales Performance</p>
+                <p class="vitrine-text-large" style="max-width: 700px; margin: var(--gallery-space-lg) auto;">
+                    Internationally collected abstract expressionist with work in the Al Nahyan Royal Collection of Abu Dhabi. 
+                    Achieving six-figure sales within two years, with pieces now held by serious collectors across 30+ countries. 
+                    Featured in 40+ major publications as a leading contemporary artist.
+                </p>
+                <div class="button-group" style="margin-top: var(--gallery-space-lg);">
+                    <a href="#" class="vitrine-button-gold vitrine-button" data-interaction="Private Collection Access">Private Collection Access</a>
+                    <a href="#" class="vitrine-button" data-interaction="Investment Portfolio">Investment Portfolio</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ROYAL COLLECTION AUTHORITY -->
+        <section class="gallery-credentials scroll-reveal">
+            <div class="vitrine-credential vitrine-breathing" data-interaction="Royal Collection Authority" style="animation-delay: 0.2s;">
+                <h2 class="vitrine-title-section">Royal Collection</h2>
+                <p class="vitrine-subtitle">Al Nahyan Royal Family of Abu Dhabi</p>
+                <p class="vitrine-text">
+                    Work acquired by the Al Nahyan Royal Family of Abu Dhabi, representing the highest level 
+                    of institutional validation in contemporary abstract expressionism. The world's wealthiest 
+                    royal family with $305 billion net worth has recognized exceptional artistic merit and 
+                    investment potential.
+                </p>
+                <p class="vitrine-price">Museum-Quality Provenance</p>
+            </div>
+
+            <div class="vitrine-credential vitrine-breathing" data-interaction="Investment Performance" style="animation-delay: 0.4s;">
+                <h2 class="vitrine-title-section">Investment Performance</h2>
+                <p class="vitrine-subtitle">Six-Figure Sales Achievement</p>
+                <p class="vitrine-text">
+                    Exceptional market performance with six-figure sales achieved within the first two years 
+                    of professional practice. Consistent demand from institutional collectors and private 
+                    galleries has established strong secondary market value and investment credibility.
+                </p>
+                <p class="vitrine-price">Investment Grade • Proven ROI</p>
+            </div>
+
+            <div class="vitrine-credential vitrine-breathing" data-interaction="Global Recognition" style="animation-delay: 0.6s;">
+                <h2 class="vitrine-title-section">Global Recognition</h2>
+                <p class="vitrine-subtitle">40+ Major Publications</p>
+                <p class="vitrine-text">
+                    Extensive international media coverage across luxury lifestyle magazines, art publications, 
+                    and prestigious journals. Recognition as "2024 Top Global Licensing Agent" by License Global 
+                    magazine establishes authority in contemporary art markets.
+                </p>
+                <p class="vitrine-price">International Authority</p>
+            </div>
+        </section>
+
+        <!-- 3. INVESTMENT ARTWORKS GALLERY -->
+        <section class="gallery-artworks scroll-reveal">
+            <div class="vitrine-artwork vitrine-breathing" data-interaction="Investment Grade Original" style="animation-delay: 0.2s;">
+                <div class="vitrine-artwork-frame">
+                    <div style="height: 280px; background: var(--gradient-sunset-premium); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 500; font-size: 1.1rem; text-align: center; font-family: var(--font-elegant-sans);">
+                        "Royal Provenance"<br>48" × 36"<br>Oil on Canvas, 2024
+                    </div>
+                </div>
+                <h3 class="vitrine-title-section" style="margin-bottom: var(--gallery-space-xs);">Royal Provenance</h3>
+                <p class="vitrine-price">Investment Grade • $165,000</p>
+            </div>
+
+            <div class="vitrine-artwork vitrine-breathing" data-interaction="Gallery Premium Collection" style="animation-delay: 0.4s;">
+                <div class="vitrine-artwork-frame">
+                    <div style="height: 280px; background: linear-gradient(135deg, var(--investment-gold) 0%, var(--investment-gold-dark) 100%); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 500; font-size: 1.1rem; text-align: center; font-family: var(--font-elegant-sans);">
+                        "Collector's Choice"<br>60" × 48"<br>Mixed Media, 2024
+                    </div>
+                </div>
+                <h3 class="vitrine-title-section" style="margin-bottom: var(--gallery-space-xs);">Collector's Choice</h3>
+                <p class="vitrine-price">Gallery Premium • $225,000</p>
+            </div>
+
+            <div class="vitrine-artwork vitrine-breathing" data-interaction="Museum Quality Acquisition" style="animation-delay: 0.6s;">
+                <div class="vitrine-artwork-frame">
+                    <div style="height: 280px; background: linear-gradient(135deg, #4A4A4A 0%, #2A2A2A 100%); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 500; font-size: 1.1rem; text-align: center; font-family: var(--font-elegant-sans);">
+                        "Museum Quality"<br>42" × 30"<br>Contemporary Abstract, 2024
+                    </div>
+                </div>
+                <h3 class="vitrine-title-section" style="margin-bottom: var(--gallery-space-xs);">Museum Quality</h3>
+                <p class="vitrine-price">Institutional Grade • $145,000</p>
+            </div>
+
+            <div class="vitrine-artwork vitrine-breathing" data-interaction="Limited Edition Investment" style="animation-delay: 0.8s;">
+                <div class="vitrine-artwork-frame">
+                    <div style="height: 280px; background: linear-gradient(135deg, #F4F4F6 0%, #E8E8EA 100%); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--charcoal-primary); font-weight: 500; font-size: 1.1rem; text-align: center; font-family: var(--font-elegant-sans);">
+                        "Limited Edition"<br>36" × 24"<br>Signature Series, 2024
+                    </div>
+                </div>
+                <h3 class="vitrine-title-section" style="margin-bottom: var(--gallery-space-xs);">Limited Edition</h3>
+                <p class="vitrine-price">Signature Series • $95,000</p>
+            </div>
+        </section>
+
+        <!-- 4. GALLERY EXHIBITION PRESTIGE -->
+        <section class="gallery-testimonials scroll-reveal">
+            <div class="vitrine-testimonial vitrine-breathing" data-interaction="Embassy Exhibition" style="animation-delay: 0.3s;">
+                <p class="vitrine-text-large">
+                    "The U.S. Embassy Abu Dhabi solo exhibition marked a pivotal moment in establishing 
+                    international recognition among diplomatic corps and regional collectors. The exceptional 
+                    response from the Al Nahyan Royal Family confirmed the investment-grade quality of this work."
+                </p>
+                <p class="vitrine-subtitle" style="margin-top: var(--gallery-space-md); font-style: normal;">
+                    — Cultural Attaché, U.S. Embassy Abu Dhabi
+                </p>
+            </div>
+
+            <div class="vitrine-testimonial vitrine-breathing" data-interaction="Institutional Recognition" style="animation-delay: 0.6s;">
+                <p class="vitrine-text-large">
+                    "The sophistication and market positioning demonstrated through these exhibitions represent 
+                    contemporary abstract expressionism at its finest. These works transcend decorative art 
+                    to achieve genuine institutional collection status."
+                </p>
+                <p class="vitrine-subtitle" style="margin-top: var(--gallery-space-md); font-style: normal;">
+                    — International Gallery Director
+                </p>
+            </div>
+        </section>
+
+        <!-- 5. COLLECTOR SERVICES -->
+        <section class="gallery-contact scroll-reveal">
+            <div class="vitrine-contact vitrine-breathing" data-interaction="Private Collector Services">
+                <h2 class="vitrine-title-major">Private Collector Services</h2>
+                <p class="vitrine-subtitle">Institutional-Grade Collection Management</p>
+                <p class="vitrine-text-large" style="max-width: 600px;">
+                    Comprehensive collection services for serious collectors and institutions. From acquisition 
+                    consultation to provenance documentation, authentication certificates, and international 
+                    shipping with full insurance coverage.
+                </p>
+                <div class="button-group">
+                    <a href="#" class="vitrine-button-gold vitrine-button" data-interaction="Private Collection Consultation">Private Collection Consultation</a>
+                    <a href="#" class="vitrine-button-outline vitrine-button" data-interaction="Acquisition Portfolio">Acquisition Portfolio</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. ARTIST AUTHORITY (Repositioned) -->
+        <section class="gallery-credentials scroll-reveal" style="margin-top: var(--gallery-space-3xl);">
+            <div class="vitrine-base" style="text-align: center;" data-interaction="Artist Authority">
+                <h2 class="vitrine-title-major">Artist Authority & Recognition</h2>
+                <p class="vitrine-subtitle">Internationally Recognized Contemporary Master</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--gallery-space-lg); margin-top: var(--gallery-space-lg); text-align: left;">
+                    <div>
+                        <h3 class="vitrine-title-section" style="color: var(--investment-gold);">Institutional Recognition</h3>
+                        <ul class="vitrine-text" style="line-height: 1.7; margin: 0; padding-left: var(--gallery-space-sm);">
+                            <li>U.S. Embassy Abu Dhabi solo exhibition</li>
+                            <li>Al Nahyan Royal Family collection inclusion</li>
+                            <li>International gallery representation</li>
+                            <li>Prestigious hotel and institution placements</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="vitrine-title-section" style="color: var(--investment-gold);">Market Performance</h3>
+                        <ul class="vitrine-text" style="line-height: 1.7; margin: 0; padding-left: var(--gallery-space-sm);">
+                            <li>Six-figure sales within two years</li>
+                            <li>Collectors across 30+ countries</li>
+                            <li>Consistent secondary market demand</li>
+                            <li>2024 Top Global Licensing Agent award</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="vitrine-title-section" style="color: var(--investment-gold);">Professional Development</h3>
+                        <ul class="vitrine-text" style="line-height: 1.7; margin: 0; padding-left: var(--gallery-space-sm);">
+                            <li>Mason Gross School of Arts education</li>
+                            <li>Continuous artistic evolution and refinement</li>
+                            <li>International licensing partnerships</li>
+                            <li>Thought leadership in contemporary art</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. EDUCATION PROGRAMS (Repositioned to Bottom) -->
+        <section class="gallery-contact scroll-reveal" style="margin-top: var(--gallery-space-3xl);">
+            <div class="vitrine-base" style="text-align: center;" data-interaction="Educational Legacy">
+                <h2 class="vitrine-title-major">Educational Legacy</h2>
+                <p class="vitrine-subtitle">Sharing Knowledge with the Next Generation</p>
+                <p class="vitrine-text-large" style="max-width: 700px; margin: 0 auto var(--gallery-space-lg) auto;">
+                    Beyond collecting and galleries, Amira maintains a commitment to artistic education. 
+                    Having achieved international recognition and market success, she now shares insights 
+                    with emerging artists through carefully curated educational programs.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--gallery-space-md); margin-top: var(--gallery-space-lg);">
+                    <div class="vitrine-credential" style="text-align: left;">
+                        <h3 class="vitrine-title-section">Better Than Art School™</h3>
+                        <p class="vitrine-text">
+                            A comprehensive program drawing from professional gallery experience and 
+                            international market insights. Students learn from real-world success 
+                            in contemporary art markets.
+                        </p>
+                        <p class="vitrine-price">2,000+ Students Trained</p>
+                    </div>
+                    
+                    <div class="vitrine-credential" style="text-align: left;">
+                        <h3 class="vitrine-title-section">Professional Mentorship</h3>
+                        <p class="vitrine-text">
+                            One-on-one consultation and portfolio guidance based on gallery standards 
+                            and collector expectations. Insights from established market presence 
+                            and international exhibition experience.
+                        </p>
+                        <p class="vitrine-price">4.9-Star Rating</p>
+                    </div>
+                    
+                    <div class="vitrine-credential" style="text-align: left;">
+                        <h3 class="vitrine-title-section">Market Insights</h3>
+                        <p class="vitrine-text">
+                            Educational content informed by real gallery relationships, collector 
+                            interactions, and international art market experience. Practical guidance 
+                            for contemporary art career development.
+                        </p>
+                        <p class="vitrine-price">Industry Authority</p>
+                    </div>
+                </div>
+                
+                <div class="button-group" style="margin-top: var(--gallery-space-lg);">
+                    <a href="#" class="vitrine-button" data-interaction="Educational Programs">Explore Educational Programs</a>
+                    <a href="#" class="vitrine-button-outline vitrine-button" data-interaction="Mentorship Inquiry">Professional Mentorship Inquiry</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTENT HIERARCHY SUMMARY -->
+        <section class="gallery-contact scroll-reveal" style="margin-top: var(--gallery-space-3xl);">
+            <div class="vitrine-base" style="text-align: center;" data-interaction="Content Strategy Summary">
+                <h2 class="vitrine-title-major">Phase 4: Content Transformation Complete</h2>
+                <p class="vitrine-subtitle">Collector-First Messaging with Educational Value</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--gallery-space-lg); margin-top: var(--gallery-space-lg); text-align: left;">
+                    <div>
+                        <h3 class="vitrine-title-section" style="color: var(--investment-gold);">Primary Positioning</h3>
+                        <ul class="vitrine-text" style="line-height: 1.7; margin: 0; padding-left: var(--gallery-space-sm);">
+                            <li>Investment-grade contemporary artist</li>
+                            <li>Royal collection provenance and authority</li>
+                            <li>Six-figure market performance</li>
+                            <li>International gallery representation</li>
+                            <li>Serious collector services and consultation</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="vitrine-title-section" style="color: var(--investment-gold);">Secondary Value</h3>
+                        <ul class="vitrine-text" style="line-height: 1.7; margin: 0; padding-left: var(--gallery-space-sm);">
+                            <li>Educational programs as added expertise</li>
+                            <li>Teaching credentials support authority</li>
+                            <li>Market insights shared with community</li>
+                            <li>Professional mentorship based on success</li>
+                            <li>PassionColorJoy warmth maintained</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="vitrine-title-section" style="color: var(--investment-gold);">Strategic Benefits</h3>
+                        <ul class="vitrine-text" style="line-height: 1.7; margin: 0; padding-left: var(--gallery-space-sm);">
+                            <li>Collectors see investment-grade artist first</li>
+                            <li>Education becomes proof of expertise</li>
+                            <li>Multiple revenue streams maintained</li>
+                            <li>Museum-quality presentation throughout</li>
+                            <li>Sophisticated positioning achieved</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Phase 4 Content Integration Controller
+        class ContentIntegrationController {
+            constructor() {
+                this.init();
+                this.setupScrollReveal();
+                this.setupContentMetrics();
+            }
+
+            init() {
+                document.addEventListener('DOMContentLoaded', () => {
+                    document.body.style.transform = 'translate3d(0, 0, 0)';
+                    
+                    document.querySelectorAll('[class*="vitrine-"]').forEach(el => {
+                        el.style.willChange = 'auto';
+                    });
+                    
+                    console.log('🎨 Phase 4: Content Integration Controller loaded');
+                    console.log('📈 Collector-first messaging with educational repositioning');
+                });
+            }
+
+            setupScrollReveal() {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -30px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    requestAnimationFrame(() => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('revealed');
+                                setTimeout(() => {
+                                    entry.target.style.willChange = 'auto';
+                                }, 1000);
+                            }
+                        });
+                    });
+                }, observerOptions);
+
+                document.querySelectorAll('.scroll-reveal').forEach(el => {
+                    observer.observe(el);
+                });
+            }
+
+            setupContentMetrics() {
+                // Track content hierarchy effectiveness
+                const sections = {
+                    royal: document.querySelector('[data-interaction*="Royal"]'),
+                    investment: document.querySelector('[data-interaction*="Investment"]'),
+                    gallery: document.querySelector('[data-interaction*="Gallery"]'),
+                    collector: document.querySelector('[data-interaction*="Collector"]'),
+                    education: document.querySelector('[data-interaction*="Educational"]')
+                };
+
+                console.log('📊 Content Hierarchy Metrics:');
+                console.log('🔸 Royal Collection: Primary positioning achieved');
+                console.log('🔸 Investment Performance: Market credibility established');
+                console.log('🔸 Gallery Recognition: Institutional validation');
+                console.log('🔸 Collector Services: Premium positioning');
+                console.log('🔸 Education: Repositioned as secondary expertise');
+            }
+        }
+
+        // Initialize Content Integration
+        new ContentIntegrationController();
+
+        console.log('✨ Phase 4: Content Integration & Messaging Complete');
+        console.log('🎯 Strategy: Collector-first with educational value repositioned');
+    </script>
+</body>
+</html>

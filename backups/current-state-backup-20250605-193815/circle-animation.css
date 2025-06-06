@@ -1,0 +1,33 @@
+/* Smooth rotation animation for "Let's Create Together" circle */
+@keyframes smoothRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Apply to both desktop and mobile */
+.lets-create-circle {
+  animation: smoothRotate 20s linear infinite;
+}
+
+/* Ensure content inside doesn't rotate */
+.lets-create-content {
+  animation: smoothRotate 20s linear infinite reverse;
+}
+
+/* Make sure animation is smooth */
+.lets-create-circle, .lets-create-content {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Ensure animation works on all devices */
+@media (prefers-reduced-motion: reduce) {
+  .lets-create-circle, .lets-create-content {
+    animation-duration: 30s; /* Slower for accessibility */
+  }
+}

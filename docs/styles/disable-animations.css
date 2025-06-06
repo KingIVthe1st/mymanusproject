@@ -1,0 +1,50 @@
+/* Disable Section Title Animations */
+
+/* Remove text-scramble styling */
+.text-scramble {
+    position: static !important;
+    display: block !important;
+    overflow: visible !important;
+}
+
+.text-scramble.active {
+    animation: none !important;
+}
+
+/* Disable text glitch animation */
+@keyframes textGlitch {
+    0%, 100% { 
+        transform: none !important; 
+    }
+}
+
+/* Override any remaining text scramble effects */
+.text-scramble::before,
+.text-scramble::after {
+    display: none !important;
+}
+
+/* Ensure all section titles are static */
+h1, h2, h3, h4, h5, h6 {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+/* Remove any reveal animations on headings */
+.text-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* Disable any micro-interaction text effects */
+.text-scramble:hover {
+    animation: none !important;
+    transform: none !important;
+}
+
+/* Prevent text scramble from being triggered */
+.text-scramble {
+    pointer-events: auto !important;
+}

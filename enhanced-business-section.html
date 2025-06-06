@@ -1,0 +1,141 @@
+<!-- Enhanced Business Contact Section - Multiple Opportunities -->
+<section id="business-opportunities" class="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-amber-200 to-orange-200 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-72 h-72 bg-gradient-to-br from-pink-200 to-purple-200 rounded-full filter blur-3xl"></div>
+    </div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-amber-100 to-orange-100 text-amber-700 text-sm font-semibold uppercase tracking-wide mb-4">Business Opportunities</span>
+            <h2 class="text-5xl font-serif font-bold text-gray-800 mb-6">Collaborate With Amira</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Explore diverse ways to work with an internationally collected artist whose work graces royal collections</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <!-- Press & Media -->
+            <div class="business-card glass-card p-8 text-center hover:transform hover:scale-105 transition-all duration-300">
+                <div class="icon-circle bg-gradient-to-br from-blue-500 to-purple-600 mb-6">
+                    <i class="fas fa-microphone text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Press & Media</h3>
+                <p class="text-gray-600 mb-6">Interviews, feature stories, podcast appearances, and media collaborations with an artist featured in 40+ major publications</p>
+                <ul class="text-sm text-gray-500 text-left space-y-2 mb-6">
+                    <li>• Magazine features & interviews</li>
+                    <li>• Podcast appearances</li>
+                    <li>• Television interviews</li>
+                    <li>• Documentary participation</li>
+                    <li>• Art industry commentary</li>
+                </ul>
+                <button class="btn btn-primary w-full" onclick="openContactModal('press')">Request Media Kit</button>
+            </div>
+
+            <!-- Licensing Opportunities -->
+            <div class="business-card glass-card p-8 text-center hover:transform hover:scale-105 transition-all duration-300">
+                <div class="icon-circle bg-gradient-to-br from-green-500 to-emerald-600 mb-6">
+                    <i class="fas fa-handshake text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Licensing</h3>
+                <p class="text-gray-600 mb-6">License Amira's artwork for products, publications, digital platforms, and commercial applications</p>
+                <ul class="text-sm text-gray-500 text-left space-y-2 mb-6">
+                    <li>• Product licensing</li>
+                    <li>• Publication rights</li>
+                    <li>• Digital platform usage</li>
+                    <li>• Commercial applications</li>
+                    <li>• Brand collaborations</li>
+                </ul>
+                <button class="btn btn-secondary w-full" onclick="openContactModal('licensing')">Licensing Inquiry</button>
+            </div>
+
+            <!-- Speaking Engagements -->
+            <div class="business-card glass-card p-8 text-center hover:transform hover:scale-105 transition-all duration-300">
+                <div class="icon-circle bg-gradient-to-br from-purple-500 to-pink-600 mb-6">
+                    <i class="fas fa-podium text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Speaking</h3>
+                <p class="text-gray-600 mb-6">Book Amira for keynotes, workshops, art education seminars, and industry panels</p>
+                <ul class="text-sm text-gray-500 text-left space-y-2 mb-6">
+                    <li>• Keynote presentations</li>
+                    <li>• Artist workshops</li>
+                    <li>• Educational seminars</li>
+                    <li>• Industry panels</li>
+                    <li>• Virtual presentations</li>
+                </ul>
+                <button class="btn btn-accent w-full" onclick="openContactModal('speaking')">Book Speaker</button>
+            </div>
+
+            <!-- Education & Mentoring -->
+            <div class="business-card glass-card p-8 text-center hover:transform hover:scale-105 transition-all duration-300">
+                <div class="icon-circle bg-gradient-to-br from-orange-500 to-red-600 mb-6">
+                    <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Education</h3>
+                <p class="text-gray-600 mb-6">Comprehensive art education programs, mentoring, and masterclasses for aspiring artists</p>
+                <ul class="text-sm text-gray-500 text-left space-y-2 mb-6">
+                    <li>• One-on-one mentoring</li>
+                    <li>• Group masterclasses</li>
+                    <li>• Online courses</li>
+                    <li>• Workshop series</li>
+                    <li>• Career guidance</li>
+                </ul>
+                <button class="btn btn-primary w-full" onclick="openContactModal('education')">Learn More</button>
+            </div>
+
+            <!-- Brand Collaborations -->
+            <div class="business-card glass-card p-8 text-center hover:transform hover:scale-105 transition-all duration-300">
+                <div class="icon-circle bg-gradient-to-br from-teal-500 to-cyan-600 mb-6">
+                    <i class="fas fa-rocket text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-semibent text-gray-800 mb-4">Brand Partnerships</h3>
+                <p class="text-gray-600 mb-6">Strategic brand collaborations, ambassador programs, and artistic partnerships with luxury brands</p>
+                <ul class="text-sm text-gray-500 text-left space-y-2 mb-6">
+                    <li>• Brand ambassadorships</li>
+                    <li>• Product collaborations</li>
+                    <li>• Campaign partnerships</li>
+                    <li>• Luxury brand alliances</li>
+                    <li>• Creative consulting</li>
+                </ul>
+                <button class="btn btn-secondary w-full" onclick="openContactModal('partnerships')">Explore Partnership</button>
+            </div>
+
+            <!-- Newsletter & Community -->
+            <div class="business-card glass-card p-8 text-center hover:transform hover:scale-105 transition-all duration-300">
+                <div class="icon-circle bg-gradient-to-br from-indigo-500 to-blue-600 mb-6">
+                    <i class="fas fa-envelope text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Newsletter</h3>
+                <p class="text-gray-600 mb-6">Join an exclusive community of collectors, artists, and art enthusiasts for insider updates</p>
+                <ul class="text-sm text-gray-500 text-left space-y-2 mb-6">
+                    <li>• New artwork releases</li>
+                    <li>• Exhibition announcements</li>
+                    <li>• Exclusive events</li>
+                    <li>• Collector insights</li>
+                    <li>• Behind-the-scenes content</li>
+                </ul>
+                <button class="btn btn-accent w-full" onclick="openNewsletterModal()">Join Community</button>
+            </div>
+        </div>
+
+        <!-- Social Media Connections -->
+        <div class="text-center">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-8">Follow the Journey</h3>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="social-icon instagram" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon facebook" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="#" class="social-icon pinterest" title="Pinterest">
+                    <i class="fab fa-pinterest"></i>
+                </a>
+                <a href="#" class="social-icon linkedin" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="social-icon youtube" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
