@@ -1,0 +1,39 @@
+/* Fix for View All Originals button text legibility */
+
+.btn.btn-primary.glass-button {
+    color: white !important;
+    background: linear-gradient(135deg, #8b5cf6, #a855f7) !important;
+    border: none !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3) !important;
+}
+
+.btn.btn-primary.glass-button:hover {
+    background: linear-gradient(135deg, #7c3aed, #9333ea) !important;
+    color: white !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4) !important;
+}
+
+/* Ensure icon is also visible */
+.btn.btn-primary.glass-button i {
+    color: white !important;
+}
+
+/* Additional specificity for the specific button below artwork */
+a[href*="available-originals"] {
+    color: white !important;
+    background: linear-gradient(135deg, #8b5cf6, #a855f7) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+    letter-spacing: 0.5px !important;
+}
+
+a[href*="available-originals"]:hover {
+    color: white !important;
+    background: linear-gradient(135deg, #7c3aed, #9333ea) !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+}
