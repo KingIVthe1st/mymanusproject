@@ -1,12 +1,12 @@
-/* Standardize all artwork buttons to match Rainbow Spectrum style */
+/* Standardize all artwork buttons to match Rainbow Spectrum frosted glass style */
 .artwork-button {
   display: inline-block !important;
   padding: 0.6rem 1.5rem !important;
-  /* Earthy/muted brown style to match Rainbow Spectrum */
-  background: rgba(101, 67, 33, 0.85) !important;
+  /* Frosted glass style to match original Rainbow Spectrum */
+  background: rgba(255, 255, 255, 0.15) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(139, 95, 56, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   color: #fff !important;
   font-weight: 600 !important;
   border-radius: 30px !important;
@@ -19,10 +19,10 @@
 }
 
 .artwork-button:hover {
-  background: rgba(139, 95, 56, 0.9) !important;
-  border-color: rgba(160, 116, 81, 0.6) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 4px 15px rgba(101, 67, 33, 0.4) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
   color: #fff !important;
 }
 
@@ -31,8 +31,8 @@
 .artwork-overlay .artwork-button,
 section .artwork-button,
 #artwork .artwork-button {
-  background: rgba(101, 67, 33, 0.85) !important;
-  border: 1px solid rgba(139, 95, 56, 0.4) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   color: #fff !important;
 }
 
@@ -40,20 +40,20 @@ section .artwork-button,
 .artwork-overlay .artwork-button:hover,
 section .artwork-button:hover,
 #artwork .artwork-button:hover {
-  background: rgba(139, 95, 56, 0.9) !important;
-  border-color: rgba(160, 116, 81, 0.6) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
   color: #fff !important;
 }
 
 /* Even more specific targeting */
 .artwork-card:hover .artwork-button {
-  background: rgba(101, 67, 33, 0.85) !important;
-  border: 1px solid rgba(139, 95, 56, 0.4) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   color: #fff !important;
 }
 
 .artwork-card:hover .artwork-button:hover {
-  background: rgba(139, 95, 56, 0.9) !important;
-  border-color: rgba(160, 116, 81, 0.6) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
   color: #fff !important;
 }
