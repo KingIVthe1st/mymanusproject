@@ -28,9 +28,18 @@
     <link rel="stylesheet" href="styles/licensing-section.css">
     <link rel="stylesheet" href="styles/featured-logos.css?v=1.1">
     <link rel="stylesheet" href="styles/education-section.css">
+    <link rel="stylesheet" href="styles/education-button-fix.css">
+    <link rel="stylesheet" href="styles/education-button-perfect-fix.css">
+    <link rel="stylesheet" href="styles/education-icon-fix.css">
+    <link rel="stylesheet" href="styles/education-circle-fix.css">
     <link rel="stylesheet" href="styles/featured-in-section.css">
     <!-- Fix for Featured In section hover issues -->
     <link rel="stylesheet" href="styles/featured-in-fix.css">
+    <!-- Fix for Press Kit button text visibility -->
+    <link rel="stylesheet" href="styles/press-kit-button-fix.css">
+    <!-- Fix for Collaborate section overlay badges -->
+    <link rel="stylesheet" href="styles/collaborate-badge-fix.css">
+    <link rel="stylesheet" href="styles/collaborate-tab-styling.css">
     <link rel="stylesheet" href="styles/living-gradient-background.css">
     <link rel="stylesheet" href="styles/micro-interactions.css">
     <link rel="stylesheet" href="styles/name-gradient.css">
@@ -1150,8 +1159,174 @@
         <!-- Testimonial Section -->
         <section class="my-20 py-16 bg-gradient-to-r from-purple-600 to-purple-800 rounded-xl relative overflow-hidden testimonial-card" data-component-name="<section />">
             <div class="max-w-6xl mx-auto px-6" data-component-name="<div />">
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-12 text-center text-reveal"><span data-component-name="<span />">Hear </span><span>from </span><span>Our </span><span>Collectors </span></h2>
-                <div class="senja-embed" data-id="6a3e2a3d-0648-4ec0-bbeb-8dbca588b22a" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-12 text-center text-reveal">
+                    <span data-component-name="<span />">Hear </span><span>from </span><span>Our </span><span>Collectors </span>
+                </h2>
+                
+                <!-- Custom Testimonials Container -->
+                <div class="testimonials-container" style="overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;">
+                    <div class="testimonials-track" style="display: flex; gap: 2rem; min-width: max-content; padding: 1rem 0;">
+                        
+                        <!-- Testimonial 1 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">SJ</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Sarah Johnson</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Interior Designer, NYC</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "Amira's artwork brings such vibrant energy to my living room. The colors are absolutely stunning and I receive compliments from every guest! Her piece became the focal point of our entire space."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 2 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">MC</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Michael Chen</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Tech Executive, San Francisco</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "The commission process was seamless. Amira understood my vision perfectly and created a piece that exceeded all my expectations. The artwork now graces our office lobby."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 3 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">ER</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Emily Rodriguez</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Art Collector, Miami</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "I've purchased three pieces from Amira's collection. Each one tells a unique story and transforms the atmosphere of my home. Her use of color is extraordinary."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 4 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: #333; font-weight: bold; font-size: 1.5rem;">DT</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">David Thompson</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Gallery Owner, Chicago</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "The quality of the artwork is exceptional. The colors are vivid, the texture is rich, and it's clear that each piece is created with passion and skill."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 5 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: #333; font-weight: bold; font-size: 1.5rem;">LA</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Lisa Anderson</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Wellness Center Owner, LA</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "Working with Amira was an absolute pleasure. Her artistic vision and professionalism made the entire experience memorable. The artwork creates a calming energy."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 6 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">JW</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">James Williams</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Museum Curator, Houston</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "The abstract expressionist style speaks to me on a deep level. Amira's use of color and movement creates such emotional depth that resonates with viewers."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 7 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ff9a56 0%, #ff6b95 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">RK</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Rachel Kim</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Architect, Seattle</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "Amira's work perfectly complements modern architecture. I've commissioned pieces for three different projects and clients are always amazed by the energy they bring."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 8 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">TB</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Thomas Brown</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Hotel Owner, Denver</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "The large-scale commission for our hotel lobby exceeded every expectation. Guests constantly ask about the artist. Amira's work elevates any space."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 9 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #a777e3 0%, #6fb1fc 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">AG</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Amanda Garcia</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Yoga Studio Owner, Austin</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "The meditation room piece Amira created helps my students find deeper peace. The colors flow like energy through the space. It's truly transformative art."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 10 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">CP</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Carlos Perez</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Restaurant Owner, Phoenix</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "Amira's vibrant pieces transformed our restaurant into an art destination. Customers love dining surrounded by such beautiful, energetic artwork. Sales increased 30%!"
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- Navigation Dots -->
+                <div class="testimonials-navigation" style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 2rem;">
+                    <button class="nav-dot active" data-index="0" style="width: 12px; height: 12px; border-radius: 50%; background: white; border: none; cursor: pointer; transition: all 0.3s ease;"></button>
+                    <button class="nav-dot" data-index="1" style="width: 12px; height: 12px; border-radius: 50%; background: rgba(255, 255, 255, 0.5); border: none; cursor: pointer; transition: all 0.3s ease;"></button>
+                    <button class="nav-dot" data-index="2" style="width: 12px; height: 12px; border-radius: 50%; background: rgba(255, 255, 255, 0.5); border: none; cursor: pointer; transition: all 0.3s ease;"></button>
+                </div>
+                
             </div>
         </section>
         
@@ -1257,18 +1432,17 @@
                     <!-- Custom Artwork -->
                     <div class="group relative overflow-hidden rounded-2xl bg-white shadow-2xl transition-all duration-500 hover:shadow-3xl hover:-translate-y-2 glass-card transform-gpu" data-component-name="<div />">
                         <div class="relative h-64 overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-br from-pink-500 to-rose-600 opacity-90"></div>
                             <img 
-                                src="images/education/amiraspeaking.jpeg" 
-                                alt="Art Workshop" 
+                                src="images/commisionartimage.png" 
+                                alt="Custom Artwork Creation" 
                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 loading="lazy"
                             >
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
                             <div class="absolute bottom-0 left-0 right-0 p-6">
                                 <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-white bg-white/20 backdrop-blur-sm border border-white/20" data-component-name="<span />">
                                     <span class="w-1.5 h-1.5 rounded-full bg-rose-300 mr-2"></span>
-                                    PARTNERSHIP
+                                    COMMISSION
                                 </span>
                             </div>
                         </div>
@@ -1304,7 +1478,7 @@
                                 </li>
                             </ul>
                             
-                            <a href="https://shop.amirarahim.com/pages/commission" class="inline-flex items-center justify-center w-full px-6 py-3 bg-pink-500 text-white font-medium rounded-full hover:bg-pink-600 transition-all duration-300 glass-button">
+                            <a href="https://www.amiracommissions.com" class="inline-flex items-center justify-center w-full px-6 py-3 bg-pink-500 text-white font-medium rounded-full hover:bg-pink-600 transition-all duration-300 glass-button">
                                 Commission Artwork
                                 <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                             </a>
@@ -1700,6 +1874,195 @@
 
     <!-- Custom JS -->
     <script src="scripts/main.js"></script>
+    
+    <!-- Senja Testimonials Widget -->
+    <script async type="text/javascript" src="https://widget.senja.io/widget/6a3e2a3d-0648-4ec0-bbeb-8dbca588b22a/platform.js"></script>
+    
+    <!-- Custom Testimonials Auto-Scroll Script -->
+    <script>
+    function initializeTestimonialsAutoScroll() {
+        console.log('Initializing custom testimonials autoscroll...');
+        
+        const container = document.querySelector('.testimonials-container');
+        const dots = document.querySelectorAll('.nav-dot');
+        let autoScrollInterval;
+        let isUserInteracting = false;
+        let currentIndex = 0;
+        
+        if (!container) {
+            console.error('Testimonials container not found');
+            return;
+        }
+        
+        console.log('Found testimonials container:', container);
+        
+        // Calculate how much to scroll (show 4 testimonials by default)
+        const cardWidth = 320; // Each card is 320px
+        const gap = 32; // 2rem gap = 32px
+        const testimonialsPerView = 4;
+        const scrollAmount = (cardWidth + gap) * testimonialsPerView;
+        
+        function updateDots() {
+            dots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.style.background = 'white';
+                    dot.style.transform = 'scale(1.2)';
+                } else {
+                    dot.style.background = 'rgba(255, 255, 255, 0.5)';
+                    dot.style.transform = 'scale(1)';
+                }
+            });
+        }
+        
+        function scrollToPosition(index) {
+            currentIndex = index;
+            const targetScroll = index * scrollAmount;
+            
+            console.log('Scrolling to position:', { index, targetScroll });
+            
+            container.scrollTo({
+                left: targetScroll,
+                behavior: 'smooth'
+            });
+            
+            updateDots();
+        }
+        
+        function startAutoScroll() {
+            if (autoScrollInterval) clearInterval(autoScrollInterval);
+            
+            console.log('Starting testimonials autoscroll every 3 seconds...');
+            
+            autoScrollInterval = setInterval(() => {
+                if (isUserInteracting) return;
+                
+                const totalTestimonials = 10;
+                const maxIndex = Math.ceil(totalTestimonials / testimonialsPerView) - 1;
+                
+                let nextIndex = currentIndex + 1;
+                if (nextIndex > maxIndex) {
+                    nextIndex = 0;
+                    console.log('Resetting to beginning of testimonials');
+                }
+                
+                scrollToPosition(nextIndex);
+                
+            }, 3000); // 3 seconds interval
+        }
+        
+        function stopAutoScroll() {
+            console.log('Stopping testimonials autoscroll...');
+            if (autoScrollInterval) {
+                clearInterval(autoScrollInterval);
+                autoScrollInterval = null;
+            }
+        }
+        
+        function setupEventListeners() {
+            // Dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    console.log('Dot clicked:', index);
+                    stopAutoScroll();
+                    scrollToPosition(index);
+                    // Resume after 5 seconds
+                    setTimeout(startAutoScroll, 5000);
+                });
+            });
+            
+            // Pause on user interaction
+            container.addEventListener('mouseenter', () => {
+                isUserInteracting = true;
+                console.log('User hovering - pausing autoscroll');
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                isUserInteracting = false;
+                console.log('User left - resuming autoscroll');
+            });
+            
+            // Pause on touch/scroll
+            container.addEventListener('touchstart', () => {
+                isUserInteracting = true;
+                console.log('Touch detected - pausing autoscroll');
+            });
+            
+            container.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    isUserInteracting = false;
+                    console.log('Touch ended - resuming autoscroll');
+                }, 2000);
+            });
+            
+            // Pause on manual scroll
+            let scrollTimeout;
+            container.addEventListener('scroll', () => {
+                isUserInteracting = true;
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    isUserInteracting = false;
+                }, 3000);
+            });
+        }
+        
+        // Setup scrollbar styling
+        const style = document.createElement('style');
+        style.textContent = `
+            .testimonials-container::-webkit-scrollbar {
+                height: 6px;
+            }
+            
+            .testimonials-container::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 3px;
+            }
+            
+            .testimonials-container::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.4);
+                border-radius: 3px;
+            }
+            
+            .testimonials-container::-webkit-scrollbar-thumb:hover {
+                background: rgba(255, 255, 255, 0.6);
+            }
+            
+            @media (max-width: 768px) {
+                .testimonials-track {
+                    gap: 1rem !important;
+                }
+                
+                .testimonial-card {
+                    flex: 0 0 280px !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Initialize
+        setupEventListeners();
+        updateDots();
+        
+        // Start autoscroll after a delay
+        setTimeout(() => {
+            startAutoScroll();
+        }, 2000);
+        
+        console.log('Custom testimonials autoscroll initialized successfully!');
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeTestimonialsAutoScroll);
+    } else {
+        initializeTestimonialsAutoScroll();
+    }
+    
+    // Also try on window load
+    window.addEventListener('load', () => {
+        setTimeout(initializeTestimonialsAutoScroll, 500);
+    });
+    </script>
+    
     <script src="scripts/mobile-micro-animations.js"></script>
     <script src="js/navigation.js"></script>
     
