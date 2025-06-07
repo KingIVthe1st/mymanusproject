@@ -1519,12 +1519,15 @@
                     <div class="group relative overflow-hidden rounded-2xl bg-white shadow-2xl transition-all duration-500 hover:shadow-3xl hover:-translate-y-2 glass-card transform-gpu">
                         <div class="relative h-64 overflow-hidden">
                             <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/70 to-purple-700/70 opacity-70"></div>
-                            <img 
-                                src="images/education/amiraartscreen.png" 
-                                alt="Art Workshop" 
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                loading="lazy"
-                            >
+                            <picture>
+                            <source srcset="images/optimized/amiraartscreen-desktop.avif" type="image/avif" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/amiraartscreen-desktop.webp" type="image/webp" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/amiraartscreen-tablet.avif" type="image/avif" media="(min-width: 768px)">
+                            <source srcset="images/optimized/amiraartscreen-tablet.webp" type="image/webp" media="(min-width: 768px)">
+                            <source srcset="images/optimized/amiraartscreen-mobile.avif" type="image/avif" media="(max-width: 767px)">
+                            <source srcset="images/optimized/amiraartscreen-mobile.webp" type="image/webp" media="(max-width: 767px)">
+                            <img src="images/education/amiraartscreen.png" alt="Art Workshop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        </picture>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
                             <div class="absolute bottom-0 left-0 right-0 p-6">
                                 <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-white bg-white/20 backdrop-blur-sm border border-white/20">
@@ -1589,12 +1592,15 @@
                     <!-- Custom Artwork -->
                     <div class="group relative overflow-hidden rounded-2xl bg-white shadow-2xl transition-all duration-500 hover:shadow-3xl hover:-translate-y-2 glass-card transform-gpu" data-component-name="<div />">
                         <div class="relative h-64 overflow-hidden">
-                            <img 
-                                src="images/commisionartimage.png" 
-                                alt="Custom Artwork Creation" 
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                loading="lazy"
-                            >
+                            <picture>
+                            <source srcset="images/optimized/commisionartimage-desktop.avif" type="image/avif" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/commisionartimage-desktop.webp" type="image/webp" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/commisionartimage-tablet.avif" type="image/avif" media="(min-width: 768px)">
+                            <source srcset="images/optimized/commisionartimage-tablet.webp" type="image/webp" media="(min-width: 768px)">
+                            <source srcset="images/optimized/commisionartimage-mobile.avif" type="image/avif" media="(max-width: 767px)">
+                            <source srcset="images/optimized/commisionartimage-mobile.webp" type="image/webp" media="(max-width: 767px)">
+                            <img src="images/commisionartimage.png" alt="Commission Artwork" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        </picture>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
                             <div class="absolute bottom-0 left-0 right-0 p-6">
                                 <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-white bg-white/20 backdrop-blur-sm border border-white/20" data-component-name="<span />">
@@ -1646,12 +1652,15 @@
                     <div class="group relative overflow-hidden rounded-2xl bg-white shadow-2xl transition-all duration-500 hover:shadow-3xl hover:-translate-y-2 glass-card transform-gpu">
                         <div class="relative h-64 overflow-hidden">
                             <div class="absolute inset-0 bg-gradient-to-br from-amber-500 to-yellow-600 opacity-90"></div>
-                            <img 
-                                src="images/education/amirainfrontofclass.jpeg" 
-                                alt="Media & Speaking" 
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                loading="lazy"
-                            >
+                            <picture>
+                            <source srcset="images/optimized/amirainfrontofclass-desktop.avif" type="image/avif" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/amirainfrontofclass-desktop.webp" type="image/webp" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/amirainfrontofclass-tablet.avif" type="image/avif" media="(min-width: 768px)">
+                            <source srcset="images/optimized/amirainfrontofclass-tablet.webp" type="image/webp" media="(min-width: 768px)">
+                            <source srcset="images/optimized/amirainfrontofclass-mobile.avif" type="image/avif" media="(max-width: 767px)">
+                            <source srcset="images/optimized/amirainfrontofclass-mobile.webp" type="image/webp" media="(max-width: 767px)">
+                            <img src="images/education/amirainfrontofclass.jpeg" alt="Amira speaking at event" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        </picture>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                             <div class="absolute bottom-0 left-0 right-0 p-6">
                                 <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-white bg-white/20 backdrop-blur-sm border border-white/20">
@@ -1910,7 +1919,15 @@
                     </div>
                     
                     <div class="mb-8">
-                        <img src="images/camel.png" alt="Artistic camel illustration" class="w-full max-w-sm rounded-lg shadow-lg">
+                        <picture>
+                            <source srcset="images/optimized/camel-desktop.avif" type="image/avif" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/camel-desktop.webp" type="image/webp" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/camel-tablet.avif" type="image/avif" media="(min-width: 768px)">
+                            <source srcset="images/optimized/camel-tablet.webp" type="image/webp" media="(min-width: 768px)">
+                            <source srcset="images/optimized/camel-mobile.avif" type="image/avif" media="(max-width: 767px)">
+                            <source srcset="images/optimized/camel-mobile.webp" type="image/webp" media="(max-width: 767px)">
+                            <img src="images/camel.png" alt="Camel Artwork" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        </picture>
                     </div>
                 </div>
                 
