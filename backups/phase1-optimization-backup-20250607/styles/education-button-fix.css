@@ -1,0 +1,67 @@
+/* Education Section Button Visibility Fix - Enhanced */
+
+/* Fix all buttons in education section */
+#education .education-card a,
+#education .education-card button,
+#education .inline-block {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    border: none !important;
+    outline: none !important;
+}
+
+/* Ensure button text is fully visible */
+#education .education-card a *,
+#education .education-card button *,
+#education .inline-block * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: white !important;
+}
+
+/* Fix specific gradient backgrounds for each button */
+#education .education-card:nth-child(1) a,
+#education .education-card:nth-child(1) button {
+    background: linear-gradient(135deg, #8b5cf6, #a855f7) !important;
+}
+
+#education .education-card:nth-child(2) a,
+#education .education-card:nth-child(2) button {
+    background: linear-gradient(135deg, #ec4899, #f472b6) !important;
+}
+
+#education .education-card:nth-child(3) a,
+#education .education-card:nth-child(3) button {
+    background: linear-gradient(135deg, #f59e0b, #f97316) !important;
+}
+
+/* Ensure all FontAwesome icons are visible */
+#education .fas,
+#education .fab,
+#education i {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: white !important;
+    -webkit-text-fill-color: white !important;
+}
+
+/* Override any fading or animation effects */
+#education .bg-gradient-to-r {
+    opacity: 1 !important;
+}
+
+/* Force visibility for any elements that might be hidden */
+#education .education-card .inline-block {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Hover effects */
+#education .education-card a:hover,
+#education .education-card button:hover {
+    opacity: 1 !important;
+    transform: scale(1.05) !important;
+}

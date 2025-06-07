@@ -1,0 +1,371 @@
+    <!-- Phase 2: Advanced Image Optimization & Lazy Loading System -->
+    <script>
+        (function() {
+            'use strict';
+            
+            // Configuration for the image optimization system
+            const CONFIG = {
+                // Quality settings for different image types
+                qualities: {
+                    hero: 85,        // High quality for above-fold images
+                    artwork: 75,     // Good quality for artwork gallery
+                    general: 65      // Standard quality for other images
+                },
+                
+                // Breakpoints for responsive images
+                breakpoints: {
+                    mobile: 768,
+                    tablet: 1024,
+                    desktop: 1440
+                },
+                
+                // Lazy loading settings
+                lazyLoading: {
+                    rootMargin: '50px',
+                    threshold: 0.1
+                },
+                
+                // Performance monitoring
+                performance: {
+                    enabled: true,
+                    logToConsole: false
+                }
+            };
+            
+            // Performance monitoring
+            const performanceMonitor = {
+                start: Date.now(),
+                imageLoads: 0,
+                totalBytes: 0,
+                
+                log: function(action, data) {
+                    if (!CONFIG.performance.enabled) return;
+                    
+                    if (CONFIG.performance.logToConsole) {
+                        console.log(`[Image Optimizer] ${action}:`, data);
+                    }
+                },
+                
+                recordImageLoad: function(size) {
+                    this.imageLoads++;
+                    this.totalBytes += size || 0;
+                    this.log('Image loaded', { 
+                        count: this.imageLoads, 
+                        totalMB: (this.totalBytes / 1024 / 1024).toFixed(2) 
+                    });
+                }
+            };
+            
+            // Optimized image loader with WebP detection and lazy loading
+            class OptimizedImageLoader {
+                constructor() {
+                    this.supportsWebP = false;
+                    this.supportsAvif = false;
+                    this.observer = null;
+                    this.init();
+                }
+                
+                async init() {
+                    // Detect format support
+                    await this.detectFormatSupport();
+                    
+                    // Setup lazy loading observer
+                    this.setupIntersectionObserver();
+                    
+                    // Process all images
+                    this.processAllImages();
+                    
+                    performanceMonitor.log('Initialization complete', {
+                        webp: this.supportsWebP,
+                        avif: this.supportsAvif
+                    });
+                }
+                
+                async detectFormatSupport() {
+                    // Test WebP support
+                    try {
+                        const webpTest = new Promise((resolve) => {
+                            const img = new Image();
+                            img.onload = () => resolve(img.width === 2);
+                            img.onerror = () => resolve(false);
+                            img.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+                        });
+                        this.supportsWebP = await webpTest;
+                    } catch (e) {
+                        this.supportsWebP = false;
+                    }
+                    
+                    // Test AVIF support (future-proofing)
+                    try {
+                        const avifTest = new Promise((resolve) => {
+                            const img = new Image();
+                            img.onload = () => resolve(img.width === 2);
+                            img.onerror = () => resolve(false);
+                            img.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgABogQEAwgMg8f8D///8WfhwB8+ErK42A=';
+                        });
+                        this.supportsAvif = await avifTest;
+                    } catch (e) {
+                        this.supportsAvif = false;
+                    }
+                }
+                
+                setupIntersectionObserver() {
+                    if (!('IntersectionObserver' in window)) {
+                        // Fallback for older browsers
+                        this.loadAllImages();
+                        return;
+                    }
+                    
+                    this.observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                this.loadImage(entry.target);
+                                this.observer.unobserve(entry.target);
+                            }
+                        });
+                    }, CONFIG.lazyLoading);
+                }
+                
+                processAllImages() {
+                    const images = document.querySelectorAll('img[src], img[data-src]');
+                    
+                    images.forEach(img => {
+                        // Skip if already processed
+                        if (img.dataset.optimized) return;
+                        
+                        // Immediate load for critical images
+                        if (img.dataset.critical === 'true' || img.closest('.hero, .navbar')) {
+                            this.loadImage(img);
+                        } else {
+                            // Lazy load for non-critical images
+                            if (this.observer) {
+                                this.observer.observe(img);
+                            } else {
+                                this.loadImage(img);
+                            }
+                        }
+                    });
+                }
+                
+                loadImage(img) {
+                    if (img.dataset.optimized) return;
+                    
+                    const originalSrc = img.dataset.src || img.src;
+                    const optimizedSrc = this.getOptimizedSrc(originalSrc, img);
+                    
+                    // Add loading states
+                    img.classList.add('lazy-loading');
+                    
+                    // Create new image to preload
+                    const newImg = new Image();
+                    
+                    newImg.onload = () => {
+                        img.src = optimizedSrc;
+                        img.classList.remove('lazy-loading');
+                        img.classList.add('lazy-loaded');
+                        img.dataset.optimized = 'true';
+                        
+                        // Estimate file size for monitoring
+                        const estimatedSize = this.estimateImageSize(img);
+                        performanceMonitor.recordImageLoad(estimatedSize);
+                    };
+                    
+                    newImg.onerror = () => {
+                        // Fallback to original
+                        img.src = originalSrc;
+                        img.classList.remove('lazy-loading');
+                        img.dataset.optimized = 'true';
+                        performanceMonitor.log('Image load failed, using fallback', originalSrc);
+                    };
+                    
+                    newImg.src = optimizedSrc;
+                }
+                
+                getOptimizedSrc(originalSrc, img) {
+                    // Don't optimize external images or data URLs
+                    if (originalSrc.startsWith('http') || originalSrc.startsWith('data:')) {
+                        return originalSrc;
+                    }
+                    
+                    // Extract path components
+                    const pathParts = originalSrc.split('/');
+                    const filename = pathParts.pop();
+                    const [name, ext] = filename.split('.');
+                    
+                    // Determine optimal format
+                    let format = ext;
+                    if (this.supportsAvif && ['jpg', 'jpeg', 'png'].includes(ext.toLowerCase())) {
+                        format = 'avif';
+                    } else if (this.supportsWebP && ['jpg', 'jpeg', 'png'].includes(ext.toLowerCase())) {
+                        format = 'webp';
+                    }
+                    
+                    // Determine size based on viewport and image context
+                    const size = this.getOptimalImageSize(img);
+                    
+                    // Build optimized path
+                    const optimizedPath = `images/optimized/${name}-${size}.${format}`;
+                    
+                    // Check if optimized version exists (fallback strategy)
+                    return this.checkImageExists(optimizedPath) ? optimizedPath : originalSrc;
+                }
+                
+                getOptimalImageSize(img) {
+                    const containerWidth = img.parentElement ? img.parentElement.offsetWidth : window.innerWidth;
+                    const devicePixelRatio = window.devicePixelRatio || 1;
+                    const targetWidth = containerWidth * devicePixelRatio;
+                    
+                    // Mobile-first responsive sizing
+                    if (targetWidth <= CONFIG.breakpoints.mobile) {
+                        return 'mobile';
+                    } else if (targetWidth <= CONFIG.breakpoints.tablet) {
+                        return 'tablet';
+                    } else {
+                        return 'desktop';
+                    }
+                }
+                
+                checkImageExists(src) {
+                    // Simple existence check (in production, this would be server-side)
+                    // For now, assume optimized images exist if they follow our naming convention
+                    return src.includes('images/optimized/');
+                }
+                
+                estimateImageSize(img) {
+                    // Rough estimation based on image dimensions and format
+                    const width = img.naturalWidth || img.offsetWidth;
+                    const height = img.naturalHeight || img.offsetHeight;
+                    const pixels = width * height;
+                    
+                    // Estimated bytes per pixel based on format
+                    let bytesPerPixel = 3; // Default for JPEG
+                    if (img.src.includes('.webp')) bytesPerPixel = 2;
+                    if (img.src.includes('.avif')) bytesPerPixel = 1.5;
+                    if (img.src.includes('.png')) bytesPerPixel = 4;
+                    
+                    return pixels * bytesPerPixel;
+                }
+                
+                loadAllImages() {
+                    // Fallback method for browsers without IntersectionObserver
+                    const images = document.querySelectorAll('img[data-src], img:not([data-optimized])');
+                    images.forEach(img => this.loadImage(img));
+                }
+            }
+            
+            // Bandwidth-aware loading
+            class BandwidthOptimizer {
+                constructor() {
+                    this.connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                    this.init();
+                }
+                
+                init() {
+                    if (!this.connection) return;
+                    
+                    // Adjust image quality based on connection
+                    this.adjustQualityBasedOnConnection();
+                    
+                    // Monitor connection changes
+                    this.connection.addEventListener('change', () => {
+                        this.adjustQualityBasedOnConnection();
+                    });
+                }
+                
+                adjustQualityBasedOnConnection() {
+                    if (!this.connection) return;
+                    
+                    const effectiveType = this.connection.effectiveType;
+                    const saveData = this.connection.saveData;
+                    
+                    // Adjust quality based on connection speed
+                    if (saveData || effectiveType === 'slow-2g' || effectiveType === '2g') {
+                        CONFIG.qualities.hero = 60;
+                        CONFIG.qualities.artwork = 50;
+                        CONFIG.qualities.general = 40;
+                        document.documentElement.classList.add('slow-connection');
+                    } else if (effectiveType === '3g') {
+                        CONFIG.qualities.hero = 70;
+                        CONFIG.qualities.artwork = 60;
+                        CONFIG.qualities.general = 50;
+                        document.documentElement.classList.add('medium-connection');
+                    } else {
+                        // 4g or better
+                        CONFIG.qualities.hero = 85;
+                        CONFIG.qualities.artwork = 75;
+                        CONFIG.qualities.general = 65;
+                        document.documentElement.classList.add('fast-connection');
+                    }
+                    
+                    performanceMonitor.log('Connection adjusted', {
+                        effectiveType,
+                        saveData,
+                        qualities: CONFIG.qualities
+                    });
+                }
+            }
+            
+            // Initialize systems when DOM is ready
+            function initializeImageOptimization() {
+                // Initialize bandwidth optimizer
+                new BandwidthOptimizer();
+                
+                // Initialize image loader
+                new OptimizedImageLoader();
+                
+                // Add CSS for loading states if not already present
+                if (!document.querySelector('#image-optimizer-styles')) {
+                    const styles = document.createElement('style');
+                    styles.id = 'image-optimizer-styles';
+                    styles.textContent = `
+                        .lazy-loading {
+                            opacity: 0.3;
+                            transform: scale(0.95);
+                            transition: all 0.6s ease;
+                        }
+                        
+                        .lazy-loaded {
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+                        
+                        /* Reduce quality on slow connections */
+                        .slow-connection img {
+                            image-rendering: -webkit-optimize-contrast;
+                        }
+                        
+                        /* Progressive enhancement for modern browsers */
+                        @supports (image-rendering: crisp-edges) {
+                            .fast-connection img {
+                                image-rendering: crisp-edges;
+                            }
+                        }
+                    `;
+                    document.head.appendChild(styles);
+                }
+                
+                // Report final performance stats
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        performanceMonitor.log('Final stats', {
+                            totalTime: Date.now() - performanceMonitor.start,
+                            imagesLoaded: performanceMonitor.imageLoads,
+                            totalMB: (performanceMonitor.totalBytes / 1024 / 1024).toFixed(2),
+                            avgTimePerImage: performanceMonitor.imageLoads > 0 ? 
+                                ((Date.now() - performanceMonitor.start) / performanceMonitor.imageLoads).toFixed(2) + 'ms' : 'N/A'
+                        });
+                    }, 1000);
+                });
+            }
+            
+            // Start initialization
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeImageOptimization);
+            } else {
+                initializeImageOptimization();
+            }
+            
+        })();
+    </script>
+</body>
+</html>

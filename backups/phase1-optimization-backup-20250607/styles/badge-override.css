@@ -1,0 +1,53 @@
+/* Additional specific targeting for collaboration badges */
+
+/* Target the exact badge structure in the collaborate section */
+#collaborate .group .relative .absolute span[class*="inline-flex"],
+#collaborate .relative .absolute span,
+section[id="collaborate"] .group .absolute span {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 8px 16px !important;
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Enhanced targeting for all badge variations */
+.glass-card .relative .absolute span,
+.group .h-64 + div .absolute span,
+.overflow-hidden .absolute span {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 8px 16px !important;
+}
+
+/* Ensure badges are always visible */
+.absolute span[class*="bg-white"] {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #FFFFFF !important;
+}
+
+/* Force override any conflicting styles */
+span[class*="text-"] {
+    color: #FFFFFF !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+}
+
+.absolute span.w-1\.5 {
+    background: rgba(255, 255, 255, 0.8) !important;
+}

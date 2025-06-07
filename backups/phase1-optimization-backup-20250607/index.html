@@ -1,0 +1,2161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Amira Rahim - Abstract Expressionist Artist. Explore vibrant artwork, educational programs, and creative collaborations.">
+    <title>Amira Rahim | Abstract Expressionist</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="images/amira-header.png" as="image" type="image/png">
+    <link rel="preload" href="images/logo/amira-logo.webp" as="image" type="image/webp">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" as="style">
+    
+    <!-- Critical CSS inline -->
+    <style>
+        /* Critical CSS for faster initial render */
+        *{margin:0;padding:0;box-sizing:border-box}html{font-size:16px;-webkit-font-smoothing:antialiased}body{font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.6;color:#333;background:#fff;overflow-x:hidden}.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);height:80px}.navbar-container{max-width:1400px;margin:0 auto;padding:0 2rem;height:100%;display:flex;align-items:center;justify-content:space-between}.logo-image{height:60px;width:auto;filter:none!important}section{padding:5rem 2rem;max-width:1400px;margin:0 auto}.hero-section{min-height:70vh;display:flex;align-items:center;margin-top:80px}h1,h2,h3{font-family:'Playfair Display',serif;font-weight:400;line-height:1.2}h1{font-size:3rem}h2{font-size:2.5rem}h3{font-size:2rem}@media(max-width:768px){h1{font-size:2rem}h2{font-size:1.75rem}section{padding:3rem 1rem}.navbar{height:60px}.logo-image{height:45px}}
+    </style>
+    
+    <!-- Google Fonts - Optimized subset -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
+    
+    <!-- Font Awesome - Deferred -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+    
+    <!-- Tailwind CSS - Deferred -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"></noscript>
+    
+    <!-- Critical CSS files only - defer the rest -->
+    <link rel="stylesheet" href="styles/main.css?v=1.2">
+    <link rel="stylesheet" href="styles/nav-styles.css"> 
+    <link rel="stylesheet" href="styles/hero-styles.css">
+    <link rel="stylesheet" href="styles/about-section.css">
+    <link rel="stylesheet" href="styles/artwork-section.css">
+    <link rel="stylesheet" href="styles/licensing-section.css">
+    <link rel="stylesheet" href="styles/education-section.css">
+    <link rel="stylesheet" href="styles/featured-in-section.css">
+    <link rel="stylesheet" href="styles/logo-styles.css">
+    <link rel="stylesheet" href="styles/logo-blur-fix.css">
+    <link rel="stylesheet" href="styles/navbar-fix.css">
+    <link rel="stylesheet" href="styles/hero-spacing-fix.css">
+    <link rel="stylesheet" href="styles/mobile-spacing.css">
+    <link rel="stylesheet" href="styles/contact-form-button-fix.css">
+    
+    <!-- Defer CSS loading script -->
+    <script>
+      // Defer non-critical CSS
+      const deferredStyles = [
+        'styles/featured-logos.css?v=1.1',
+        'styles/education-button-fix.css',
+        'styles/education-button-perfect-fix.css',
+        'styles/education-icon-fix.css',
+        'styles/education-circle-fix.css',
+        'styles/education-visibility-fix.css',
+        'styles/featured-in-fix.css',
+        'styles/press-kit-button-fix.css',
+        'styles/collaborate-badge-fix.css',
+        'styles/collaborate-tab-styling.css',
+        'styles/living-gradient-background.css',
+        'styles/micro-interactions.css',
+        'styles/name-gradient.css',
+        'styles/artwork-text-fix.css',
+        'styles/nav-override.css',
+        'styles/mobile-flourishes.css',
+        'styles/circle-animation.css',
+        'styles/premium-effects-enhanced.css',
+        'styles/luxury-typography.css',
+        'styles/hamburger-fix.css',
+        'styles/footer-enhancement.css',
+        'styles/table-animations.css',
+        'styles/floating-particles-fix.css',
+        'styles/collaboration-symmetry-fix.css',
+        'styles/disable-animations.css',
+        'styles/hero-cta-fix.css',
+        'styles/button-text-fix.css',
+        'styles/collaboration-button-fix.css',
+        'styles/artwork-button-standardization.css',
+        'styles/contact-section-center-fix.css'
+      ];
+      
+      function loadDeferredCSS() {
+        deferredStyles.forEach(href => {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = href;
+          link.media = 'print';
+          link.onload = () => { link.media = 'all'; };
+          document.head.appendChild(link);
+        });
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => setTimeout(loadDeferredCSS, 100));
+      } else {
+        setTimeout(loadDeferredCSS, 100);
+      }
+    </script>
+    <style>
+        /* Inline styles for featured logos to ensure they take effect */
+        .featured-logos-grid > a.featured-logo {
+            background: linear-gradient(135deg, rgba(245,240,255,0.9), rgba(235,230,250,0.9)) !important;
+            backdrop-filter: blur(8px) !important;
+            border-radius: 12px !important;
+            padding: 1.5rem !important;
+            width: 100% !important;
+            aspect-ratio: 1.5/1 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.3s ease !important;
+            border: 1px solid rgba(211, 195, 247, 0.7) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+        }
+        
+        .featured-logos-grid > a.featured-logo:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+            border-color: #C5A8F0 !important;
+            background: linear-gradient(135deg, rgba(235,230,250,0.95), rgba(225,220,245,0.95)) !important;
+        }
+        
+        .featured-logos-grid > a.featured-logo img {
+            filter: none !important;
+            max-height: 3.5rem !important;
+            width: auto !important;
+            opacity: 1 !important;
+            transition: transform 0.3s ease !important;
+        }
+        
+        .featured-logos-grid > a.featured-logo:hover img {
+            transform: scale(1.1) !important;
+        }
+        
+        /* Mobile-specific styles */
+        @media (max-width: 767px) {
+            .featured-logos-grid > a.featured-logo {
+                padding: 1.25rem !important;
+                aspect-ratio: 1.3/1 !important;
+            }
+            
+            .featured-logos-grid > a.featured-logo img {
+                max-height: 4rem !important;
+            }
+            
+            .featured-logos-grid .featured-logo-text {
+                font-size: 1.5rem !important;
+            }
+        }
+        
+        /* CRITICAL NAVBAR FIX - HIGHEST PRIORITY */
+        body .navbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            z-index: 1000 !important;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px) saturate(200%) !important;
+            -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+            padding: 1rem 0 !important;
+            margin: 0 !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+
+        body .navbar .navbar-container {
+            display: grid !important;
+            grid-template-columns: 200px 1fr 200px !important;
+            align-items: center !important;
+            width: 100% !important;
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem !important;
+            gap: 2rem !important;
+            position: relative !important;
+        }
+
+        body .navbar .navbar-logo {
+            display: block !important;
+            justify-self: start !important;
+            grid-column: 1 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        body .navbar .navbar-logo img {
+            display: block !important;
+            height: 40px !important;
+            width: auto !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        body .navbar .navbar-links {
+            display: flex !important;
+            gap: 2.5rem !important;
+            align-items: center !important;
+            justify-content: center !important;
+            grid-column: 2 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        body .navbar .navbar-link {
+            display: inline-block !important;
+            color: #000000 !important;
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            padding: 0.5rem 0 !important;
+            position: relative !important;
+            letter-spacing: 0.03em !important;
+            text-transform: uppercase !important;
+            transition: all 0.4s ease !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        body .navbar .navbar-mobile-toggle {
+            display: none !important;
+            grid-column: 3 !important;
+        }
+
+        /* Mobile layout */
+        @media (max-width: 767px) {
+            body .navbar .navbar-container {
+                display: flex !important;
+                justify-content: space-between !important;
+                grid-template-columns: none !important;
+            }
+            
+            body .navbar .navbar-logo {
+                grid-column: unset !important;
+                justify-self: unset !important;
+            }
+            
+            body .navbar .navbar-links {
+                display: none !important;
+            }
+
+            body .navbar .navbar-mobile-toggle {
+                display: flex !important;
+                grid-column: unset !important;
+            }
+        }
+        
+        /* Hero spacing fix */
+        .hero {
+            padding-top: 6rem !important;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 5rem !important;
+            }
+        }
+    </style>
+    
+    <!-- EMERGENCY NAVIGATION FIX -->
+    <style>
+        /* Nuclear option - force navigation layout */
+        .navbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100vw !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            z-index: 1000 !important;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px) !important;
+            padding: 1rem 0 !important;
+        }
+        
+        .navbar-container {
+            display: grid !important;
+            grid-template-columns: 200px 1fr 200px !important;
+            width: 100% !important;
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem !important;
+            align-items: center !important;
+            position: relative !important;
+            left: 0 !important;
+            transform: none !important;
+            justify-items: center !important;
+        }
+        
+        .navbar-logo {
+            grid-column: 1 !important;
+            justify-self: start !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+        
+        .navbar-logo img {
+            height: 50px !important;
+            width: auto !important;
+            display: block !important;
+        }
+        
+        .navbar-links {
+            grid-column: 2 !important;
+            display: flex !important;
+            gap: 1.5rem !important;
+            justify-content: center !important;
+            align-items: center !important;
+            white-space: nowrap !important;
+            min-width: 0 !important;
+            flex-wrap: nowrap !important;
+        }
+        
+        .navbar-link {
+            display: inline-block !important;
+            color: #000 !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            padding: 0.5rem 0.5rem !important;
+            text-transform: uppercase !important;
+            font-size: 0.85rem !important;
+            white-space: nowrap !important;
+        }
+        
+        .navbar-mobile-toggle {
+            grid-column: 3 !important;
+            justify-self: end !important;
+            display: none !important;
+        }
+        
+        @media (max-width: 767px) {
+            .navbar-container {
+                display: flex !important;
+                justify-content: space-between !important;
+                grid-template-columns: none !important;
+            }
+            .navbar-links {
+                display: none !important;
+            }
+            .navbar-mobile-toggle {
+                display: flex !important;
+            }
+        }
+        
+        /* Smooth Scrolling for Anchor Links */
+        html {
+            scroll-behavior: smooth !important;
+        }
+        
+        /* Enhanced scroll behavior for precise positioning */
+        @media (prefers-reduced-motion: no-preference) {
+            html {
+                scroll-behavior: smooth !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Living Gradient Background -->
+    <div class="living-gradient-bg"></div>
+    
+    <!-- Disable Text Animations Script -->
+    <script src="scripts/disable-animations.js"></script>
+    
+    <!-- Rainbow Cursor Effect -->
+    <script src="scripts/rainbow-cursor.js"></script>
+    
+    <!-- Enhanced Micro-Interactions & Paint Cursor -->
+    <script src="scripts/micro-interactions.js"></script>
+    
+    <!-- Background Shapes -->
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+    <div class="bg-shape bg-shape-3"></div>
+    <div class="bg-shape bg-shape-4"></div>
+    
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress"></div>
+    
+    <!-- Glassmorphic Navigation -->
+    <nav class="navbar" id="main-navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">
+                <img src="images/logo/amira-logo.webp" alt="Amira Rahim" class="logo-image">
+            </a>
+            <div class="navbar-links">
+                <a href="#artwork" class="navbar-link">Artwork</a>
+                <a href="#featured-in" class="navbar-link">Featured In</a>
+                <a href="#education" class="navbar-link">Education</a>
+                <a href="#collaborate" class="navbar-link">Collaborate</a>
+                <a href="#about" class="navbar-link">About</a>
+                <a href="#contact" class="navbar-link">Contact</a>
+            </div>
+            <button class="navbar-mobile-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+                <span class="sr-only">Menu</span>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+    <div class="mobile-menu">
+        <div class="mobile-menu-container">
+            <div class="mobile-menu-header">
+                <a href="#" class="mobile-logo">
+                    <img src="images/logo/amira-logo.webp" alt="Amira Rahim" class="logo-image">
+                </a>
+                <button class="mobile-close-btn" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="mobile-nav">
+                <div class="nav-links">
+                    <a href="#artwork" class="mobile-nav-link">
+                        <span class="link-text">Artwork</span>
+                        <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="#featured-in" class="mobile-nav-link">
+                        <span class="link-text">Featured In</span>
+                        <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="#education" class="mobile-nav-link">
+                        <span class="link-text">Education</span>
+                        <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="#collaborate" class="mobile-nav-link">
+                        <span class="link-text">Collaborate</span>
+                        <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="#about" class="mobile-nav-link">
+                        <span class="link-text">About</span>
+                        <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="#contact" class="mobile-nav-link">
+                        <span class="link-text">Contact</span>
+                        <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                </div>
+                <div class="mobile-social">
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu Script -->
+    <script>
+    // Enhanced Navigation Scroll Behavior
+    function initializeScrollBehavior() {
+        let lastScrollTop = 0;
+        let navbar = document.getElementById('main-navbar');
+        let isScrolling = false;
+        let scrollTimer = null;
+        
+        // Ensure navbar exists before setting up scroll behavior
+        if (!navbar) {
+            console.warn('Navigation element not found');
+            return;
+        }
+        
+        // Add transition to navbar for smooth animations
+        navbar.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        function handleScroll() {
+            if (!isScrolling) {
+                window.requestAnimationFrame(function() {
+                    if (!navbar) return;
+                    
+                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    // Clear any existing timer
+                    if (scrollTimer) {
+                        clearTimeout(scrollTimer);
+                    }
+                    
+                    if (scrollTop > 100) { // Start hiding after 100px scroll
+                        if (scrollTop > lastScrollTop && Math.abs(scrollTop - lastScrollTop) > 5) {
+                            // Scrolling down - hide navbar
+                            navbar.style.transform = 'translateY(-100%)';
+                            navbar.style.opacity = '0.8';
+                        } else if (scrollTop < lastScrollTop && Math.abs(scrollTop - lastScrollTop) > 5) {
+                            // Scrolling up - show navbar
+                            navbar.style.transform = 'translateY(0)';
+                            navbar.style.opacity = '1';
+                        }
+                    } else {
+                        // Near top - always show navbar
+                        navbar.style.transform = 'translateY(0)';
+                        navbar.style.opacity = '1';
+                    }
+                    
+                    lastScrollTop = scrollTop;
+                    
+                    // Show navbar after scrolling stops
+                    scrollTimer = setTimeout(function() {
+                        if (navbar) {
+                            navbar.style.transform = 'translateY(0)';
+                            navbar.style.opacity = '1';
+                        }
+                    }, 1500);
+                    
+                    isScrolling = false;
+                });
+            }
+            isScrolling = true;
+        }
+        
+        // Throttled scroll event listener
+        let scrollTimeout;
+        function throttledScroll() {
+            if (!scrollTimeout) {
+                scrollTimeout = setTimeout(function() {
+                    handleScroll();
+                    scrollTimeout = null;
+                }, 16); // ~60fps
+            }
+        }
+        
+        // Add scroll event listener
+        window.addEventListener('scroll', throttledScroll, { passive: true });
+        
+        // Show navbar on mouse movement near top
+        document.addEventListener('mousemove', function(e) {
+            if (e.clientY < 100 && navbar) {
+                navbar.style.transform = 'translateY(0)';
+                navbar.style.opacity = '1';
+            }
+        });
+        
+        // Always show navbar when hovering over it
+        if (navbar) {
+            navbar.addEventListener('mouseenter', function() {
+                navbar.style.transform = 'translateY(0)';
+                navbar.style.opacity = '1';
+            });
+        }
+    }
+    
+    // Navigation Fix - Apply immediately on DOM load
+    function fixNavigation() {
+        const navContainer = document.querySelector('.navbar-container');
+        const navLinks = document.querySelector('.navbar-links');
+        const navLogo = document.querySelector('.navbar-logo');
+        const mobileToggle = document.querySelector('.navbar-mobile-toggle');
+        
+        // Fix main navbar first
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            navbar.style.setProperty('display', 'flex', 'important');
+            navbar.style.setProperty('justify-content', 'center', 'important');
+            navbar.style.setProperty('align-items', 'center', 'important');
+            navbar.style.setProperty('position', 'fixed', 'important');
+            navbar.style.setProperty('top', '0', 'important');
+            navbar.style.setProperty('left', '0', 'important');
+            navbar.style.setProperty('right', '0', 'important');
+            navbar.style.setProperty('width', '100%', 'important');
+            navbar.style.setProperty('z-index', '1000', 'important');
+        }
+        
+        if (navContainer) {
+            navContainer.style.setProperty('display', 'grid', 'important');
+            navContainer.style.setProperty('grid-template-columns', '200px 1fr 200px', 'important');
+            navContainer.style.setProperty('justify-content', 'center', 'important');
+            navContainer.style.setProperty('align-items', 'center', 'important');
+            navContainer.style.setProperty('width', '100%', 'important');
+            navContainer.style.setProperty('max-width', '1200px', 'important');
+            navContainer.style.setProperty('margin', '0 auto', 'important');
+            navContainer.style.setProperty('padding', '0 2rem', 'important');
+            navContainer.style.setProperty('position', 'relative', 'important');
+            navContainer.style.setProperty('left', '0', 'important');
+            navContainer.style.setProperty('right', '0', 'important');
+            navContainer.style.setProperty('transform', 'none', 'important');
+        }
+        
+        if (navLogo) {
+            navLogo.style.setProperty('grid-column', '1', 'important');
+            navLogo.style.setProperty('justify-self', 'start', 'important');
+            navLogo.style.setProperty('display', 'flex', 'important');
+            navLogo.style.setProperty('align-items', 'center', 'important');
+            
+            const logoImg = navLogo.querySelector('img');
+            if (logoImg) {
+                logoImg.style.setProperty('height', '50px', 'important');
+                logoImg.style.setProperty('width', 'auto', 'important');
+                logoImg.style.setProperty('display', 'block', 'important');
+                logoImg.style.setProperty('opacity', '1', 'important');
+                logoImg.style.setProperty('visibility', 'visible', 'important');
+            }
+        }
+        
+        if (navLinks) {
+            navLinks.style.setProperty('grid-column', '2', 'important');
+            navLinks.style.setProperty('display', 'flex', 'important');
+            navLinks.style.setProperty('justify-content', 'center', 'important');
+            navLinks.style.setProperty('align-items', 'center', 'important');
+            navLinks.style.setProperty('gap', '2rem', 'important');
+            navLinks.style.setProperty('margin', '0', 'important');
+            navLinks.style.setProperty('padding', '0', 'important');
+        }
+        
+        if (mobileToggle) {
+            mobileToggle.style.setProperty('grid-column', '3', 'important');
+            mobileToggle.style.setProperty('justify-self', 'end', 'important');
+            mobileToggle.style.setProperty('display', 'none', 'important');
+        }
+        
+        // Apply mobile styles conditionally
+        if (window.innerWidth <= 767) {
+            if (navContainer) {
+                navContainer.style.setProperty('display', 'flex', 'important');
+                navContainer.style.setProperty('justify-content', 'space-between', 'important');
+                navContainer.style.setProperty('grid-template-columns', 'none', 'important');
+            }
+            if (navLinks) {
+                navLinks.style.setProperty('display', 'none', 'important');
+            }
+            if (mobileToggle) {
+                mobileToggle.style.setProperty('display', 'flex', 'important');
+            }
+        }
+    }
+    
+    // Initialize everything when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        // Apply navigation fixes first
+        fixNavigation();
+        
+        // Initialize scroll behavior
+        setTimeout(initializeScrollBehavior, 100);
+        
+        // Mobile menu functionality
+        const mobileToggle = document.querySelector('.navbar-mobile-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        const closeButton = document.querySelector('.mobile-close-btn');
+        
+        // Toggle menu function
+        function toggleMenu() {
+            if (!mobileMenu) return;
+            
+            const isOpening = !mobileMenu.classList.contains('active');
+            
+            // Toggle active classes
+            if (mobileToggle) mobileToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            if (mobileOverlay) mobileOverlay.classList.toggle('active');
+            
+            // Toggle body scroll
+            document.body.classList.toggle('menu-open');
+            
+            // Add/remove event listeners based on menu state
+            if (isOpening) {
+                document.addEventListener('keydown', handleEscape);
+                if (mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+                if (closeButton) closeButton.addEventListener('click', closeMenu);
+                
+                // Add animation class for menu items
+                mobileLinks.forEach((link, index) => {
+                    link.style.animation = `fadeInRight 0.4s ease-out ${index * 0.08}s forwards`;
+                    link.style.opacity = '0';
+                    link.style.transform = 'translateX(20px)';
+                });
+            } else {
+                document.removeEventListener('keydown', handleEscape);
+                if (mobileOverlay) mobileOverlay.removeEventListener('click', closeMenu);
+                if (closeButton) closeButton.removeEventListener('click', closeMenu);
+                
+                // Reset animations
+                mobileLinks.forEach(link => {
+                    link.style.animation = '';
+                    link.style.opacity = '';
+                    link.style.transform = '';
+                });
+            }
+        }
+        
+        // Close menu function
+        function closeMenu() {
+            if (mobileMenu && mobileMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        }
+        
+        // Handle escape key
+        function handleEscape(e) {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        }
+        
+        // Event listeners
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', toggleMenu);
+        }
+        
+        // Close menu when clicking on a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+            
+            // Add hover/active state effects
+            link.addEventListener('mousedown', () => {
+                link.classList.add('active');
+            });
+            
+            link.addEventListener('mouseup', () => {
+                link.classList.remove('active');
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                link.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (
+                !e.target.closest('.mobile-menu') && 
+                !e.target.closest('.navbar-mobile-toggle') &&
+                mobileMenu && mobileMenu.classList.contains('active')
+            ) {
+                closeMenu();
+            }
+        });
+        
+        // Prevent body scroll when menu is open
+        document.addEventListener('scroll', (e) => {
+            if (document.body.classList.contains('menu-open')) {
+                e.preventDefault();
+                window.scrollTo(0, 0);
+                return false;
+            }
+        }, { passive: false });
+    });
+    
+    // Apply fixes on window resize
+    window.addEventListener('resize', fixNavigation);
+    </script>
+    
+    <div id="app" class="container mx-auto px-4">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="decorative-circle decorative-circle-1"></div>
+            <div class="decorative-circle decorative-circle-2"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="hero-content">
+                    <span class="hero-label glass-pill">ABSTRACT EXPRESSIONIST</span>
+                    <h1 class="hero-title">Vibrant Abstract Art by <span class="text-gradient">Amira Rahim</span></h1>
+                    <p class="hero-subtitle">Internationally collected artist creating vibrant abstract paintings that celebrate color and creative freedom.</p>
+                    <div class="hero-cta">
+                            <a href="#artwork" class="btn btn-primary magnetic-btn glass-button">View Artwork</a>
+                        <a href="#contact" class="btn btn-secondary magnetic-btn glass-button">Commission Art</a>
+                    </div>
+                </div>
+                
+                <div class="portrait-frame reveal">
+                    <img src="images/amira-header.png" alt="Amira Rahim" class="w-full" data-critical="true">
+                </div>
+            </div>
+        </section>
+        
+        <div class="section-divider"></div>
+        
+        <!-- Featured Originals Section -->
+        <section id="artwork" class="py-16 relative">
+            <div class="section-header">
+                <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-pink-100 to-purple-100 text-pink-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">FEATURED WORK</span>
+                <h2 class="text-4xl font-serif font-bold text-gray-800">Featured Originals</h2>
+            </div>
+            
+            <p class="text-center text-gray-700 max-w-3xl mx-auto mb-12">
+                Explore a selection of my original abstract paintings. Each piece is a unique expression of color, emotion, and creative energy.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Artwork 1 -->
+                <div class="artwork-card glass-card">
+                    <div class="artwork-image">
+                        <img src="images/artwork/rainbow_spectrum.jpeg" alt="Rainbow Spectrum" class="w-full h-full object-cover">
+                        <div class="artwork-overlay">
+                            <h3 class="artwork-title">Rainbow Spectrum</h3>
+                            <p class="artwork-description">Acrylic on canvas, 36" x 36"</p>
+                            <a href="https://shop.amirarahim.com/products/rainbow-spectrum-36x36-original-on-canvas" class="artwork-button">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Artwork 2 -->
+                <div class="artwork-card glass-card">
+                    <div class="artwork-image">
+                        <img src="images/artwork/eden_original_painting.jpeg" alt="Eden" class="w-full h-full object-cover">
+                        <div class="artwork-overlay">
+                            <h3 class="artwork-title">Eden</h3>
+                            <p class="artwork-description">Acrylic on canvas, 30" x 40"</p>
+                            <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Artwork 3 -->
+                <div class="artwork-card glass-card">
+                    <div class="artwork-image">
+                        <img src="images/artwork/festival_original_painting.jpeg" alt="Festival" class="w-full h-full object-cover">
+                        <div class="artwork-overlay">
+                            <h3 class="artwork-title">Festival</h3>
+                            <p class="artwork-description">Acrylic on canvas, 24" x 36"</p>
+                            <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Artwork 4 -->
+                <div class="artwork-card glass-card">
+                    <div class="artwork-image">
+                        <img src="images/artwork/jubilee_original_painting.jpeg" alt="Jubilee" class="w-full h-full object-cover">
+                        <div class="artwork-overlay">
+                            <h3 class="artwork-title">Jubilee</h3>
+                            <p class="artwork-description">Acrylic on canvas, 36" x 36"</p>
+                            <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Artwork 5 -->
+                <div class="artwork-card glass-card">
+                    <div class="artwork-image">
+                        <img src="images/artwork/bloom_original_painting.jpeg" alt="Bloom" class="w-full h-full object-cover">
+                        <div class="artwork-overlay">
+                            <h3 class="artwork-title">Bloom</h3>
+                            <p class="artwork-description">Acrylic on canvas, 24" x 30"</p>
+                            <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Artwork 6 -->
+                <div class="artwork-card glass-card">
+                    <div class="artwork-image">
+                        <img src="images/artwork/radiance_original_painting.jpeg" alt="Radiance" class="w-full h-full object-cover">
+                        <div class="artwork-overlay">
+                            <h3 class="artwork-title">Radiance</h3>
+                            <p class="artwork-description">Acrylic on canvas, 30" x 30"</p>
+                            <a href="https://shop.amirarahim.com/collections/available-originals-1" class="artwork-button">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://shop.amirarahim.com/collections/available-originals-1" class="btn btn-primary glass-button">
+                    View All Originals
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </section>
+        
+        <div class="section-divider"></div>
+        
+        <!-- About the Artist Section -->
+        <section id="about" class="py-16 relative overflow-hidden" aria-label="About the Artist">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-50"></div>
+            <div class="decorative-circle decorative-circle-1"></div>
+            <div class="decorative-circle decorative-circle-2"></div>
+            
+            <div class="relative z-10 max-w-7xl mx-auto px-4">
+                <div class="section-header">
+                    <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-yellow-100 to-pink-100 text-yellow-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">THE ARTIST</span>
+                    <h3 class="text-4xl font-serif font-bold text-gray-800">About the Artist</h3>
+                </div>
+                <div class="max-w-5xl mx-auto px-6">
+                    <!-- Full Width Bio Text -->
+                    <div class="prose max-w-4xl mx-auto mb-12">
+                        <p class="text-gray-700 text-lg leading-relaxed text-center">
+                            Amira Rahim traded a legal career for a paintbrush, inspired by <em>The Art of Getting By</em>. Her bold, abstract expressionist works, bursting with vibrant color, are celebrated worldwide—collected by the Royal Family of Abu Dhabi and licensed by Wayfair and Amazon. As the author of <em>Paint to Prosper</em> (2023, 4.8/5 stars on Amazon), Amira empowers artists to turn passion into profit through her transformative courses and creative mentorship.
+                        </p>
+                    </div>
+
+                    <!-- Image and Table Grid -->
+                    <div class="flex flex-col lg:grid lg:grid-cols-2 gap-8">
+                        <!-- Amira's Image -->
+                        <div class="lg:sticky lg:top-8">
+                            <div class="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all hover:scale-[1.01] group h-full">
+                                <img 
+                                    src="images/amira-about.png" 
+                                    alt="Amira Rahim" 
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                    loading="lazy"
+                                    style="min-height: 500px;"
+                                >
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Premium Anamorphic Table -->
+                        <div class="relative w-full">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Card 1: Royal Collection -->
+                                <div class="relative group bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border border-purple-100 hover:border-pink-200">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-purple-100 to-pink-100 text-purple-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-gray-800 mb-1">Collected by Royalty</h3>
+                                            <p class="text-gray-600">Amira Rahim's vibrant masterpieces are proudly collected by the prestigious Royal Family of Abu Dhabi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card 2: Media Spotlight -->
+                                <div class="relative group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border border-blue-100 hover:border-cyan-200">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-blue-100 to-cyan-100 text-blue-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-gray-800 mb-1">Media Spotlight</h3>
+                                            <p class="text-gray-600">Featured in renowned outlets like <span class="font-medium">Ebony Magazine</span>, <span class="font-medium">Huffington Post</span>, and <span class="font-medium">Being Boss</span>.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card 3: Acclaimed Author -->
+                                <div class="relative group bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border border-yellow-100 hover:border-amber-200">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-yellow-100 to-amber-100 text-yellow-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.497 5.754 18 7.5 18s3.332.497 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.497 4.5 1.253v13C19.832 18.497 18.247 18 16.5 18c-1.746 0-3.332.497-4.5 1.253" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-gray-800 mb-1">Acclaimed Author</h3>
+                                            <p class="text-gray-600">Creator of the celebrated <span class="font-medium">Paint to Prosper (2023)</span>, rated <span class="font-bold text-amber-600">4.8/5</span> on Amazon.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card 4: Transformative Courses -->
+                                <div class="relative group bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border border-green-100 hover:border-emerald-200">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-green-100 to-emerald-100 text-green-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-gray-800 mb-1">Transformative Courses</h3>
+                                            <p class="text-gray-600">Inspiring programs like <span class="font-medium">Better Than Art School</span> and <span class="font-medium">Color Mastery</span>, with more to explore.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Full-width Shop CTA -->
+                            <div class="mt-8 group">
+                                <a href="#" class="block w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white text-center font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
+                                    <div class="flex items-center justify-center space-x-2">
+                                        <span>Shop Her Art</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-sm font-normal mt-1 opacity-90">Discover originals and prints available for purchase</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEO Meta Keywords (added to head section) -->
+        <meta name="keywords" content="Amira Rahim abstract art, Paint to Prosper, abstract expressionist artist, contemporary abstract paintings, art mentorship, art business, artist education">
+        
+        <div class="section-divider"></div>
+        
+        <!-- Featured In Section -->
+        <section id="featured-in" class="py-16 relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+            <div class="decorative-circle decorative-circle-3"></div>
+            <div class="decorative-circle decorative-circle-4"></div>
+            
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-purple-100 via-pink-50 to-rose-100 text-purple-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">MEDIA PRESENCE</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">Featured In</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-500 mx-auto rounded-full mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        Press, Podcasts & Recognition
+                    </p>
+                </div>
+
+                <!-- Hero Quote -->
+                <div class="glass-card max-w-4xl mx-auto text-center mb-16 p-8">
+                    <blockquote class="text-2xl md:text-3xl font-serif font-medium text-gray-800 mb-4">
+                        "Getting money from my art? Getting paid for my work? That makes me feel like a boss."
+                    </blockquote>
+                    <cite class="text-purple-600 font-medium">— Being Boss Podcast</cite>
+                </div>
+
+                <!-- Three-Column Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                    <!-- Publications -->
+                    <div class="featured-item glass-card p-8 text-center">
+                        <div class="inline-block p-4 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-lg mb-6">
+                            <i class="fas fa-newspaper fa-2x"></i>
+                        </div>
+                        <h4 class="text-xl font-serif font-bold text-gray-800 mb-4">Major Publications</h4>
+                        <ul class="text-gray-600 space-y-2 text-left">
+                            <li class="flex items-start">
+                                <i class="fas fa-star text-purple-400 mt-1 mr-2 text-sm"></i>
+                                <span><strong>Ebony Magazine</strong> (October 2016)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-star text-purple-400 mt-1 mr-2 text-sm"></i>
+                                <span><strong>HuffPost</strong> - "Inside The Whimsical World" (June 2016)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-star text-purple-400 mt-1 mr-2 text-sm"></i>
+                                <span><strong>The National UAE</strong> - "Artist's Quest for Colour" (2014)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-star text-purple-400 mt-1 mr-2 text-sm"></i>
+                                <span><strong>Chicago Tribune</strong> - "Celebrating Muslim Artist" (2018)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Podcasts -->
+                    <div class="featured-item glass-card p-8 text-center">
+                        <div class="inline-block p-4 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 text-white shadow-lg mb-6">
+                            <i class="fas fa-microphone fa-2x"></i>
+                        </div>
+                        <h4 class="text-xl font-serif font-bold text-gray-800 mb-4">Podcast Appearances</h4>
+                        <ul class="text-gray-600 space-y-2 text-left">
+                            <li class="flex items-start">
+                                <i class="fas fa-podcast text-pink-400 mt-1 mr-2 text-sm"></i>
+                                <span><strong>Being Boss</strong> - "Life & Work as Full-Time Artist"</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-podcast text-pink-400 mt-1 mr-2 text-sm"></i>
+                                <span><strong>Creative Genius</strong> - "Intuitively, On Purpose" (Ep. 41)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-podcast text-pink-400 mt-1 mr-2 text-sm"></i>
+                                <span><strong>Art & Cocktails</strong> - Create! Magazine</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-podcast text-pink-400 mt-1 mr-2 text-sm"></i>
+                                <span><strong>The Strategy Hour</strong> - "Instagram All-Star"</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Achievements -->
+                    <div class="featured-item glass-card p-8 text-center">
+                        <div class="inline-block p-4 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 text-white shadow-lg mb-6">
+                            <i class="fas fa-trophy fa-2x"></i>
+                        </div>
+                        <h4 class="text-xl font-serif font-bold text-gray-800 mb-4">Achievements</h4>
+                        <ul class="text-gray-600 space-y-2 text-left mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-award text-amber-400 mt-1 mr-2 text-sm"></i>
+                                <span><strong>60,000+</strong> Instagram Followers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-award text-amber-400 mt-1 mr-2 text-sm"></i>
+                                <span><strong>$100K Sales</strong> in Second Year</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-award text-amber-400 mt-1 mr-2 text-sm"></i>
+                                <span><strong>Licensed by</strong> Wayfair, HomeGoods & Amazon</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-award text-amber-400 mt-1 mr-2 text-sm"></i>
+                                <span><strong>U.S. Embassy</strong> Abu Dhabi Exhibition</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105">
+                            <i class="fas fa-folder-open mr-2"></i>
+                            View Full Press Kit
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bottom CTA -->
+                <div class="text-center mt-16">
+                    <p class="text-lg text-gray-600 mb-6">
+                        From law student to internationally collected artist
+                    </p>
+                    <a href="#contact" class="inline-block bg-gradient-to-r from-amber-500 to-orange-600 text-white font-medium py-4 px-8 rounded-xl shadow-lg hover:shadow-xl hover:from-amber-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105">
+                        Start Your Art Journey
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <div class="section-divider"></div>
+        
+        <!-- NEW Education Section -->
+        <section id="education" class="py-20 md:py-28 relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+            <div class="absolute inset-0 opacity-10">
+                <!-- Subtle background pattern or shapes can go here if desired -->
+            </div>
+            <div class="decorative-circle decorative-circle-education-1"></div>
+            <div class="decorative-circle decorative-circle-education-2"></div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 md:mb-20">
+                    <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-purple-100 via-pink-50 to-rose-100 text-purple-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">EDUCATION</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">Unlock Your Artistic Potential</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-500 mx-auto rounded-full mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        Discover programs and resources designed to elevate your art, sharpen your skills, and build a flourishing career.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+                    <!-- Card 1: Better Than Art School -->
+                    <div class="education-card group bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200/50 p-8 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <div class="mb-6 text-center">
+                            <div class="inline-block p-4 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 text-white shadow-lg group-hover:scale-105 transition-transform">
+                                <i class="fas fa-graduation-cap fa-2x"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-800 mb-4 text-center">Better Than Art School</h3>
+                        <p class="text-gray-600 mb-6 flex-grow text-center">
+                            A transformative 3-month intensive to find your unique voice, master techniques, and build a thriving art business.
+                        </p>
+                        <div class="mt-auto text-center">
+                            <a href="#" class="inline-block bg-gradient-to-r from-purple-600 to-indigo-700 text-white font-medium py-3 px-8 rounded-lg shadow-md hover:shadow-lg hover:from-purple-700 hover:to-indigo-800 transition-all duration-300 transform hover:scale-105">
+                                Learn More
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Apply to Better Than Art School -->
+                    <div class="education-card group bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200/50 p-8 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <div class="mb-6 text-center">
+                            <div class="inline-block p-4 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 text-white shadow-lg group-hover:scale-105 transition-transform">
+                                <i class="fas fa-paper-plane fa-2x"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-800 mb-4 text-center">Apply to BTAS</h3>
+                        <p class="text-gray-600 mb-6 flex-grow text-center">
+                            Ready to elevate your art journey? Submit your application for the next cohort of Better Than Art School.
+                        </p>
+                        <div class="mt-auto text-center">
+                            <a href="#" class="inline-block bg-gradient-to-r from-pink-600 to-rose-700 text-white font-medium py-3 px-8 rounded-lg shadow-md hover:shadow-lg hover:from-pink-700 hover:to-rose-800 transition-all duration-300 transform hover:scale-105">
+                                Apply Now
+                                <i class="fas fa-edit ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Crown Expansion Tutorial -->
+                    <div class="education-card group bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200/50 p-8 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <div class="mb-6 text-center">
+                            <div class="inline-block p-4 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-lg group-hover:scale-105 transition-transform">
+                                <i class="fas fa-crown fa-2x"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-800 mb-4 text-center">Crown Expansion Tutorial</h3>
+                        <p class="text-gray-600 mb-6 flex-grow text-center">
+                            Watch Amira paint over a finished piece to create "Crown Expansion"—now a best-selling, internationally licensed artwork. Learn to evolve, not replicate.
+                        </p>
+                        <div class="mt-auto text-center">
+                            <a href="https://colors.betterthanartschool.com/opt-in-page" class="inline-block bg-gradient-to-r from-amber-600 to-orange-700 text-white font-medium py-3 px-8 rounded-lg shadow-md hover:shadow-lg hover:from-amber-700 hover:to-orange-800 transition-all duration-300 transform hover:scale-105">
+                                Watch Free
+                                <i class="fas fa-play ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END NEW Education Section -->
+        
+        <div class="section-divider"></div>
+        
+        <!-- Testimonial Section -->
+        <section class="my-20 py-16 bg-gradient-to-r from-purple-600 to-purple-800 rounded-xl relative overflow-hidden testimonial-card" data-component-name="<section />">
+            <div class="max-w-6xl mx-auto px-6" data-component-name="<div />">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-12 text-center text-reveal">
+                    <span data-component-name="<span />">Hear </span><span>from </span><span>Our </span><span>Collectors </span>
+                </h2>
+                
+                <!-- Custom Testimonials Container -->
+                <div class="testimonials-container" style="overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;">
+                    <div class="testimonials-track" style="display: flex; gap: 2rem; min-width: max-content; padding: 1rem 0;">
+                        
+                        <!-- Testimonial 1 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">SJ</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Sarah Johnson</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Interior Designer, NYC</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "Amira's artwork brings such vibrant energy to my living room. The colors are absolutely stunning and I receive compliments from every guest! Her piece became the focal point of our entire space."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 2 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">MC</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Michael Chen</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Tech Executive, San Francisco</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "The commission process was seamless. Amira understood my vision perfectly and created a piece that exceeded all my expectations. The artwork now graces our office lobby."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 3 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">ER</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Emily Rodriguez</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Art Collector, Miami</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "I've purchased three pieces from Amira's collection. Each one tells a unique story and transforms the atmosphere of my home. Her use of color is extraordinary."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 4 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: #333; font-weight: bold; font-size: 1.5rem;">DT</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">David Thompson</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Gallery Owner, Chicago</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "The quality of the artwork is exceptional. The colors are vivid, the texture is rich, and it's clear that each piece is created with passion and skill."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 5 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: #333; font-weight: bold; font-size: 1.5rem;">LA</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Lisa Anderson</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Wellness Center Owner, LA</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "Working with Amira was an absolute pleasure. Her artistic vision and professionalism made the entire experience memorable. The artwork creates a calming energy."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 6 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">JW</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">James Williams</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Museum Curator, Houston</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "The abstract expressionist style speaks to me on a deep level. Amira's use of color and movement creates such emotional depth that resonates with viewers."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 7 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ff9a56 0%, #ff6b95 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">RK</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Rachel Kim</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Architect, Seattle</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "Amira's work perfectly complements modern architecture. I've commissioned pieces for three different projects and clients are always amazed by the energy they bring."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 8 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">TB</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Thomas Brown</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Hotel Owner, Denver</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "The large-scale commission for our hotel lobby exceeded every expectation. Guests constantly ask about the artist. Amira's work elevates any space."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 9 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #a777e3 0%, #6fb1fc 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">AG</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Amanda Garcia</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Yoga Studio Owner, Austin</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "The meditation room piece Amira created helps my students find deeper peace. The colors flow like energy through the space. It's truly transformative art."
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial 10 -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">CP</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Carlos Perez</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Restaurant Owner, Phoenix</span>
+                                    <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
+                                "Amira's vibrant pieces transformed our restaurant into an art destination. Customers love dining surrounded by such beautiful, energetic artwork. Sales increased 30%!"
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- Navigation Dots -->
+                <div class="testimonials-navigation" style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 2rem;">
+                    <button class="nav-dot active" data-index="0" style="width: 12px; height: 12px; border-radius: 50%; background: white; border: none; cursor: pointer; transition: all 0.3s ease;"></button>
+                    <button class="nav-dot" data-index="1" style="width: 12px; height: 12px; border-radius: 50%; background: rgba(255, 255, 255, 0.5); border: none; cursor: pointer; transition: all 0.3s ease;"></button>
+                    <button class="nav-dot" data-index="2" style="width: 12px; height: 12px; border-radius: 50%; background: rgba(255, 255, 255, 0.5); border: none; cursor: pointer; transition: all 0.3s ease;"></button>
+                </div>
+                
+            </div>
+        </section>
+        
+        <div class="section-divider"></div>
+        
+        <!-- Collaboration Section -->
+        <section id="collaborate" class="py-16 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-yellow-50 via-pink-50 to-purple-50 opacity-50"></div>
+            <div class="decorative-circle decorative-circle-5"></div>
+            <div class="decorative-circle decorative-circle-6"></div>
+            
+            <!-- Decorative elements -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute -right-40 -top-40 w-80 h-80 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+                <div class="absolute -left-40 -bottom-40 w-96 h-96 bg-yellow-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            </div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 py-24" data-component-name="<div />">
+                <div class="text-center max-w-4xl mx-auto mb-20" data-component-name="<div />">
+                    <div class="inline-block mb-6" data-aos="fade-up" data-aos-duration="600">
+                        <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-pink-100 to-rose-100 text-rose-700 text-sm font-semibold uppercase tracking-wide glass-pill shadow-sm">OPPORTUNITIES</span>
+                    </div>
+                    <h2 class="text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-6 leading-tight" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+                        <span class="text-purple-600">Collaborate</span><span class="text-gray-900"> & Connect</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+                        Explore ways we can work together to bring vibrant art into various spaces and platforms, from custom commissions to licensing opportunities and speaking engagements.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 relative z-10" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                    <!-- Licensing & Wholesale -->
+                    <div class="group relative overflow-hidden rounded-2xl bg-white shadow-2xl transition-all duration-500 hover:shadow-3xl hover:-translate-y-2 glass-card transform-gpu">
+                        <div class="relative h-64 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/70 to-purple-700/70 opacity-70"></div>
+                            <img 
+                                src="images/education/amiraartscreen.png" 
+                                alt="Art Workshop" 
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-white bg-white/20 backdrop-blur-sm border border-white/20">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-purple-300 mr-2"></span>
+                                    LICENSING
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-8 bg-white/80 backdrop-blur-sm" data-component-name="<div />">
+                            <div class="flex items-start mb-6">
+                                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center mr-4 flex-shrink-0 shadow-sm">
+                                    <i class="fas fa-copyright text-xl text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-2xl font-serif font-bold text-gray-900 leading-tight">Licensing & Wholesale</h4>
+                                    <div class="h-1 w-12 bg-gradient-to-r from-purple-400 to-pink-400 mt-2 rounded-full"></div>
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                                Partner with me to add vibrant, contemporary artwork to your product lines, retail spaces, hospitality venues, or commercial projects.
+                            </p>
+                            
+                            <div class="mb-8">
+                                <h5 class="text-gray-800 font-semibold mb-4 flex items-center text-lg">
+                                    <svg class="w-5 h-5 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                    What to expect:
+                                </h5>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-600">Exclusive access to collections</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-600">High-resolution artwork files</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-600">Dedicated support throughout the process</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <a href="https://shop.amirarahim.com/pages/representation" class="group inline-flex items-center justify-center w-full px-8 py-4 text-base font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl hover:shadow-lg hover:shadow-purple-200 hover:-translate-y-0.5 transition-all duration-300 transform-gpu">
+                                Inquire Now
+                                <svg class="w-4 h-4 ml-2 transition-transform duration-300 transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Custom Artwork -->
+                    <div class="group relative overflow-hidden rounded-2xl bg-white shadow-2xl transition-all duration-500 hover:shadow-3xl hover:-translate-y-2 glass-card transform-gpu" data-component-name="<div />">
+                        <div class="relative h-64 overflow-hidden">
+                            <img 
+                                src="images/commisionartimage.png" 
+                                alt="Custom Artwork Creation" 
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-white bg-white/20 backdrop-blur-sm border border-white/20" data-component-name="<span />">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-rose-300 mr-2"></span>
+                                    COMMISSION
+                                </span>
+                            </div>
+                        </div>
+                        <div class="bg-white p-8">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center mr-4">
+                                    <i class="fas fa-paint-brush text-pink-500"></i>
+                                </div>
+                                <h4 class="text-xl font-serif font-bold text-gray-800">Custom Artwork</h4>
+                            </div>
+                            
+                            <p class="text-gray-700 mb-6">
+                                Commission a bespoke piece of art tailored to your space, style preferences, and vision—creating the perfect statement piece for your environment.
+                            </p>
+                            
+                            <h5 class="text-gray-800 font-medium mb-3">What to expect:</h5>
+                            <ul class="mb-6">
+                                <li class="flex items-center mb-3">
+                                    <i class="fas fa-check-circle text-pink-500 mr-2"></i>
+                                    <span class="text-gray-700">Personal consultation sessions</span>
+                                </li>
+                                <li class="flex items-center mb-3">
+                                    <i class="fas fa-check-circle text-pink-500 mr-2"></i>
+                                    <span class="text-gray-700">Concept sketches and samples</span>
+                                </li>
+                                <li class="flex items-center mb-3">
+                                    <i class="fas fa-check-circle text-pink-500 mr-2"></i>
+                                    <span class="text-gray-700">Regular progress updates</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-pink-500 mr-2"></i>
+                                    <span class="text-gray-700">Free worldwide shipping</span>
+                                </li>
+                            </ul>
+                            
+                            <a href="https://www.amiracommissions.com" class="inline-flex items-center justify-center w-full px-6 py-3 bg-pink-500 text-white font-medium rounded-full hover:bg-pink-600 transition-all duration-300 glass-button">
+                                Commission Artwork
+                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Media & Speaking -->
+                    <div class="group relative overflow-hidden rounded-2xl bg-white shadow-2xl transition-all duration-500 hover:shadow-3xl hover:-translate-y-2 glass-card transform-gpu">
+                        <div class="relative h-64 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-amber-500 to-yellow-600 opacity-90"></div>
+                            <img 
+                                src="images/education/amirainfrontofclass.jpeg" 
+                                alt="Media & Speaking" 
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-white bg-white/20 backdrop-blur-sm border border-white/20">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-yellow-300 mr-2"></span>
+                                    PARTNERSHIP
+                                </span>
+                            </div>
+                        </div>
+                        <div class="bg-white p-8">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mr-4">
+                                    <i class="fas fa-microphone text-yellow-500"></i>
+                                </div>
+                                <h4 class="text-xl font-serif font-bold text-gray-800">Media & Speaking</h4>
+                            </div>
+                            
+                            <p class="text-gray-700 mb-6">
+                                Invite me to share insights on contemporary art, creative entrepreneurship, or the business of art on your podcast, blog, or event.
+                            </p>
+                            
+                            <h5 class="text-gray-800 font-medium mb-3">What to expect:</h5>
+                            <ul class="mb-6">
+                                <li class="flex items-center mb-3">
+                                    <i class="fas fa-check-circle text-yellow-500 mr-2"></i>
+                                    <span class="text-gray-700">Engaging presentation style</span>
+                                </li>
+                                <li class="flex items-center mb-3">
+                                    <i class="fas fa-check-circle text-yellow-500 mr-2"></i>
+                                    <span class="text-gray-700">Authentic art world perspectives</span>
+                                </li>
+                                <li class="flex items-center mb-3">
+                                    <i class="fas fa-check-circle text-yellow-500 mr-2"></i>
+                                    <span class="text-gray-700">Practical advice for creative audiences</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-yellow-500 mr-2"></i>
+                                    <span class="text-gray-700">Promotional cross-marketing opportunities</span>
+                                </li>
+                            </ul>
+                            
+                            <a href="#contact" class="inline-flex items-center justify-center w-full px-6 py-3 bg-yellow-500 text-white font-medium rounded-full hover:bg-yellow-600 transition-all duration-300 glass-button">
+                                Contact for Inquiries
+                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Unique Collaboration Section -->
+        <section class="my-20 py-16 rounded-xl relative overflow-hidden collaboration-glass">
+            <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <div class="md:col-span-2">
+                    <h3 class="text-3xl font-serif font-bold text-white mb-6 collaboration-text">Have a unique collaboration idea?</h3>
+                    <p class="text-gray-300 text-lg mb-8 collaboration-text">
+                        If you have a vision for a unique collaboration that doesn't fit neatly into these categories, I'd love to hear about it. My work has appeared in galleries, on products, and in spaces worldwide.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 bg-pink-500 text-white font-medium rounded-full hover:bg-pink-600 transition-all duration-300 glass-button" style="color: white !important; background: linear-gradient(135deg, #ec4899, #be185d) !important; font-weight: 700 !important; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8) !important; border: 2px solid rgba(255, 255, 255, 0.2) !important;">
+                            <i class="fas fa-envelope mr-2" style="color: white !important;"></i>
+                            Send Direct Message
+                        </a>
+                        <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-600 text-gray-300 font-medium rounded-full hover:border-gray-400 hover:text-white transition-all duration-300 glass-button" style="background: rgba(255, 255, 255, 0.95) !important; color: #1f2937 !important; border: 2px solid rgba(255, 255, 255, 0.9) !important; font-weight: 700 !important;">
+                            <i class="fas fa-briefcase mr-2" style="color: #1f2937 !important;"></i>
+                            Business Inquiries
+                        </a>
+                    </div>
+                    
+                    <!-- Mobile version of the circle -->
+                    <div class="md:hidden flex justify-center my-8">
+                        <div class="w-36 h-36 rounded-full border-4 border-dashed border-gray-700 flex items-center justify-center p-4 lets-create-circle">
+                            <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center text-center p-4 lets-create-content">
+                                <div>
+                                    <div class="text-gray-400 text-xs uppercase tracking-wide mb-1">Let's Create</div>
+                                    <div class="text-white font-serif font-bold">Together</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-center">
+                    <div class="w-48 h-48 rounded-full border-4 border-dashed border-gray-700 flex items-center justify-center p-4 lets-create-circle">
+                        <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center text-center p-4 lets-create-content">
+                            <div>
+                                <div class="text-gray-400 text-xs uppercase tracking-wide mb-1">Let's Create</div>
+                                <div class="text-white font-serif font-bold">Together</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="section-divider"></div>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="py-16">
+            <div class="section-header">
+                <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-rose-100 to-pink-100 text-rose-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">STAY CONNECTED</span>
+                <h3 class="text-4xl font-serif font-bold text-gray-800">Follow My Creative World</h3>
+            </div>
+            
+            <p class="text-center text-gray-700 max-w-3xl mx-auto mb-12">
+                Join my community to get exclusive updates, behind-the-scenes content, and early access to new collections and educational offerings.
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-20">
+                <!-- Instagram -->
+                <div class="overflow-hidden rounded-lg shadow-md transition-all duration-500 hover:shadow-xl bg-green-50 glass-card social-glass-card">
+                    <div class="p-8 text-center">
+                        <div class="flex justify-center mb-4">
+                            <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                                <i class="fab fa-instagram text-2xl text-gray-800"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-serif font-bold text-gray-800 mb-1">Instagram</h4>
+                        <p class="text-gray-600 mb-4">70K+ Followers</p>
+                        <a href="https://www.instagram.com/amirarahimart/" class="inline-flex items-center text-pink-500 font-medium hover:text-pink-600 transition-all duration-300">
+                            Visit Profile
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- YouTube -->
+                <div class="overflow-hidden rounded-lg shadow-md transition-all duration-500 hover:shadow-xl bg-pink-50 glass-card social-glass-card">
+                    <div class="p-8 text-center">
+                        <div class="flex justify-center mb-4">
+                            <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                                <i class="fab fa-youtube text-2xl text-gray-800"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-serif font-bold text-gray-800 mb-1">YouTube</h4>
+                        <p class="text-gray-600 mb-4">15K+ Followers</p>
+                        <a href="https://www.youtube.com/c/AmiraRahim" class="inline-flex items-center text-pink-500 font-medium hover:text-pink-600 transition-all duration-300">
+                            Visit Profile
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Pinterest -->
+                <div class="overflow-hidden rounded-lg shadow-md transition-all duration-500 hover:shadow-xl bg-blue-50 glass-card social-glass-card">
+                    <div class="p-8 text-center">
+                        <div class="flex justify-center mb-4">
+                            <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                                <i class="fab fa-pinterest-p text-2xl text-gray-800"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-serif font-bold text-gray-800 mb-1">Pinterest</h4>
+                        <p class="text-gray-600 mb-4">40K+ Followers</p>
+                        <a href="https://www.pinterest.com/amirarahimart/" class="inline-flex items-center text-pink-500 font-medium hover:text-pink-600 transition-all duration-300">
+                            Visit Profile
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Facebook -->
+                <div class="overflow-hidden rounded-lg shadow-md transition-all duration-500 hover:shadow-xl bg-red-50 glass-card social-glass-card">
+                    <div class="p-8 text-center">
+                        <div class="flex justify-center mb-4">
+                            <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                                <i class="fab fa-facebook-f text-2xl text-gray-800"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-serif font-bold text-gray-800 mb-1">Facebook</h4>
+                        <p class="text-gray-600 mb-4">25K+ Followers</p>
+                        <a href="https://www.facebook.com/amirarahimart/" class="inline-flex items-center text-pink-500 font-medium hover:text-pink-600 transition-all duration-300">
+                            Visit Profile
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Newsletter Section -->
+            <div class="my-20 py-16 bg-pink-50 rounded-xl relative overflow-hidden newsletter-glass">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-pink-100 rounded-full -mr-32 -mt-32 opacity-50"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-pink-100 rounded-full -ml-32 -mb-32 opacity-50"></div>
+                
+                <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 items-center relative z-10">
+                    <div class="md:col-span-2">
+                        <div class="mb-4">
+                            <span class="inline-block px-4 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-semibold uppercase tracking-wide glass-pill">EXCLUSIVE UPDATES</span>
+                        </div>
+                        <h3 class="text-3xl font-serif font-bold text-gray-800 mb-6">Join My Newsletter</h3>
+                        <p class="text-gray-700 mb-6">
+                            Subscribe to receive exclusive content, early access to new collections, event invitations, and art business tips delivered straight to your inbox.
+                        </p>
+                        
+                        <ul class="mb-6">
+                            <li class="flex items-center mb-3">
+                                <div class="w-6 h-6 rounded-full bg-pink-100 flex items-center justify-center mr-3">
+                                    <i class="fas fa-check text-pink-500 text-xs"></i>
+                                </div>
+                                <span class="text-gray-700">New artwork previews</span>
+                            </li>
+                            <li class="flex items-center mb-3">
+                                <div class="w-6 h-6 rounded-full bg-pink-100 flex items-center justify-center mr-3">
+                                    <i class="fas fa-check text-pink-500 text-xs"></i>
+                                </div>
+                                <span class="text-gray-700">Special offers & discounts</span>
+                            </li>
+                            <li class="flex items-center mb-3">
+                                <div class="w-6 h-6 rounded-full bg-pink-100 flex items-center justify-center mr-3">
+                                    <i class="fas fa-check text-pink-500 text-xs"></i>
+                                </div>
+                                <span class="text-gray-700">Art business tips & resources</span>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-6 h-6 rounded-full bg-pink-100 flex items-center justify-center mr-3">
+                                    <i class="fas fa-check text-pink-500 text-xs"></i>
+                                </div>
+                                <span class="text-gray-700">Event invitations</span>
+                            </li>
+                        </ul>
+                        
+                        <form class="flex flex-col sm:flex-row gap-4">
+                            <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 glass-input">
+                            <button type="submit" class="px-6 py-3 bg-pink-500 text-white font-medium rounded-full hover:bg-pink-600 transition-all duration-300 glass-button">
+                                Subscribe Now
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="hidden md:block">
+                        <img src="images/artwork/rainbow_spectrum.jpeg" alt="Amira Rahim Newsletter Preview" class="rounded-lg shadow-lg w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div>
+                    <h4 class="text-xl font-serif font-bold text-gray-800 mb-6">Get in Touch</h4>
+                    <p class="text-gray-700 mb-8">
+                        Have a question, collaboration idea, or just want to say hello? Fill out the form and I'll get back to you as soon as possible.
+                    </p>
+                    
+                    <div class="mb-8">
+                        <h5 class="text-gray-800 font-medium mb-4">Connect Directly</h5>
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-pink-500"></i>
+                            </div>
+                            <span class="text-gray-700">hello@amirarahim.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-pink-500"></i>
+                            </div>
+                            <span class="text-gray-700">New York, NY & Dubai, UAE</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <img src="images/camel.png" alt="Artistic camel illustration" class="w-full max-w-sm rounded-lg shadow-lg">
+                    </div>
+                </div>
+                
+                <div>
+                    <form class="contact-form glass-card p-8 rounded-lg">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" id="name" class="form-input glass-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" class="form-input glass-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mb-4">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" class="form-input glass-input" required>
+                        </div>
+                        
+                        <div class="form-group mb-6">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-textarea glass-input" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary form-submit glass-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Newsletter Section -->
+        <section class="my-20 bg-gray-100 py-16 px-8 rounded-lg glass-card">
+            <div class="max-w-3xl mx-auto text-center">
+                <h3 class="text-2xl font-serif font-bold text-gray-800 mb-4">Join the Colorful Community</h3>
+                <p class="text-gray-700 mb-8">Subscribe to receive updates on new artwork, exhibitions, and exclusive content.</p>
+                
+                <form class="flex flex-col md:flex-row gap-4">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 glass-input">
+                    <button type="submit" class="btn btn-primary glass-button">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container mx-auto px-4">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Amira Rahim</div>
+                    <p class="footer-description">
+                        Contemporary abstract expressionist painter creating vibrant artwork that celebrates color and creative freedom.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/amirarahimart/" class="footer-social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/amirarahimart/" class="footer-social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.pinterest.com/amirarahimart/" class="footer-social-link" aria-label="Pinterest">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                        <a href="https://www.youtube.com/c/AmiraRahim" class="footer-social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#artwork">Artwork</a></li>
+                        <li class="footer-link"><a href="#education">Education</a></li>
+                        <li class="footer-link"><a href="#collaborate">Collaborate</a></li>
+                        <li class="footer-link"><a href="#about">About</a></li>
+                        <li class="footer-link"><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="footer-heading">Shop</h5>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="https://shop.amirarahim.com/collections/available-originals-1">Original Paintings</a></li>
+                        <li class="footer-link"><a href="https://shop.amirarahim.com/collections/prints">Fine Art Prints</a></li>
+                        <li class="footer-link"><a href="https://shop.amirarahim.com/pages/commission">Commissions</a></li>
+                        <li class="footer-link"><a href="https://shop.amirarahim.com/pages/representation">Licensing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="footer-heading">Connect</h5>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#contact">Contact</a></li>
+                        <li class="footer-link"><a href="#about">About</a></li>
+                        <li class="footer-link"><a href="#artwork">Portfolio</a></li>
+                        <li class="footer-link"><a href="#education">Workshops</a></li>
+                        <li class="footer-link"><a href="#collaborate">Collaborate</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    &copy; 2025 Amira Rahim. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="scripts/main.js"></script>
+    
+    <!-- Senja Testimonials Widget -->
+    <script async type="text/javascript" src="https://widget.senja.io/widget/6a3e2a3d-0648-4ec0-bbeb-8dbca588b22a/platform.js"></script>
+    
+    <!-- Custom Testimonials Auto-Scroll Script -->
+    <script>
+    function initializeTestimonialsAutoScroll() {
+        console.log('Initializing custom testimonials autoscroll...');
+        
+        const container = document.querySelector('.testimonials-container');
+        const dots = document.querySelectorAll('.nav-dot');
+        let autoScrollInterval;
+        let isUserInteracting = false;
+        let currentIndex = 0;
+        
+        if (!container) {
+            console.error('Testimonials container not found');
+            return;
+        }
+        
+        console.log('Found testimonials container:', container);
+        
+        // Calculate how much to scroll (show 4 testimonials by default)
+        const cardWidth = 320; // Each card is 320px
+        const gap = 32; // 2rem gap = 32px
+        const testimonialsPerView = 4;
+        const scrollAmount = (cardWidth + gap) * testimonialsPerView;
+        
+        function updateDots() {
+            dots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.style.background = 'white';
+                    dot.style.transform = 'scale(1.2)';
+                } else {
+                    dot.style.background = 'rgba(255, 255, 255, 0.5)';
+                    dot.style.transform = 'scale(1)';
+                }
+            });
+        }
+        
+        function scrollToPosition(index) {
+            currentIndex = index;
+            const targetScroll = index * scrollAmount;
+            
+            console.log('Scrolling to position:', { index, targetScroll });
+            
+            container.scrollTo({
+                left: targetScroll,
+                behavior: 'smooth'
+            });
+            
+            updateDots();
+        }
+        
+        function startAutoScroll() {
+            if (autoScrollInterval) clearInterval(autoScrollInterval);
+            
+            console.log('Starting testimonials autoscroll every 3 seconds...');
+            
+            autoScrollInterval = setInterval(() => {
+                if (isUserInteracting) return;
+                
+                const totalTestimonials = 10;
+                const maxIndex = Math.ceil(totalTestimonials / testimonialsPerView) - 1;
+                
+                let nextIndex = currentIndex + 1;
+                if (nextIndex > maxIndex) {
+                    nextIndex = 0;
+                    console.log('Resetting to beginning of testimonials');
+                }
+                
+                scrollToPosition(nextIndex);
+                
+            }, 3000); // 3 seconds interval
+        }
+        
+        function stopAutoScroll() {
+            console.log('Stopping testimonials autoscroll...');
+            if (autoScrollInterval) {
+                clearInterval(autoScrollInterval);
+                autoScrollInterval = null;
+            }
+        }
+        
+        function setupEventListeners() {
+            // Dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    console.log('Dot clicked:', index);
+                    stopAutoScroll();
+                    scrollToPosition(index);
+                    // Resume after 5 seconds
+                    setTimeout(startAutoScroll, 5000);
+                });
+            });
+            
+            // Pause on user interaction
+            container.addEventListener('mouseenter', () => {
+                isUserInteracting = true;
+                console.log('User hovering - pausing autoscroll');
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                isUserInteracting = false;
+                console.log('User left - resuming autoscroll');
+            });
+            
+            // Pause on touch/scroll
+            container.addEventListener('touchstart', () => {
+                isUserInteracting = true;
+                console.log('Touch detected - pausing autoscroll');
+            });
+            
+            container.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    isUserInteracting = false;
+                    console.log('Touch ended - resuming autoscroll');
+                }, 2000);
+            });
+            
+            // Pause on manual scroll
+            let scrollTimeout;
+            container.addEventListener('scroll', () => {
+                isUserInteracting = true;
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    isUserInteracting = false;
+                }, 3000);
+            });
+        }
+        
+        // Setup scrollbar styling
+        const style = document.createElement('style');
+        style.textContent = `
+            .testimonials-container::-webkit-scrollbar {
+                height: 6px;
+            }
+            
+            .testimonials-container::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 3px;
+            }
+            
+            .testimonials-container::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.4);
+                border-radius: 3px;
+            }
+            
+            .testimonials-container::-webkit-scrollbar-thumb:hover {
+                background: rgba(255, 255, 255, 0.6);
+            }
+            
+            @media (max-width: 768px) {
+                .testimonials-track {
+                    gap: 1rem !important;
+                }
+                
+                .testimonial-card {
+                    flex: 0 0 280px !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Initialize
+        setupEventListeners();
+        updateDots();
+        
+        // Start autoscroll after a delay
+        setTimeout(() => {
+            startAutoScroll();
+        }, 2000);
+        
+        console.log('Custom testimonials autoscroll initialized successfully!');
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeTestimonialsAutoScroll);
+    } else {
+        initializeTestimonialsAutoScroll();
+    }
+    
+    // Also try on window load
+    window.addEventListener('load', () => {
+        setTimeout(initializeTestimonialsAutoScroll, 500);
+    });
+    </script>
+    
+    <script src="scripts/mobile-micro-animations.js"></script>
+    <script src="js/navigation.js"></script>
+    
+    <!-- Paint Cursor Effect -->
+    <script src="scripts/cursor-effect.js"></script>
+    
+    <!-- Education Form Handler -->
+    <script src="scripts/education-form.js"></script>
+    
+    <!-- Education Tabs -->
+    <script src="scripts/education-tabs.js"></script>
+    <script src="https://widget.senja.io/widget/6a3e2a3d-0648-4ec0-bbeb-8dbca588b22a/platform.js" type="text/javascript" async></script>
+    <script src="scripts/commission-button-fix.js"></script>
+    
+    <!-- Performance Optimizer Script (loads immediately) -->
+    <script src="scripts/performance-optimizer.js"></script>
+    
+    <!-- Image Optimization Script -->
+    <script src="scripts/image-optimization.js"></script>
+    
+    <!-- Defer non-critical scripts -->
+    <script>
+      function loadScript(src, async = true) {
+        const script = document.createElement('script');
+        script.src = src;
+        if (async) script.async = true;
+        document.head.appendChild(script);
+      }
+      
+      // Load non-critical scripts after page load
+      window.addEventListener('load', function() {
+        setTimeout(() => {
+          // Defer third-party scripts
+          loadScript('https://widget.senja.io/widget/6a3e2a3d-0648-4ec0-bbeb-8dbca588b22a/platform.js');
+        }, 1000);
+      });
+    </script>
+</body>
+</html>

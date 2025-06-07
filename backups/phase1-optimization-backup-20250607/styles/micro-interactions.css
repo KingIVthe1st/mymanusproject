@@ -1,0 +1,347 @@
+/* Micro-Interactions & Haptic Feedback System */
+
+/* Paint Drops from Magnetic Cursor */
+.paint-drop {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform-origin: center;
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    mix-blend-mode: multiply;
+    opacity: 0.8;
+    filter: blur(0.5px);
+}
+
+/* Enhanced Magnetic Cursor Trail */
+.magnetic-cursor {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, rgba(255,105,180,0.8) 0%, rgba(138,43,226,0.6) 50%, transparent 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform-origin: center;
+    transition: all 0.15s cubic-bezier(0.2, 0, 0.2, 1);
+    mix-blend-mode: screen;
+    filter: blur(1px);
+}
+
+/* Magnetic Button Interactions */
+.magnetic-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.magnetic-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+.magnetic-btn:hover::before {
+    left: 100%;
+}
+
+.magnetic-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.magnetic-btn:active {
+    transform: translateY(0) scale(0.98);
+    transition: all 0.1s;
+}
+
+/* Glass Card Hover Ripple Effects */
+.glass-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.glass-card:hover::after {
+    width: 300px;
+    height: 300px;
+    opacity: 1;
+}
+
+.glass-card:hover {
+    transform: translateY(-4px) rotateX(5deg);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+
+/* Artwork Card Paint Splash Effect */
+.artwork-card {
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.paint-splash {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transform: scale(0);
+    mix-blend-mode: multiply;
+}
+
+.paint-splash.animate {
+    animation: paintSplash 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes paintSplash {
+    0% {
+        opacity: 0.8;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.2) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2) rotate(360deg);
+    }
+}
+
+/* Button Micro-Interactions */
+.glass-button {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, 
+        rgba(255,255,255,0.9) 0%, 
+        rgba(255,255,255,0.7) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(255,105,180,0.1) 0%, 
+        rgba(138,43,226,0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.glass-button:hover::before {
+    opacity: 1;
+}
+
+.glass-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border-color: rgba(255,105,180,0.3);
+}
+
+/* Navigation Link Hover Effects */
+.navbar-link {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        rgba(255,105,180,1) 0%, 
+        rgba(138,43,226,1) 100%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+}
+
+.navbar-link:hover::after {
+    width: 100%;
+}
+
+.navbar-link:hover {
+    color: #ff69b4;
+    transform: translateY(-1px);
+}
+
+/* Floating Particle Interaction */
+.interactive-particle {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, rgba(255,105,180,0.8) 0%, transparent 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9997;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.interactive-particle.active {
+    opacity: 1;
+    animation: floatParticle 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100px) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Text Scramble Animation Trigger */
+.text-scramble {
+    position: relative;
+    overflow: hidden;
+}
+
+.text-scramble.scrambling {
+    animation: textGlitch 0.3s ease-in-out;
+}
+
+@keyframes textGlitch {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-2px); }
+    40% { transform: translateX(2px); }
+    60% { transform: translateX(-1px); }
+    80% { transform: translateX(1px); }
+}
+
+/* Reveal Animation on Scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced Glass Pill Hover */
+.glass-pill {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(135deg, 
+        rgba(255,255,255,0.9) 0%, 
+        rgba(255,255,255,0.7) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.glass-pill:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, 
+        rgba(255,105,180,0.2) 0%, 
+        rgba(138,43,226,0.2) 100%);
+    border-color: rgba(255,105,180,0.4);
+}
+
+/* Haptic Feedback Simulation */
+@media (hover: hover) and (pointer: fine) {
+    .haptic-feedback:hover {
+        animation: hapticPulse 0.2s ease-out;
+    }
+}
+
+@keyframes hapticPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* Mobile Touch Feedback */
+@media (hover: none) and (pointer: coarse) {
+    .mobile-touch-feedback:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    .mobile-touch-feedback::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle, rgba(255,105,180,0.3) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-touch-feedback:active::after {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Performance Optimizations */
+.paint-drop,
+.magnetic-cursor,
+.interactive-particle {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .paint-drop,
+    .magnetic-cursor,
+    .interactive-particle,
+    .glass-card,
+    .magnetic-btn,
+    .glass-button,
+    .navbar-link,
+    .glass-pill {
+        animation: none;
+        transition: none;
+    }
+    
+    .glass-card:hover,
+    .magnetic-btn:hover,
+    .glass-button:hover {
+        transform: none;
+    }
+}

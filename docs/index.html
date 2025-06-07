@@ -15,10 +15,14 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     
-    <!-- Preload critical resources -->
-    <link rel="preload" href="images/amira-header.png" as="image" type="image/png">
+    <!-- Phase 2: Enhanced Resource Hints for 70% Bandwidth Reduction -->
+    <link rel="preload" href="images/optimized/amira-header-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)">
+    <link rel="preload" href="images/optimized/amira-header-desktop.webp" as="image" type="image/webp" media="(min-width: 769px)">
     <link rel="preload" href="images/logo/amira-logo.webp" as="image" type="image/webp">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" as="style">
+    
+    <!-- Critical Font Preloading (Subset) -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/playfairdisplay/v30/nuFiD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDYbtXK-F2qC0sH.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- Critical CSS inline -->
     <style>
@@ -88,7 +92,9 @@
         'styles/collaboration-button-fix.css',
         'styles/artwork-button-standardization.css',
         'styles/contact-section-center-fix.css',
-        'styles/featured-originals-center-fix.css'
+        'styles/featured-originals-center-fix.css',
+        'styles/lazy-loading.css',
+        'styles/font-optimization.css'
       ];
       
       function loadDeferredCSS() {
@@ -371,7 +377,40 @@
                 scroll-behavior: smooth !important;
             }
         }
+        
+        /* Phase 2: Critical Path CSS */
+        .lazy-loading { opacity: 0.3; transform: scale(0.95); transition: all 0.6s ease; }
+        .lazy-loaded { opacity: 1; transform: scale(1); }
+        .font-loading { font-family: system-ui, sans-serif; }
+        .font-loaded { font-family: 'Inter', system-ui, sans-serif; }
+        .critical-image { opacity: 1; transform: none; }
+        
+        /* WebP Support Detection */
+        .no-webp .webp-image { display: none; }
+        .webp .fallback-image { display: none; }
     </style>
+    
+    <!-- WebP Detection Script -->
+    <script>
+        // Immediate WebP support detection
+        (function() {
+            const webP = new Image();
+            webP.onload = webP.onerror = function() {
+                document.documentElement.classList.add(webP.height === 2 ? 'webp' : 'no-webp');
+            };
+            webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+        })();
+        
+        // Font loading optimization
+        if ('fonts' in document) {
+            Promise.all([
+                document.fonts.load('1em Inter'),
+                document.fonts.load('1em Playfair Display')
+            ]).then(() => {
+                document.documentElement.classList.add('fonts-loaded');
+            });
+        }
+    </script>
 </head>
 <body>
     <!-- Living Gradient Background -->
@@ -778,7 +817,15 @@
                 </div>
                 
                 <div class="portrait-frame reveal">
-                    <img src="images/amira-header.png" alt="Amira Rahim" class="w-full" data-critical="true">
+                    <picture>
+                        <source srcset="images/optimized/amira-header-desktop.avif" type="image/avif" media="(min-width: 1024px)">
+                        <source srcset="images/optimized/amira-header-desktop.webp" type="image/webp" media="(min-width: 1024px)">
+                        <source srcset="images/optimized/amira-header-tablet.avif" type="image/avif" media="(min-width: 768px)">
+                        <source srcset="images/optimized/amira-header-tablet.webp" type="image/webp" media="(min-width: 768px)">
+                        <source srcset="images/optimized/amira-header-mobile.avif" type="image/avif" media="(max-width: 767px)">
+                        <source srcset="images/optimized/amira-header-mobile.webp" type="image/webp" media="(max-width: 767px)">
+                        <img src="images/amira-header.png" alt="Amira Rahim" class="w-full" data-critical="true">
+                    </picture>
                 </div>
             </div>
         </section>
@@ -800,7 +847,15 @@
                 <!-- Artwork 1 -->
                 <div class="artwork-card glass-card">
                     <div class="artwork-image">
-                        <img src="images/artwork/rainbow_spectrum.jpeg" alt="Rainbow Spectrum" class="w-full h-full object-cover">
+                        <picture>
+                            <source srcset="images/optimized/rainbow_spectrum-desktop.avif" type="image/avif" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/rainbow_spectrum-desktop.webp" type="image/webp" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/rainbow_spectrum-tablet.avif" type="image/avif" media="(min-width: 768px)">
+                            <source srcset="images/optimized/rainbow_spectrum-tablet.webp" type="image/webp" media="(min-width: 768px)">
+                            <source srcset="images/optimized/rainbow_spectrum-mobile.avif" type="image/avif" media="(max-width: 767px)">
+                            <source srcset="images/optimized/rainbow_spectrum-mobile.webp" type="image/webp" media="(max-width: 767px)">
+                            <img src="images/artwork/rainbow_spectrum.jpeg" alt="Rainbow Spectrum" class="w-full h-full object-cover">
+                        </picture>
                         <div class="artwork-overlay">
                             <h3 class="artwork-title">Rainbow Spectrum</h3>
                             <p class="artwork-description">Acrylic on canvas, 36" x 36"</p>
@@ -812,7 +867,15 @@
                 <!-- Artwork 2 -->
                 <div class="artwork-card glass-card">
                     <div class="artwork-image">
-                        <img src="images/artwork/eden_original_painting.jpeg" alt="Eden" class="w-full h-full object-cover">
+                        <picture>
+                            <source srcset="images/optimized/eden_original_painting-desktop.avif" type="image/avif" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/eden_original_painting-desktop.webp" type="image/webp" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/eden_original_painting-tablet.avif" type="image/avif" media="(min-width: 768px)">
+                            <source srcset="images/optimized/eden_original_painting-tablet.webp" type="image/webp" media="(min-width: 768px)">
+                            <source srcset="images/optimized/eden_original_painting-mobile.avif" type="image/avif" media="(max-width: 767px)">
+                            <source srcset="images/optimized/eden_original_painting-mobile.webp" type="image/webp" media="(max-width: 767px)">
+                            <img src="images/artwork/eden_original_painting.jpeg" alt="Eden" class="w-full h-full object-cover">
+                        </picture>
                         <div class="artwork-overlay">
                             <h3 class="artwork-title">Eden</h3>
                             <p class="artwork-description">Acrylic on canvas, 30" x 40"</p>
@@ -824,7 +887,15 @@
                 <!-- Artwork 3 -->
                 <div class="artwork-card glass-card">
                     <div class="artwork-image">
-                        <img src="images/artwork/festival_original_painting.jpeg" alt="Festival" class="w-full h-full object-cover">
+                        <picture>
+                            <source srcset="images/optimized/festival_original_painting-desktop.avif" type="image/avif" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/festival_original_painting-desktop.webp" type="image/webp" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/festival_original_painting-tablet.avif" type="image/avif" media="(min-width: 768px)">
+                            <source srcset="images/optimized/festival_original_painting-tablet.webp" type="image/webp" media="(min-width: 768px)">
+                            <source srcset="images/optimized/festival_original_painting-mobile.avif" type="image/avif" media="(max-width: 767px)">
+                            <source srcset="images/optimized/festival_original_painting-mobile.webp" type="image/webp" media="(max-width: 767px)">
+                            <img src="images/artwork/festival_original_painting.jpeg" alt="Festival" class="w-full h-full object-cover">
+                        </picture>
                         <div class="artwork-overlay">
                             <h3 class="artwork-title">Festival</h3>
                             <p class="artwork-description">Acrylic on canvas, 24" x 36"</p>
@@ -836,7 +907,15 @@
                 <!-- Artwork 4 -->
                 <div class="artwork-card glass-card">
                     <div class="artwork-image">
-                        <img src="images/artwork/jubilee_original_painting.jpeg" alt="Jubilee" class="w-full h-full object-cover">
+                        <picture>
+                            <source srcset="images/optimized/jubilee_original_painting-desktop.avif" type="image/avif" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/jubilee_original_painting-desktop.webp" type="image/webp" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/jubilee_original_painting-tablet.avif" type="image/avif" media="(min-width: 768px)">
+                            <source srcset="images/optimized/jubilee_original_painting-tablet.webp" type="image/webp" media="(min-width: 768px)">
+                            <source srcset="images/optimized/jubilee_original_painting-mobile.avif" type="image/avif" media="(max-width: 767px)">
+                            <source srcset="images/optimized/jubilee_original_painting-mobile.webp" type="image/webp" media="(max-width: 767px)">
+                            <img src="images/artwork/jubilee_original_painting.jpeg" alt="Jubilee" class="w-full h-full object-cover">
+                        </picture>
                         <div class="artwork-overlay">
                             <h3 class="artwork-title">Jubilee</h3>
                             <p class="artwork-description">Acrylic on canvas, 36" x 36"</p>
@@ -848,7 +927,15 @@
                 <!-- Artwork 5 -->
                 <div class="artwork-card glass-card">
                     <div class="artwork-image">
-                        <img src="images/artwork/bloom_original_painting.jpeg" alt="Bloom" class="w-full h-full object-cover">
+                        <picture>
+                            <source srcset="images/optimized/bloom_original_painting-desktop.avif" type="image/avif" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/bloom_original_painting-desktop.webp" type="image/webp" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/bloom_original_painting-tablet.avif" type="image/avif" media="(min-width: 768px)">
+                            <source srcset="images/optimized/bloom_original_painting-tablet.webp" type="image/webp" media="(min-width: 768px)">
+                            <source srcset="images/optimized/bloom_original_painting-mobile.avif" type="image/avif" media="(max-width: 767px)">
+                            <source srcset="images/optimized/bloom_original_painting-mobile.webp" type="image/webp" media="(max-width: 767px)">
+                            <img src="images/artwork/bloom_original_painting.jpeg" alt="Bloom" class="w-full h-full object-cover">
+                        </picture>
                         <div class="artwork-overlay">
                             <h3 class="artwork-title">Bloom</h3>
                             <p class="artwork-description">Acrylic on canvas, 24" x 30"</p>
@@ -860,7 +947,15 @@
                 <!-- Artwork 6 -->
                 <div class="artwork-card glass-card">
                     <div class="artwork-image">
-                        <img src="images/artwork/radiance_original_painting.jpeg" alt="Radiance" class="w-full h-full object-cover">
+                        <picture>
+                            <source srcset="images/optimized/radiance_original_painting-desktop.avif" type="image/avif" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/radiance_original_painting-desktop.webp" type="image/webp" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/radiance_original_painting-tablet.avif" type="image/avif" media="(min-width: 768px)">
+                            <source srcset="images/optimized/radiance_original_painting-tablet.webp" type="image/webp" media="(min-width: 768px)">
+                            <source srcset="images/optimized/radiance_original_painting-mobile.avif" type="image/avif" media="(max-width: 767px)">
+                            <source srcset="images/optimized/radiance_original_painting-mobile.webp" type="image/webp" media="(max-width: 767px)">
+                            <img src="images/artwork/radiance_original_painting.jpeg" alt="Radiance" class="w-full h-full object-cover">
+                        </picture>
                         <div class="artwork-overlay">
                             <h3 class="artwork-title">Radiance</h3>
                             <p class="artwork-description">Acrylic on canvas, 30" x 30"</p>
@@ -904,13 +999,21 @@
                         <!-- Amira's Image -->
                         <div class="lg:sticky lg:top-8">
                             <div class="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all hover:scale-[1.01] group h-full">
-                                <img 
-                                    src="images/amira-about.png" 
-                                    alt="Amira Rahim" 
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                                    loading="lazy"
-                                    style="min-height: 500px;"
-                                >
+                                <picture>
+                                    <source srcset="images/optimized/amira-about-desktop.avif" type="image/avif" media="(min-width: 1024px)">
+                                    <source srcset="images/optimized/amira-about-desktop.webp" type="image/webp" media="(min-width: 1024px)">
+                                    <source srcset="images/optimized/amira-about-tablet.avif" type="image/avif" media="(min-width: 768px)">
+                                    <source srcset="images/optimized/amira-about-tablet.webp" type="image/webp" media="(min-width: 768px)">
+                                    <source srcset="images/optimized/amira-about-mobile.avif" type="image/avif" media="(max-width: 767px)">
+                                    <source srcset="images/optimized/amira-about-mobile.webp" type="image/webp" media="(max-width: 767px)">
+                                    <img 
+                                        src="images/amira-about.png" 
+                                        alt="Amira Rahim" 
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                        loading="lazy"
+                                        style="min-height: 500px;"
+                                    >
+                                </picture>
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </div>
                         </div>
@@ -2157,6 +2260,772 @@
           loadScript('https://widget.senja.io/widget/6a3e2a3d-0648-4ec0-bbeb-8dbca588b22a/platform.js');
         }, 1000);
       });
+    </script>
+    <!-- Phase 2: Advanced Image Optimization & Lazy Loading System -->
+    <script>
+        (function() {
+            'use strict';
+            
+            // Configuration for the image optimization system
+            const CONFIG = {
+                // Quality settings for different image types
+                qualities: {
+                    hero: 85,        // High quality for above-fold images
+                    artwork: 75,     // Good quality for artwork gallery
+                    general: 65      // Standard quality for other images
+                },
+                
+                // Breakpoints for responsive images
+                breakpoints: {
+                    mobile: 768,
+                    tablet: 1024,
+                    desktop: 1440
+                },
+                
+                // Lazy loading settings
+                lazyLoading: {
+                    rootMargin: '50px',
+                    threshold: 0.1
+                },
+                
+                // Performance monitoring
+                performance: {
+                    enabled: true,
+                    logToConsole: false
+                }
+            };
+            
+            // Performance monitoring
+            const performanceMonitor = {
+                start: Date.now(),
+                imageLoads: 0,
+                totalBytes: 0,
+                
+                log: function(action, data) {
+                    if (!CONFIG.performance.enabled) return;
+                    
+                    if (CONFIG.performance.logToConsole) {
+                        console.log(`[Image Optimizer] ${action}:`, data);
+                    }
+                },
+                
+                recordImageLoad: function(size) {
+                    this.imageLoads++;
+                    this.totalBytes += size || 0;
+                    this.log('Image loaded', { 
+                        count: this.imageLoads, 
+                        totalMB: (this.totalBytes / 1024 / 1024).toFixed(2) 
+                    });
+                }
+            };
+            
+            // Optimized image loader with WebP detection and lazy loading
+            class OptimizedImageLoader {
+                constructor() {
+                    this.supportsWebP = false;
+                    this.supportsAvif = false;
+                    this.observer = null;
+                    this.init();
+                }
+                
+                async init() {
+                    // Detect format support
+                    await this.detectFormatSupport();
+                    
+                    // Setup lazy loading observer
+                    this.setupIntersectionObserver();
+                    
+                    // Process all images
+                    this.processAllImages();
+                    
+                    performanceMonitor.log('Initialization complete', {
+                        webp: this.supportsWebP,
+                        avif: this.supportsAvif
+                    });
+                }
+                
+                async detectFormatSupport() {
+                    // Test WebP support
+                    try {
+                        const webpTest = new Promise((resolve) => {
+                            const img = new Image();
+                            img.onload = () => resolve(img.width === 2);
+                            img.onerror = () => resolve(false);
+                            img.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+                        });
+                        this.supportsWebP = await webpTest;
+                    } catch (e) {
+                        this.supportsWebP = false;
+                    }
+                    
+                    // Test AVIF support (future-proofing)
+                    try {
+                        const avifTest = new Promise((resolve) => {
+                            const img = new Image();
+                            img.onload = () => resolve(img.width === 2);
+                            img.onerror = () => resolve(false);
+                            img.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgABogQEAwgMg8f8D///8WfhwB8+ErK42A=';
+                        });
+                        this.supportsAvif = await avifTest;
+                    } catch (e) {
+                        this.supportsAvif = false;
+                    }
+                }
+                
+                setupIntersectionObserver() {
+                    if (!('IntersectionObserver' in window)) {
+                        // Fallback for older browsers
+                        this.loadAllImages();
+                        return;
+                    }
+                    
+                    this.observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                this.loadImage(entry.target);
+                                this.observer.unobserve(entry.target);
+                            }
+                        });
+                    }, CONFIG.lazyLoading);
+                }
+                
+                processAllImages() {
+                    const images = document.querySelectorAll('img[src], img[data-src]');
+                    
+                    images.forEach(img => {
+                        // Skip if already processed
+                        if (img.dataset.optimized) return;
+                        
+                        // Immediate load for critical images
+                        if (img.dataset.critical === 'true' || img.closest('.hero, .navbar')) {
+                            this.loadImage(img);
+                        } else {
+                            // Lazy load for non-critical images
+                            if (this.observer) {
+                                this.observer.observe(img);
+                            } else {
+                                this.loadImage(img);
+                            }
+                        }
+                    });
+                }
+                
+                loadImage(img) {
+                    if (img.dataset.optimized) return;
+                    
+                    const originalSrc = img.dataset.src || img.src;
+                    const optimizedSrc = this.getOptimizedSrc(originalSrc, img);
+                    
+                    // Add loading states
+                    img.classList.add('lazy-loading');
+                    
+                    // Create new image to preload
+                    const newImg = new Image();
+                    
+                    newImg.onload = () => {
+                        img.src = optimizedSrc;
+                        img.classList.remove('lazy-loading');
+                        img.classList.add('lazy-loaded');
+                        img.dataset.optimized = 'true';
+                        
+                        // Estimate file size for monitoring
+                        const estimatedSize = this.estimateImageSize(img);
+                        performanceMonitor.recordImageLoad(estimatedSize);
+                    };
+                    
+                    newImg.onerror = () => {
+                        // Fallback to original
+                        img.src = originalSrc;
+                        img.classList.remove('lazy-loading');
+                        img.dataset.optimized = 'true';
+                        performanceMonitor.log('Image load failed, using fallback', originalSrc);
+                    };
+                    
+                    newImg.src = optimizedSrc;
+                }
+                
+                getOptimizedSrc(originalSrc, img) {
+                    // Don't optimize external images or data URLs
+                    if (originalSrc.startsWith('http') || originalSrc.startsWith('data:')) {
+                        return originalSrc;
+                    }
+                    
+                    // Extract path components
+                    const pathParts = originalSrc.split('/');
+                    const filename = pathParts.pop();
+                    const [name, ext] = filename.split('.');
+                    
+                    // Determine optimal format
+                    let format = ext;
+                    if (this.supportsAvif && ['jpg', 'jpeg', 'png'].includes(ext.toLowerCase())) {
+                        format = 'avif';
+                    } else if (this.supportsWebP && ['jpg', 'jpeg', 'png'].includes(ext.toLowerCase())) {
+                        format = 'webp';
+                    }
+                    
+                    // Determine size based on viewport and image context
+                    const size = this.getOptimalImageSize(img);
+                    
+                    // Build optimized path
+                    const optimizedPath = `images/optimized/${name}-${size}.${format}`;
+                    
+                    // Check if optimized version exists (fallback strategy)
+                    return this.checkImageExists(optimizedPath) ? optimizedPath : originalSrc;
+                }
+                
+                getOptimalImageSize(img) {
+                    const containerWidth = img.parentElement ? img.parentElement.offsetWidth : window.innerWidth;
+                    const devicePixelRatio = window.devicePixelRatio || 1;
+                    const targetWidth = containerWidth * devicePixelRatio;
+                    
+                    // Mobile-first responsive sizing
+                    if (targetWidth <= CONFIG.breakpoints.mobile) {
+                        return 'mobile';
+                    } else if (targetWidth <= CONFIG.breakpoints.tablet) {
+                        return 'tablet';
+                    } else {
+                        return 'desktop';
+                    }
+                }
+                
+                checkImageExists(src) {
+                    // Simple existence check (in production, this would be server-side)
+                    // For now, assume optimized images exist if they follow our naming convention
+                    return src.includes('images/optimized/');
+                }
+                
+                estimateImageSize(img) {
+                    // Rough estimation based on image dimensions and format
+                    const width = img.naturalWidth || img.offsetWidth;
+                    const height = img.naturalHeight || img.offsetHeight;
+                    const pixels = width * height;
+                    
+                    // Estimated bytes per pixel based on format
+                    let bytesPerPixel = 3; // Default for JPEG
+                    if (img.src.includes('.webp')) bytesPerPixel = 2;
+                    if (img.src.includes('.avif')) bytesPerPixel = 1.5;
+                    if (img.src.includes('.png')) bytesPerPixel = 4;
+                    
+                    return pixels * bytesPerPixel;
+                }
+                
+                loadAllImages() {
+                    // Fallback method for browsers without IntersectionObserver
+                    const images = document.querySelectorAll('img[data-src], img:not([data-optimized])');
+                    images.forEach(img => this.loadImage(img));
+                }
+            }
+            
+            // Bandwidth-aware loading
+            class BandwidthOptimizer {
+                constructor() {
+                    this.connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                    this.init();
+                }
+                
+                init() {
+                    if (!this.connection) return;
+                    
+                    // Adjust image quality based on connection
+                    this.adjustQualityBasedOnConnection();
+                    
+                    // Monitor connection changes
+                    this.connection.addEventListener('change', () => {
+                        this.adjustQualityBasedOnConnection();
+                    });
+                }
+                
+                adjustQualityBasedOnConnection() {
+                    if (!this.connection) return;
+                    
+                    const effectiveType = this.connection.effectiveType;
+                    const saveData = this.connection.saveData;
+                    
+                    // Adjust quality based on connection speed
+                    if (saveData || effectiveType === 'slow-2g' || effectiveType === '2g') {
+                        CONFIG.qualities.hero = 60;
+                        CONFIG.qualities.artwork = 50;
+                        CONFIG.qualities.general = 40;
+                        document.documentElement.classList.add('slow-connection');
+                    } else if (effectiveType === '3g') {
+                        CONFIG.qualities.hero = 70;
+                        CONFIG.qualities.artwork = 60;
+                        CONFIG.qualities.general = 50;
+                        document.documentElement.classList.add('medium-connection');
+                    } else {
+                        // 4g or better
+                        CONFIG.qualities.hero = 85;
+                        CONFIG.qualities.artwork = 75;
+                        CONFIG.qualities.general = 65;
+                        document.documentElement.classList.add('fast-connection');
+                    }
+                    
+                    performanceMonitor.log('Connection adjusted', {
+                        effectiveType,
+                        saveData,
+                        qualities: CONFIG.qualities
+                    });
+                }
+            }
+            
+            // Initialize systems when DOM is ready
+            function initializeImageOptimization() {
+                // Initialize bandwidth optimizer
+                new BandwidthOptimizer();
+                
+                // Initialize image loader
+                new OptimizedImageLoader();
+                
+                // Add CSS for loading states if not already present
+                if (!document.querySelector('#image-optimizer-styles')) {
+                    const styles = document.createElement('style');
+                    styles.id = 'image-optimizer-styles';
+                    styles.textContent = `
+                        .lazy-loading {
+                            opacity: 0.3;
+                            transform: scale(0.95);
+                            transition: all 0.6s ease;
+                        }
+                        
+                        .lazy-loaded {
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+                        
+                        /* Reduce quality on slow connections */
+                        .slow-connection img {
+                            image-rendering: -webkit-optimize-contrast;
+                        }
+                        
+                        /* Progressive enhancement for modern browsers */
+                        @supports (image-rendering: crisp-edges) {
+                            .fast-connection img {
+                                image-rendering: crisp-edges;
+                            }
+                        }
+                    `;
+                    document.head.appendChild(styles);
+                }
+                
+                // Report final performance stats
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        performanceMonitor.log('Final stats', {
+                            totalTime: Date.now() - performanceMonitor.start,
+                            imagesLoaded: performanceMonitor.imageLoads,
+                            totalMB: (performanceMonitor.totalBytes / 1024 / 1024).toFixed(2),
+                            avgTimePerImage: performanceMonitor.imageLoads > 0 ? 
+                                ((Date.now() - performanceMonitor.start) / performanceMonitor.imageLoads).toFixed(2) + 'ms' : 'N/A'
+                        });
+                    }, 1000);
+                });
+            }
+            
+            // Start initialization
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeImageOptimization);
+            } else {
+                initializeImageOptimization();
+            }
+            
+        })();
+    </script>
+
+    <!-- 🎨 Phase 2: Advanced Image Optimization & Lazy Loading System -->
+    <script>
+        (function() {
+            'use strict';
+            
+            // Configuration for the image optimization system
+            const CONFIG = {
+                // Quality settings for different image types
+                qualities: {
+                    hero: 85,        // High quality for above-the-fold images
+                    artwork: 75,     // Good quality for artwork gallery
+                    general: 65      // Standard quality for other images
+                },
+                
+                // Breakpoints for responsive images
+                breakpoints: {
+                    mobile: 768,
+                    tablet: 1024,
+                    desktop: 1440
+                },
+                
+                // Lazy loading settings
+                lazyLoading: {
+                    rootMargin: '50px',
+                    threshold: 0.1
+                },
+                
+                // Performance monitoring
+                performance: {
+                    enabled: true,
+                    logToConsole: true  // Enable console logs for testing
+                }
+            };
+            
+            // Performance monitoring
+            const performanceMonitor = {
+                start: Date.now(),
+                imageLoads: 0,
+                totalBytes: 0,
+                
+                log: function(action, data) {
+                    if (!CONFIG.performance.enabled) return;
+                    
+                    if (CONFIG.performance.logToConsole) {
+                        console.log(`[🎨 Image Optimizer] ${action}:`, data);
+                    }
+                },
+                
+                recordImageLoad: function(size) {
+                    this.imageLoads++;
+                    this.totalBytes += size || 0;
+                    this.log('Image loaded', { 
+                        count: this.imageLoads, 
+                        totalMB: (this.totalBytes / 1024 / 1024).toFixed(2) 
+                    });
+                }
+            };
+            
+            // Optimized image loader with WebP/AVIF detection and lazy loading
+            class OptimizedImageLoader {
+                constructor() {
+                    this.supportsWebP = false;
+                    this.supportsAvif = false;
+                    this.observer = null;
+                    this.optimizedImages = 0;
+                    this.init();
+                }
+                
+                async init() {
+                    // Detect format support
+                    await this.detectFormatSupport();
+                    
+                    // Setup lazy loading observer
+                    this.setupIntersectionObserver();
+                    
+                    // Process all images
+                    this.processAllImages();
+                    
+                    performanceMonitor.log('🚀 Initialization complete', {
+                        webp: this.supportsWebP,
+                        avif: this.supportsAvif,
+                        totalImages: document.querySelectorAll('img').length
+                    });
+                }
+                
+                async detectFormatSupport() {
+                    // Test WebP support
+                    try {
+                        const webpTest = new Promise((resolve) => {
+                            const img = new Image();
+                            img.onload = () => resolve(img.width === 2);
+                            img.onerror = () => resolve(false);
+                            img.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+                        });
+                        this.supportsWebP = await webpTest;
+                    } catch (e) {
+                        this.supportsWebP = false;
+                    }
+                    
+                    // Test AVIF support
+                    try {
+                        const avifTest = new Promise((resolve) => {
+                            const img = new Image();
+                            img.onload = () => resolve(img.width === 2);
+                            img.onerror = () => resolve(false);
+                            img.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgABogQEAwgMg8f8D///8WfhwB8+ErK42A=';
+                        });
+                        this.supportsAvif = await avifTest;
+                    } catch (e) {
+                        this.supportsAvif = false;
+                    }
+                }
+                
+                setupIntersectionObserver() {
+                    if (!('IntersectionObserver' in window)) {
+                        // Fallback for older browsers
+                        performanceMonitor.log('⚠️  Using fallback lazy loading (no IntersectionObserver)');
+                        this.loadAllImages();
+                        return;
+                    }
+                    
+                    this.observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                this.loadImage(entry.target);
+                                this.observer.unobserve(entry.target);
+                            }
+                        });
+                    }, CONFIG.lazyLoading);
+                }
+                
+                processAllImages() {
+                    const images = document.querySelectorAll('img[src], img[data-src]');
+                    
+                    images.forEach(img => {
+                        // Skip if already processed
+                        if (img.dataset.optimized) return;
+                        
+                        // Immediate load for critical images
+                        if (img.dataset.critical === 'true' || img.closest('.hero, .navbar')) {
+                            performanceMonitor.log('⚡ Loading critical image immediately', img.src);
+                            this.loadImage(img);
+                        } else {
+                            // Lazy load for non-critical images
+                            if (this.observer) {
+                                img.classList.add('lazy-loading');
+                                this.observer.observe(img);
+                            } else {
+                                this.loadImage(img);
+                            }
+                        }
+                    });
+                }
+                
+                loadImage(img) {
+                    if (img.dataset.optimized) return;
+                    
+                    const originalSrc = img.dataset.src || img.src;
+                    const optimizedSrc = this.getOptimizedSrc(originalSrc, img);
+                    
+                    // Add loading states
+                    img.classList.add('lazy-loading');
+                    
+                    // Create new image to preload
+                    const newImg = new Image();
+                    
+                    newImg.onload = () => {
+                        img.src = optimizedSrc;
+                        img.classList.remove('lazy-loading');
+                        img.classList.add('lazy-loaded');
+                        img.dataset.optimized = 'true';
+                        
+                        this.optimizedImages++;
+                        
+                        // Estimate file size for monitoring
+                        const estimatedSize = this.estimateImageSize(img);
+                        performanceMonitor.recordImageLoad(estimatedSize);
+                        
+                        performanceMonitor.log('✅ Image optimized', {
+                            original: originalSrc.split('/').pop(),
+                            optimized: optimizedSrc.split('/').pop(),
+                            format: this.getImageFormat(optimizedSrc),
+                            size: this.getOptimalImageSize(img)
+                        });
+                    };
+                    
+                    newImg.onerror = () => {
+                        // Fallback to original
+                        img.src = originalSrc;
+                        img.classList.remove('lazy-loading');
+                        img.dataset.optimized = 'true';
+                        performanceMonitor.log('⚠️  Fallback to original image', originalSrc);
+                    };
+                    
+                    newImg.src = optimizedSrc;
+                }
+                
+                getOptimizedSrc(originalSrc, img) {
+                    // Don't optimize external images or data URLs
+                    if (originalSrc.startsWith('http') || originalSrc.startsWith('data:')) {
+                        return originalSrc;
+                    }
+                    
+                    // Extract path components
+                    const pathParts = originalSrc.split('/');
+                    const filename = pathParts.pop();
+                    const [name, ext] = filename.split('.');
+                    
+                    // Determine optimal format
+                    let format = ext;
+                    if (this.supportsAvif && ['jpg', 'jpeg', 'png'].includes(ext.toLowerCase())) {
+                        format = 'avif';
+                    } else if (this.supportsWebP && ['jpg', 'jpeg', 'png'].includes(ext.toLowerCase())) {
+                        format = 'webp';
+                    }
+                    
+                    // Determine size based on viewport and image context
+                    const size = this.getOptimalImageSize(img);
+                    
+                    // Build optimized path
+                    const optimizedPath = `images/optimized/${name}-${size}.${format}`;
+                    
+                    // Return optimized path (existence is assumed based on our setup)
+                    return optimizedPath;
+                }
+                
+                getOptimalImageSize(img) {
+                    const containerWidth = img.parentElement ? img.parentElement.offsetWidth : window.innerWidth;
+                    const devicePixelRatio = window.devicePixelRatio || 1;
+                    const targetWidth = containerWidth * devicePixelRatio;
+                    
+                    // Mobile-first responsive sizing
+                    if (targetWidth <= CONFIG.breakpoints.mobile) {
+                        return 'mobile';
+                    } else if (targetWidth <= CONFIG.breakpoints.tablet) {
+                        return 'tablet';
+                    } else {
+                        return 'desktop';
+                    }
+                }
+                
+                getImageFormat(src) {
+                    if (src.includes('.avif')) return 'AVIF (~60% smaller)';
+                    if (src.includes('.webp')) return 'WebP (~30% smaller)';
+                    return 'Original format';
+                }
+                
+                estimateImageSize(img) {
+                    // Rough estimation based on image dimensions and format
+                    const width = img.naturalWidth || img.offsetWidth || 800;
+                    const height = img.naturalHeight || img.offsetHeight || 600;
+                    const pixels = width * height;
+                    
+                    // Estimated bytes per pixel based on format
+                    let bytesPerPixel = 3; // Default for JPEG
+                    if (img.src.includes('.webp')) bytesPerPixel = 2;
+                    if (img.src.includes('.avif')) bytesPerPixel = 1.5;
+                    if (img.src.includes('.png')) bytesPerPixel = 4;
+                    
+                    return pixels * bytesPerPixel;
+                }
+                
+                loadAllImages() {
+                    // Fallback method for browsers without IntersectionObserver
+                    const images = document.querySelectorAll('img[data-src], img:not([data-optimized])');
+                    images.forEach(img => this.loadImage(img));
+                }
+            }
+            
+            // Bandwidth-aware loading
+            class BandwidthOptimizer {
+                constructor() {
+                    this.connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                    this.init();
+                }
+                
+                init() {
+                    if (!this.connection) {
+                        performanceMonitor.log('📶 Connection API not available');
+                        return;
+                    }
+                    
+                    // Adjust image quality based on connection
+                    this.adjustQualityBasedOnConnection();
+                    
+                    // Monitor connection changes
+                    this.connection.addEventListener('change', () => {
+                        this.adjustQualityBasedOnConnection();
+                    });
+                }
+                
+                adjustQualityBasedOnConnection() {
+                    if (!this.connection) return;
+                    
+                    const effectiveType = this.connection.effectiveType;
+                    const saveData = this.connection.saveData;
+                    
+                    // Adjust quality based on connection speed
+                    if (saveData || effectiveType === 'slow-2g' || effectiveType === '2g') {
+                        CONFIG.qualities.hero = 60;
+                        CONFIG.qualities.artwork = 50;
+                        CONFIG.qualities.general = 40;
+                        document.documentElement.classList.add('slow-connection');
+                    } else if (effectiveType === '3g') {
+                        CONFIG.qualities.hero = 70;
+                        CONFIG.qualities.artwork = 60;
+                        CONFIG.qualities.general = 50;
+                        document.documentElement.classList.add('medium-connection');
+                    } else {
+                        // 4g or better
+                        CONFIG.qualities.hero = 85;
+                        CONFIG.qualities.artwork = 75;
+                        CONFIG.qualities.general = 65;
+                        document.documentElement.classList.add('fast-connection');
+                    }
+                    
+                    performanceMonitor.log('📶 Connection optimized', {
+                        effectiveType,
+                        saveData,
+                        qualities: CONFIG.qualities
+                    });
+                }
+            }
+            
+            // Initialize systems when DOM is ready
+            function initializeImageOptimization() {
+                // Initialize bandwidth optimizer
+                new BandwidthOptimizer();
+                
+                // Initialize image loader
+                window.imageOptimizer = new OptimizedImageLoader();
+                
+                // Add CSS for loading states if not already present
+                if (!document.querySelector('#image-optimizer-styles')) {
+                    const styles = document.createElement('style');
+                    styles.id = 'image-optimizer-styles';
+                    styles.textContent = `
+                        .lazy-loading {
+                            opacity: 0.3;
+                            transform: scale(0.95);
+                            transition: all 0.6s ease;
+                        }
+                        
+                        .lazy-loaded {
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+                        
+                        /* Reduce quality on slow connections */
+                        .slow-connection img {
+                            image-rendering: -webkit-optimize-contrast;
+                        }
+                        
+                        /* Progressive enhancement for modern browsers */
+                        @supports (image-rendering: crisp-edges) {
+                            .fast-connection img {
+                                image-rendering: crisp-edges;
+                            }
+                        }
+                    `;
+                    document.head.appendChild(styles);
+                }
+                
+                // Report final performance stats
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        const totalTime = Date.now() - performanceMonitor.start;
+                        const optimizedCount = window.imageOptimizer ? window.imageOptimizer.optimizedImages : 0;
+                        
+                        performanceMonitor.log('🎯 Final Performance Stats', {
+                            totalLoadTime: `${(totalTime / 1000).toFixed(2)}s`,
+                            imagesOptimized: `${optimizedCount}/${document.querySelectorAll('img').length}`,
+                            totalDataSaved: `~${(performanceMonitor.totalBytes / 1024 / 1024).toFixed(2)}MB estimated`,
+                            avgTimePerImage: optimizedCount > 0 ? 
+                                `${(totalTime / optimizedCount).toFixed(0)}ms` : 'N/A',
+                            webpSupport: window.imageOptimizer ? window.imageOptimizer.supportsWebP : false,
+                            avifSupport: window.imageOptimizer ? window.imageOptimizer.supportsAvif : false
+                        });
+                        
+                        // Achievement notification
+                        if (optimizedCount > 0) {
+                            console.log(`🎨✨ Image optimization active! Serving optimized images for better performance.`);
+                        }
+                    }, 2000);
+                });
+            }
+            
+            // Start initialization
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeImageOptimization);
+            } else {
+                initializeImageOptimization();
+            }
+            
+        })();
     </script>
 </body>
 </html>

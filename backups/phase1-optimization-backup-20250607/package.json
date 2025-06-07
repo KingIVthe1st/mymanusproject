@@ -1,0 +1,31 @@
+{
+  "name": "my-manus-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KingIVthe1st/mymanusproject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KingIVthe1st/mymanusproject/issues"
+  },
+  "homepage": "https://github.com/KingIVthe1st/mymanusproject#readme",
+  "description": "",
+  "devDependencies": {
+    "husky": "^9.1.2",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.3.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
+  }
+}

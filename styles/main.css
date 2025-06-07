@@ -816,6 +816,12 @@ h6 {
   color: #6b7280;
 }
 
+/* Section Header Centering */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
 /* Artwork Section */
 .artwork {
   padding: 8rem 0;
