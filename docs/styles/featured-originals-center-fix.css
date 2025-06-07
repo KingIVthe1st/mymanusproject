@@ -1,0 +1,89 @@
+/* Featured Originals Section Centering Fix */
+
+/* Target the specific Featured Originals section */
+#artwork .section-header {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin: 0 auto 5rem !important;
+  max-width: 900px !important;
+}
+
+/* Center the FEATURED WORK tab */
+#artwork .section-header span.glass-pill,
+#artwork .section-header .glass-pill {
+  margin: 0 auto 1rem !important;
+  display: block !important;
+  width: fit-content !important;
+  text-align: center !important;
+}
+
+/* Center the Featured Originals title */
+#artwork .section-header h2 {
+  text-align: center !important;
+  margin: 0 auto !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+/* Ensure all text content in section header is centered */
+#artwork .section-header * {
+  text-align: center !important;
+}
+
+/* Additional specificity for the featured work section */
+section#artwork .section-header {
+  text-align: center !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+section#artwork .section-header span {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+section#artwork .section-header h2 {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  #artwork .section-header {
+    padding: 2rem 1rem !important;
+    text-align: center !important;
+  }
+  
+  #artwork .section-header h2 {
+    font-size: 2rem !important;
+    text-align: center !important;
+  }
+  
+  #artwork .section-header span.glass-pill {
+    font-size: 0.8rem !important;
+    text-align: center !important;
+  }
+}
+
+/* High specificity override for any conflicting styles */
+body #artwork .section-header,
+body section#artwork .section-header {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+body #artwork .section-header span,
+body #artwork .section-header h2,
+body section#artwork .section-header span,
+body section#artwork .section-header h2 {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
