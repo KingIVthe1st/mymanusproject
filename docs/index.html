@@ -732,8 +732,14 @@
         // Apply navigation fixes first
         fixNavigation();
         
-        // Initialize scroll behavior
+        // Initialize scroll behavior for navbar hide/show
         setTimeout(initializeScrollBehavior, 100);
+
+        // Initialize haptic feedback for buttons
+        initializeHapticFeedback();
+
+        // Initialize smooth scroll for all anchor links, accounting for fixed header
+        initializeDesktopSmoothScroll();
         
         // Mobile menu functionality
         const mobileToggle = document.querySelector('.navbar-mobile-toggle');
@@ -794,6 +800,47 @@
             if (e.key === 'Escape') {
                 closeMenu();
             }
+        }
+
+        function initializeDesktopSmoothScroll() {
+            const navbar = document.getElementById('main-navbar');
+            // Do not proceed if navbar isn't found, but don't break page for it.
+            // Other anchor links might still work with default browser behavior.
+            if (!navbar) {
+                console.warn('Main navbar (#main-navbar) not found for smooth scroll offset calculation.');
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href.length > 1 && href.startsWith('#')) {
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+
+                        if (targetElement) {
+                            e.preventDefault(); // Prevent default jump only if a valid target element exists
+
+                            const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                            let offsetPosition = elementPosition - navbarHeight;
+
+                            // Add a small padding to prevent content from being too flush with the navbar
+                            const scrollPadding = 20; // Adjust as needed
+                            offsetPosition -= scrollPadding;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+
+                            // If this link is part of the mobile menu, close the mobile menu
+                            if (this.closest('.mobile-menu') && typeof closeMenu === 'function') {
+                                closeMenu();
+                            }
+                        }
+                    }
+                });
+            });
         }
         
         // Event listeners
@@ -858,7 +905,7 @@
                     <p class="hero-subtitle">Internationally collected artist creating vibrant abstract paintings that celebrate color and creative freedom.</p>
                     <div class="hero-cta">
                             <a href="#artwork" class="btn btn-primary magnetic-btn glass-button">View Artwork</a>
-                        <a href="#contact" class="btn btn-secondary magnetic-btn glass-button">Commission Art</a>
+                        <a href="javascript:void(0);" onclick="scrollToCustomArtwork();" class="btn btn-secondary magnetic-btn glass-button">Commission Art</a>
                     </div>
                 </div>
                 
@@ -1655,7 +1702,7 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="bg-white p-8">
+                        <div id="custom-artwork-card-content" class="bg-white p-8">
                             <div class="flex items-center mb-4">
                                 <div class="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center mr-4">
                                     <i class="fas fa-paint-brush text-pink-500"></i>
@@ -3089,6 +3136,38 @@
             }
             
         })();
+    </script>
+
+    <!-- Direct scroll function for Commission Art button -->
+    <script>
+    function scrollToCustomArtwork() {
+        // Add a slight delay to ensure all DOM elements and other scripts have fully loaded
+        setTimeout(function() {
+            // Find the custom artwork section
+            var targetElement = document.getElementById('custom-artwork-card-content');
+            if (!targetElement) {
+                console.error('Custom artwork section not found');
+                return;
+            }
+            
+            // Get the navbar height (or use a fixed value if navbar not found)
+            var navbar = document.getElementById('main-navbar');
+            var navbarHeight = navbar ? navbar.offsetHeight : 80; // Use 80px as fallback
+            
+            // Calculate position with extra offset to ensure it's visible
+            var elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            var extraOffset = 50; // Additional offset to position it well below header
+            var scrollPosition = elementPosition - navbarHeight - extraOffset;
+            
+            // Scroll to the element
+            window.scrollTo({
+                top: scrollPosition,
+                behavior: 'smooth'
+            });
+            
+            console.log('Scrolled to custom artwork section');
+        }, 50); // Small delay for reliability
+    }
     </script>
 </body>
 </html>
