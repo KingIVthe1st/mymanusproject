@@ -1314,7 +1314,7 @@
                     <p class="text-lg text-gray-600 mb-6">
                         From law student to internationally collected artist
                     </p>
-                    <a href="#contact" class="inline-block bg-gradient-to-r from-amber-500 to-orange-600 text-white font-medium py-4 px-8 rounded-xl shadow-lg hover:shadow-xl hover:from-amber-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105">
+                    <a href="#education" class="inline-block bg-gradient-to-r from-amber-500 to-orange-600 text-white font-medium py-4 px-8 rounded-xl shadow-lg hover:shadow-xl hover:from-amber-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105" data-component-name="<a />" onclick="event.preventDefault(); document.getElementById('education').scrollIntoView({ behavior: 'smooth', block: 'start' });">
                         Start Your Art Journey
                         <i class="fas fa-arrow-right ml-2"></i>
                     </a>
@@ -1409,8 +1409,8 @@
         <!-- Testimonial Section -->
         <section class="my-20 py-16 bg-gradient-to-r from-purple-600 to-purple-800 rounded-xl relative overflow-hidden testimonial-card" data-component-name="<section />">
             <div class="max-w-6xl mx-auto px-6" data-component-name="<div />">
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-12 text-center text-reveal">
-                    <span data-component-name="<span />">Hear </span><span>from </span><span>Our </span><span>Collectors </span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-12 text-center text-reveal" style="opacity: 1; transform: none; pointer-events: auto;">
+                    <span data-component-name="<span />">Hear </span><span>from </span><span data-component-name="<span />">Collectors </span><span>&amp; </span><span data-component-name="<span />">Students </span>
                 </h2>
                 
                 <!-- Custom Testimonials Container -->
@@ -1447,6 +1447,32 @@
                             </p>
                         </div>
                         
+                        <!-- Testimonial 3 -->
+                        
+                        <!-- Testimonial 4 (Placeholder Collector) -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">DB</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">David Brown</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Art Collector, London</span>
+                                </div>
+                            </div>
+                            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1rem; line-height: 1.6;">"Amira's work has transformed my living space. The depth and vibrancy are truly captivating. A joy to own!"</p>
+                        </div>
+
+                        <!-- Testimonial 5 (Placeholder Student) -->
+                        <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
+                            <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="customer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%); display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-weight: bold; font-size: 1.5rem;">LW</div>
+                                <div class="customer-info">
+                                    <strong style="color: white; font-size: 1.1rem; display: block;">Lisa Wang</strong>
+                                    <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Art Student, Paint to Prosper</span>
+                                </div>
+                            </div>
+                            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1rem; line-height: 1.6;">"The mentorship program was a game-changer. I've learned so much about technique and the business of art. Highly recommend!"</p>
+                        </div>
+
                         <!-- Testimonial 3 -->
                         <div class="testimonial-card" style="flex: 0 0 320px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2rem;">
                             <div class="testimonial-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
@@ -1794,7 +1820,7 @@
                                 </li>
                             </ul>
                             
-                            <a href="#contact" class="inline-flex items-center justify-center w-full px-6 py-3 bg-yellow-500 text-white font-medium rounded-full hover:bg-yellow-600 transition-all duration-300 glass-button">
+                            <a href="#get-in-touch-section" class="inline-flex items-center justify-center w-full px-6 py-3 bg-yellow-500 text-white font-medium rounded-full hover:bg-yellow-600 transition-all duration-300 glass-button haptic-feedback" style="position: relative; overflow: hidden;" data-component-name="<a />">
                                 Contact for Inquiries
                                 <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                             </a>
@@ -1889,9 +1915,9 @@
                         </div>
                         <h4 class="text-xl font-serif font-bold text-gray-800 mb-1">YouTube</h4>
                         <p class="text-gray-600 mb-4">15K+ Followers</p>
-                        <a href="https://www.youtube.com/c/AmiraRahim" class="inline-flex items-center text-pink-500 font-medium hover:text-pink-600 transition-all duration-300">
+                        <a href="https://www.youtube.com/channel/UCJjlOTlwXmPasUkYvQLY0MQ" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-pink-500 font-medium hover:text-pink-600 transition-all duration-300 animated-link" data-component-name="<a />">
                             Visit Profile
-                            <i class="fas fa-arrow-right ml-2"></i>
+                            <i class="fas fa-arrow-right ml-2 icon-pulse"></i>
                         </a>
                     </div>
                 </div>
@@ -1906,7 +1932,7 @@
                         </div>
                         <h4 class="text-xl font-serif font-bold text-gray-800 mb-1">Pinterest</h4>
                         <p class="text-gray-600 mb-4">40K+ Followers</p>
-                        <a href="https://www.pinterest.com/amirarahimart/" class="inline-flex items-center text-pink-500 font-medium hover:text-pink-600 transition-all duration-300">
+                        <a href="https://www.pinterest.com/amirarahim/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-pink-500 font-medium hover:text-pink-600 transition-all duration-300 animated-link" data-component-name="<a />">
                             Visit Profile
                             <i class="fas fa-arrow-right ml-2"></i>
                         </a>
@@ -1988,7 +2014,7 @@
             </div>
             
             <!-- Contact Form -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <div id="get-in-touch-section" class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
                 <div>
                     <h4 class="text-xl font-serif font-bold text-gray-800 mb-6">Get in Touch</h4>
                     <p class="text-gray-700 mb-8">
@@ -2084,10 +2110,10 @@
                         <a href="https://www.facebook.com/amirarahimart/" class="footer-social-link" aria-label="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.pinterest.com/amirarahimart/" class="footer-social-link" aria-label="Pinterest">
+                        <a href="https://www.pinterest.com/amirarahim/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Pinterest">
                             <i class="fab fa-pinterest-p"></i>
                         </a>
-                        <a href="https://www.youtube.com/c/AmiraRahim" class="footer-social-link" aria-label="YouTube">
+                        <a href="https://www.youtube.com/channel/UCJjlOTlwXmPasUkYvQLY0MQ" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="YouTube">
                             <i class="fab fa-youtube"></i>
                         </a>
                     </div>
@@ -2202,7 +2228,7 @@
         function startAutoScroll() {
             if (autoScrollInterval) clearInterval(autoScrollInterval);
             
-            console.log('Starting testimonials autoscroll every 3 seconds...');
+            console.log('Starting testimonials autoscroll every 6 seconds...');
             
             autoScrollInterval = setInterval(() => {
                 if (isUserInteracting) return;
@@ -2217,8 +2243,7 @@
                 }
                 
                 scrollToPosition(nextIndex);
-                
-            }, 3000); // 3 seconds interval
+            }, 6000); // Auto-scroll every 6 seconds
         }
         
         function stopAutoScroll() {
