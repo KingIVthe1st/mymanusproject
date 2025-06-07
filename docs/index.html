@@ -3,81 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Amira Rahim - Abstract Expressionist Artist. Explore vibrant artwork, educational programs, and creative collaborations.">
     <title>Amira Rahim | Abstract Expressionist</title>
     
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
-    <!-- Preload critical resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="styles/artistic-loader.css" as="style">
-    <link rel="preload" href="scripts/artistic-loader.js" as="script">
-    
-    <!-- Google Fonts -->
+    <!-- Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Preload critical resources -->
+    <link rel="preload" href="images/amira-header.png" as="image" type="image/png">
+    <link rel="preload" href="images/logo/amira-logo.webp" as="image" type="image/webp">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" as="style">
     
-    <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Critical CSS inline -->
+    <style>
+        /* Critical CSS for faster initial render */
+        *{margin:0;padding:0;box-sizing:border-box}html{font-size:16px;-webkit-font-smoothing:antialiased}body{font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.6;color:#333;background:#fff;overflow-x:hidden}.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);height:80px}.navbar-container{max-width:1400px;margin:0 auto;padding:0 2rem;height:100%;display:flex;align-items:center;justify-content:space-between}.logo-image{height:60px;width:auto;filter:none!important}section{padding:5rem 2rem;max-width:1400px;margin:0 auto}.hero-section{min-height:70vh;display:flex;align-items:center;margin-top:80px}h1,h2,h3{font-family:'Playfair Display',serif;font-weight:400;line-height:1.2}h1{font-size:3rem}h2{font-size:2.5rem}h3{font-size:2rem}@media(max-width:768px){h1{font-size:2rem}h2{font-size:1.75rem}section{padding:3rem 1rem}.navbar{height:60px}.logo-image{height:45px}}
+    </style>
     
-    <!-- Loader CSS (loaded first for immediate display) -->
-    <link rel="stylesheet" href="styles/artistic-loader.css">
+    <!-- Google Fonts - Optimized subset -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
     
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles/main.css?v=1.1">
+    <!-- Font Awesome - Deferred -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+    
+    <!-- Tailwind CSS - Deferred -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"></noscript>
+    
+    <!-- Critical CSS files only - defer the rest -->
+    <link rel="stylesheet" href="styles/main.css?v=1.2">
     <link rel="stylesheet" href="styles/nav-styles.css"> 
     <link rel="stylesheet" href="styles/hero-styles.css">
     <link rel="stylesheet" href="styles/about-section.css">
     <link rel="stylesheet" href="styles/artwork-section.css">
     <link rel="stylesheet" href="styles/licensing-section.css">
-    <link rel="stylesheet" href="styles/featured-logos.css?v=1.1">
     <link rel="stylesheet" href="styles/education-section.css">
-    <link rel="stylesheet" href="styles/education-button-fix.css">
-    <link rel="stylesheet" href="styles/education-button-perfect-fix.css">
-    <link rel="stylesheet" href="styles/education-icon-fix.css">
-    <link rel="stylesheet" href="styles/education-circle-fix.css">
-    <link rel="stylesheet" href="styles/education-visibility-fix.css">
     <link rel="stylesheet" href="styles/featured-in-section.css">
-    <!-- Fix for Featured In section hover issues -->
-    <link rel="stylesheet" href="styles/featured-in-fix.css">
-    <!-- Fix for Press Kit button text visibility -->
-    <link rel="stylesheet" href="styles/press-kit-button-fix.css">
-    <!-- Fix for Collaborate section overlay badges -->
-    <link rel="stylesheet" href="styles/collaborate-badge-fix.css">
-    <link rel="stylesheet" href="styles/collaborate-tab-styling.css">
-    <link rel="stylesheet" href="styles/living-gradient-background.css">
-    <link rel="stylesheet" href="styles/micro-interactions.css">
-    <link rel="stylesheet" href="styles/name-gradient.css">
-    <link rel="stylesheet" href="styles/artwork-text-fix.css">
-    <link rel="stylesheet" href="styles/nav-override.css">
-    <link rel="stylesheet" href="styles/mobile-spacing.css">
-    <link rel="stylesheet" href="styles/mobile-flourishes.css">
-    <link rel="stylesheet" href="styles/circle-animation.css">
-    <link rel="stylesheet" href="styles/premium-effects-enhanced.css">
-    <link rel="stylesheet" href="styles/luxury-typography.css">
     <link rel="stylesheet" href="styles/logo-styles.css">
     <link rel="stylesheet" href="styles/logo-blur-fix.css">
-    <link rel="stylesheet" href="styles/hamburger-fix.css">
-    <link rel="stylesheet" href="styles/footer-enhancement.css">
-    <link rel="stylesheet" href="styles/table-animations.css">
-    <link rel="stylesheet" href="styles/floating-particles-fix.css">
-    <link rel="stylesheet" href="styles/about-section.css">
-    <link rel="stylesheet" href="styles/licensing-section.css">
     <link rel="stylesheet" href="styles/navbar-fix.css">
     <link rel="stylesheet" href="styles/hero-spacing-fix.css">
     <link rel="stylesheet" href="styles/mobile-spacing.css">
-    <link rel="stylesheet" href="styles/collaboration-symmetry-fix.css">
-    <!-- Disable Section Title Animations -->
-    <link rel="stylesheet" href="styles/disable-animations.css">
-    <link rel="stylesheet" href="styles/hero-cta-fix.css">
-    <link rel="stylesheet" href="styles/button-text-fix.css">
-    <link rel="stylesheet" href="styles/collaboration-button-fix.css">
-    <link rel="stylesheet" href="styles/artwork-button-standardization.css">
-    <link rel="stylesheet" href="styles/contact-section-center-fix.css">
+    <link rel="stylesheet" href="styles/contact-form-button-fix.css">
+    
+    <!-- Defer CSS loading script -->
+    <script>
+      // Defer non-critical CSS
+      const deferredStyles = [
+        'styles/featured-logos.css?v=1.1',
+        'styles/education-button-fix.css',
+        'styles/education-button-perfect-fix.css',
+        'styles/education-icon-fix.css',
+        'styles/education-circle-fix.css',
+        'styles/education-visibility-fix.css',
+        'styles/featured-in-fix.css',
+        'styles/press-kit-button-fix.css',
+        'styles/collaborate-badge-fix.css',
+        'styles/collaborate-tab-styling.css',
+        'styles/living-gradient-background.css',
+        'styles/micro-interactions.css',
+        'styles/name-gradient.css',
+        'styles/artwork-text-fix.css',
+        'styles/nav-override.css',
+        'styles/mobile-flourishes.css',
+        'styles/circle-animation.css',
+        'styles/premium-effects-enhanced.css',
+        'styles/luxury-typography.css',
+        'styles/hamburger-fix.css',
+        'styles/footer-enhancement.css',
+        'styles/table-animations.css',
+        'styles/floating-particles-fix.css',
+        'styles/collaboration-symmetry-fix.css',
+        'styles/disable-animations.css',
+        'styles/hero-cta-fix.css',
+        'styles/button-text-fix.css',
+        'styles/collaboration-button-fix.css',
+        'styles/artwork-button-standardization.css',
+        'styles/contact-section-center-fix.css'
+      ];
+      
+      function loadDeferredCSS() {
+        deferredStyles.forEach(href => {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = href;
+          link.media = 'print';
+          link.onload = () => { link.media = 'all'; };
+          document.head.appendChild(link);
+        });
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => setTimeout(loadDeferredCSS, 100));
+      } else {
+        setTimeout(loadDeferredCSS, 100);
+      }
+    </script>
     <style>
         /* Inline styles for featured logos to ensure they take effect */
         .featured-logos-grid > a.featured-logo {
@@ -344,9 +373,6 @@
     </style>
 </head>
 <body>
-    <!-- Artistic Loader Script (loaded immediately) -->
-    <script src="scripts/artistic-loader.js"></script>
-    
     <!-- Living Gradient Background -->
     <div class="living-gradient-bg"></div>
     
@@ -2108,7 +2134,28 @@
     <script src="https://widget.senja.io/widget/6a3e2a3d-0648-4ec0-bbeb-8dbca588b22a/platform.js" type="text/javascript" async></script>
     <script src="scripts/commission-button-fix.js"></script>
     
+    <!-- Performance Optimizer Script (loads immediately) -->
+    <script src="scripts/performance-optimizer.js"></script>
+    
     <!-- Image Optimization Script -->
     <script src="scripts/image-optimization.js"></script>
+    
+    <!-- Defer non-critical scripts -->
+    <script>
+      function loadScript(src, async = true) {
+        const script = document.createElement('script');
+        script.src = src;
+        if (async) script.async = true;
+        document.head.appendChild(script);
+      }
+      
+      // Load non-critical scripts after page load
+      window.addEventListener('load', function() {
+        setTimeout(() => {
+          // Defer third-party scripts
+          loadScript('https://widget.senja.io/widget/6a3e2a3d-0648-4ec0-bbeb-8dbca588b22a/platform.js');
+        }, 1000);
+      });
+    </script>
 </body>
 </html>

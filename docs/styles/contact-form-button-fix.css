@@ -1,0 +1,81 @@
+/* Contact Form Button Text Visibility Fix */
+
+/* Newsletter Subscribe Button Fix */
+.bg-pink-500.text-white.font-medium.rounded-full.glass-button {
+    background: linear-gradient(135deg, #ec4899, #be185d) !important;
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+    font-weight: 700 !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    transition: all 0.3s ease !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    font-size: 14px !important;
+}
+
+.bg-pink-500.text-white.font-medium.rounded-full.glass-button:hover {
+    background: linear-gradient(135deg, #be185d, #9d174d) !important;
+    color: white !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4) !important;
+}
+
+.bg-pink-500.text-white.font-medium.rounded-full.glass-button i {
+    color: white !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Alternative selector for newsletter button */
+button[type="submit"].glass-button {
+    background: linear-gradient(135deg, #ec4899, #be185d) !important;
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+    font-weight: 700 !important;
+}
+
+button[type="submit"].glass-button:hover {
+    background: linear-gradient(135deg, #be185d, #9d174d) !important;
+    color: white !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7) !important;
+}
+
+.btn.btn-primary.form-submit.glass-button {
+    background: linear-gradient(135deg, #f59e0b, #ea580c) !important;
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+    font-weight: 600 !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    font-size: 14px !important;
+}
+
+.btn.btn-primary.form-submit.glass-button:hover {
+    background: linear-gradient(135deg, #d97706, #c2410c) !important;
+    color: white !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4) !important;
+}
+
+.btn.btn-primary.form-submit.glass-button:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3) !important;
+}
+
+/* Ensure the button text is always visible */
+.contact-form .form-submit {
+    background: #f59e0b !important;
+    color: white !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+    font-weight: bold !important;
+}
+
+.contact-form .form-submit:hover {
+    background: #d97706 !important;
+    color: white !important;
+}
