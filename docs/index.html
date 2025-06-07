@@ -57,6 +57,47 @@
     <link rel="stylesheet" href="styles/hero-spacing-fix.css">
     <link rel="stylesheet" href="styles/mobile-spacing.css">
     <link rel="stylesheet" href="styles/contact-form-button-fix.css">
+    <link rel="stylesheet" href="ultimate-featured-in-fix.css">
+    <style>
+        /* Fix Press Kit button display */
+        .press-kit-btn {
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%) !important;
+            color: white !important;
+            font-weight: 600 !important;
+            padding: 12px 24px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+            white-space: nowrap !important;
+            text-decoration: none !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4) !important;
+            transition: all 0.3s ease !important;
+            min-width: 200px !important;
+            border: none !important;
+            font-size: 16px !important;
+            line-height: 1.5 !important;
+            margin-top: 1rem !important;
+        }
+        .press-kit-btn:hover {
+            background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%) !important;
+            transform: translateY(-2px) scale(1.02) !important;
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.6) !important;
+            color: white !important;
+            text-decoration: none !important;
+        }
+        /* Fix icon display */
+        .press-kit-btn i {
+            display: inline-block !important;
+            font-size: 16px !important;
+            line-height: 1 !important;
+        }
+        .press-kit-btn span {
+            display: inline-block !important;
+            line-height: 1 !important;
+        }
+    </style>
     
     <!-- Defer CSS loading script -->
     <script>
@@ -1214,9 +1255,9 @@
                                 <span><strong>U.S. Embassy</strong> Abu Dhabi Exhibition</span>
                             </li>
                         </ul>
-                        <a href="#" class="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105">
-                            <i class="fas fa-folder-open mr-2"></i>
-                            View Full Press Kit
+                        <a href="#" class="press-kit-btn">
+                            <i class="fas fa-folder-open"></i>
+                            <span>View Full Press Kit</span>
                         </a>
                     </div>
                 </div>
