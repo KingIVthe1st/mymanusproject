@@ -8,6 +8,11 @@
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="styles/artistic-loader.css" as="style">
+    <link rel="preload" href="scripts/artistic-loader.js" as="script">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +23,9 @@
     
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Loader CSS (loaded first for immediate display) -->
+    <link rel="stylesheet" href="styles/artistic-loader.css">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/main.css?v=1.1">
@@ -52,6 +60,7 @@
     <link rel="stylesheet" href="styles/premium-effects-enhanced.css">
     <link rel="stylesheet" href="styles/luxury-typography.css">
     <link rel="stylesheet" href="styles/logo-styles.css">
+    <link rel="stylesheet" href="styles/logo-blur-fix.css">
     <link rel="stylesheet" href="styles/hamburger-fix.css">
     <link rel="stylesheet" href="styles/footer-enhancement.css">
     <link rel="stylesheet" href="styles/table-animations.css">
@@ -335,6 +344,9 @@
     </style>
 </head>
 <body>
+    <!-- Artistic Loader Script (loaded immediately) -->
+    <script src="scripts/artistic-loader.js"></script>
+    
     <!-- Living Gradient Background -->
     <div class="living-gradient-bg"></div>
     
@@ -739,7 +751,7 @@
                 </div>
                 
                 <div class="portrait-frame reveal">
-                    <img src="images/amira-header.png" alt="Amira Rahim" class="w-full">
+                    <img src="images/amira-header.png" alt="Amira Rahim" class="w-full" data-critical="true">
                 </div>
             </div>
         </section>
@@ -1766,6 +1778,10 @@
                             <span class="text-gray-700">New York, NY & Dubai, UAE</span>
                         </div>
                     </div>
+                    
+                    <div class="mb-8">
+                        <img src="images/camel.png" alt="Artistic camel illustration" class="w-full max-w-sm rounded-lg shadow-lg">
+                    </div>
                 </div>
                 
                 <div>
@@ -2091,5 +2107,8 @@
     <script src="scripts/education-tabs.js"></script>
     <script src="https://widget.senja.io/widget/6a3e2a3d-0648-4ec0-bbeb-8dbca588b22a/platform.js" type="text/javascript" async></script>
     <script src="scripts/commission-button-fix.js"></script>
+    
+    <!-- Image Optimization Script -->
+    <script src="scripts/image-optimization.js"></script>
 </body>
 </html>
