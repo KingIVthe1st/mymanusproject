@@ -164,6 +164,23 @@
     }
 }
 
+/* Education section specific glass-pill enhancement */
+#education .glass-pill {
+    background: rgba(139, 92, 246, 0.15) !important; /* Purple tint with better opacity */
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(139, 92, 246, 0.25) !important;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.1) !important;
+    color: #6B46C1 !important; /* Stronger purple text color */
+    font-weight: 600 !important; /* Bolder text */
+}
+
+#education .glass-pill::before {
+    background: linear-gradient(45deg, 
+        rgba(139, 92, 246, 0.15) 0%, 
+        rgba(236, 72, 153, 0.15) 100%) !important;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1023px) {
     .education-card {

@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="styles/education-button-perfect-fix.css">
     <link rel="stylesheet" href="styles/education-icon-fix.css">
     <link rel="stylesheet" href="styles/education-circle-fix.css">
+    <link rel="stylesheet" href="styles/education-visibility-fix.css">
     <link rel="stylesheet" href="styles/featured-in-section.css">
     <!-- Fix for Featured In section hover issues -->
     <link rel="stylesheet" href="styles/featured-in-fix.css">
@@ -65,7 +66,9 @@
     <link rel="stylesheet" href="styles/disable-animations.css">
     <link rel="stylesheet" href="styles/hero-cta-fix.css">
     <link rel="stylesheet" href="styles/button-text-fix.css">
+    <link rel="stylesheet" href="styles/collaboration-button-fix.css">
     <link rel="stylesheet" href="styles/artwork-button-standardization.css">
+    <link rel="stylesheet" href="styles/contact-section-center-fix.css">
     <style>
         /* Inline styles for featured logos to ensure they take effect */
         .featured-logos-grid > a.featured-logo {
@@ -315,6 +318,18 @@
             }
             .navbar-mobile-toggle {
                 display: flex !important;
+            }
+        }
+        
+        /* Smooth Scrolling for Anchor Links */
+        html {
+            scroll-behavior: smooth !important;
+        }
+        
+        /* Enhanced scroll behavior for precise positioning */
+        @media (prefers-reduced-motion: no-preference) {
+            html {
+                scroll-behavior: smooth !important;
             }
         }
     </style>
@@ -1131,21 +1146,21 @@
                         </div>
                     </div>
 
-                    <!-- Card 3: Free Webinar - Color Mastery -->
+                    <!-- Card 3: Crown Expansion Tutorial -->
                     <div class="education-card group bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200/50 p-8 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
                         <div class="mb-6 text-center">
                             <div class="inline-block p-4 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-lg group-hover:scale-105 transition-transform">
-                                <i class="fas fa-chalkboard-teacher fa-2x"></i>
+                                <i class="fas fa-crown fa-2x"></i>
                             </div>
                         </div>
-                        <h3 class="text-2xl font-serif font-bold text-gray-800 mb-4 text-center">Free Webinar: Color Mastery</h3>
+                        <h3 class="text-2xl font-serif font-bold text-gray-800 mb-4 text-center">Crown Expansion Tutorial</h3>
                         <p class="text-gray-600 mb-6 flex-grow text-center">
-                            Unlock the secrets to vibrant palettes and confident color mixing in this exclusive free session.
+                            Watch Amira paint over a finished piece to create "Crown Expansion"—now a best-selling, internationally licensed artwork. Learn to evolve, not replicate.
                         </p>
                         <div class="mt-auto text-center">
-                            <a href="#" class="inline-block bg-gradient-to-r from-amber-600 to-orange-700 text-white font-medium py-3 px-8 rounded-lg shadow-md hover:shadow-lg hover:from-amber-700 hover:to-orange-800 transition-all duration-300 transform hover:scale-105">
-                                Register Free
-                                <i class="fas fa-ticket-alt ml-2"></i>
+                            <a href="https://colors.betterthanartschool.com/opt-in-page" class="inline-block bg-gradient-to-r from-amber-600 to-orange-700 text-white font-medium py-3 px-8 rounded-lg shadow-md hover:shadow-lg hover:from-amber-700 hover:to-orange-800 transition-all duration-300 transform hover:scale-105">
+                                Watch Free
+                                <i class="fas fa-play ml-2"></i>
                             </a>
                         </div>
                     </div>
@@ -1554,12 +1569,12 @@
                         If you have a vision for a unique collaboration that doesn't fit neatly into these categories, I'd love to hear about it. My work has appeared in galleries, on products, and in spaces worldwide.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 bg-pink-500 text-white font-medium rounded-full hover:bg-pink-600 transition-all duration-300 glass-button">
-                            <i class="fas fa-envelope mr-2"></i>
+                        <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 bg-pink-500 text-white font-medium rounded-full hover:bg-pink-600 transition-all duration-300 glass-button" style="color: white !important; background: linear-gradient(135deg, #ec4899, #be185d) !important; font-weight: 700 !important; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8) !important; border: 2px solid rgba(255, 255, 255, 0.2) !important;">
+                            <i class="fas fa-envelope mr-2" style="color: white !important;"></i>
                             Send Direct Message
                         </a>
-                        <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-600 text-gray-300 font-medium rounded-full hover:border-gray-400 hover:text-white transition-all duration-300 glass-button">
-                            <i class="fas fa-briefcase mr-2"></i>
+                        <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-600 text-gray-300 font-medium rounded-full hover:border-gray-400 hover:text-white transition-all duration-300 glass-button" style="background: rgba(255, 255, 255, 0.95) !important; color: #1f2937 !important; border: 2px solid rgba(255, 255, 255, 0.9) !important; font-weight: 700 !important;">
+                            <i class="fas fa-briefcase mr-2" style="color: #1f2937 !important;"></i>
                             Business Inquiries
                         </a>
                     </div>
