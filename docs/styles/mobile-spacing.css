@@ -29,6 +29,16 @@
     padding: 1.5rem 1rem !important;
   }
   
+  /* Mobile header word spacing - Simplified after JS fix */
+  .section-header h2.text-reveal.text-4xl span {
+    display: inline-block !important; /* Keep spans as inline-blocks for margin */
+    vertical-align: baseline !important;
+  }
+
+  .section-header h2.text-reveal.text-4xl span:not(:last-child) {
+    margin-right: 8px !important; /* Adjust as needed for desired spacing */
+  }
+  
   /* Typography */
   h1, .hero-title {
     font-size: 2rem !important;

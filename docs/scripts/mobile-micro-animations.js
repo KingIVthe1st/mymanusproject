@@ -60,13 +60,20 @@ document.addEventListener('DOMContentLoaded', function() {
     headings.forEach(heading => {
       if (!heading.classList.contains('text-scramble')) {
         heading.classList.add('text-reveal');
-        const text = heading.textContent;
-        heading.textContent = '';
-        
-        text.split(' ').forEach(word => {
+        const originalText = heading.textContent;
+        heading.textContent = ''; // Clear existing content
+
+        const words = originalText.split(' ').filter(w => w.length > 0); // Split by space and remove empty strings
+
+        words.forEach((word, index) => {
           const span = document.createElement('span');
-          span.textContent = word + ' ';
+          span.textContent = word;
           heading.appendChild(span);
+
+          // Add a space text node after the span, if it's not the last word
+          if (index < words.length - 1) {
+            heading.appendChild(document.createTextNode(' '));
+          }
         });
       }
     });
