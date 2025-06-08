@@ -929,10 +929,11 @@
         <section id="artwork" class="py-16 relative">
             <div class="section-header">
                 <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-pink-100 to-purple-100 text-pink-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">FEATURED WORK</span>
-                <h2 class="text-4xl font-serif font-bold text-gray-800">Featured Originals</h2>
+                <h2 class="text-4xl font-serif font-bold text-gray-800 mb-4">Featured Originals</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-500 mx-auto rounded-full mb-1"></div>
             </div>
             
-            <p class="text-center text-gray-700 max-w-3xl mx-auto mb-12">
+            <p class="text-center text-lg text-gray-700 max-w-3xl mx-auto mb-12">
                 Explore a selection of my original abstract paintings. Each piece is a unique expression of color, emotion, and creative energy.
             </p>
             
@@ -1839,11 +1840,11 @@
                         If you have a vision for a unique collaboration that doesn't fit neatly into these categories, I'd love to hear about it. My work has appeared in galleries, on products, and in spaces worldwide.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 bg-pink-500 text-white font-medium rounded-full hover:bg-pink-600 transition-all duration-300 glass-button" style="color: white !important; background: linear-gradient(135deg, #ec4899, #be185d) !important; font-weight: 700 !important; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8) !important; border: 2px solid rgba(255, 255, 255, 0.2) !important;">
+                        <a href="#get-in-touch-section" class="inline-flex items-center justify-center px-6 py-3 bg-pink-500 text-white font-medium rounded-full hover:bg-pink-600 transition-all duration-300 glass-button" style="color: white !important; background: linear-gradient(135deg, rgb(236, 72, 153), rgb(190, 24, 93)) !important; font-weight: 700 !important; text-shadow: rgba(0, 0, 0, 0.8) 0px 2px 6px !important; border: 2px solid rgba(255, 255, 255, 0.2) !important; position: relative; overflow: hidden;" data-component-name="<a />">
                             <i class="fas fa-envelope mr-2" style="color: white !important;"></i>
                             Send Direct Message
                         </a>
-                        <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-600 text-gray-300 font-medium rounded-full hover:border-gray-400 hover:text-white transition-all duration-300 glass-button" style="background: rgba(255, 255, 255, 0.95) !important; color: #1f2937 !important; border: 2px solid rgba(255, 255, 255, 0.9) !important; font-weight: 700 !important;">
+                        <a href="#get-in-touch-section" class="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-600 text-gray-300 font-medium rounded-full hover:border-gray-400 hover:text-white transition-all duration-300 glass-button" style="background: rgba(255, 255, 255, 0.95) !important; color: rgb(31, 41, 55) !important; border: 2px solid rgba(255, 255, 255, 0.9) !important; font-weight: 700 !important; position: relative; overflow: hidden;" data-component-name="<a />">
                             <i class="fas fa-briefcase mr-2" style="color: #1f2937 !important;"></i>
                             Business Inquiries
                         </a>
@@ -2051,27 +2052,29 @@
                 </div>
                 
                 <div>
-                    <form class="contact-form glass-card p-8 rounded-lg">
+                    <form class="contact-form glass-card p-8 rounded-lg" method="POST" action="https://formspree.io/f/YOUR_UNIQUE_FORM_ID">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                             <div class="form-group">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" id="name" class="form-input glass-input" required>
+                                <input type="text" id="name" name="name" class="form-input glass-input" required>
                             </div>
                             
                             <div class="form-group">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" id="email" class="form-input glass-input" required>
+                                <input type="email" id="email" name="email" class="form-input glass-input" required>
                             </div>
                         </div>
                         
                         <div class="form-group mb-4">
                             <label for="subject" class="form-label">Subject</label>
-                            <input type="text" id="subject" class="form-input glass-input" required>
+                            <input type="text" id="subject" name="subject" class="form-input glass-input" required>
                         </div>
                         
                         <div class="form-group mb-6">
                             <label for="message" class="form-label">Message</label>
-                            <textarea id="message" class="form-textarea glass-input" required></textarea>
+                            <textarea id="message" name="message" class="form-textarea glass-input" required></textarea>
+                            <input type="hidden" name="_replyto" value="email">
+                            <input type="hidden" name="_subject" value="New Contact Form Submission from AmiraRahim.com">
                         </div>
                         
                         <button type="submit" class="btn btn-primary form-submit glass-button">Send Message</button>
