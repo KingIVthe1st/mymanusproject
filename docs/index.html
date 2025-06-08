@@ -1958,7 +1958,11 @@
                 </div>
                 
                 <div>
-                    <form class="contact-form glass-card p-8 rounded-lg" method="POST" action="https://formspree.io/f/YOUR_UNIQUE_FORM_ID">
+                    <form class="contact-form glass-card p-8 rounded-lg" method="POST" action="https://api.web3forms.com/submit">
+                        <input type="hidden" name="apikey" value="8c5b976e-5840-4bba-a2ba-b69399dad161">
+                        <input type="hidden" name="redirect" value="https://web3forms.com/success"> <!-- Optional: Change to your custom success page -->
+                        <input type="checkbox" name="honeypot" style="display:none"> <!-- Honeypot for spam prevention -->
+
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                             <div class="form-group">
                                 <label for="name" class="form-label">Name</label>
@@ -1978,9 +1982,7 @@
                         
                         <div class="form-group mb-6">
                             <label for="message" class="form-label">Message</label>
-                            <textarea id="message" name="message" class="form-textarea glass-input" required></textarea>
-                            <input type="hidden" name="_replyto" value="email">
-                            <input type="hidden" name="_subject" value="New Contact Form Submission from AmiraRahim.com">
+                            <textarea id="message" name="message" rows="5" class="form-textarea glass-input" required></textarea>
                         </div>
                         
                         <button type="submit" class="btn btn-primary form-submit glass-button">Send Message</button>

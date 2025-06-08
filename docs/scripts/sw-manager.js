@@ -36,7 +36,7 @@ class ServiceWorkerManager {
       
       // Check for waiting service worker
       if (this.registration.waiting) {
-        this.showUpdateNotification();
+        // this.showUpdateNotification();
       }
       
       // Check for updates every 5 minutes
@@ -55,7 +55,7 @@ class ServiceWorkerManager {
     newWorker.addEventListener('statechange', () => {
       if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
         this.updateAvailable = true;
-        this.showUpdateNotification();
+        // this.showUpdateNotification();
       }
     });
   }
