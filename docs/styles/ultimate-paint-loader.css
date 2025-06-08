@@ -1,0 +1,375 @@
+/* Ultimate Liquid Paint Loading Experience CSS */
+/* Next-Level Agency Quality with WebGL-Style Effects */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap');
+
+/* Loading Universe Container */
+.loading-universe {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a0a0a;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1.5s cubic-bezier(0.76, 0, 0.24, 1);
+    overflow: hidden;
+}
+
+.loading-universe.complete {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* WebGL Canvas */
+#paintCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Liquid Paint Blobs with GPU Acceleration */
+.paint-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px) contrast(20);
+    mix-blend-mode: screen;
+    animation: floatBlob 15s infinite ease-in-out;
+    will-change: transform, filter;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.blob-1 {
+    width: 60vmax;
+    height: 60vmax;
+    background: radial-gradient(circle at 30% 30%, #ff6384 0%, rgba(255, 99, 132, 0.4) 40%, transparent 70%);
+    top: -20%;
+    left: -20%;
+    animation-duration: 20s;
+}
+
+.blob-2 {
+    width: 50vmax;
+    height: 50vmax;
+    background: radial-gradient(circle at 70% 70%, #36a2eb 0%, rgba(54, 162, 235, 0.4) 40%, transparent 70%);
+    bottom: -15%;
+    right: -15%;
+    animation-duration: 18s;
+    animation-delay: -5s;
+}
+
+.blob-3 {
+    width: 40vmax;
+    height: 40vmax;
+    background: radial-gradient(circle at 50% 50%, #ffce56 0%, rgba(255, 206, 86, 0.4) 40%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-duration: 22s;
+    animation-delay: -10s;
+}
+
+.blob-4 {
+    width: 35vmax;
+    height: 35vmax;
+    background: radial-gradient(circle at 60% 40%, #9966ff 0%, rgba(153, 102, 255, 0.4) 40%, transparent 70%);
+    top: 20%;
+    right: 30%;
+    animation-duration: 16s;
+    animation-delay: -3s;
+}
+
+@keyframes floatBlob {
+    0%, 100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        filter: blur(40px) contrast(20) brightness(1);
+    }
+    25% {
+        transform: translate(10vw, -10vh) scale(1.1) rotate(90deg);
+        filter: blur(35px) contrast(25) brightness(1.1);
+    }
+    50% {
+        transform: translate(-10vw, -15vh) scale(0.9) rotate(180deg);
+        filter: blur(45px) contrast(15) brightness(0.9);
+    }
+    75% {
+        transform: translate(-15vw, 10vh) scale(1.15) rotate(270deg);
+        filter: blur(38px) contrast(22) brightness(1.05);
+    }
+}
+
+/* Liquid Distortion Layer */
+.liquid-distortion {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 99, 132, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(54, 162, 235, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 206, 86, 0.1) 0%, transparent 50%);
+    filter: url(#liquidDistortion);
+    pointer-events: none;
+    z-index: 5;
+    animation: liquidRotate 30s linear infinite;
+}
+
+@keyframes liquidRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Center Content */
+.loading-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    transform: translateZ(0);
+}
+
+/* Morphing Text with Liquid Effect */
+.morphing-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    color: transparent;
+    background: linear-gradient(135deg, 
+        #ff6384 0%, 
+        #ff8fa3 15%,
+        #36a2eb 30%, 
+        #4bc0c0 45%,
+        #ffce56 60%, 
+        #ffd93d 75%,
+        #9966ff 90%, 
+        #c77dff 100%
+    );
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradientFlow 8s ease infinite, textWarp 4s ease-in-out infinite;
+    letter-spacing: 0.05em;
+    position: relative;
+    filter: drop-shadow(0 0 30px rgba(255, 99, 132, 0.5)) 
+            drop-shadow(0 0 60px rgba(54, 162, 235, 0.3))
+            drop-shadow(0 0 90px rgba(153, 102, 255, 0.2));
+}
+
+@keyframes gradientFlow {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes textWarp {
+    0%, 100% {
+        transform: scale(1) rotateX(0deg);
+    }
+    25% {
+        transform: scale(1.02) rotateX(1deg);
+    }
+    50% {
+        transform: scale(1) rotateX(0deg);
+    }
+    75% {
+        transform: scale(0.98) rotateX(-1deg);
+    }
+}
+
+/* Loading Subtitle with Liquid Shimmer */
+.loading-subtitle {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-subtitle::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(90deg, 
+        transparent 30%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        transparent 70%
+    );
+    animation: shimmerText 2s infinite;
+    transform: skewX(-25deg);
+}
+
+@keyframes shimmerText {
+    0% {
+        left: -200%;
+    }
+    100% {
+        left: 200%;
+    }
+}
+
+/* Progress Ring */
+.progress-ring {
+    position: absolute;
+    bottom: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+}
+
+.progress-ring svg {
+    transform: rotate(-90deg);
+    filter: drop-shadow(0 0 20px rgba(255, 99, 132, 0.5));
+}
+
+.progress-ring-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-width: 8;
+}
+
+.progress-ring-fill {
+    fill: none;
+    stroke: url(#progressGradient);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 339.292;
+    stroke-dashoffset: 339.292;
+    transition: stroke-dashoffset 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 10px currentColor);
+}
+
+/* Particle System */
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    animation: particleFloat 4s infinite ease-out;
+}
+
+@keyframes particleFloat {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(0, -10px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), -30vh) scale(0.3);
+    }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10001;
+    transition: transform 0.1s ease-out, border-color 0.3s ease;
+    mix-blend-mode: difference;
+}
+
+.custom-cursor::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+}
+
+.custom-cursor.hover {
+    transform: scale(1.5);
+    border-color: rgba(255, 99, 132, 0.8);
+}
+
+.custom-cursor.hover::after {
+    transform: translate(-50%, -50%) scale(2);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .morphing-text {
+        font-size: 3rem;
+        filter: drop-shadow(0 0 20px rgba(255, 99, 132, 0.5));
+    }
+    
+    .paint-blob {
+        filter: blur(30px) contrast(15);
+    }
+    
+    .blob-1 { width: 400px; height: 400px; }
+    .blob-2 { width: 350px; height: 350px; }
+    .blob-3 { width: 300px; height: 300px; }
+    .blob-4 { width: 250px; height: 250px; }
+    
+    .custom-cursor {
+        display: none;
+    }
+    
+    .progress-ring {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Performance Mode */
+@media (prefers-reduced-motion: reduce) {
+    .paint-blob,
+    .particle,
+    .morphing-text,
+    .loading-subtitle::before,
+    .liquid-distortion {
+        animation: none !important;
+    }
+    
+    .loading-universe {
+        transition: opacity 0.5s ease-out;
+    }
+    
+    .paint-blob {
+        filter: blur(20px);
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .particle {
+        width: 2px;
+        height: 2px;
+    }
+    
+    #paintCanvas {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
