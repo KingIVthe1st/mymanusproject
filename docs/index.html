@@ -245,135 +245,27 @@
             padding: 0 2rem !important;
             gap: 2rem !important;
             position: relative !important;
+            left: 0 !important;
+            transform: none !important;
+            justify-items: center !important;
         }
 
         body .navbar .navbar-logo {
-            display: block !important;
-            justify-self: start !important;
             grid-column: 1 !important;
-            opacity: 1 !important;
-            visibility: visible !important;
+            justify-self: start !important;
+            display: flex !important;
+            align-items: center !important;
         }
 
         body .navbar .navbar-logo img {
             display: block !important;
-            height: 40px !important;
+            height: 50px !important;
             width: auto !important;
             opacity: 1 !important;
             visibility: visible !important;
         }
         
         body .navbar .navbar-links {
-            display: flex !important;
-            gap: 2.5rem !important;
-            align-items: center !important;
-            justify-content: center !important;
-            grid-column: 2 !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-        }
-
-        body .navbar .navbar-link {
-            display: inline-block !important;
-            color: #000000 !important;
-            font-size: 0.95rem !important;
-            font-weight: 500 !important;
-            text-decoration: none !important;
-            padding: 0.5rem 0 !important;
-            position: relative !important;
-            letter-spacing: 0.03em !important;
-            text-transform: uppercase !important;
-            transition: all 0.4s ease !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-        }
-
-        body .navbar .navbar-mobile-toggle {
-            display: none !important;
-            grid-column: 3 !important;
-        }
-
-        /* Mobile layout */
-        @media (max-width: 767px) {
-            body .navbar .navbar-container {
-                display: flex !important;
-                justify-content: space-between !important;
-                grid-template-columns: none !important;
-            }
-            
-            body .navbar .navbar-logo {
-                grid-column: unset !important;
-                justify-self: unset !important;
-            }
-            
-            body .navbar .navbar-links {
-                display: none !important;
-            }
-
-            body .navbar .navbar-mobile-toggle {
-                display: flex !important;
-                grid-column: unset !important;
-            }
-        }
-        
-        /* Hero spacing fix */
-        .hero {
-            padding-top: 6rem !important;
-        }
-        
-        @media (max-width: 768px) {
-            .hero {
-                padding-top: 5rem !important;
-            }
-        }
-    </style>
-    
-    <!-- EMERGENCY NAVIGATION FIX -->
-    <style>
-        /* Nuclear option - force navigation layout */
-        .navbar {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            width: 100vw !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            z-index: 1000 !important;
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(20px) !important;
-            padding: 1rem 0 !important;
-        }
-        
-        .navbar-container {
-            display: grid !important;
-            grid-template-columns: 200px 1fr 200px !important;
-            width: 100% !important;
-            max-width: 1400px !important;
-            margin: 0 auto !important;
-            padding: 0 2rem !important;
-            align-items: center !important;
-            position: relative !important;
-            left: 0 !important;
-            transform: none !important;
-            justify-items: center !important;
-        }
-        
-        .navbar-logo {
-            grid-column: 1 !important;
-            justify-self: start !important;
-            display: flex !important;
-            align-items: center !important;
-        }
-        
-        .navbar-logo img {
-            height: 50px !important;
-            width: auto !important;
-            display: block !important;
-        }
-        
-        .navbar-links {
             grid-column: 2 !important;
             display: flex !important;
             gap: 1.5rem !important;
@@ -383,8 +275,8 @@
             min-width: 0 !important;
             flex-wrap: nowrap !important;
         }
-        
-        .navbar-link {
+
+        body .navbar .navbar-link {
             display: inline-block !important;
             color: #000 !important;
             text-decoration: none !important;
@@ -394,23 +286,24 @@
             font-size: 0.85rem !important;
             white-space: nowrap !important;
         }
-        
-        .navbar-mobile-toggle {
+
+        body .navbar .navbar-mobile-toggle {
             grid-column: 3 !important;
             justify-self: end !important;
             display: none !important;
         }
-        
+
+        /* Mobile layout */
         @media (max-width: 767px) {
-            .navbar-container {
+            body .navbar-container {
                 display: flex !important;
                 justify-content: space-between !important;
                 grid-template-columns: none !important;
             }
-            .navbar-links {
+            body .navbar-links {
                 display: none !important;
             }
-            .navbar-mobile-toggle {
+            body .navbar-mobile-toggle {
                 display: flex !important;
             }
         }
@@ -437,6 +330,12 @@
         /* WebP Support Detection */
         .no-webp .webp-image { display: none; }
         .webp .fallback-image { display: none; }
+        
+        /* Paint to Prosper Book Icon Styling */
+        .education-card .fa-book-open {
+            color: #ffffff !important;
+            fill: #ffffff !important;
+        }
     </style>
     
     <!-- WebP Detection Script -->
@@ -681,8 +580,8 @@
             navContainer.style.setProperty('padding', '0 2rem', 'important');
             navContainer.style.setProperty('position', 'relative', 'important');
             navContainer.style.setProperty('left', '0', 'important');
-            navContainer.style.setProperty('right', '0', 'important');
             navContainer.style.setProperty('transform', 'none', 'important');
+            navContainer.style.setProperty('justify-items', 'center', 'important');
         }
         
         if (navLogo) {
@@ -1184,7 +1083,7 @@
 
                             <!-- Full-width Shop CTA -->
                             <div class="mt-8 group">
-                                <a href="https://shop.amirarahim.com" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white text-center font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg animated-link" data-component-name="<a />">
+                                <a href="https://shop.amirarahim.com" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white text-center font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105" data-component-name="<a />">
                                     <div class="flex items-center justify-center space-x-2">
                                         <span>Shop Art</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1350,9 +1249,9 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Card 1: Better Than Art School -->
-                    <div class="education-card group bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200/50 p-8 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                    <div class="education-card group bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200/50 p-8 flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 glass-card transform-gpu">
                         <div class="mb-6 text-center">
                             <div class="inline-block p-4 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 text-white shadow-lg group-hover:scale-105 transition-transform">
                                 <i class="fas fa-graduation-cap fa-2x"></i>
@@ -1371,21 +1270,9 @@
                     </div>
 
                     <!-- Card 2: Paint to Prosper Book -->
-                    <div class="education-card group bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200/50 p-8 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 animate-in haptic-feedback" style="will-change: auto;">
-                        <div class="mb-6 text-center relative">
-                            <!-- Special styling for book promotion with gradient border -->
-                            <div class="inline-block rounded-full bg-gradient-to-br from-gold-400 via-amber-500 to-rose-500 p-1 shadow-lg group-hover:scale-105 transition-transform">
-                                <div class="bg-white rounded-full p-3">
-                                    <i class="fas fa-book-open fa-2x text-amber-900"></i>
-                                </div>
-                            </div>
-                            <!-- Small badge for new release -->
-                            <div class="absolute -top-3 -right-3 bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md animate-pulse">
-                                NEW!
-                            </div>
-                        </div>
+                    <div class="education-card group bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200/50 p-8 flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 animate-in haptic-feedback" style="will-change: auto;">
                         <h3 class="text-2xl font-serif font-bold text-gray-800 mb-4 text-center text-reveal" style="opacity: 1; transform: none; pointer-events: auto;">
-                            <span>Paint </span><span>to </span><span>Prosper </span>
+                            Paint to Prosper
                         </h3>
                         <!-- Book cover image -->
                         <div class="mb-4 flex justify-center">
@@ -1403,7 +1290,7 @@
                     </div>
 
                     <!-- Card 3: Crown Expansion Tutorial -->
-                    <div class="education-card group bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200/50 p-8 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                    <div class="education-card group bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200/50 p-8 flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
                         <div class="mb-6 text-center">
                             <div class="inline-block p-4 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-lg group-hover:scale-105 transition-transform">
                                 <i class="fas fa-crown fa-2x"></i>
@@ -1579,8 +1466,7 @@
                                     <div class="testimonial-stars" style="color: #fbbf24; font-size: 1rem; margin-top: 0.25rem;">★★★★★</div>
                                 </div>
                             </div>
-                            <p style="color: white; font-size: 1rem; line-height: 1.6; font-style: italic;">
-                                "The large-scale commission for our hotel lobby exceeded every expectation. Guests constantly ask about the artist. Amira's work elevates any space."
+                            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1rem; line-height: 1.6;">"The large-scale commission for our hotel lobby exceeded every expectation. Guests constantly ask about the artist. Amira's work elevates any space."
                             </p>
                         </div>
                         
@@ -1692,28 +1578,28 @@
                             </p>
                             
                             <div class="mb-8">
-                                <h5 class="text-gray-800 font-semibold mb-4 flex items-center text-lg">
+                                <h5 class="text-gray-800 font-medium mb-4 flex items-center text-lg">
                                     <svg class="w-5 h-5 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                                     </svg>
                                     What to expect:
                                 </h5>
                                 <ul class="space-y-3">
                                     <li class="flex items-start">
                                         <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
                                         </svg>
                                         <span class="text-gray-600">Exclusive access to collections</span>
                                     </li>
                                     <li class="flex items-start">
                                         <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
                                         </svg>
                                         <span class="text-gray-600">High-resolution artwork files</span>
                                     </li>
                                     <li class="flex items-start">
                                         <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
                                         </svg>
                                         <span class="text-gray-600">Dedicated support throughout the process</span>
                                     </li>
@@ -2428,7 +2314,7 @@
             const CONFIG = {
                 // Quality settings for different image types
                 qualities: {
-                    hero: 85,        // High quality for above-fold images
+                    hero: 85,        // High quality for above-the-fold images
                     artwork: 75,     // Good quality for artwork gallery
                     general: 65      // Standard quality for other images
                 },
@@ -2449,7 +2335,7 @@
                 // Performance monitoring
                 performance: {
                     enabled: true,
-                    logToConsole: false
+                    logToConsole: false  // Enable console logs for testing
                 }
             };
             
@@ -2483,6 +2369,7 @@
                     this.supportsWebP = false;
                     this.supportsAvif = false;
                     this.observer = null;
+                    this.optimizedImages = 0;
                     this.init();
                 }
                 
@@ -2498,7 +2385,8 @@
                     
                     performanceMonitor.log('Initialization complete', {
                         webp: this.supportsWebP,
-                        avif: this.supportsAvif
+                        avif: this.supportsAvif,
+                        totalImages: document.querySelectorAll('img').length
                     });
                 }
                 
@@ -2516,7 +2404,7 @@
                         this.supportsWebP = false;
                     }
                     
-                    // Test AVIF support (future-proofing)
+                    // Test AVIF support
                     try {
                         const avifTest = new Promise((resolve) => {
                             const img = new Image();
@@ -2556,10 +2444,12 @@
                         
                         // Immediate load for critical images
                         if (img.dataset.critical === 'true' || img.closest('.hero, .navbar')) {
+                            performanceMonitor.log('Loading critical image immediately', img.src);
                             this.loadImage(img);
                         } else {
                             // Lazy load for non-critical images
                             if (this.observer) {
+                                img.classList.add('lazy-loading');
                                 this.observer.observe(img);
                             } else {
                                 this.loadImage(img);
@@ -2585,6 +2475,8 @@
                         img.classList.remove('lazy-loading');
                         img.classList.add('lazy-loaded');
                         img.dataset.optimized = 'true';
+                        
+                        this.optimizedImages++;
                         
                         // Estimate file size for monitoring
                         const estimatedSize = this.estimateImageSize(img);
@@ -2732,393 +2624,6 @@
                 new BandwidthOptimizer();
                 
                 // Initialize image loader
-                new OptimizedImageLoader();
-                
-                // Add CSS for loading states if not already present
-                if (!document.querySelector('#image-optimizer-styles')) {
-                    const styles = document.createElement('style');
-                    styles.id = 'image-optimizer-styles';
-                    styles.textContent = `
-                        .lazy-loading {
-                            opacity: 0.3;
-                            transform: scale(0.95);
-                            transition: all 0.6s ease;
-                        }
-                        
-                        .lazy-loaded {
-                            opacity: 1;
-                            transform: scale(1);
-                        }
-                        
-                        /* Reduce quality on slow connections */
-                        .slow-connection img {
-                            image-rendering: -webkit-optimize-contrast;
-                        }
-                        
-                        /* Progressive enhancement for modern browsers */
-                        @supports (image-rendering: crisp-edges) {
-                            .fast-connection img {
-                                image-rendering: crisp-edges;
-                            }
-                        }
-                    `;
-                    document.head.appendChild(styles);
-                }
-                
-                // Report final performance stats
-                window.addEventListener('load', () => {
-                    setTimeout(() => {
-                        performanceMonitor.log('Final stats', {
-                            totalTime: Date.now() - performanceMonitor.start,
-                            imagesLoaded: performanceMonitor.imageLoads,
-                            totalMB: (performanceMonitor.totalBytes / 1024 / 1024).toFixed(2),
-                            avgTimePerImage: performanceMonitor.imageLoads > 0 ? 
-                                ((Date.now() - performanceMonitor.start) / performanceMonitor.imageLoads).toFixed(2) + 'ms' : 'N/A'
-                        });
-                    }, 1000);
-                });
-            }
-            
-            // Start initialization
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initializeImageOptimization);
-            } else {
-                initializeImageOptimization();
-            }
-            
-        })();
-    </script>
-
-    <!-- 🎨 Phase 2: Advanced Image Optimization & Lazy Loading System -->
-    <script>
-        (function() {
-            'use strict';
-            
-            // Configuration for the image optimization system
-            const CONFIG = {
-                // Quality settings for different image types
-                qualities: {
-                    hero: 85,        // High quality for above-the-fold images
-                    artwork: 75,     // Good quality for artwork gallery
-                    general: 65      // Standard quality for other images
-                },
-                
-                // Breakpoints for responsive images
-                breakpoints: {
-                    mobile: 768,
-                    tablet: 1024,
-                    desktop: 1440
-                },
-                
-                // Lazy loading settings
-                lazyLoading: {
-                    rootMargin: '50px',
-                    threshold: 0.1
-                },
-                
-                // Performance monitoring
-                performance: {
-                    enabled: true,
-                    logToConsole: true  // Enable console logs for testing
-                }
-            };
-            
-            // Performance monitoring
-            const performanceMonitor = {
-                start: Date.now(),
-                imageLoads: 0,
-                totalBytes: 0,
-                
-                log: function(action, data) {
-                    if (!CONFIG.performance.enabled) return;
-                    
-                    if (CONFIG.performance.logToConsole) {
-                        console.log(`[🎨 Image Optimizer] ${action}:`, data);
-                    }
-                },
-                
-                recordImageLoad: function(size) {
-                    this.imageLoads++;
-                    this.totalBytes += size || 0;
-                    this.log('Image loaded', { 
-                        count: this.imageLoads, 
-                        totalMB: (this.totalBytes / 1024 / 1024).toFixed(2) 
-                    });
-                }
-            };
-            
-            // Optimized image loader with WebP/AVIF detection and lazy loading
-            class OptimizedImageLoader {
-                constructor() {
-                    this.supportsWebP = false;
-                    this.supportsAvif = false;
-                    this.observer = null;
-                    this.optimizedImages = 0;
-                    this.init();
-                }
-                
-                async init() {
-                    // Detect format support
-                    await this.detectFormatSupport();
-                    
-                    // Setup lazy loading observer
-                    this.setupIntersectionObserver();
-                    
-                    // Process all images
-                    this.processAllImages();
-                    
-                    performanceMonitor.log('🚀 Initialization complete', {
-                        webp: this.supportsWebP,
-                        avif: this.supportsAvif,
-                        totalImages: document.querySelectorAll('img').length
-                    });
-                }
-                
-                async detectFormatSupport() {
-                    // Test WebP support
-                    try {
-                        const webpTest = new Promise((resolve) => {
-                            const img = new Image();
-                            img.onload = () => resolve(img.width === 2);
-                            img.onerror = () => resolve(false);
-                            img.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
-                        });
-                        this.supportsWebP = await webpTest;
-                    } catch (e) {
-                        this.supportsWebP = false;
-                    }
-                    
-                    // Test AVIF support
-                    try {
-                        const avifTest = new Promise((resolve) => {
-                            const img = new Image();
-                            img.onload = () => resolve(img.width === 2);
-                            img.onerror = () => resolve(false);
-                            img.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgABogQEAwgMg8f8D///8WfhwB8+ErK42A=';
-                        });
-                        this.supportsAvif = await avifTest;
-                    } catch (e) {
-                        this.supportsAvif = false;
-                    }
-                }
-                
-                setupIntersectionObserver() {
-                    if (!('IntersectionObserver' in window)) {
-                        // Fallback for older browsers
-                        performanceMonitor.log('⚠️  Using fallback lazy loading (no IntersectionObserver)');
-                        this.loadAllImages();
-                        return;
-                    }
-                    
-                    this.observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                this.loadImage(entry.target);
-                                this.observer.unobserve(entry.target);
-                            }
-                        });
-                    }, CONFIG.lazyLoading);
-                }
-                
-                processAllImages() {
-                    const images = document.querySelectorAll('img[src], img[data-src]');
-                    
-                    images.forEach(img => {
-                        // Skip if already processed
-                        if (img.dataset.optimized) return;
-                        
-                        // Immediate load for critical images
-                        if (img.dataset.critical === 'true' || img.closest('.hero, .navbar')) {
-                            performanceMonitor.log('⚡ Loading critical image immediately', img.src);
-                            this.loadImage(img);
-                        } else {
-                            // Lazy load for non-critical images
-                            if (this.observer) {
-                                img.classList.add('lazy-loading');
-                                this.observer.observe(img);
-                            } else {
-                                this.loadImage(img);
-                            }
-                        }
-                    });
-                }
-                
-                loadImage(img) {
-                    if (img.dataset.optimized) return;
-                    
-                    const originalSrc = img.dataset.src || img.src;
-                    const optimizedSrc = this.getOptimizedSrc(originalSrc, img);
-                    
-                    // Add loading states
-                    img.classList.add('lazy-loading');
-                    
-                    // Create new image to preload
-                    const newImg = new Image();
-                    
-                    newImg.onload = () => {
-                        img.src = optimizedSrc;
-                        img.classList.remove('lazy-loading');
-                        img.classList.add('lazy-loaded');
-                        img.dataset.optimized = 'true';
-                        
-                        this.optimizedImages++;
-                        
-                        // Estimate file size for monitoring
-                        const estimatedSize = this.estimateImageSize(img);
-                        performanceMonitor.recordImageLoad(estimatedSize);
-                        
-                        performanceMonitor.log('✅ Image optimized', {
-                            original: originalSrc.split('/').pop(),
-                            optimized: optimizedSrc.split('/').pop(),
-                            format: this.getImageFormat(optimizedSrc),
-                            size: this.getOptimalImageSize(img)
-                        });
-                    };
-                    
-                    newImg.onerror = () => {
-                        // Fallback to original
-                        img.src = originalSrc;
-                        img.classList.remove('lazy-loading');
-                        img.dataset.optimized = 'true';
-                        performanceMonitor.log('⚠️  Fallback to original image', originalSrc);
-                    };
-                    
-                    newImg.src = optimizedSrc;
-                }
-                
-                getOptimizedSrc(originalSrc, img) {
-                    // Don't optimize external images or data URLs
-                    if (originalSrc.startsWith('http') || originalSrc.startsWith('data:')) {
-                        return originalSrc;
-                    }
-                    
-                    // Extract path components
-                    const pathParts = originalSrc.split('/');
-                    const filename = pathParts.pop();
-                    const [name, ext] = filename.split('.');
-                    
-                    // Determine optimal format
-                    let format = ext;
-                    if (this.supportsAvif && ['jpg', 'jpeg', 'png'].includes(ext.toLowerCase())) {
-                        format = 'avif';
-                    } else if (this.supportsWebP && ['jpg', 'jpeg', 'png'].includes(ext.toLowerCase())) {
-                        format = 'webp';
-                    }
-                    
-                    // Determine size based on viewport and image context
-                    const size = this.getOptimalImageSize(img);
-                    
-                    // Build optimized path
-                    const optimizedPath = `images/optimized/${name}-${size}.${format}`;
-                    
-                    // Return optimized path (existence is assumed based on our setup)
-                    return optimizedPath;
-                }
-                
-                getOptimalImageSize(img) {
-                    const containerWidth = img.parentElement ? img.parentElement.offsetWidth : window.innerWidth;
-                    const devicePixelRatio = window.devicePixelRatio || 1;
-                    const targetWidth = containerWidth * devicePixelRatio;
-                    
-                    // Mobile-first responsive sizing
-                    if (targetWidth <= CONFIG.breakpoints.mobile) {
-                        return 'mobile';
-                    } else if (targetWidth <= CONFIG.breakpoints.tablet) {
-                        return 'tablet';
-                    } else {
-                        return 'desktop';
-                    }
-                }
-                
-                getImageFormat(src) {
-                    if (src.includes('.avif')) return 'AVIF (~60% smaller)';
-                    if (src.includes('.webp')) return 'WebP (~30% smaller)';
-                    return 'Original format';
-                }
-                
-                estimateImageSize(img) {
-                    // Rough estimation based on image dimensions and format
-                    const width = img.naturalWidth || img.offsetWidth || 800;
-                    const height = img.naturalHeight || img.offsetHeight || 600;
-                    const pixels = width * height;
-                    
-                    // Estimated bytes per pixel based on format
-                    let bytesPerPixel = 3; // Default for JPEG
-                    if (img.src.includes('.webp')) bytesPerPixel = 2;
-                    if (img.src.includes('.avif')) bytesPerPixel = 1.5;
-                    if (img.src.includes('.png')) bytesPerPixel = 4;
-                    
-                    return pixels * bytesPerPixel;
-                }
-                
-                loadAllImages() {
-                    // Fallback method for browsers without IntersectionObserver
-                    const images = document.querySelectorAll('img[data-src], img:not([data-optimized])');
-                    images.forEach(img => this.loadImage(img));
-                }
-            }
-            
-            // Bandwidth-aware loading
-            class BandwidthOptimizer {
-                constructor() {
-                    this.connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-                    this.init();
-                }
-                
-                init() {
-                    if (!this.connection) {
-                        performanceMonitor.log('📶 Connection API not available');
-                        return;
-                    }
-                    
-                    // Adjust image quality based on connection
-                    this.adjustQualityBasedOnConnection();
-                    
-                    // Monitor connection changes
-                    this.connection.addEventListener('change', () => {
-                        this.adjustQualityBasedOnConnection();
-                    });
-                }
-                
-                adjustQualityBasedOnConnection() {
-                    if (!this.connection) return;
-                    
-                    const effectiveType = this.connection.effectiveType;
-                    const saveData = this.connection.saveData;
-                    
-                    // Adjust quality based on connection speed
-                    if (saveData || effectiveType === 'slow-2g' || effectiveType === '2g') {
-                        CONFIG.qualities.hero = 60;
-                        CONFIG.qualities.artwork = 50;
-                        CONFIG.qualities.general = 40;
-                        document.documentElement.classList.add('slow-connection');
-                    } else if (effectiveType === '3g') {
-                        CONFIG.qualities.hero = 70;
-                        CONFIG.qualities.artwork = 60;
-                        CONFIG.qualities.general = 50;
-                        document.documentElement.classList.add('medium-connection');
-                    } else {
-                        // 4g or better
-                        CONFIG.qualities.hero = 85;
-                        CONFIG.qualities.artwork = 75;
-                        CONFIG.qualities.general = 65;
-                        document.documentElement.classList.add('fast-connection');
-                    }
-                    
-                    performanceMonitor.log('📶 Connection optimized', {
-                        effectiveType,
-                        saveData,
-                        qualities: CONFIG.qualities
-                    });
-                }
-            }
-            
-            // Initialize systems when DOM is ready
-            function initializeImageOptimization() {
-                // Initialize bandwidth optimizer
-                new BandwidthOptimizer();
-                
-                // Initialize image loader
                 window.imageOptimizer = new OptimizedImageLoader();
                 
                 // Add CSS for loading states if not already present
@@ -3158,7 +2663,7 @@
                         const totalTime = Date.now() - performanceMonitor.start;
                         const optimizedCount = window.imageOptimizer ? window.imageOptimizer.optimizedImages : 0;
                         
-                        performanceMonitor.log('🎯 Final Performance Stats', {
+                        performanceMonitor.log('Final Performance Stats', {
                             totalLoadTime: `${(totalTime / 1000).toFixed(2)}s`,
                             imagesOptimized: `${optimizedCount}/${document.querySelectorAll('img').length}`,
                             totalDataSaved: `~${(performanceMonitor.totalBytes / 1024 / 1024).toFixed(2)}MB estimated`,
