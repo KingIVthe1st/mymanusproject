@@ -176,7 +176,8 @@
         'styles/lazy-loading.css',
         'styles/font-optimization.css',
         'styles/testimonials-performance.css',
-        'styles/remove-large-cursor.css'
+        'styles/remove-large-cursor.css',
+        'styles/artwork-image-clarity-fix.css'
       ];
       
       function loadDeferredCSS() {
@@ -2884,5 +2885,74 @@
 
 <!-- About Image Optimization Script -->
 <script src="scripts/about-image-optimization.js"></script>
+    <!-- Fix Featured Originals Gallery Links -->
+    <script>
+        // Fix the Featured Originals section to go directly to shop links instead of opening gallery modal
+        document.addEventListener('DOMContentLoaded', function() {
+            // Disable gallery functionality for the Featured Originals section
+            const featuredOriginalsSection = document.querySelector('#artwork');
+            
+            if (featuredOriginalsSection) {
+                // Remove gallery event listeners from Featured Originals images and buttons
+                const artworkImages = featuredOriginalsSection.querySelectorAll('.artwork-image img');
+                const artworkButtons = featuredOriginalsSection.querySelectorAll('.artwork-button');
+                
+                // Remove any gallery click handlers from images
+                artworkImages.forEach(img => {
+                    // Clone and replace to remove all event listeners
+                    const newImg = img.cloneNode(true);
+                    img.parentNode.replaceChild(newImg, img);
+                    
+                    // Add click handler to redirect to shop
+                    newImg.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Find the corresponding shop link
+                        const artworkCard = this.closest('.artwork-card');
+                        const shopLink = artworkCard.querySelector('.artwork-button');
+                        
+                        if (shopLink && shopLink.href) {
+                            window.open(shopLink.href, '_blank');
+                        }
+                    });
+                    
+                    // Add cursor pointer to indicate it's clickable
+                    newImg.style.cursor = 'pointer';
+                });
+                
+                // Ensure artwork buttons work correctly
+                artworkButtons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        if (this.href) {
+                            window.open(this.href, '_blank');
+                        }
+                    });
+                });
+                
+                // Also handle clicks on the entire artwork overlay
+                const artworkOverlays = featuredOriginalsSection.querySelectorAll('.artwork-overlay');
+                artworkOverlays.forEach(overlay => {
+                    overlay.addEventListener('click', function(e) {
+                        // Only handle clicks that aren't on the button itself
+                        if (!e.target.closest('.artwork-button')) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            
+                            const shopLink = this.querySelector('.artwork-button');
+                            if (shopLink && shopLink.href) {
+                                window.open(shopLink.href, '_blank');
+                            }
+                        }
+                    });
+                    
+                    overlay.style.cursor = 'pointer';
+                });
+            }
+        });
+    </script>
 </body>
 </html>

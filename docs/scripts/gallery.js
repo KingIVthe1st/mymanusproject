@@ -366,19 +366,29 @@ class GalleryManager {
   }
   
   bindEvents() {
-    // Add click handlers to artwork cards
+    // Add click handlers to artwork cards (exclude shop links)
     this.artworks.forEach((artwork, index) => {
       const viewButton = artwork.element.querySelector('.artwork-button');
       if (viewButton) {
+        const parentLink = viewButton.closest('a');
+        if (parentLink && parentLink.href && parentLink.href.includes('shop.amirarahim.com')) {
+          return; // Skip gallery for shop links
+        }
+        
         viewButton.addEventListener('click', (e) => {
           e.preventDefault();
           this.openGallery(index);
         });
       }
       
-      // Also allow clicking on the image itself
+      // Also allow clicking on the image itself (exclude shop links)
       const image = artwork.element.querySelector('img');
       if (image) {
+        const parentLink = image.closest('a');
+        if (parentLink && parentLink.href && parentLink.href.includes('shop.amirarahim.com')) {
+          return; // Skip gallery for shop links
+        }
+        
         image.addEventListener('click', () => {
           this.openGallery(index);
         });
