@@ -41,6 +41,16 @@
     <link rel="preload" href="images/optimized/amira-header-desktop.webp" as="image" type="image/webp" media="(min-width: 769px)">
     <link rel="preload" href="images/logo/amira-logo.webp" as="image" type="image/webp">
     
+    <!-- About Artist Image Preload for Faster Loading -->
+    <link rel="preload" href="images/optimized/amira-about-desktop.webp" as="image" type="image/webp" media="(min-width: 1024px)">
+    <link rel="preload" href="images/optimized/amira-about-tablet.webp" as="image" type="image/webp" media="(min-width: 768px) and (max-width: 1023px)">
+    <link rel="preload" href="images/optimized/amira-about-mobile.webp" as="image" type="image/webp" media="(max-width: 767px)">
+    
+    <!-- If browser supports AVIF, these will be used instead -->
+    <link rel="preload" href="images/optimized/amira-about-desktop.avif" as="image" type="image/avif" media="(min-width: 1024px)">
+    <link rel="preload" href="images/optimized/amira-about-tablet.avif" as="image" type="image/avif" media="(min-width: 768px) and (max-width: 1023px)">
+    <link rel="preload" href="images/optimized/amira-about-mobile.avif" as="image" type="image/avif" media="(max-width: 767px)">
+    
     <!-- Critical Font Preloading (Subset) -->
     <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://fonts.gstatic.com/s/playfairdisplay/v30/nuFiD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDYbtXK-F2qC0sH.woff2" as="font" type="font/woff2" crossorigin>
@@ -74,6 +84,7 @@
     <link rel="stylesheet" href="styles/nav-styles.css"> 
     <link rel="stylesheet" href="styles/hero-styles.css">
     <link rel="stylesheet" href="styles/about-section.css">
+    <link rel="stylesheet" href="styles/about-image-optimization.css">
     <link rel="stylesheet" href="styles/artwork-section.css">
     <link rel="stylesheet" href="styles/licensing-section.css">
     <link rel="stylesheet" href="styles/education-section.css">
@@ -356,6 +367,19 @@
         .education-card .fa-book-open {
             color: #ffffff !important;
             fill: #ffffff !important;
+        }
+        
+        /* Critical CSS for About Image - Prevent Layout Shift */
+        #about .portrait-frame {
+            aspect-ratio: 3/4;
+            min-height: 400px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+        }
+        @media (max-width: 767px) {
+            #about .portrait-frame {
+                min-height: 300px;
+                aspect-ratio: 4/5;
+            }
         }
         
         /* Mobile Menu Fix */
@@ -1162,7 +1186,7 @@
                     <div class="flex flex-col lg:grid lg:grid-cols-2 gap-8">
                         <!-- Amira's Image -->
                         <div class="lg:sticky lg:top-8">
-                            <div class="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all hover:scale-[1.01] group h-full">
+                            <div class="portrait-frame relative rounded-2xl overflow-hidden shadow-2xl transform transition-all hover:scale-[1.01] group h-full">
                                 <picture>
                                     <source srcset="images/optimized/amira-about-desktop.avif" type="image/avif" media="(min-width: 1024px)">
                                     <source srcset="images/optimized/amira-about-desktop.webp" type="image/webp" media="(min-width: 1024px)">
@@ -1172,10 +1196,12 @@
                                     <source srcset="images/optimized/amira-about-mobile.webp" type="image/webp" media="(max-width: 767px)">
                                     <img 
                                         src="images/amira-about.png" 
-                                        alt="Amira Rahim" 
+                                        alt="Amira Rahim - Abstract Expressionist Artist" 
                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                                        loading="lazy"
-                                        style="min-height: 500px;"
+                                        loading="eager"
+                                        fetchpriority="high"
+                                        width="800"
+                                        height="1067"
                                     >
                                 </picture>
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-70"></div>
@@ -2841,6 +2867,9 @@
             console.log('Scrolled to custom artwork section');
         }, 50); // Small delay for reliability
     }
-    </script>
+</script>
+
+<!-- About Image Optimization Script -->
+<script src="scripts/about-image-optimization.js"></script>
 </body>
 </html>
