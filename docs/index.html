@@ -623,7 +623,7 @@
         
         if (navLinks) {
             navLinks.style.setProperty('grid-column', '2', 'important');
-            navLinks.style.setProperty('display', 'flex', 'important');
+            /* display property removed - CSS will handle responsive visibility */
             navLinks.style.setProperty('justify-content', 'center', 'important');
             navLinks.style.setProperty('align-items', 'center', 'important');
             navLinks.style.setProperty('gap', '2rem', 'important');
@@ -634,7 +634,7 @@
         if (mobileToggle) {
             mobileToggle.style.setProperty('grid-column', '3', 'important');
             mobileToggle.style.setProperty('justify-self', 'end', 'important');
-            mobileToggle.style.setProperty('display', 'none', 'important');
+            /* display property removed - CSS will handle responsive visibility */
         }
         
         // Apply mobile styles conditionally
@@ -645,10 +645,10 @@
                 navContainer.style.setProperty('grid-template-columns', 'none', 'important');
             }
             if (navLinks) {
-                navLinks.style.setProperty('display', 'none', 'important');
+                /* display property removed - CSS will handle responsive visibility */
             }
             if (mobileToggle) {
-                mobileToggle.style.setProperty('display', 'flex', 'important');
+                /* display property removed - CSS will handle responsive visibility */
             }
         }
     }

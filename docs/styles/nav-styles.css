@@ -144,14 +144,39 @@
   will-change: transform, box-shadow, background;
 }
 
-.navbar-mobile-toggle span {
+/* Styles for the hamburger icon lines */
+.navbar-mobile-toggle .hamburger,
+.navbar-mobile-toggle .hamburger::before,
+.navbar-mobile-toggle .hamburger::after {
+  content: '';
   display: block;
   width: 24px;
   height: 2px;
-  background-color: #1a1a1a !important; /* Black lines for better visibility */
-  margin: 4px 0;
-  transition: all 0.3s ease;
+  background-color: #1a1a1a; /* Darker color for better visibility */
   border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+  position: relative; /* Ensure proper positioning for pseudo-elements */
+}
+
+.navbar-mobile-toggle .hamburger::before {
+  transform: translateY(-7px); /* Position top bar */
+}
+
+.navbar-mobile-toggle .hamburger::after {
+  transform: translateY(5px);  /* Position bottom bar (7px - 2px height) */
+}
+
+/* Hamburger to X animation */
+.navbar-mobile-toggle.active .hamburger {
+  background-color: transparent; /* Middle bar disappears */
+}
+
+.navbar-mobile-toggle.active .hamburger::before {
+  transform: translateY(0px) rotate(45deg);
+}
+
+.navbar-mobile-toggle.active .hamburger::after {
+  transform: translateY(-2px) rotate(-45deg); /* -2px to align with the top bar */
 }
 
 .navbar-mobile-toggle:hover {
@@ -164,53 +189,179 @@
   transform: translateY(0);
 }
 
-/* Mobile Menu Styles */
+/* Screen reader only utility class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Mobile Menu Specific Styles */
 @media (max-width: 1023px) {
-  .navbar-links {
-    display: none;
+  /* Ensure desktop links are hidden on mobile */
+  .navbar .navbar-links {
+    display: none !important; /* Overrides inline style from fixNavigation if any */
+  }
+
+  /* Mobile Menu Overlay */
+  .mobile-menu-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px) saturate(200%);
-    -webkit-backdrop-filter: blur(20px) saturate(200%);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    z-index: 1000;
-    padding: 2rem;
-  }
-  
-  .navbar-links.active {
-    display: flex;
-    animation: fadeIn 0.3s ease-out;
-  }
-  
-  .navbar-link {
-    color: #1a1a1a !important;
-    font-size: 1.2rem;
-    padding: 1rem 2rem;
     width: 100%;
-    text-align: center;
-    border-radius: 12px;
-    transition: all 0.3s ease;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001; /* Below menu, above content */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0s 0.3s linear;
+  }
+
+  .mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out, visibility 0s 0s linear;
+  }
+
+  /* Mobile Menu Panel */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Start off-screen */
+    width: 85%;
+    max-width: 320px; /* Max width for larger mobile screens */
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 1002; /* Above overlay */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Allow scrolling if content is too long */
+  }
+
+  .mobile-menu.active {
+    right: 0; /* Slide in */
+  }
+
+  .mobile-menu-container {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .mobile-menu .mobile-logo .logo-image {
+    height: 40px; /* Adjust as needed */
+    width: auto;
+  }
+
+  .mobile-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem; /* Larger close icon */
+    color: #333;
+    cursor: pointer;
+    padding: 0.5rem; /* Easier to tap */
+    line-height: 1; /* Ensure icon is centered */
+  }
+  .mobile-close-btn:hover {
+    color: #000;
+  }
+  .mobile-close-btn i {
+    display: block; /* Helps with alignment */
+  }
+
+
+  /* Mobile Navigation Links */
+  .mobile-nav {
+    flex-grow: 1; /* Takes remaining space */
+    display: flex;
+    flex-direction: column;
   }
   
-  .navbar-link:hover {
-    background: rgba(0, 0, 0, 0.05);
+  .mobile-nav .nav-links { /* Target the div wrapping links */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Spacing between links */
+    margin-bottom: auto; /* Pushes social links to bottom if space allows */
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 0.5rem; /* Slightly more padding */
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333333;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    letter-spacing: 0.02em;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link:focus {
+    background-color: #f0f0f0;
+    color: #1A0A3E; /* Accent color on hover */
     transform: translateX(5px);
   }
   
-  .navbar-mobile-toggle {
-    display: flex;
+  .mobile-nav-link .link-text {
+    flex-grow: 1;
   }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+
+  .mobile-nav-link .link-icon {
+    margin-left: 0.75rem;
+    font-size: 0.9em;
+    opacity: 0.7;
+  }
+  .mobile-nav-link:hover .link-icon,
+  .mobile-nav-link:focus .link-icon {
+    opacity: 1;
+  }
+
+
+  /* Mobile Social Links */
+  .mobile-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* Space between social icons */
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid #eee;
+  }
+
+  .mobile-social .social-icon {
+    font-size: 1.5rem;
+    color: #555;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .mobile-social .social-icon:hover {
+    color: #1A0A3E; /* Accent color on hover */
+    transform: scale(1.1);
   }
 }
 
