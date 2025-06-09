@@ -1,0 +1,151 @@
+/* About Section Mobile Responsive Fix - June 9, 2025 */
+/* Fixes mobile layout while preserving desktop side-by-side */
+
+/* Mobile layout - stack vertically and ensure tabs are visible */
+@media (max-width: 767px) {
+    /* Override force side-by-side for mobile */
+    #about #about-grid,
+    section#about div[id="about-grid"],
+    #about .max-w-5xl .flex.flex-col.lg\\:grid.lg\\:grid-cols-2 {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 2rem !important;
+    }
+
+    /* Reset image container for mobile */
+    section#about div[id="about-image-container"],
+    #about #about-image-container,
+    #about .lg\\:sticky {
+        flex: 0 0 auto !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-right: 0 !important;
+        padding-right: 0 !important;
+        order: 1 !important;
+        position: relative !important;
+        top: auto !important;
+    }
+
+    /* Image frame adjustments for mobile */
+    #about .portrait-frame {
+        max-width: 350px !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 3/4 !important;
+    }
+
+    /* Reset content area for mobile */
+    section#about #about-grid > div:last-child,
+    #about .relative.w-full {
+        flex: 0 0 auto !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        order: 2 !important;
+        display: block !important;
+        position: relative !important;
+    }
+
+    /* Tab cards grid for mobile - ensure full width and visibility */
+    #about .grid.grid-cols-1.md\\:grid-cols-2,
+    #about .grid.gap-6 {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        transform: none !important;
+    }
+
+    /* Individual tab cards mobile styling */
+    #about .relative.group.bg-gradient-to-br {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 1.25rem !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    /* Ensure CTA button is full width on mobile */
+    #about .mt-8.group,
+    #about .mt-8.group > a {
+        display: block !important;
+        width: 100% !important;
+        margin-top: 1.5rem !important;
+    }
+
+    /* Adjust bio text padding for mobile */
+    #about .prose {
+        padding: 0 1rem !important;
+        margin-bottom: 2rem !important;
+    }
+
+    /* Ensure no horizontal overflow */
+    #about .max-w-5xl {
+        overflow-x: hidden !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* Force all content to be visible */
+    #about * {
+        max-width: 100vw !important;
+    }
+
+    /* Ensure tab content is not hidden */
+    #about .flex.items-start {
+        display: flex !important;
+        visibility: visible !important;
+    }
+
+    /* Remove any transform that might push content off-screen */
+    #about .relative {
+        transform: none !important;
+        left: 0 !important;
+        right: 0 !important;
+    }
+}
+
+/* Tablet layout - keep side by side but adjust proportions */
+@media (min-width: 768px) and (max-width: 1023px) {
+    section#about div[id="about-image-container"] {
+        flex: 0 0 35% !important;
+        max-width: 35% !important;
+    }
+
+    section#about #about-grid > div:last-child {
+        flex: 1 1 65% !important;
+        max-width: 65% !important;
+    }
+
+    /* Smaller gap on tablets */
+    #about #about-grid {
+        gap: 2rem !important;
+    }
+}
+
+/* Desktop - ensure force side-by-side remains active */
+@media (min-width: 1024px) {
+    /* Keep existing desktop layout from about-force-sidebyside.css */
+    #about #about-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 3rem !important; /* Reduced from 5rem */
+        justify-content: center !important;
+        align-items: flex-start !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Ensure image container doesn't have extra margin */
+    section#about div[id="about-image-container"] {
+        margin-right: 0 !important;
+        padding-right: 0 !important;
+    }
+}

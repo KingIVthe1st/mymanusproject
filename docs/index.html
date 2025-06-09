@@ -90,6 +90,7 @@
     <link rel="stylesheet" href="styles/about-layout-fix.css">
     <link rel="stylesheet" href="styles/about-layout-balance-fix.css">
     <link rel="stylesheet" href="styles/about-force-sidebyside.css">
+    <link rel="stylesheet" href="styles/about-mobile-responsive-fix.css">
     <link rel="stylesheet" href="styles/artwork-section.css">
     <link rel="stylesheet" href="styles/licensing-section.css">
     <link rel="stylesheet" href="styles/education-section.css">
@@ -1196,21 +1197,9 @@
                     </div>
 
                     <!-- Image and Table Grid -->
-                    <style>
-                        @media (min-width: 1024px) {
-                            #about-grid {
-                                gap: 5rem !important;
-                                column-gap: 5rem !important;
-                            }
-                            #about-image-container {
-                                margin-right: 2rem !important;
-                                padding-right: 1rem !important;
-                            }
-                        }
-                    </style>
-                    <div id="about-grid" class="flex flex-col lg:grid lg:grid-cols-2 gap-8" style="gap: 5rem !important; column-gap: 5rem !important;">
+                    <div id="about-grid" class="flex flex-col lg:grid lg:grid-cols-2 gap-8">
                         <!-- Amira's Image -->
-                        <div id="about-image-container" class="lg:sticky lg:top-8" style="margin-right: 2rem;">
+                        <div id="about-image-container" class="lg:sticky lg:top-8">
                             <div class="portrait-frame relative rounded-2xl overflow-hidden shadow-2xl transform transition-all hover:scale-[1.01] group h-full">
                                 <picture>
                                     <source srcset="images/optimized/amira-about-desktop.avif" type="image/avif" media="(min-width: 1024px)">

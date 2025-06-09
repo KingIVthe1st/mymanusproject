@@ -19,15 +19,15 @@ section#about div[id="about-grid"] {
 
 /* Force image container to stay on the left */
 section#about div[id="about-image-container"] {
-    flex: 0 0 40% !important;
-    max-width: 40% !important;
+    flex: 0 0 45% !important; /* Increased from 40% for better balance */
+    max-width: 45% !important;
     order: 1 !important;
 }
 
 /* Force content area to stay on the right */
 section#about #about-grid > div:last-child {
-    flex: 1 1 60% !important;
-    max-width: 60% !important;
+    flex: 1 1 55% !important; /* Adjusted from 60% */
+    max-width: 55% !important;
     order: 2 !important;
 }
 
