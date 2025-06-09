@@ -478,6 +478,19 @@
     
     <!-- Mobile Menu Script -->
     <script>
+    // Debounce utility function
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
     // Enhanced Navigation Scroll Behavior
     function initializeScrollBehavior() {
         let lastScrollTop = 0;
@@ -569,15 +582,15 @@
         }
     }
     
-    // Navigation Fix - Apply immediately on DOM load
+    // Apply navigation fixes on DOM load and resize
     function fixNavigation() {
-        const navContainer = document.querySelector('.navbar-container');
-        const navLinks = document.querySelector('.navbar-links');
-        const navLogo = document.querySelector('.navbar-logo');
-        const mobileToggle = document.querySelector('.navbar-mobile-toggle');
-        
-        // Fix main navbar first
         const navbar = document.querySelector('.navbar');
+        const navContainer = document.querySelector('.navbar-container');
+        const navLogo = document.querySelector('.navbar-logo');
+        const navLinks = document.querySelector('.navbar-links');
+        const mobileToggle = document.querySelector('.navbar-mobile-toggle');
+        const isMobile = window.innerWidth <= 1023;
+        
         if (navbar) {
             navbar.style.setProperty('display', 'flex', 'important');
             navbar.style.setProperty('justify-content', 'center', 'important');
@@ -591,10 +604,7 @@
         }
         
         if (navContainer) {
-            navContainer.style.setProperty('display', 'grid', 'important');
-            navContainer.style.setProperty('grid-template-columns', '200px 1fr 200px', 'important');
-            navContainer.style.setProperty('justify-content', 'center', 'important');
-            navContainer.style.setProperty('align-items', 'center', 'important');
+            // Base styles for both mobile and desktop
             navContainer.style.setProperty('width', '100%', 'important');
             navContainer.style.setProperty('max-width', '1200px', 'important');
             navContainer.style.setProperty('margin', '0 auto', 'important');
@@ -602,7 +612,18 @@
             navContainer.style.setProperty('position', 'relative', 'important');
             navContainer.style.setProperty('left', '0', 'important');
             navContainer.style.setProperty('transform', 'none', 'important');
-            navContainer.style.setProperty('justify-items', 'center', 'important');
+            
+            if (isMobile) {
+                // Mobile-specific container styles
+                navContainer.style.setProperty('display', 'flex', 'important');
+                navContainer.style.setProperty('justify-content', 'space-between', 'important');
+                navContainer.style.setProperty('align-items', 'center', 'important');
+            } else {
+                // Desktop container styles
+                navContainer.style.setProperty('display', 'grid', 'important');
+                navContainer.style.setProperty('grid-template-columns', '200px 1fr 200px', 'important');
+                navContainer.style.setProperty('align-items', 'center', 'important');
+            }
         }
         
         if (navLogo) {
@@ -623,7 +644,13 @@
         
         if (navLinks) {
             navLinks.style.setProperty('grid-column', '2', 'important');
-            /* display property removed - CSS will handle responsive visibility */
+            if (isMobile) {
+                // On mobile, FORCE display:none to hide the links
+                navLinks.style.setProperty('display', 'none', 'important');
+            } else {
+                // On desktop, ensure links are visible
+                navLinks.style.setProperty('display', 'flex', 'important');
+            }
             navLinks.style.setProperty('justify-content', 'center', 'important');
             navLinks.style.setProperty('align-items', 'center', 'important');
             navLinks.style.setProperty('gap', '2rem', 'important');
@@ -634,25 +661,79 @@
         if (mobileToggle) {
             mobileToggle.style.setProperty('grid-column', '3', 'important');
             mobileToggle.style.setProperty('justify-self', 'end', 'important');
-            /* display property removed - CSS will handle responsive visibility */
+            if (isMobile) {
+                // On mobile, ensure toggle is visible
+                mobileToggle.style.setProperty('display', 'flex', 'important');
+            } else {
+                // On desktop, remove display property to let CSS handle it
+                mobileToggle.style.removeProperty('display');
+            }
         }
         
-        // Apply mobile styles conditionally
-        if (window.innerWidth <= 767) {
-            if (navContainer) {
-                navContainer.style.setProperty('display', 'flex', 'important');
-                navContainer.style.setProperty('justify-content', 'space-between', 'important');
-                navContainer.style.setProperty('grid-template-columns', 'none', 'important');
+        // No need to add event listener here - it's already set up in DOMContentLoaded
+    }
+    
+    // Function to dynamically update navigation layout based on available space
+    function updateNavLayout() {
+        const navbarContainer = document.querySelector('.navbar-container');
+        const navbarLinksContainer = document.querySelector('.navbar .navbar-links');
+        const navbarLogo = document.querySelector('.navbar-logo');
+
+        if (!navbarContainer || !navbarLinksContainer || !navbarLogo) {
+            return;
+        }
+
+        if (window.innerWidth <= 1023) {
+            // If within CSS mobile breakpoint, remove force class and let CSS handle it
+            if (document.body.classList.contains('force-mobile-view')) {
+                document.body.classList.remove('force-mobile-view');
             }
-            if (navLinks) {
-                /* display property removed - CSS will handle responsive visibility */
+            return;
+        }
+
+        const links = Array.from(navbarLinksContainer.querySelectorAll(':scope > a.navbar-link'));
+        if (links.length === 0) return;
+
+        let totalLinksWidth = 0;
+        links.forEach(link => {
+            if (link.offsetParent !== null) { // Check if link is visible and in layout
+                totalLinksWidth += link.offsetWidth;
             }
-            if (mobileToggle) {
-                /* display property removed - CSS will handle responsive visibility */
+        });
+
+        const navbarLinksStyle = window.getComputedStyle(navbarLinksContainer);
+        const gapValueString = navbarLinksStyle.gap;
+        let gapValue = 0;
+        if (gapValueString && gapValueString !== 'normal' && links.length > 0) {
+            gapValue = parseFloat(gapValueString); // Assumes gap is like "32px"
+        }
+        if (links.length > 1) {
+            totalLinksWidth += (links.length - 1) * gapValue;
+        }
+        
+        const containerWidth = navbarContainer.clientWidth;
+        const logoWidth = navbarLogo.offsetWidth;
+        const styleContainer = window.getComputedStyle(navbarContainer);
+        const containerPaddingLeft = parseFloat(styleContainer.paddingLeft) || 0;
+        const containerPaddingRight = parseFloat(styleContainer.paddingRight) || 0;
+        
+        const effectiveSpaceForNavItems = containerWidth - containerPaddingLeft - containerPaddingRight;
+        
+        // Buffer: logo + potential mobile toggle (50px + 16px margin) + general padding (32px)
+        const bufferForFixedElements = logoWidth + 66 + 32; 
+        const availableWidthForLinks = effectiveSpaceForNavItems - bufferForFixedElements;
+
+        if (totalLinksWidth > availableWidthForLinks) {
+            if (!document.body.classList.contains('force-mobile-view')) {
+                document.body.classList.add('force-mobile-view');
+            }
+        } else {
+            if (document.body.classList.contains('force-mobile-view')) {
+                document.body.classList.remove('force-mobile-view');
             }
         }
     }
-    
+
     // Initialize everything when DOM is ready
     document.addEventListener('DOMContentLoaded', function() {
         // Apply navigation fixes first
@@ -666,6 +747,10 @@
 
         // Initialize smooth scroll for all anchor links, accounting for fixed header
         initializeDesktopSmoothScroll();
+
+        // Initialize smart navigation layout
+        updateNavLayout(); // Call once on load
+        window.addEventListener('resize', debounce(updateNavLayout, 150)); // Call on resize
         
         // Mobile menu functionality
         const mobileToggle = document.querySelector('.navbar-mobile-toggle');

@@ -365,10 +365,16 @@ body.menu-open {
   }
 }
 
+/* Also hide desktop links if JS determines they are too crowded */
+/* This rule is intentionally global to override media queries when needed */
+body.force-mobile-view .navbar .navbar-links {
+  display: none !important;
+}
+
 /* Desktop Styles */
 @media (min-width: 1024px) {
   .navbar-mobile-toggle {
-    display: none;
+    display: none; /* Hidden by default on desktop */
   }
   
   .navbar-link {
@@ -390,4 +396,10 @@ body.menu-open {
   .navbar-link:hover::after {
     width: 100%;
   }
+}
+
+/* Show mobile toggle if JS determines desktop links are too crowded, even on desktop */
+/* This rule is intentionally global to override the media query when needed */
+body.force-mobile-view .navbar-mobile-toggle {
+  display: flex !important; /* Overrides the display:none from min-width:1024px query */
 }
