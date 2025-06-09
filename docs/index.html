@@ -92,6 +92,8 @@
     <link rel="stylesheet" href="styles/about-force-sidebyside.css">
     <link rel="stylesheet" href="styles/about-mobile-responsive-fix.css">
     <link rel="stylesheet" href="styles/about-mobile-ultimate-fix.css">
+    <link rel="stylesheet" href="styles/about-mobile-hardcore-fix.css">
+    <link rel="stylesheet" href="styles/about-mobile-tabs-fix.css">
     <link rel="stylesheet" href="styles/artwork-section.css">
     <link rel="stylesheet" href="styles/licensing-section.css">
     <link rel="stylesheet" href="styles/education-section.css">
@@ -3022,5 +3024,287 @@
             }
         });
     </script>
+
+<!-- About Mobile Tabs Fix Script -->
+<script src="scripts/about-mobile-tabs-fix-v2.js?v=2"></script>
+
+<!-- Emergency inline fix for mobile tabs -->
+<style>
+@media (max-width: 767px) {
+    /* Remove all transforms and ensure visibility */
+    #about * {
+        transform: none !important;
+    }
+    
+    /* Make the container visible */
+    #about-grid > div:nth-child(2),
+    #about-grid > div.relative.w-full {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: static !important;
+        height: auto !important;
+        overflow: visible !important;
+        transform: none !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    /* FORCE all 4 cards to show */
+    #about-grid .relative.group.bg-gradient-to-br {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin-bottom: 1rem !important;
+        width: 100% !important;
+        position: relative !important;
+        padding: 1.5rem !important;
+        height: auto !important;
+    }
+    
+    /* Force the grid container */
+    #about-grid .grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        height: auto !important;
+        min-height: 400px !important;
+    }
+    
+    /* Ensure cards are not cut off */
+    #about,
+    #about .relative.z-10,
+    #about .max-w-5xl {
+        overflow: visible !important;
+        height: auto !important;
+    }
+}
+</style>
+
+<script>
+window.addEventListener('load', function() {
+    if (window.innerWidth <= 767) {
+        console.log('Emergency fix running...');
+        
+        // First, let's see what's actually happening
+        const secondChild = document.querySelector('#about-grid > div:last-child');
+        if (secondChild) {
+            console.log('Second child computed style:', window.getComputedStyle(secondChild).display, window.getComputedStyle(secondChild).visibility);
+            secondChild.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; position: static !important; height: auto !important; overflow: visible !important; width: 100% !important; max-width: 100% !important; padding: 0 !important; margin: 0 !important;';
+        }
+        
+        // Force visibility after everything loads
+        const cards = document.querySelectorAll('#about-grid .relative.group.bg-gradient-to-br');
+        console.log('Emergency fix: Found', cards.length, 'cards');
+        cards.forEach((card, i) => {
+            const computed = window.getComputedStyle(card);
+            console.log(`Card ${i + 1} before fix - display: ${computed.display}, visibility: ${computed.visibility}, opacity: ${computed.opacity}`);
+            
+            // More aggressive styling for each card
+            card.style.cssText = `
+                display: block !important; 
+                visibility: visible !important; 
+                opacity: 1 !important; 
+                position: relative !important; 
+                width: 100% !important; 
+                margin: 0 0 1rem 0 !important; 
+                padding: 1.5rem !important;
+                background: ${i === 0 ? 'linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(236, 72, 153, 0.1))' : 
+                           i === 1 ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(14, 165, 233, 0.1))' :
+                           i === 2 ? 'linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.1))' :
+                           'linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.1))'} !important;
+                border: 1px solid ${i === 0 ? 'rgba(147, 51, 234, 0.3)' : 
+                                   i === 1 ? 'rgba(59, 130, 246, 0.3)' :
+                                   i === 2 ? 'rgba(245, 158, 11, 0.3)' :
+                                   'rgba(34, 197, 94, 0.3)'} !important;
+                border-radius: 1rem !important;
+                min-height: 120px !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                z-index: ${i + 10} !important;
+                overflow: visible !important;
+            `;
+            card.classList.remove('hidden', 'invisible', 'opacity-0', 'lg:hidden', 'md:hidden');
+            
+            // Force the flex content inside to be visible
+            const flexContent = card.querySelector('.flex.items-start');
+            if (flexContent) {
+                flexContent.style.cssText = 'display: flex !important; align-items: flex-start !important; gap: 1rem !important; width: 100% !important;';
+                
+                // Force icon container to be visible
+                const iconContainer = flexContent.querySelector('.flex-shrink-0');
+                if (iconContainer) {
+                    iconContainer.style.cssText = 'display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important; padding: 0.75rem !important; border-radius: 0.75rem !important; margin-right: 1rem !important; width: 3rem !important; height: 3rem !important;';
+                    
+                    // Force SVG icon to be visible
+                    const svgIcon = iconContainer.querySelector('svg');
+                    if (svgIcon) {
+                        svgIcon.style.cssText = 'display: block !important; width: 1.5rem !important; height: 1.5rem !important; fill: currentColor !important; stroke: currentColor !important;';
+                    }
+                }
+                
+                // Force text container to be visible
+                const textContainer = flexContent.querySelector('div:last-child');
+                if (textContainer) {
+                    textContainer.style.cssText = 'display: block !important; flex: 1 !important; width: 100% !important; overflow-wrap: break-word !important; word-wrap: break-word !important;';
+                }
+            }
+            
+            // Force ALL text content to be visible with specific styles
+            const titles = card.querySelectorAll('h3');
+            titles.forEach(title => {
+                title.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; color: #1f2937 !important; font-size: 1.125rem !important; font-weight: 600 !important; margin-bottom: 0.25rem !important; width: 100% !important; word-wrap: break-word !important;';
+            });
+            
+            const descriptions = card.querySelectorAll('p');
+            descriptions.forEach(desc => {
+                desc.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; color: #4b5563 !important; font-size: 0.875rem !important; line-height: 1.4 !important; width: 100% !important; word-wrap: break-word !important; overflow-wrap: break-word !important;';
+            });
+            
+            // Force all other elements to be visible
+            const allElements = card.querySelectorAll('*');
+            allElements.forEach(el => {
+                el.style.visibility = 'visible';
+                el.style.opacity = '1';
+            });
+            
+            // Debug: log what content is in each card
+            const title = card.querySelector('h3');
+            const desc = card.querySelector('p');
+            console.log(`Card ${i + 1}: Title="${title ? title.textContent : 'NO TITLE'}", Desc="${desc ? desc.textContent.substring(0, 50) : 'NO DESC'}..."`);
+            
+            console.log(`Emergency fixed card ${i + 1} with background`);
+        });
+        
+        // Also force the parent grid - ONLY for mobile
+        const grid = document.querySelector('#about-grid .grid');
+        if (grid) {
+            console.log('Grid computed style:', window.getComputedStyle(grid).display);
+            // Only apply single column layout on mobile
+            grid.style.cssText = `
+                display: grid !important; 
+                grid-template-columns: 1fr !important; 
+                grid-template-rows: repeat(4, auto) !important;
+                height: auto !important; 
+                gap: 1rem !important;
+                width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+                overflow: visible !important;
+                min-height: 600px !important;
+            `;
+            
+            // Force all direct children to be in single column - MOBILE ONLY
+            Array.from(grid.children).forEach((child, index) => {
+                child.style.cssText = `
+                    grid-column: 1 !important;
+                    grid-row: ${index + 1} !important;
+                    display: block !important;
+                    width: 100% !important;
+                    margin-bottom: 1rem !important;
+                `;
+            });
+        }
+        
+        // Fix the Shop Art button visibility - MORE AGGRESSIVE
+        const allShopButtons = document.querySelectorAll('a[href*="shop.amirarahim.com"], [href*="shop.amirarahim.com"]');
+        console.log('Found', allShopButtons.length, 'shop buttons');
+        
+        allShopButtons.forEach((shopButton, index) => {
+            console.log(`Fixing shop button ${index + 1}`);
+            shopButton.style.cssText = `
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                background: #ec4899 !important;
+                background-image: linear-gradient(135deg, #ec4899, #8b5cf6) !important;
+                color: white !important;
+                padding: 1rem 1.5rem !important;
+                border-radius: 0.75rem !important;
+                text-decoration: none !important;
+                font-weight: 700 !important;
+                text-align: center !important;
+                margin: 2rem auto !important;
+                width: 100% !important;
+                max-width: 300px !important;
+                box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4) !important;
+                border: none !important;
+                transform: none !important;
+                filter: none !important;
+                transition: all 0.3s ease !important;
+            `;
+            
+            // Also fix the button container
+            const buttonContainer = shopButton.parentElement;
+            if (buttonContainer) {
+                buttonContainer.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; margin-top: 2rem !important; width: 100% !important; text-align: center !important;';
+            }
+            
+            // Fix ALL text content inside button
+            const allTextElements = shopButton.querySelectorAll('*');
+            allTextElements.forEach(text => {
+                text.style.cssText = 'color: white !important; display: inline !important; visibility: visible !important; opacity: 1 !important; text-shadow: none !important;';
+            });
+            
+            // Force the button text directly
+            shopButton.style.color = 'white !important';
+            
+            console.log(`Shop Art button ${index + 1} fixed with aggressive styling`);
+        });
+        
+        // EMERGENCY FIX - Force the specific button in about section to be visible
+        setTimeout(() => {
+            const aboutShopButton = document.querySelector('#about a[href*="shop.amirarahim.com"]');
+            if (aboutShopButton) {
+                console.log('Found about section shop button, applying emergency fix');
+                aboutShopButton.style.cssText = `
+                    display: block !important;
+                    visibility: visible !important;
+                    opacity: 1 !important;
+                    background-color: #ec4899 !important;
+                    background-image: linear-gradient(to right, #ec4899, #8b5cf6) !important;
+                    color: #ffffff !important;
+                    padding: 16px 24px !important;
+                    border-radius: 12px !important;
+                    text-decoration: none !important;
+                    font-weight: 700 !important;
+                    text-align: center !important;
+                    margin: 24px auto !important;
+                    width: 100% !important;
+                    max-width: 280px !important;
+                    box-shadow: 0 10px 25px rgba(236, 72, 153, 0.5) !important;
+                    border: 2px solid #ec4899 !important;
+                    transform: none !important;
+                    filter: none !important;
+                    transition: none !important;
+                    z-index: 999 !important;
+                    position: relative !important;
+                `;
+                
+                // Force all children to be white text
+                const children = aboutShopButton.querySelectorAll('*');
+                children.forEach(child => {
+                    child.style.color = '#ffffff !important';
+                    child.style.opacity = '1 !important';
+                    child.style.visibility = 'visible !important';
+                });
+                
+                // Set the button text directly
+                aboutShopButton.innerHTML = '<span style="color: white !important; font-weight: 700;">Shop Art</span><br><span style="color: white !important; font-size: 0.875rem; opacity: 0.9;">Discover originals and prints</span>';
+                
+                console.log('Emergency about shop button fix applied');
+            }
+        }, 2000);
+
+        // Check if any parent is hiding content
+        const aboutGrid = document.getElementById('about-grid');
+        if (aboutGrid) {
+            console.log('About grid height:', window.getComputedStyle(aboutGrid).height);
+        }
+    }
+});
+</script>
+
 </body>
 </html>
