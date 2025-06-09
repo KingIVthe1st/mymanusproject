@@ -1,0 +1,98 @@
+/* About Section Image Size Enhancement */
+/* Make the artist image larger to better match the content on the right */
+
+@media (min-width: 1024px) {
+    /* Increase the overall size of the image container but give more space to content */
+    #about-image-container {
+        max-width: 450px !important;
+        margin-right: 2rem !important;
+        padding-right: 0 !important;
+    }
+    
+    /* Enhance the portrait frame to be larger */
+    #about-image-container .portrait-frame {
+        min-height: 550px !important;
+        max-height: 600px !important;
+        aspect-ratio: 3/4 !important;
+    }
+    
+    /* Ensure the image fills the container properly */
+    #about-image-container .portrait-frame img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center top !important;
+    }
+    
+    /* Adjust the grid gap for better balance - increase space between image and content */
+    #about-grid {
+        gap: 3rem !important;
+        column-gap: 3rem !important;
+        align-items: start !important;
+    }
+    
+    /* Give the content area more breathing room */
+    #about .relative.w-full {
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
+    
+    /* Ensure content cards don't get too narrow */
+    #about .grid.grid-cols-1.md\\:grid-cols-2 {
+        min-width: 500px !important;
+    }
+}
+
+@media (min-width: 1280px) {
+    /* On larger screens, optimize the balance better */
+    #about-image-container {
+        max-width: 480px !important;
+    }
+    
+    #about-image-container .portrait-frame {
+        min-height: 580px !important;
+        max-height: 630px !important;
+    }
+    
+    /* Give even more space to content on larger screens */
+    #about-grid {
+        gap: 4rem !important;
+        column-gap: 4rem !important;
+    }
+    
+    /* Ensure content has adequate width */
+    #about .grid.grid-cols-1.md\\:grid-cols-2 {
+        min-width: 550px !important;
+    }
+}
+
+/* Maintain responsive behavior on tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #about-image-container .portrait-frame {
+        min-height: 500px !important;
+        max-height: 550px !important;
+    }
+}
+
+/* Keep mobile sizing unchanged */
+@media (max-width: 767px) {
+    #about-image-container .portrait-frame {
+        min-height: 400px !important;
+        max-height: 450px !important;
+        aspect-ratio: 4/5 !important;
+    }
+}
+
+/* Enhance the visual quality */
+#about-image-container .portrait-frame {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 
+                0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 16px !important;
+}
+
+/* Maintain hover effects */
+#about-image-container .portrait-frame:hover {
+    transform: translateY(-4px) scale(1.02) !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 
+                0 15px 30px rgba(0, 0, 0, 0.15) !important;
+}

@@ -1,0 +1,120 @@
+/* About Section Image Height Perfect Match Fix - June 9, 2025 */
+/* Ensures image container matches exact height of tabs content area */
+
+/* Target the About section flexbox layout */
+#about #about-grid {
+    display: flex !important;
+    align-items: stretch !important;
+    gap: 5rem !important;
+    min-height: auto !important; /* Let content determine height */
+}
+
+/* Image container - matches content height exactly */
+#about #about-image-container {
+    flex: 0 0 50% !important;
+    display: flex !important;
+    align-items: stretch !important;
+    min-height: auto !important; /* Remove fixed height */
+}
+
+/* Portrait frame takes full height of container */
+#about .portrait-frame {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: auto !important; /* Remove fixed height */
+}
+
+/* Image fills portrait frame properly */
+#about .portrait-frame img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    border-radius: 20px !important;
+    min-height: auto !important; /* Remove fixed height */
+}
+
+/* Content area - let natural height be the guide */
+#about #about-grid > div:last-child {
+    flex: 1 1 50% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    min-height: auto !important; /* Natural height */
+}
+
+/* Cards grid - optimized spacing */
+#about .grid.grid-cols-1.md\\:grid-cols-2 {
+    height: auto !important;
+    min-height: auto !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: auto auto !important;
+    gap: 1.5rem !important;
+    margin-bottom: 2rem !important;
+}
+
+/* Individual cards - consistent height */
+#about .grid.grid-cols-1.md\\:grid-cols-2 > div {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    min-height: 280px !important;
+    padding: 1.5rem !important;
+}
+
+/* Shop Art button - stays at bottom */
+#about .mt-8.group {
+    margin-top: auto !important;
+    padding-top: 2rem !important;
+    flex-shrink: 0 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1023px) {
+    #about #about-grid {
+        flex-direction: column !important;
+        gap: 3rem !important;
+    }
+    
+    #about #about-image-container {
+        flex: none !important;
+        min-height: 500px !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    #about .portrait-frame {
+        min-height: 500px !important;
+    }
+    
+    #about .portrait-frame img {
+        min-height: 500px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    #about #about-image-container {
+        min-height: 400px !important;
+    }
+    
+    #about .portrait-frame {
+        min-height: 400px !important;
+    }
+    
+    #about .portrait-frame img {
+        min-height: 400px !important;
+    }
+    
+    #about .grid.grid-cols-1.md\\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    #about .grid.grid-cols-1.md\\:grid-cols-2 > div {
+        min-height: 200px !important;
+        padding: 1.25rem !important;
+    }
+}
