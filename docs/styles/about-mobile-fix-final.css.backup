@@ -1,0 +1,118 @@
+/* Final mobile fix for About section - addresses spacing and tab display issues */
+
+/* Mobile-specific fixes */
+@media (max-width: 767px) {
+    /* Remove excessive top padding/margin on mobile */
+    #about {
+        padding-top: 3rem !important;
+        margin-top: 0 !important;
+    }
+    
+    /* Fix the section header spacing */
+    #about .section-header {
+        margin-bottom: 2rem !important;
+        padding-top: 0 !important;
+    }
+    
+    /* Ensure the grid stacks vertically on mobile */
+    #about-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+    }
+    
+    /* Fix image container on mobile */
+    #about-image-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        position: relative !important;
+        top: auto !important;
+    }
+    
+    /* Fix portrait frame height on mobile */
+    #about .portrait-frame {
+        height: auto !important;
+        min-height: 300px !important;
+        max-height: 400px !important;
+        aspect-ratio: 3/4 !important;
+    }
+    
+    /* Ensure the tabs/cards container is visible and properly styled */
+    #about-grid > div:last-child {
+        width: 100% !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin-top: 0 !important;
+    }
+    
+    /* Fix the cards grid on mobile */
+    #about .grid.grid-cols-1.md\\:grid-cols-2 {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        width: 100% !important;
+    }
+    
+    /* Ensure cards are visible */
+    #about .group.bg-gradient-to-br {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin: 0 !important;
+        padding: 1rem !important;
+    }
+    
+    /* Fix Shop Art button container */
+    #about .mt-8.group {
+        display: block !important;
+        margin-top: 2rem !important;
+        width: 100% !important;
+    }
+}
+
+/* Desktop layout enforcement */
+@media (min-width: 768px) {
+    /* Maintain side-by-side layout on desktop */
+    #about-grid {
+        display: grid !important;
+        grid-template-columns: 40% 60% !important;
+        gap: 3rem !important;
+        align-items: stretch !important;
+    }
+    
+    /* Image container stays on left */
+    #about-image-container {
+        grid-column: 1 !important;
+    }
+    
+    /* Content stays on right */
+    #about-grid > div:last-child {
+        grid-column: 2 !important;
+    }
+}
+
+/* General fixes for all screen sizes */
+#about {
+    overflow: visible !important;
+}
+
+/* Remove any transform or positioning that might hide content */
+#about * {
+    transform: none !important;
+    position: relative !important;
+}
+
+/* Ensure all text is visible */
+#about h3, #about p, #about span {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Fix decorative circles positioning on mobile */
+@media (max-width: 767px) {
+    #about .decorative-circle {
+        display: none !important; /* Hide decorative elements on mobile to prevent overlap */
+    }
+}
