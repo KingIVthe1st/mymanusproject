@@ -6,14 +6,15 @@
   const config = {
     shootingStars: {
       enabled: true,
-      frequency: 3000, // New star every 3 seconds
+      frequency: 2000, // New star every 2 seconds for more activity
       minDuration: 2500,
       maxDuration: 4000,
       colors: [
         'rgba(147, 51, 234, 0.4)', // Purple
         'rgba(236, 72, 153, 0.5)', // Pink
         'rgba(251, 191, 36, 0.4)',  // Amber
-        'rgba(59, 130, 246, 0.4)'   // Blue
+        'rgba(59, 130, 246, 0.4)',  // Blue
+        'rgba(34, 211, 238, 0.4)'   // Cyan
       ]
     },
     ambientParticles: {
@@ -175,26 +176,114 @@
       star.style.transform = `rotate(${angle}deg)`;
       
       // Random width for variety
-      const width = 80 + Math.random() * 120;
+      const width = 100 + Math.random() * 150;
       star.style.width = `${width}px`;
       
-      // Random color gradient
-      const colorIndex = Math.floor(Math.random() * config.shootingStars.colors.length);
-      const color1 = config.shootingStars.colors[colorIndex];
-      const color2 = config.shootingStars.colors[(colorIndex + 1) % config.shootingStars.colors.length];
+      // Enhanced multi-color gradient
+      const colors = [
+        'rgba(147, 51, 234, 0.5)',  // Purple
+        'rgba(236, 72, 153, 0.7)',  // Pink
+        'rgba(251, 191, 36, 0.6)',  // Amber
+        'rgba(59, 130, 246, 0.5)',  // Blue
+        'rgba(34, 211, 238, 0.5)'   // Cyan
+      ];
       
-      star.style.background = `linear-gradient(90deg, transparent, ${color1}, ${color2}, transparent)`;
+      // Create a more vibrant gradient
+      const gradient = `linear-gradient(90deg, 
+        transparent 0%,
+        ${colors[0]} 25%,
+        ${colors[1]} 40%,
+        ${colors[2]} 55%,
+        ${colors[3]} 70%,
+        ${colors[4]} 85%,
+        transparent 100%
+      )`;
+      
+      star.style.background = gradient;
       
       // Random duration
       const duration = config.shootingStars.minDuration + Math.random() * (config.shootingStars.maxDuration - config.shootingStars.minDuration);
       star.style.animationDuration = `${duration}ms`;
       
+      // Add color burst element
+      const burst = document.createElement('div');
+      burst.style.cssText = `
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 120px;
+        height: 120px;
+        pointer-events: none;
+        transform: translate(0, -50%);
+        opacity: 0;
+        animation: colorBurst ${duration}ms cubic-bezier(0.45, 0.05, 0.55, 0.95);
+        background: radial-gradient(
+          circle,
+          ${colors[1]} 0%,
+          ${colors[0]} 20%,
+          ${colors[2]} 40%,
+          ${colors[3]} 60%,
+          transparent 80%
+        );
+      `;
+      star.appendChild(burst);
+      
       this.starsContainer.appendChild(star);
+      
+      // Create particle trail
+      this.createParticleTrail(star, duration, angle);
       
       // Remove star after animation
       setTimeout(() => {
         star.remove();
       }, duration);
+    }
+
+    createParticleTrail(star, duration, angle) {
+      const particleCount = 5 + Math.floor(Math.random() * 5);
+      const delay = duration / particleCount;
+      
+      for (let i = 0; i < particleCount; i++) {
+        setTimeout(() => {
+          if (!star.parentElement) return; // Star already removed
+          
+          const rect = star.getBoundingClientRect();
+          const containerRect = this.starsContainer.getBoundingClientRect();
+          
+          const particle = document.createElement('div');
+          particle.className = 'star-particle';
+          
+          // Position particle along the star's path
+          const progress = i / particleCount;
+          const x = rect.left - containerRect.left + (rect.width * progress * 0.7);
+          const y = rect.top - containerRect.top + (Math.sin(progress * Math.PI) * 10);
+          
+          particle.style.left = `${x}px`;
+          particle.style.top = `${y}px`;
+          
+          // Random drift direction
+          const driftX = (Math.random() - 0.5) * 30;
+          const driftY = Math.random() * 20 + 10;
+          particle.style.setProperty('--drift-x', `${driftX}px`);
+          particle.style.setProperty('--drift-y', `${driftY}px`);
+          
+          // Random color for variety
+          const colors = [
+            'rgba(251, 191, 36, 0.8)',
+            'rgba(236, 72, 153, 0.8)', 
+            'rgba(147, 51, 234, 0.8)',
+            'rgba(59, 130, 246, 0.8)'
+          ];
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          particle.style.background = `radial-gradient(circle, ${color} 0%, transparent 70%)`;
+          
+          this.starsContainer.appendChild(particle);
+          
+          // Remove particle after animation
+          setTimeout(() => particle.remove(), 1500);
+        }, i * delay);
+      }
     }
 
     startShootingStars() {
