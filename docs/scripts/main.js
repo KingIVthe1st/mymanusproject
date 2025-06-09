@@ -31,11 +31,11 @@ const mobileMenuToggle = document.querySelector('.navbar-mobile-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
 const mobileMenuClose = document.querySelector('.mobile-menu-close');
 
-if (mobileMenuToggle && mobileMenu) {
-    mobileMenuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
-}
+// if (mobileMenuToggle && mobileMenu) {
+//     mobileMenuToggle.addEventListener('click', () => {
+//         mobileMenu.classList.toggle('hidden');
+//     });
+// }
 
 if (mobileMenuClose && mobileMenu) {
     mobileMenuClose.addEventListener('click', () => {

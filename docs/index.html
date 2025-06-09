@@ -357,6 +357,22 @@
             color: #ffffff !important;
             fill: #ffffff !important;
         }
+        
+        /* Mobile Menu Fix */
+        .mobile-menu {
+            display: none !important;
+        }
+        
+        .mobile-menu.active {
+            display: flex !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+        
+        .mobile-menu.active .mobile-menu-container {
+            transform: translateX(0) !important;
+        }
     </style>
     
     <!-- WebP Detection Script -->
@@ -429,7 +445,7 @@
     
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay"></div>
-    <div class="mobile-menu">
+    <div class="mobile-menu hidden">
         <div class="mobile-menu-container">
             <div class="mobile-menu-header">
                 <a href="#" class="mobile-logo">
@@ -495,15 +511,12 @@
     function initializeScrollBehavior() {
         let lastScrollTop = 0;
         let navbar = document.getElementById('main-navbar');
-        let isScrolling = false;
-        let scrollTimer = null;
-        
-        // Ensure navbar exists before setting up scroll behavior
+        // Do not proceed if navbar isn't found, but don't break page for it.
+        // Other anchor links might still work with default browser behavior.
         if (!navbar) {
-            console.warn('Navigation element not found');
-            return;
+            console.warn('Navigation element not found for smooth scroll offset calculation.');
         }
-        
+
         // Add transition to navbar for smooth animations
         navbar.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
         
@@ -736,38 +749,55 @@
 
     // Initialize everything when DOM is ready
     document.addEventListener('DOMContentLoaded', function() {
-        // Apply navigation fixes first
-        fixNavigation();
+        console.log('DOMContentLoaded fired');
         
-        // Initialize scroll behavior for navbar hide/show
-        setTimeout(initializeScrollBehavior, 100);
-
-        // Initialize haptic feedback for buttons
-        initializeHapticFeedback();
-
-        // Initialize smooth scroll for all anchor links, accounting for fixed header
-        initializeDesktopSmoothScroll();
-
-        // Initialize smart navigation layout
-        updateNavLayout(); // Call once on load
-        window.addEventListener('resize', debounce(updateNavLayout, 150)); // Call on resize
-        
-        // Mobile menu functionality
+        // Get all DOM element references FIRST
         const mobileToggle = document.querySelector('.navbar-mobile-toggle');
         const mobileMenu = document.querySelector('.mobile-menu');
         const mobileOverlay = document.querySelector('.mobile-menu-overlay');
         const mobileLinks = document.querySelectorAll('.mobile-nav-link');
         const closeButton = document.querySelector('.mobile-close-btn');
         
+        console.log('Mobile menu elements found:', {
+            mobileToggle: !!mobileToggle,
+            mobileMenu: !!mobileMenu,
+            mobileOverlay: !!mobileOverlay,
+            closeButton: !!closeButton,
+            mobileLinksCount: mobileLinks.length
+        });
+        
         // Toggle menu function
-        function toggleMenu() {
-            if (!mobileMenu) return;
+        function toggleMenu(e) {
+            console.log('--- TOGGLE MENU CALLED ---'); // Prominent log here
+            // Stop propagation to prevent any parent events
+            if (e) {
+                e.preventDefault();
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                else if (e.stopPropagation) e.stopPropagation();
+            }
+            
+            console.log('Toggle menu clicked');
+            
+            // Check for mobile menu element
+            if (!mobileMenu) {
+                console.error('Mobile menu element not found!');
+                return;
+            }
             
             const isOpening = !mobileMenu.classList.contains('active');
+            console.log('Menu is ' + (isOpening ? 'opening' : 'closing'));
             
             // Toggle active classes
             if (mobileToggle) mobileToggle.classList.toggle('active');
+            // Ensure we remove Tailwind 'hidden' so menu can be visible when opening
+            if (isOpening) {
+                mobileMenu.classList.remove('hidden');
+            }
             mobileMenu.classList.toggle('active');
+            if (!isOpening) {
+                // After animation completes (~400ms), hide again for better a11y
+                setTimeout(() => mobileMenu.classList.add('hidden'), 450);
+            }
             if (mobileOverlay) mobileOverlay.classList.toggle('active');
             
             // Toggle body scroll
@@ -854,28 +884,44 @@
             });
         }
         
-        // Event listeners
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', toggleMenu);
+        // Set up mobile menu event listeners
+        function setupMobileMenuListeners() {
+            console.log('Setting up mobile menu listeners...');
+            
+            if (mobileToggle) {
+                console.log('Adding click handler to mobile toggle button');
+                
+                // Remove any existing handlers
+                mobileToggle.onclick = null;
+                
+                // Add new handler
+                mobileToggle.addEventListener('click', function(e) {
+                    console.log('Mobile toggle clicked!');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleMenu(e);
+                });
+            } else {
+                console.error('Mobile toggle button not found');
+            }
+            
+            // Setup close button
+            if (closeButton) {
+                closeButton.addEventListener('click', function(e) {
+                    console.log('Close button clicked');
+                    e.preventDefault();
+                    closeMenu();
+                });
+            }
+            
+            // Setup mobile nav links to close menu when clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('Mobile nav link clicked');
+                    closeMenu();
+                });
+            });
         }
-        
-        // Close menu when clicking on a link
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
-            
-            // Add hover/active state effects
-            link.addEventListener('mousedown', () => {
-                link.classList.add('active');
-            });
-            
-            link.addEventListener('mouseup', () => {
-                link.classList.remove('active');
-            });
-            
-            link.addEventListener('mouseleave', () => {
-                link.classList.remove('active');
-            });
-        });
         
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
@@ -896,6 +942,19 @@
                 return false;
             }
         }, { passive: false });
+        
+        // Now set up all the event listeners
+        setupMobileMenuListeners();
+        
+        // Initialize other features
+        fixNavigation();
+        setTimeout(initializeScrollBehavior, 100);
+        initializeDesktopSmoothScroll();
+        updateNavLayout();
+        window.addEventListener('resize', debounce(function() {
+            updateNavLayout();
+            fixNavigation();
+        }, 150));
     });
     
     // Apply fixes on window resize
@@ -1086,7 +1145,7 @@
             <div class="decorative-circle decorative-circle-1"></div>
             <div class="decorative-circle decorative-circle-2"></div>
             
-            <div class="relative z-10 max-w-7xl mx-auto px-4">
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="section-header">
                     <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-yellow-100 to-pink-100 text-yellow-700 text-sm font-semibold uppercase tracking-wide glass-pill mb-4">THE ARTIST</span>
                     <h3 class="text-4xl font-serif font-bold text-gray-800">About the Artist</h3>
@@ -1119,7 +1178,7 @@
                                         style="min-height: 500px;"
                                     >
                                 </picture>
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-70"></div>
                             </div>
                         </div>
                         
@@ -1683,34 +1742,32 @@
                                 Partner with me to add vibrant, contemporary artwork to your product lines, retail spaces, hospitality venues, or commercial projects.
                             </p>
                             
-                            <div class="mb-8">
-                                <h5 class="text-gray-800 font-medium mb-4 flex items-center text-lg">
-                                    <svg class="w-5 h-5 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            <h5 class="text-gray-800 font-medium mb-4 flex items-center text-lg">
+                                <svg class="w-5 h-5 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                                What to expect:
+                            </h5>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
                                     </svg>
-                                    What to expect:
-                                </h5>
-                                <ul class="space-y-3">
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span class="text-gray-600">Exclusive access to collections</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span class="text-gray-600">High-resolution artwork files</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span class="text-gray-600">Dedicated support throughout the process</span>
-                                    </li>
-                                </ul>
-                            </div>
+                                    <span class="text-gray-600">Exclusive access to collections</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span class="text-gray-600">High-resolution artwork files</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span class="text-gray-600">Dedicated support throughout the process</span>
+                                </li>
+                            </ul>
                             
                             <a href="https://www.mhslicensing.com/artists/amira-rahim" class="group inline-flex items-center justify-center w-full px-8 py-4 text-base font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl hover:shadow-lg hover:shadow-purple-200 hover:-translate-y-0.5 transition-all duration-300 transform-gpu" target="_blank" rel="noopener noreferrer">
                                 Inquire Now
