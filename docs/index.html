@@ -604,7 +604,6 @@
     
     <!-- Mobile Z-Index Layering Fix -->
     <link rel="stylesheet" href="styles/featured-originals-mobile-zindex-fix.css">
-    <script src="scripts/debug-mobile-layering.js"></script>
     
     <!-- NUCLEAR MOBILE FIX - HIGHEST PRIORITY -->
     <link rel="stylesheet" href="styles/nuclear-mobile-fix.css">
@@ -681,7 +680,7 @@
                 <a href="#about" class="navbar-link">About</a>
                 <a href="#contact" class="navbar-link">Contact</a>
             </div>
-            <div class="navbar-mobile-toggle" onclick="toggleMobileMenu();" ontouchend="toggleMobileMenu();" style="cursor: pointer; position: relative; z-index: 999997; -webkit-tap-highlight-color: transparent;">
+            <div class="navbar-mobile-toggle" id="mobile-toggle-btn" style="cursor: pointer !important; position: relative !important; z-index: 999997 !important; -webkit-tap-highlight-color: transparent !important; padding: 15px !important; pointer-events: auto !important; touch-action: manipulation !important;">
                 <span class="hamburger"></span>
                 <span class="sr-only">Menu</span>
             </div>
@@ -696,7 +695,7 @@
                 <a href="#" class="mobile-logo">
                     <img src="images/logo/amira-logo.webp" alt="Amira Rahim" class="logo-image">
                 </a>
-                <div class="mobile-close-btn" onclick="closeMobileMenu();" style="cursor: pointer; background: none; border: none; color: white; font-size: 1.5rem; padding: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                <div class="mobile-close-btn" id="mobile-close-btn" style="cursor: pointer; background: none; border: none; color: white; font-size: 1.5rem; padding: 0.5rem; display: flex; align-items: center; justify-content: center;">
                     <i class="fas fa-times"></i>
                 </div>
             </div>
@@ -4218,91 +4217,169 @@ body:not(.menu-open) .container {
 }
 </style>
 
-<!-- EMERGENCY Mobile Menu JavaScript Fix - June 10, 2025 -->
+<!-- EMERGENCY iOS Mobile Menu Fix - June 10, 2025 -->
 <script>
-// Store original overflow state
-let originalOverflow = '';
-let menuOpen = false;
-
-function toggleMobileMenu() {
-    if (menuOpen) {
-        closeMobileMenu();
+(function() {
+    'use strict';
+    
+    var menu = null;
+    var toggleBtn = null;
+    var closeBtn = null;
+    var isOpen = false;
+    
+    function init() {
+        menu = document.querySelector('.mobile-menu');
+        toggleBtn = document.getElementById('mobile-toggle-btn');
+        closeBtn = document.getElementById('mobile-close-btn');
+        
+        if (!menu || !toggleBtn || !closeBtn) {
+            console.log('Mobile menu elements not found');
+            return;
+        }
+        
+        // REMOVE ALL EXISTING EVENT LISTENERS to prevent conflicts
+        var newToggleBtn = toggleBtn.cloneNode(true);
+        toggleBtn.parentNode.replaceChild(newToggleBtn, toggleBtn);
+        toggleBtn = newToggleBtn;
+        
+        var newCloseBtn = closeBtn.cloneNode(true);
+        closeBtn.parentNode.replaceChild(newCloseBtn, closeBtn);
+        closeBtn = newCloseBtn;
+        
+        // Ensure menu is hidden initially
+        menu.style.cssText = 'position: fixed !important; top: 0 !important; right: -100% !important; width: 100% !important; max-width: 375px !important; height: 100vh !important; background: #1a1a1a !important; z-index: 999999 !important; display: block !important; transition: right 0.3s ease !important;';
+        
+        // Add SINGLE event listener to prevent conflicts
+        toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('DEFINITIVE TOGGLE CLICKED');
+            if (isOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }, true); // Use capture phase to ensure this runs first
+        
+        toggleBtn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('DEFINITIVE TOGGLE TOUCHED');
+            if (isOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }, true);
+        
+        closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeMenu();
+        }, true);
+        
+        closeBtn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeMenu();
+        }, true);
+        
+        // Close menu when clicking nav links
+        var navLinks = document.querySelectorAll('.mobile-nav-link');
+        for (var i = 0; i < navLinks.length; i++) {
+            navLinks[i].addEventListener('click', closeMenu, true);
+        }
+        
+        console.log('DEFINITIVE iOS Mobile menu initialized');
+        
+        // Debug code removed
+    }
+    
+    function openMenu() {
+        if (isOpen || !menu) return;
+        
+        // NUCLEAR CSS to force menu visibility
+        menu.style.cssText = 'position: fixed !important; top: 0 !important; right: 0px !important; width: 100% !important; max-width: 375px !important; height: 100vh !important; background: #1a1a1a !important; z-index: 999999 !important; display: block !important; visibility: visible !important; opacity: 1 !important; transform: translateX(0) !important;';
+        
+        // REMOVE THE HIDDEN CLASS that's preventing content from showing
+        menu.classList.remove('hidden');
+        
+        // BYPASS ALL EXISTING CSS - CREATE NEW MENU CONTENT FROM SCRATCH
+        menu.innerHTML = '<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #1a1a1a; z-index: 1000001; padding: 30px;">' +
+            '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">' +
+                '<div style="color: white; font-size: 18px; font-weight: bold;">AMIRA RAHIM</div>' +
+                '<div id="emergency-close-btn" style="color: white; font-size: 30px; cursor: pointer; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border: 2px solid white;">×</div>' +
+            '</div>' +
+            '<div style="display: flex; flex-direction: column; gap: 20px;">' +
+                '<a href="#artwork" style="color: white; text-decoration: none; font-size: 16px; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; justify-content: space-between; align-items: center;"><span>Artwork</span><span>→</span></a>' +
+                '<a href="#featured-in" style="color: white; text-decoration: none; font-size: 16px; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; justify-content: space-between; align-items: center;"><span>Featured In</span><span>→</span></a>' +
+                '<a href="#education" style="color: white; text-decoration: none; font-size: 16px; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; justify-content: space-between; align-items: center;"><span>Education</span><span>→</span></a>' +
+                '<a href="#collaborate" style="color: white; text-decoration: none; font-size: 16px; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; justify-content: space-between; align-items: center;"><span>Collaborate</span><span>→</span></a>' +
+                '<a href="#about" style="color: white; text-decoration: none; font-size: 16px; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; justify-content: space-between; align-items: center;"><span>About</span><span>→</span></a>' +
+                '<a href="#contact" style="color: white; text-decoration: none; font-size: 16px; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; justify-content: space-between; align-items: center;"><span>Contact</span><span>→</span></a>' +
+            '</div>' +
+        '</div>';
+        
+        // Add click handler to the new close button with multiple event types
+        var emergencyCloseBtn = menu.querySelector('#emergency-close-btn');
+        if (emergencyCloseBtn) {
+            emergencyCloseBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('EMERGENCY CLOSE BUTTON CLICKED');
+                closeMenu();
+            }, true);
+            
+            emergencyCloseBtn.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('EMERGENCY CLOSE BUTTON TOUCHED');
+                closeMenu();
+            }, true);
+        }
+        
+        // Add click handlers to navigation links to close menu
+        var emergencyNavLinks = menu.querySelectorAll('a[href^="#"]');
+        for (var i = 0; i < emergencyNavLinks.length; i++) {
+            emergencyNavLinks[i].addEventListener('click', closeMenu, true);
+        }
+        
+        document.body.style.overflow = 'hidden';
+        document.body.classList.add('menu-open');
+        isOpen = true;
+        
+        // Menu opened successfully
+    }
+    
+    function closeMenu() {
+        if (!isOpen || !menu) return;
+        
+        menu.style.right = '-100%';
+        document.body.style.overflow = '';
+        document.body.style.filter = '';
+        document.body.style.opacity = '';
+        document.body.classList.remove('menu-open');
+        isOpen = false;
+        
+        // Force scroll restoration
+        setTimeout(function() {
+            document.body.style.overflow = '';
+        }, 100);
+        
+        console.log('Menu closed');
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
     } else {
-        openMobileMenu();
+        init();
     }
-}
-
-function openMobileMenu() {
-    const menu = document.querySelector('.mobile-menu');
-    if (!menu || menuOpen) return;
     
-    // Store original state
-    originalOverflow = document.body.style.overflow || 'auto';
+    // Also try after page load
+    window.addEventListener('load', init);
     
-    // Open menu
-    menu.style.right = '0px';
-    menu.style.position = 'fixed';
-    menu.style.top = '0';
-    menu.style.width = '100%';
-    menu.style.maxWidth = '375px';
-    menu.style.height = '100vh';
-    menu.style.background = '#1a1a1a';
-    menu.style.zIndex = '999999';
-    menu.style.display = 'block';
-    
-    // Prevent background scroll
-    document.body.style.overflow = 'hidden';
-    document.body.classList.add('menu-open');
-    
-    menuOpen = true;
-}
-
-function closeMobileMenu() {
-    const menu = document.querySelector('.mobile-menu');
-    if (!menu || !menuOpen) return;
-    
-    // Close menu
-    menu.style.right = '-100%';
-    
-    // Restore scroll - use original overflow state
-    document.body.style.overflow = originalOverflow;
-    document.body.style.filter = '';
-    document.body.style.opacity = '';
-    document.body.style.background = '';
-    document.body.style.backdropFilter = '';
-    document.body.classList.remove('menu-open');
-    
-    // Remove any overlay elements
-    const overlays = document.querySelectorAll('.mobile-menu-overlay, .menu-overlay, .backdrop');
-    overlays.forEach(overlay => overlay.remove());
-    
-    // Clear document element styles
-    document.documentElement.style.filter = '';
-    document.documentElement.style.opacity = '';
-    
-    menuOpen = false;
-    
-    // Force a reflow to ensure scroll is restored
-    setTimeout(() => {
-        document.body.style.overflow = originalOverflow;
-        window.scrollTo(window.scrollX, window.scrollY);
-    }, 50);
-}
-
-// Close menu when clicking nav links
-document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.mobile-nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
-    });
-});
-
-// Close menu on escape key
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && menuOpen) {
-        closeMobileMenu();
-    }
-});
+})();
 </script>
 
 <script>
@@ -4860,13 +4937,10 @@ window.addEventListener('load', function() {
     
     function handleMenuToggle(e) {
         if (isHandling) {
-            console.log('Already handling, skipping...');
             return;
         }
         
         isHandling = true;
-        console.log('Menu toggle triggered:', e.type);
-        
         e.preventDefault();
         e.stopPropagation();
         
@@ -5028,11 +5102,8 @@ window.toggleMobileMenu = toggleMobileMenu;
 
 // RELIABLE Force Toggle - No conflicts, no intermittent issues
 window.forceToggleMenu = function() {
-    console.log('=== FORCE TOGGLE CALLED ===');
-    
     const menu = document.querySelector('.mobile-menu');
     if (!menu) {
-        console.error('Menu not found!');
         return;
     }
     
@@ -5042,10 +5113,7 @@ window.forceToggleMenu = function() {
                      computed.right === '0px' || 
                      menu.style.right === '0px';
     
-    console.log('Menu currently visible:', isVisible);
-    
     if (isVisible) {
-        console.log('Hiding menu...');
         // Hide menu
         menu.style.cssText = `
             position: fixed !important;
@@ -5070,7 +5138,6 @@ window.forceToggleMenu = function() {
         });
         
     } else {
-        console.log('Showing menu...');
         // Show menu
         menu.style.cssText = `
             position: fixed !important;
@@ -5110,8 +5177,6 @@ window.forceToggleMenu = function() {
         overlay.onclick = () => window.forceToggleMenu();
         document.body.appendChild(overlay);
     }
-    
-    console.log('=== TOGGLE COMPLETE ===');
 };
 
 // EMERGENCY FAILSAFE: Remove any stuck overlays
