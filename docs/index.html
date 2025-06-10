@@ -681,15 +681,14 @@
                 <a href="#about" class="navbar-link">About</a>
                 <a href="#contact" class="navbar-link">Contact</a>
             </div>
-            <button class="navbar-mobile-toggle" id="mobile-menu-btn" aria-label="Toggle navigation">
+            <div class="navbar-mobile-toggle" onclick="toggleMobileMenu();" ontouchend="toggleMobileMenu();" style="cursor: pointer; position: relative; z-index: 999997; -webkit-tap-highlight-color: transparent;">
                 <span class="hamburger"></span>
                 <span class="sr-only">Menu</span>
-            </button>
+            </div>
         </div>
     </nav>
     
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay"></div>
+    <!-- CSS-Only Mobile Menu (sibling of checkbox) -->
     <div class="mobile-menu hidden">
         <div class="mobile-shooting-stars"></div>
         <div class="mobile-menu-container">
@@ -697,33 +696,33 @@
                 <a href="#" class="mobile-logo">
                     <img src="images/logo/amira-logo.webp" alt="Amira Rahim" class="logo-image">
                 </a>
-                <button class="mobile-close-btn" aria-label="Close menu">
+                <div class="mobile-close-btn" onclick="closeMobileMenu();" style="cursor: pointer; background: none; border: none; color: white; font-size: 1.5rem; padding: 0.5rem; display: flex; align-items: center; justify-content: center;">
                     <i class="fas fa-times"></i>
-                </button>
+                </div>
             </div>
             <nav class="mobile-nav">
                 <div class="nav-links">
-                    <a href="#artwork" class="mobile-nav-link">
+                    <a href="#artwork" class="mobile-nav-link" onclick="document.getElementById('mobile-menu-toggle').checked = false;">
                         <span class="link-text">Artwork</span>
                         <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
                     </a>
-                    <a href="#featured-in" class="mobile-nav-link">
+                    <a href="#featured-in" class="mobile-nav-link" onclick="document.getElementById('mobile-menu-toggle').checked = false;">
                         <span class="link-text">Featured In</span>
                         <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
                     </a>
-                    <a href="#education" class="mobile-nav-link">
+                    <a href="#education" class="mobile-nav-link" onclick="document.getElementById('mobile-menu-toggle').checked = false;">
                         <span class="link-text">Education</span>
                         <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
                     </a>
-                    <a href="#collaborate" class="mobile-nav-link">
+                    <a href="#collaborate" class="mobile-nav-link" onclick="document.getElementById('mobile-menu-toggle').checked = false;">
                         <span class="link-text">Collaborate</span>
                         <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
                     </a>
-                    <a href="#about" class="mobile-nav-link">
+                    <a href="#about" class="mobile-nav-link" onclick="document.getElementById('mobile-menu-toggle').checked = false;">
                         <span class="link-text">About</span>
                         <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
                     </a>
-                    <a href="#contact" class="mobile-nav-link">
+                    <a href="#contact" class="mobile-nav-link" onclick="document.getElementById('mobile-menu-toggle').checked = false;">
                         <span class="link-text">Contact</span>
                         <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
                     </a>
@@ -4155,6 +4154,157 @@ window.addEventListener('load', function() {
 }
 </style>
 
+<!-- EMERGENCY Mobile Menu Overlay Fix - June 10, 2025 -->
+<style>
+/* Mobile Menu Overlay Fix - Prevent Faded Background After Close */
+body:not(.menu-open) {
+    filter: none !important;
+    opacity: 1 !important;
+    background: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+html:not(.menu-open) {
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+/* Remove any overlay animations that might stick around */
+.mobile-menu-overlay,
+.menu-overlay,
+.backdrop {
+    transition: opacity 0.3s ease !important;
+}
+
+/* Ensure page content returns to normal after menu close */
+body:not(.menu-open) * {
+    filter: none !important;
+}
+
+body:not(.menu-open) section,
+body:not(.menu-open) main,
+body:not(.menu-open) .container {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+}
+
+/* Force clear any residual mobile flourishes animations */
+@media (max-width: 768px) {
+    body:not(.menu-open) {
+        animation: none !important;
+    }
+    
+    body:not(.menu-open) section {
+        animation: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+    }
+    
+    /* Clear any lingering fade effects */
+    body:not(.menu-open) .hero,
+    body:not(.menu-open) #artwork,
+    body:not(.menu-open) #featured-in,
+    body:not(.menu-open) #education,
+    body:not(.menu-open) #collaborate,
+    body:not(.menu-open) #about,
+    body:not(.menu-open) #contact {
+        opacity: 1 !important;
+        filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+}
+</style>
+
+<!-- EMERGENCY Mobile Menu JavaScript Fix - June 10, 2025 -->
+<script>
+// Store original overflow state
+let originalOverflow = '';
+let menuOpen = false;
+
+function toggleMobileMenu() {
+    if (menuOpen) {
+        closeMobileMenu();
+    } else {
+        openMobileMenu();
+    }
+}
+
+function openMobileMenu() {
+    const menu = document.querySelector('.mobile-menu');
+    if (!menu || menuOpen) return;
+    
+    // Store original state
+    originalOverflow = document.body.style.overflow || 'auto';
+    
+    // Open menu
+    menu.style.right = '0px';
+    menu.style.position = 'fixed';
+    menu.style.top = '0';
+    menu.style.width = '100%';
+    menu.style.maxWidth = '375px';
+    menu.style.height = '100vh';
+    menu.style.background = '#1a1a1a';
+    menu.style.zIndex = '999999';
+    menu.style.display = 'block';
+    
+    // Prevent background scroll
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('menu-open');
+    
+    menuOpen = true;
+}
+
+function closeMobileMenu() {
+    const menu = document.querySelector('.mobile-menu');
+    if (!menu || !menuOpen) return;
+    
+    // Close menu
+    menu.style.right = '-100%';
+    
+    // Restore scroll - use original overflow state
+    document.body.style.overflow = originalOverflow;
+    document.body.style.filter = '';
+    document.body.style.opacity = '';
+    document.body.style.background = '';
+    document.body.style.backdropFilter = '';
+    document.body.classList.remove('menu-open');
+    
+    // Remove any overlay elements
+    const overlays = document.querySelectorAll('.mobile-menu-overlay, .menu-overlay, .backdrop');
+    overlays.forEach(overlay => overlay.remove());
+    
+    // Clear document element styles
+    document.documentElement.style.filter = '';
+    document.documentElement.style.opacity = '';
+    
+    menuOpen = false;
+    
+    // Force a reflow to ensure scroll is restored
+    setTimeout(() => {
+        document.body.style.overflow = originalOverflow;
+        window.scrollTo(window.scrollX, window.scrollY);
+    }, 50);
+}
+
+// Close menu when clicking nav links
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.mobile-nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+});
+
+// Close menu on escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && menuOpen) {
+        closeMobileMenu();
+    }
+});
+</script>
+
 <script>
 // EMERGENCY JavaScript fix for Featured Originals mobile
 window.addEventListener('load', function() {
@@ -4482,6 +4632,73 @@ body.menu-open {
 .mobile-menu .mobile-social {
     opacity: 1 !important;
     visibility: visible !important;
+}
+
+/* CSS-ONLY Mobile Menu Solution */
+.mobile-menu-checkbox {
+    display: none !important;
+}
+
+/* Label acts as the button */
+label.navbar-mobile-toggle {
+    cursor: pointer !important;
+    display: block !important;
+    position: relative !important;
+    z-index: 999997 !important;
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation !important;
+}
+
+/* Hide menu by default */
+.mobile-menu {
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important;
+    width: 100% !important;
+    max-width: 375px !important;
+    height: 100vh !important;
+    background: #1a1a1a !important;
+    z-index: 999999 !important;
+    transition: right 0.3s ease !important;
+    display: block !important;
+}
+
+/* Show menu when checkbox is checked */
+#mobile-menu-toggle:checked ~ .mobile-menu {
+    right: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Remove hidden class when menu is shown */
+#mobile-menu-toggle:checked ~ .mobile-menu.hidden {
+    display: block !important;
+}
+
+/* Create overlay effect */
+#mobile-menu-toggle:checked ~ .mobile-menu::before {
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    z-index: -1 !important;
+    display: block !important;
+}
+
+/* Style the close button label */
+label.mobile-close-btn {
+    cursor: pointer !important;
+    background: none !important;
+    border: none !important;
+    color: white !important;
+    font-size: 1.5rem !important;
+    padding: 0.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 </style>
 
