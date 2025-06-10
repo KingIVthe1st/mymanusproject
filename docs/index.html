@@ -102,8 +102,10 @@
     <link rel="stylesheet" href="styles/logo-blur-fix.css">
     <link rel="stylesheet" href="styles/navbar-fix.css">
     <link rel="stylesheet" href="styles/hero-spacing-fix.css">
+    <link rel="stylesheet" href="styles/hero-mobile-background-fix.css">
     <link rel="stylesheet" href="styles/mobile-spacing.css">
     <link rel="stylesheet" href="styles/contact-form-button-fix.css">
+    <link rel="stylesheet" href="styles/shop-button-mobile-fix.css">
     <link rel="stylesheet" href="ultimate-featured-in-fix.css">
     <style>
         /* Fix Press Kit button display */
@@ -156,6 +158,7 @@
         'styles/education-icon-fix.css',
         'styles/education-circle-fix.css',
         'styles/education-visibility-fix.css',
+        'styles/education-mobile-opacity-fix.css',
         'styles/featured-in-fix.css',
         'styles/press-kit-button-fix.css',
         'styles/collaborate-badge-fix.css',
@@ -181,6 +184,7 @@
         'styles/artwork-button-standardization.css',
         'styles/contact-section-center-fix.css',
         'styles/featured-originals-center-fix.css',
+        'styles/featured-originals-mobile-fix.css',
         'styles/lazy-loading.css',
         'styles/font-optimization.css',
         'styles/testimonials-performance.css',
@@ -408,6 +412,20 @@
             transform: translateX(0) !important;
         }
         
+        /* Shop Art Button Mobile Fix */
+        @media (max-width: 767px) {
+            #about a[href*="shop.amirarahim.com"] {
+                background: linear-gradient(to right, #ec4899, #a855f7) !important;
+                color: white !important;
+                opacity: 1 !important;
+                filter: none !important;
+                display: block !important;
+                width: 100% !important;
+                padding: 1rem 1.5rem !important;
+                font-weight: 600 !important;
+            }
+        }
+        
         /* About Section Mobile Fix */
         @media (max-width: 767px) {
             #about {
@@ -476,6 +494,10 @@
         }
     </style>
     
+    <!-- Mobile Image Fixes -->
+    <link rel="stylesheet" href="mobile-image-fix.css">
+    <link rel="stylesheet" href="mobile-featured-fix.css">
+    
     <!-- WebP Detection Script -->
     <script>
         // Immediate WebP support detection
@@ -500,6 +522,78 @@
     
     <!-- Service Worker Registration -->
     <script src="scripts/sw-manager.js"></script>
+    
+    <!-- Mobile Education Opacity Fix - Inline Override -->
+    <style>
+    @media (max-width: 768px) {
+        /* Emergency override for faded education elements on mobile */
+        #education .education-card,
+        #education .group,
+        #education .rounded-2xl {
+            background: rgba(255, 255, 255, 0.98) !important;
+            opacity: 1 !important;
+        }
+        
+        #education h3,
+        #education p,
+        #education span,
+        #education a,
+        #education button {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        /* Fix the bottom two cards specifically */
+        #education .grid > div:nth-child(2) *,
+        #education .grid > div:nth-child(3) * {
+            opacity: 1 !important;
+        }
+        
+        /* Fix CTA button */
+        #education a.inline-flex {
+            background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+            color: white !important;
+            opacity: 1 !important;
+        }
+    }
+    </style>
+    
+    <!-- Featured Originals Mobile Fix - Inline Override -->
+    <style>
+    @media (max-width: 768px) {
+        /* Fix bottom two artwork images and CTA on mobile */
+        #artwork .artwork-card,
+        #artwork img {
+            opacity: 1 !important;
+            filter: none !important;
+        }
+        
+        /* Target last two cards specifically */
+        #artwork .grid > div:nth-last-child(1),
+        #artwork .grid > div:nth-last-child(2) {
+            opacity: 1 !important;
+        }
+        
+        #artwork .grid > div:nth-last-child(1) *,
+        #artwork .grid > div:nth-last-child(2) * {
+            opacity: 1 !important;
+            filter: none !important;
+        }
+        
+        /* Fix View All Originals button */
+        .text-center a[href*="shop.amirarahim.com/collections/available-originals-1"] {
+            opacity: 1 !important;
+            background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+            color: white !important;
+        }
+    }
+    </style>
+    
+    <!-- Featured Originals Nuclear Fix -->
+    <link rel="stylesheet" href="styles/featured-originals-nuclear-fix.css">
+    <link rel="stylesheet" href="styles/featured-originals-gradient-fix.css">
+    <script src="scripts/featured-originals-nuclear-fix.js"></script>
+    <script src="scripts/remove-gradient-overlays.js"></script>
 </head>
 <body>
     <!-- Living Gradient Background -->
@@ -1237,10 +1331,10 @@
                 </div>
             </div>
             
-            <div class="text-center mt-12">
-                <a href="https://shop.amirarahim.com/collections/available-originals-1" class="btn btn-primary glass-button">
+            <div class="text-center mt-12" id="view-all-originals-container">
+                <a href="https://shop.amirarahim.com/collections/available-originals-1" class="view-all-originals-btn" style="display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 0.5rem !important; background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%) !important; color: white !important; padding: 1rem 2rem !important; border-radius: 50px !important; font-weight: 700 !important; text-decoration: none !important; box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4) !important; text-transform: uppercase !important; letter-spacing: 0.05em !important; opacity: 1 !important; visibility: visible !important; filter: none !important; border: none !important; cursor: pointer !important; position: relative !important; z-index: 999 !important;">
                     View All Originals
-                    <i class="fas fa-arrow-right ml-2"></i>
+                    <i class="fas fa-arrow-right" style="color: white !important; opacity: 1 !important;"></i>
                 </a>
             </div>
         </section>
@@ -3302,6 +3396,934 @@ window.addEventListener('load', function() {
         if (aboutGrid) {
             console.log('About grid height:', window.getComputedStyle(aboutGrid).height);
         }
+    }
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const IS_MOBILE_WIDTH = () => window.innerWidth <= 767;
+
+  function forceElementStyles(element, isImage = false, isButton = false) {
+    if (!element) return;
+    element.style.setProperty('opacity', '1', 'important');
+    element.style.setProperty('filter', 'none', 'important');
+    element.style.setProperty('visibility', 'visible', 'important');
+    element.style.setProperty('transition', 'none', 'important'); // Crucial: disable transitions
+
+    if (isImage) {
+      element.classList.add('progressive-loaded');
+      element.classList.remove('progressive-loading');
+    }
+    if (isButton) {
+      element.style.setProperty('pointer-events', 'auto', 'important');
+    }
+  }
+
+  function applyAndObserve(selector, isImage = false, isButton = false, observeChildren = false) {
+    const elements = document.querySelectorAll(selector);
+    elements.forEach(element => {
+      forceElementStyles(element, isImage, isButton);
+
+      const observer = new MutationObserver((mutationsList) => {
+        for (const mutation of mutationsList) {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+            const style = element.getAttribute('style');
+            const opacity = element.style.opacity;
+            const filter = element.style.filter;
+            if ((style && style.includes('blur')) || (opacity && parseFloat(opacity) < 1) || (filter && filter !== 'none')) {
+              // console.log('Re-forcing styles on:', element.tagName, element.className);
+              forceElementStyles(element, isImage, isButton);
+            }
+          }
+        }
+      });
+      observer.observe(element, { attributes: true, attributeFilter: ['style'] });
+
+      if (observeChildren) {
+        element.querySelectorAll('h3, p, span, a, button, div, img').forEach(child => {
+            const childIsButton = child.matches('.btn, button');
+            const childIsImage = child.matches('img');
+            forceElementStyles(child, childIsImage, childIsButton);
+            // Optionally, observe children too if styles are very dynamic
+            // For now, direct styling on children might be enough if parent is fixed.
+        });
+      }
+    });
+  }
+
+  function runFixes() {
+    if (!IS_MOBILE_WIDTH()) return;
+
+    // Apply to artwork cards, image containers, and images
+    applyAndObserve('#artwork .artwork-card');
+    applyAndObserve('#artwork .artwork-card .artwork-image');
+    applyAndObserve('#artwork .artwork-card .artwork-image img', true);
+    
+    // Apply to overlays and their children
+    applyAndObserve('#artwork .artwork-card .artwork-overlay', false, false, true);
+
+    // Apply to the main CTA button
+    applyAndObserve('#artwork > .text-center > a.btn.btn-primary.glass-button[href*="available-originals-1"], #artwork .view-all-originals', false, true);
+  }
+
+  runFixes(); // Initial run
+  window.addEventListener('resize', runFixes); // Re-run on resize
+
+  // Run after delays to catch late-applying scripts
+  setTimeout(runFixes, 300);
+  setTimeout(runFixes, 700);
+  setTimeout(runFixes, 1500);
+  setTimeout(runFixes, 3000);
+});
+</script>
+<script>
+// [MobileFixScript] Start
+console.log('[MobileFixScript] Initializing...');
+
+const IS_MOBILE_WIDTH_MFS = () => window.innerWidth <= 767;
+
+function forceElementStylesMFS(element, isImage = false, isButton = false, elementName = 'Unknown') {
+    if (!element) {
+        // console.log(`[MobileFixScript] forceElementStylesMFS: Element ${elementName} not found.`);
+        return;
+    }
+    // console.log(`[MobileFixScript] Forcing styles on ${elementName}:`, element);
+    element.style.setProperty('opacity', '1', 'important');
+    element.style.setProperty('filter', 'none', 'important');
+    element.style.setProperty('visibility', 'visible', 'important');
+    element.style.setProperty('transition', 'none', 'important'); // Crucial
+
+    if (isImage) {
+        // console.log(`[MobileFixScript] Handling as image: ${elementName}`);
+        element.classList.add('progressive-loaded');
+        element.classList.remove('progressive-loading');
+        if (element.style.filter && element.style.filter.includes('blur')) {
+            // console.log(`[MobileFixScript] Removing inline blur from ${elementName}`);
+            element.style.filter = 'none';
+        }
+    }
+    if (isButton) {
+        // console.log(`[MobileFixScript] Handling as button: ${elementName}`);
+        element.style.setProperty('pointer-events', 'auto', 'important');
+    }
+}
+
+function setupObserverMFS(element, isImage = false, isButton = false, elementName = 'Unknown Observer') {
+    if (!element) {
+        // console.log(`[MobileFixScript] setupObserverMFS: Element ${elementName} not found for observer.`);
+        return;
+    }
+    const observer = new MutationObserver((mutationsList) => {
+        let styleChanged = false;
+        for (const mutation of mutationsList) {
+            if (mutation.type === 'attributes' && (mutation.attributeName === 'style' || mutation.attributeName === 'class')) {
+                styleChanged = true;
+                break;
+            }
+        }
+        if (styleChanged) {
+            const currentOpacity = element.style.getPropertyValue('opacity');
+            const currentFilter = element.style.getPropertyValue('filter');
+            if (parseFloat(currentOpacity) < 1 || (currentFilter && currentFilter !== 'none' && !currentFilter.includes('blur(0px)'))) {
+                 console.log(`[MobileFixScript] Mutation detected on ${elementName}. Opacity: ${currentOpacity}, Filter: ${currentFilter}. Re-forcing styles.`);
+                forceElementStylesMFS(element, isImage, isButton, `Re-force ${elementName}`);
+            }
+        }
+    });
+    observer.observe(element, { attributes: true, attributeFilter: ['style', 'class'] });
+    // console.log(`[MobileFixScript] Observer set up for ${elementName}`);
+}
+
+function applyFixesToElementAndChildrenMFS(baseElement, baseElementName) {
+    if (!baseElement) {
+        // console.log(`[MobileFixScript] applyFixesToElementAndChildrenMFS: Base element ${baseElementName} not found.`);
+        return;
+    }
+    // console.log(`[MobileFixScript] Applying fixes to ${baseElementName} and its children.`);
+    forceElementStylesMFS(baseElement, false, false, baseElementName);
+    setupObserverMFS(baseElement, false, false, `${baseElementName} (self)`);
+
+    const imgElement = baseElement.querySelector('.artwork-image img');
+    if (imgElement) {
+        forceElementStylesMFS(imgElement, true, false, `${baseElementName} img`);
+        setupObserverMFS(imgElement, true, false, `${baseElementName} img`);
+    } 
+
+    const imageContainer = baseElement.querySelector('.artwork-image');
+    if (imageContainer) {
+        forceElementStylesMFS(imageContainer, false, false, `${baseElementName} .artwork-image`);
+        setupObserverMFS(imageContainer, false, false, `${baseElementName} .artwork-image`);
+    }
+
+    const overlay = baseElement.querySelector('.artwork-overlay');
+    if (overlay) {
+        forceElementStylesMFS(overlay, false, false, `${baseElementName} .artwork-overlay`);
+        setupObserverMFS(overlay, false, false, `${baseElementName} .artwork-overlay`);
+        overlay.querySelectorAll('h3, p, span, a.btn, button.btn').forEach((child, index) => {
+            const isOverlayButton = child.matches('a.btn, button.btn');
+            forceElementStylesMFS(child, false, isOverlayButton, `${baseElementName} overlay child ${index}`);
+            setupObserverMFS(child, false, isOverlayButton, `${baseElementName} overlay child ${index}`);
+        });
+    } 
+}
+
+function runAllFixesMFS(iterationName = 'Initial') {
+    if (!IS_MOBILE_WIDTH_MFS()) {
+        // console.log(`[MobileFixScript - ${iterationName}] Not mobile width. Skipping fixes.`);
+        return;
+    }
+    console.log(`[MobileFixScript - ${iterationName}] Running all fixes for mobile width.`);
+    const artworkCards = document.querySelectorAll('#artwork .artwork-card');
+    // console.log(`[MobileFixScript - ${iterationName}] Found ${artworkCards.length} artwork cards.`);
+    artworkCards.forEach((card, index) => {
+        // console.log(`[MobileFixScript - ${iterationName}] Processing card ${index + 1}/${artworkCards.length}.`);
+        applyFixesToElementAndChildrenMFS(card, `Card ${index + 1}`);
+    });
+
+    if (artworkCards.length >= 1) {
+        const lastCardIndex = artworkCards.length - 1;
+        // console.log(`[MobileFixScript - ${iterationName}] Special focus on last card (index ${lastCardIndex}).`);
+        applyFixesToElementAndChildrenMFS(artworkCards[lastCardIndex], `Last Card (Index ${lastCardIndex})`);
+    }
+    if (artworkCards.length >= 2) {
+        const secondLastCardIndex = artworkCards.length - 2;
+        // console.log(`[MobileFixScript - ${iterationName}] Special focus on second last card (index ${secondLastCardIndex}).`);
+        applyFixesToElementAndChildrenMFS(artworkCards[secondLastCardIndex], `Second Last Card (Index ${secondLastCardIndex})`);
+    }
+
+    const viewAllButton = document.querySelector('#artwork > .text-center > a.btn.btn-primary.glass-button[href*="available-originals-1"], #artwork .view-all-originals');
+    if (viewAllButton) {
+        // console.log(`[MobileFixScript - ${iterationName}] Processing View All Originals button.`);
+        forceElementStylesMFS(viewAllButton, false, true, 'ViewAllButton');
+        setupObserverMFS(viewAllButton, false, true, 'ViewAllButton');
+    } else {
+        // console.log(`[MobileFixScript - ${iterationName}] View All Originals button not found.`);
+    }
+    console.log(`[MobileFixScript - ${iterationName}] Fixes complete.`);
+}
+
+runAllFixesMFS('DOMContentLoaded');
+let resizeTimeoutMFS;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeoutMFS);
+    resizeTimeoutMFS = setTimeout(() => runAllFixesMFS('Resize'), 250);
+});
+
+setTimeout(() => runAllFixesMFS('Timeout 300ms'), 300);
+setTimeout(() => runAllFixesMFS('Timeout 700ms'), 700);
+setTimeout(() => runAllFixesMFS('Timeout 1.5s'), 1500);
+setTimeout(() => runAllFixesMFS('Timeout 3s'), 3000);
+setTimeout(() => runAllFixesMFS('Timeout 5s'), 5000);
+console.log('[MobileFixScript] Fully initialized and event listeners set up.');
+// [MobileFixScript] End
+</script>
+
+<!-- EMERGENCY FIX FOR MOBILE FEATURED ORIGINALS FADING -->
+<style>
+@media (max-width: 767px) {
+    /* Force fix for all artwork cards */
+    #artwork .artwork-card,
+    #artwork .artwork-card *,
+    #artwork .grid > div,
+    #artwork .grid > div * {
+        opacity: 1 !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        transform: none !important;
+        -webkit-transform: none !important;
+        visibility: visible !important;
+    }
+    
+    /* Specific fix for images */
+    #artwork img,
+    #artwork picture,
+    #artwork picture img,
+    #artwork .artwork-image,
+    #artwork .artwork-image img {
+        opacity: 1 !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+    
+    /* Fix overlay but keep it functional */
+    #artwork .artwork-overlay {
+        opacity: 1 !important;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)) !important;
+    }
+    
+    /* Fix text visibility */
+    #artwork .artwork-title,
+    #artwork .artwork-description,
+    #artwork .artwork-button {
+        opacity: 1 !important;
+        color: white !important;
+        filter: none !important;
+    }
+    
+    /* Fix View Details buttons */
+    #artwork .artwork-button,
+    #artwork a.artwork-button {
+        opacity: 1 !important;
+        background: rgba(255, 255, 255, 0.25) !important;
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        color: white !important;
+        filter: none !important;
+        pointer-events: auto !important;
+    }
+    
+    /* Fix CTA button */
+    #artwork .btn.btn-primary,
+    #artwork a[href*="shop.amirarahim.com/collections/available-originals"] {
+        opacity: 1 !important;
+        filter: none !important;
+        background: linear-gradient(135deg, #9333ea 0%, #ec4899 100%) !important;
+        color: white !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+    
+    /* Remove any glass effects that might cause fading */
+    #artwork .glass-card {
+        background: white !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    
+    /* Override any lazy loading styles */
+    #artwork .lazy-loading,
+    #artwork .lazy-loaded,
+    #artwork [data-lazy],
+    #artwork [loading="lazy"] {
+        opacity: 1 !important;
+        filter: none !important;
+    }
+    
+    /* Force hardware acceleration */
+    #artwork .artwork-card {
+        will-change: auto !important;
+        transform: translateZ(0) !important;
+        -webkit-transform: translateZ(0) !important;
+        backface-visibility: hidden !important;
+        -webkit-backface-visibility: hidden !important;
+    }
+    
+    /* Remove ALL animations on artwork section */
+    #artwork *,
+    #artwork *::before,
+    #artwork *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Desktop hover states should not affect mobile */
+@media (min-width: 768px) {
+    #artwork .artwork-overlay {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    #artwork .artwork-card:hover .artwork-overlay {
+        opacity: 1;
+    }
+}
+</style>
+
+<!-- Force refresh styles on mobile -->
+<script>
+if (window.innerWidth <= 767) {
+    // Force a style recalculation
+    document.body.style.display = 'none';
+    document.body.offsetHeight; // Trigger reflow
+    document.body.style.display = '';
+    
+    // Apply inline styles as backup
+    setTimeout(() => {
+        const artworkCards = document.querySelectorAll('#artwork .artwork-card');
+        artworkCards.forEach(card => {
+            card.style.cssText = 'opacity: 1 !important; filter: none !important;';
+            const img = card.querySelector('img');
+            if (img) {
+                img.style.cssText = 'opacity: 1 !important; filter: none !important;';
+            }
+            const overlay = card.querySelector('.artwork-overlay');
+            if (overlay) {
+                overlay.style.cssText = 'opacity: 1 !important; background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)) !important;';
+            }
+            const button = card.querySelector('.artwork-button');
+            if (button) {
+                button.style.cssText = 'opacity: 1 !important; filter: none !important; background: rgba(255, 255, 255, 0.25) !important; border: 1px solid rgba(255, 255, 255, 0.4) !important; color: white !important;';
+            }
+        });
+        
+        // Fix CTA button
+        const ctaButton = document.querySelector('#artwork a[href*="shop.amirarahim.com/collections/available-originals"]');
+        if (ctaButton) {
+            ctaButton.style.cssText = 'opacity: 1 !important; filter: none !important; background: linear-gradient(135deg, #9333ea 0%, #ec4899 100%) !important; color: white !important;';
+        }
+        
+        console.log('Emergency mobile styles applied');
+    }, 100);
+}
+</script>
+
+<!-- Education Mobile Opacity Fix -->
+<script src="scripts/education-mobile-opacity-fix.js"></script>
+
+<!-- Featured Originals Mobile Opacity Fix -->
+<script src="scripts/featured-originals-mobile-fix.js"></script>
+
+<!-- EMERGENCY Hero CTA Purple Background Fix - June 9, 2025 -->
+<style>
+@media (max-width: 767px) {
+    /* NUCLEAR REMOVE purple/pink background from hero buttons on mobile */
+    .hero-cta {
+        background: none !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        position: relative !important;
+        z-index: 50 !important;
+    }
+    
+    /* Remove background from any child wrappers */
+    .hero-cta > * {
+        background: transparent !important;
+        background-image: none !important;
+    }
+    
+    /* Ensure the buttons themselves maintain their individual styles */
+    .hero-cta .btn {
+        margin: 0.5rem auto !important;
+        position: relative !important;
+        z-index: 100 !important;
+    }
+    
+    /* Keep button styles but ensure no extending backgrounds */
+    .hero-cta .btn.btn-primary {
+        background: linear-gradient(135deg, #8b5cf6, #a855f7) !important;
+        color: white !important;
+    }
+    
+    .hero-cta .btn.btn-secondary {
+        background: rgba(255, 255, 255, 0.9) !important;
+        color: #6366f1 !important;
+    }
+    
+    /* Remove any pseudo elements that might have backgrounds */
+    .hero-cta::before,
+    .hero-cta::after,
+    .hero-cta > div::before,
+    .hero-cta > div::after {
+        display: none !important;
+        background: none !important;
+        background-color: transparent !important;
+        background-image: none !important;
+    }
+    
+    /* Remove any glassmorphism effects that might be adding background */
+    .hero .glass-button {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+}
+</style>
+
+<script>
+// EMERGENCY Hero CTA purple background removal
+window.addEventListener('load', function() {
+    if (window.innerWidth <= 767) {
+        console.log('Removing purple background from hero CTA on mobile...');
+        
+        const heroCta = document.querySelector('.hero-cta');
+        if (heroCta) {
+            // Force remove all background styles
+            heroCta.style.cssText += `
+                background: transparent !important;
+                background-color: transparent !important;
+                background-image: none !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                box-shadow: none !important;
+                border: none !important;
+            `;
+            
+            // Check for any parent elements that might have purple background
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                const computedStyle = window.getComputedStyle(heroContent);
+                if (computedStyle.backgroundColor !== 'rgba(0, 0, 0, 0)' || 
+                    computedStyle.backgroundImage !== 'none') {
+                    console.log('Found background on hero-content, removing...');
+                    heroContent.style.background = 'transparent !important';
+                    heroContent.style.backgroundColor = 'transparent !important';
+                    heroContent.style.backgroundImage = 'none !important';
+                }
+            }
+            
+            // Remove backgrounds from any wrapper divs
+            const wrappers = heroCta.querySelectorAll('div');
+            wrappers.forEach(wrapper => {
+                wrapper.style.background = 'transparent !important';
+                wrapper.style.backgroundColor = 'transparent !important';
+                wrapper.style.backgroundImage = 'none !important';
+            });
+            
+            console.log('Hero CTA purple background fix applied');
+        }
+    }
+});
+</script>
+
+<!-- EMERGENCY VIEW ALL ORIGINALS Button Fix - June 9, 2025 -->
+<style>
+/* Remove ANY possible overlays or blocking elements */
+@media (max-width: 767px) {
+    /* Ensure no elements can block the button */
+    #artwork::before,
+    #artwork::after,
+    #artwork > *::before,
+    #artwork > *::after {
+        pointer-events: none !important;
+        z-index: -1 !important;
+    }
+    
+    /* Force button to be on top and clickable */
+    .view-all-originals-btn,
+    #view-all-originals-container a {
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        z-index: 999999 !important;
+        position: relative !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: inline-flex !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+        user-select: none !important;
+    }
+    
+    /* Active state for visual feedback */
+    .view-all-originals-btn:active {
+        transform: scale(0.95) !important;
+    }
+}
+</style>
+
+<!-- EMERGENCY Featured Originals Mobile Fix - June 9, 2025 -->
+<style>
+@media (max-width: 767px) {
+    /* NUCLEAR FIX for Featured Originals mobile display issues */
+    
+    /* Force ALL artwork cards to be visible */
+    #artwork .artwork-card,
+    #artwork .grid > div,
+    #artwork .artwork-card:nth-child(n) {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        filter: none !important;
+        transform: none !important;
+        position: relative !important;
+        z-index: 1 !important;
+        margin-bottom: 2rem !important;
+        background: white !important;
+        border-radius: 1rem !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+        overflow: hidden !important;
+    }
+    
+    /* Force grid to single column on mobile */
+    #artwork .grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        height: auto !important;
+        min-height: 2000px !important;
+    }
+    
+    /* Force ALL images to be visible */
+    #artwork img,
+    #artwork picture,
+    #artwork .artwork-image,
+    #artwork .artwork-image img {
+        opacity: 1 !important;
+        visibility: visible !important;
+        filter: none !important;
+        display: block !important;
+        width: 100% !important;
+        height: 250px !important;
+        object-fit: cover !important;
+    }
+    
+    /* Force overlay visibility with better contrast */
+    #artwork .artwork-overlay {
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 60%, transparent 100%) !important;
+        padding: 1.5rem !important;
+        color: white !important;
+    }
+    
+    /* Force text to be visible */
+    #artwork .artwork-title,
+    #artwork .artwork-description {
+        opacity: 1 !important;
+        visibility: visible !important;
+        color: white !important;
+        display: block !important;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
+    }
+    
+    /* Force View Details buttons to be visible */
+    #artwork .artwork-button {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: inline-block !important;
+        background: white !important;
+        color: #333 !important;
+        padding: 0.75rem 1.5rem !important;
+        border-radius: 50px !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        margin-top: 1rem !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+    }
+    
+    /* FORCE the bottom two cards specifically - Bloom and Radiance */
+    #artwork .artwork-card:nth-child(5),
+    #artwork .artwork-card:nth-child(6) {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        filter: none !important;
+        position: relative !important;
+        z-index: 10 !important;
+        background: #f8fafc !important;
+        border: 2px solid #e2e8f0 !important;
+        margin: 2rem auto !important;
+        width: 100% !important;
+        max-width: 350px !important;
+    }
+    
+    /* Force the VIEW ALL ORIGINALS button to be vibrant */
+    #artwork .btn.btn-primary,
+    #artwork a[href*="shop.amirarahim.com/collections/available-originals-1"],
+    #artwork .view-all-originals-btn,
+    .view-all-originals-btn {
+        opacity: 1 !important;
+        visibility: visible !important;
+        filter: none !important;
+        background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%) !important;
+        color: white !important;
+        padding: 1rem 2rem !important;
+        border-radius: 50px !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.5rem !important;
+        box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4) !important;
+        margin: 2rem auto !important;
+        border: none !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        transition: none !important;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        position: relative !important;
+        z-index: 9999 !important;
+        -webkit-tap-highlight-color: transparent !important;
+        touch-action: manipulation !important;
+    }
+    
+    /* Ensure the button container is visible */
+    #view-all-originals-container {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: relative !important;
+        z-index: 9998 !important;
+        pointer-events: auto !important;
+    }
+    
+    /* Force icon in button to be visible */
+    #artwork .btn.btn-primary i,
+    #artwork a[href*="shop.amirarahim.com/collections/available-originals-1"] i {
+        opacity: 1 !important;
+        color: white !important;
+        display: inline !important;
+    }
+    
+    /* Remove any conflicting animations or transforms */
+    #artwork *,
+    #artwork *::before,
+    #artwork *::after {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    
+    /* Ensure section has enough height */
+    #artwork {
+        min-height: 2500px !important;
+        overflow: visible !important;
+        padding-bottom: 4rem !important;
+    }
+    
+    /* Force container to be visible */
+    #artwork .text-center.mt-12 {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        text-align: center !important;
+        margin-top: 3rem !important;
+        margin-bottom: 2rem !important;
+    }
+}
+</style>
+
+<script>
+// EMERGENCY JavaScript fix for Featured Originals mobile
+window.addEventListener('load', function() {
+    if (window.innerWidth <= 767) {
+        console.log('Emergency Featured Originals mobile fix running...');
+        
+        setTimeout(() => {
+            // Force all artwork cards to be visible
+            const artworkCards = document.querySelectorAll('#artwork .artwork-card');
+            console.log('Found', artworkCards.length, 'artwork cards');
+            
+            artworkCards.forEach((card, index) => {
+                console.log(`Fixing artwork card ${index + 1}`);
+                card.style.cssText = `
+                    display: block !important;
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                    filter: none !important;
+                    transform: none !important;
+                    position: relative !important;
+                    z-index: ${index + 10} !important;
+                    margin-bottom: 2rem !important;
+                    background: white !important;
+                    border-radius: 1rem !important;
+                    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+                    overflow: hidden !important;
+                    width: 100% !important;
+                    max-width: 350px !important;
+                    margin-left: auto !important;
+                    margin-right: auto !important;
+                `;
+                
+                // Force images to be visible
+                const images = card.querySelectorAll('img');
+                images.forEach(img => {
+                    img.style.cssText = `
+                        opacity: 1 !important;
+                        visibility: visible !important;
+                        filter: none !important;
+                        display: block !important;
+                        width: 100% !important;
+                        height: 250px !important;
+                        object-fit: cover !important;
+                    `;
+                });
+                
+                // Force overlay to be visible
+                const overlay = card.querySelector('.artwork-overlay');
+                if (overlay) {
+                    overlay.style.cssText = `
+                        opacity: 1 !important;
+                        visibility: visible !important;
+                        position: absolute !important;
+                        bottom: 0 !important;
+                        left: 0 !important;
+                        right: 0 !important;
+                        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 60%, transparent 100%) !important;
+                        padding: 1.5rem !important;
+                        color: white !important;
+                    `;
+                }
+                
+                // Force text to be visible
+                const title = card.querySelector('.artwork-title');
+                const description = card.querySelector('.artwork-description');
+                const button = card.querySelector('.artwork-button');
+                
+                if (title) {
+                    title.style.cssText = 'opacity: 1 !important; visibility: visible !important; color: white !important; display: block !important; text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important; font-size: 1.25rem !important; font-weight: 600 !important; margin-bottom: 0.5rem !important;';
+                }
+                
+                if (description) {
+                    description.style.cssText = 'opacity: 1 !important; visibility: visible !important; color: white !important; display: block !important; text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important; font-size: 0.875rem !important; margin-bottom: 1rem !important;';
+                }
+                
+                if (button) {
+                    button.style.cssText = `
+                        opacity: 1 !important;
+                        visibility: visible !important;
+                        display: inline-block !important;
+                        background: white !important;
+                        color: #333 !important;
+                        padding: 0.75rem 1.5rem !important;
+                        border-radius: 50px !important;
+                        text-decoration: none !important;
+                        font-weight: 600 !important;
+                        margin-top: 1rem !important;
+                        box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+                    `;
+                }
+            });
+            
+            // Force the grid layout
+            const grid = document.querySelector('#artwork .grid');
+            if (grid) {
+                grid.style.cssText = `
+                    display: grid !important;
+                    grid-template-columns: 1fr !important;
+                    gap: 2rem !important;
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                    height: auto !important;
+                    min-height: 2000px !important;
+                `;
+            }
+            
+            // Force the VIEW ALL ORIGINALS button
+            const viewAllButtons = document.querySelectorAll('#artwork a[href*="shop.amirarahim.com/collections/available-originals-1"]');
+            viewAllButtons.forEach(btn => {
+                if (btn.textContent.includes('View All Originals')) {
+                    console.log('Fixing View All Originals button');
+                    btn.style.cssText = `
+                        opacity: 1 !important;
+                        visibility: visible !important;
+                        filter: none !important;
+                        background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%) !important;
+                        color: white !important;
+                        padding: 1rem 2rem !important;
+                        border-radius: 50px !important;
+                        font-weight: 700 !important;
+                        text-decoration: none !important;
+                        display: inline-flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        gap: 0.5rem !important;
+                        box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4) !important;
+                        margin: 2rem auto !important;
+                        border: none !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 0.05em !important;
+                        transition: none !important;
+                    `;
+                    
+                    // Force icon to be visible
+                    const icon = btn.querySelector('i');
+                    if (icon) {
+                        icon.style.cssText = 'opacity: 1 !important; color: white !important; display: inline !important;';
+                    }
+                }
+            });
+            
+            // Force the button container
+            const buttonContainer = document.querySelector('#artwork .text-center.mt-12');
+            if (buttonContainer) {
+                buttonContainer.style.cssText = `
+                    display: block !important;
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                    text-align: center !important;
+                    margin-top: 3rem !important;
+                    margin-bottom: 2rem !important;
+                `;
+            }
+            
+            console.log('Emergency Featured Originals mobile fix completed');
+            
+            // NUCLEAR FIX for View All Originals button
+            setTimeout(() => {
+                const viewAllBtn = document.querySelector('.view-all-originals-btn');
+                if (viewAllBtn) {
+                    console.log('Forcing View All Originals button to be clickable...');
+                    
+                    // Remove ALL possible blocking elements
+                    viewAllBtn.style.cssText = `
+                        display: inline-flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        gap: 0.5rem !important;
+                        background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%) !important;
+                        color: white !important;
+                        padding: 1rem 2rem !important;
+                        border-radius: 50px !important;
+                        font-weight: 700 !important;
+                        text-decoration: none !important;
+                        box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4) !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 0.05em !important;
+                        opacity: 1 !important;
+                        visibility: visible !important;
+                        filter: none !important;
+                        border: none !important;
+                        cursor: pointer !important;
+                        position: relative !important;
+                        z-index: 99999 !important;
+                        pointer-events: auto !important;
+                        user-select: none !important;
+                        -webkit-tap-highlight-color: transparent !important;
+                        touch-action: manipulation !important;
+                        transition: transform 0.2s ease !important;
+                    `;
+                    
+                    // Ensure container doesn't block
+                    const container = document.getElementById('view-all-originals-container');
+                    if (container) {
+                        container.style.cssText = `
+                            display: block !important;
+                            opacity: 1 !important;
+                            visibility: visible !important;
+                            position: relative !important;
+                            z-index: 99998 !important;
+                            pointer-events: auto !important;
+                            text-align: center !important;
+                            margin: 2rem auto !important;
+                        `;
+                    }
+                    
+                    // Add click handler as backup
+                    viewAllBtn.onclick = function(e) {
+                        console.log('View All Originals clicked!');
+                        e.preventDefault();
+                        window.location.href = 'https://shop.amirarahim.com/collections/available-originals-1';
+                    };
+                    
+                    // Add touch feedback
+                    viewAllBtn.addEventListener('touchstart', function() {
+                        this.style.transform = 'scale(0.95)';
+                    });
+                    
+                    viewAllBtn.addEventListener('touchend', function() {
+                        this.style.transform = 'scale(1)';
+                    });
+                    
+                    console.log('View All Originals button fix complete');
+                }
+            }, 500);
+        }, 100);
     }
 });
 </script>
