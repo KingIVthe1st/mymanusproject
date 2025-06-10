@@ -681,7 +681,7 @@
                 <a href="#about" class="navbar-link">About</a>
                 <a href="#contact" class="navbar-link">Contact</a>
             </div>
-            <button class="navbar-mobile-toggle" aria-label="Toggle navigation" onclick="toggleMobileMenu(); return false;">
+            <button class="navbar-mobile-toggle" aria-label="Toggle navigation" onclick="window.forceToggleMenu(); return false;" ontouchend="window.forceToggleMenu(); return false;">
                 <span class="hamburger"></span>
                 <span class="sr-only">Menu</span>
             </button>
@@ -4727,45 +4727,61 @@ window.addEventListener('load', function() {
                 menu.classList.remove('active');
             }
             
-            // EMERGENCY: Add visible test button for iPhone
+            // EMERGENCY: Add HUGE visible test area for iPhone
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
             if (isIOS) {
-                const testBtn = document.createElement('div');
-                testBtn.innerHTML = 'TAP TO TEST MENU';
-                testBtn.style.cssText = `
+                const testArea = document.createElement('div');
+                testArea.innerHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">IPHONE MENU TEST</div>
+                        <div style="font-size: 14px; margin-bottom: 15px;">Tap anywhere in this red area to test menu</div>
+                        <div style="font-size: 12px;">This will disappear in 15 seconds</div>
+                    </div>
+                `;
+                testArea.style.cssText = `
                     position: fixed;
-                    bottom: 20px;
-                    left: 20px;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 300px;
+                    height: 150px;
                     background: #ff0000;
                     color: white;
-                    padding: 15px 20px;
-                    border-radius: 10px;
+                    border-radius: 15px;
                     z-index: 999999;
-                    font-weight: bold;
-                    font-size: 14px;
                     cursor: pointer;
                     touch-action: manipulation;
                     -webkit-tap-highlight-color: transparent;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                    border: 3px solid white;
                 `;
-                testBtn.onclick = function() {
-                    console.log('Emergency test button clicked!');
-                    toggleMobileMenu();
+                
+                // Add multiple event handlers
+                testArea.onclick = function() {
+                    console.log('TEST AREA CLICKED!');
+                    window.forceToggleMenu();
                 };
-                testBtn.addEventListener('touchend', function(e) {
+                
+                testArea.addEventListener('touchstart', function(e) {
                     e.preventDefault();
-                    console.log('Emergency test button touched!');
-                    toggleMobileMenu();
+                    console.log('TEST AREA TOUCHED!');
                 }, { passive: false });
                 
-                document.body.appendChild(testBtn);
-                console.log('Added emergency test button for iOS');
+                testArea.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    console.log('TEST AREA TOUCH END!');
+                    window.forceToggleMenu();
+                }, { passive: false });
                 
-                // Remove after 10 seconds
+                document.body.appendChild(testArea);
+                console.log('Added HUGE emergency test area for iOS');
+                
+                // Remove after 15 seconds
                 setTimeout(() => {
-                    if (testBtn.parentNode) {
-                        testBtn.remove();
+                    if (testArea.parentNode) {
+                        testArea.remove();
                     }
-                }, 10000);
+                }, 15000);
             }
         }, 1000);
     }
@@ -4821,6 +4837,70 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Make toggleMobileMenu globally accessible for testing
 window.toggleMobileMenu = toggleMobileMenu;
+
+// NUCLEAR OPTION: Simple force toggle for iPhone
+window.forceToggleMenu = function() {
+    console.log('FORCE TOGGLE CALLED');
+    
+    const menu = document.querySelector('.mobile-menu');
+    if (!menu) {
+        console.error('Menu not found!');
+        return;
+    }
+    
+    // Simple toggle using visibility
+    const isVisible = menu.style.right === '0px' || menu.classList.contains('active');
+    
+    if (isVisible) {
+        // Hide menu
+        menu.style.right = '-100%';
+        menu.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Hide any overlays
+        const overlays = document.querySelectorAll('.mobile-menu-overlay');
+        overlays.forEach(o => o.style.display = 'none');
+        
+    } else {
+        // Show menu
+        menu.style.cssText = `
+            position: fixed !important;
+            top: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            max-width: 375px !important;
+            height: 100vh !important;
+            background: #1a1a1a !important;
+            z-index: 999999 !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        `;
+        menu.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Create simple overlay
+        let overlay = document.querySelector('.mobile-menu-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'mobile-menu-overlay';
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 999998;
+                display: block;
+            `;
+            overlay.onclick = () => window.forceToggleMenu();
+            document.body.appendChild(overlay);
+        } else {
+            overlay.style.display = 'block';
+        }
+    }
+};
 
 // EMERGENCY FAILSAFE: Remove any stuck overlays
 window.clearOverlays = function() {
