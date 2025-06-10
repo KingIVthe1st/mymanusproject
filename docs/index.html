@@ -681,7 +681,7 @@
                 <a href="#about" class="navbar-link">About</a>
                 <a href="#contact" class="navbar-link">Contact</a>
             </div>
-            <button class="navbar-mobile-toggle" aria-label="Toggle navigation">
+            <button class="navbar-mobile-toggle" aria-label="Toggle navigation" onclick="toggleMobileMenu(); return false;">
                 <span class="hamburger"></span>
                 <span class="sr-only">Menu</span>
             </button>
@@ -4388,5 +4388,382 @@ window.addEventListener('load', function() {
 <!-- FINAL NUCLEAR FIX - Must run last -->
 <script src="scripts/final-nuclear-fix.js"></script>
 
+<!-- EMERGENCY Mobile Menu Fix - June 9, 2025 -->
+<style>
+/* Force mobile menu to be properly styled */
+.mobile-menu {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 375px !important;
+    height: 100vh !important;
+    background: #1a1a1a !important;
+    z-index: 999999 !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.3s ease !important;
+    display: block !important;
+}
+
+/* Remove any conflicting transforms */
+@media (max-width: 768px) {
+    .mobile-menu {
+        right: -100% !important;
+        transform: none !important;
+    }
+    
+    .mobile-menu.active {
+        right: 0 !important;
+        transform: none !important;
+    }
+}
+
+.mobile-menu.active {
+    transform: translateX(0) !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.mobile-menu-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    z-index: 999998 !important;
+    display: none !important;
+}
+
+.mobile-menu-overlay.active {
+    display: block !important;
+}
+
+body.menu-open {
+    overflow: hidden !important;
+}
+
+/* Ensure toggle button is clickable */
+.navbar-mobile-toggle {
+    position: relative !important;
+    z-index: 999997 !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Force mobile menu content to be visible */
+.mobile-menu .mobile-menu-header,
+.mobile-menu .mobile-nav,
+.mobile-menu .mobile-social {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+</style>
+
+<!-- Direct Mobile Menu Toggle Script -->
+<script>
+// SIMPLIFIED Mobile Menu Toggle
+let mobileMenuOpen = false;
+
+function toggleMobileMenu() {
+    console.log('Toggle called, current state:', mobileMenuOpen);
+    
+    const mobileMenu = document.querySelector('.mobile-menu');
+    let overlay = document.querySelector('.mobile-menu-overlay');
+    
+    if (!mobileMenu) {
+        console.error('CRITICAL: Mobile menu element not found!');
+        // Try to find it with a different selector
+        const altMenu = document.getElementById('mobile-menu');
+        if (altMenu) {
+            console.log('Found menu with ID selector');
+        }
+        return false;
+    }
+    
+    // Create overlay if it doesn't exist
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'mobile-menu-overlay';
+        overlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999998;
+            display: none;
+        `;
+        document.body.appendChild(overlay);
+        
+        // Add click handler to close menu
+        overlay.onclick = () => toggleMobileMenu();
+    }
+    
+    if (mobileMenuOpen) {
+        // CLOSE MENU
+        console.log('Closing menu...');
+        mobileMenuOpen = false;
+        
+        // Hide menu
+        mobileMenu.style.right = '-100%';
+        mobileMenu.style.transform = 'translateX(100%)';
+        mobileMenu.classList.remove('active');
+        
+        // FORCE hide overlay - multiple approaches
+        overlay.style.display = 'none';
+        overlay.style.visibility = 'hidden';
+        overlay.style.opacity = '0';
+        overlay.classList.remove('active');
+        
+        // Remove ALL overlays in case there are duplicates
+        const allOverlays = document.querySelectorAll('.mobile-menu-overlay');
+        allOverlays.forEach(o => {
+            o.style.display = 'none';
+            o.style.visibility = 'hidden';
+            o.style.opacity = '0';
+            o.classList.remove('active');
+        });
+        
+        // Enable body scroll
+        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
+        
+        // EMERGENCY: Remove any lingering dark backgrounds
+        setTimeout(() => {
+            // Check for any remaining visible overlays
+            const visibleOverlays = document.querySelectorAll('.mobile-menu-overlay, .overlay, [class*="overlay"]');
+            visibleOverlays.forEach(el => {
+                const computed = window.getComputedStyle(el);
+                if (computed.position === 'fixed' && 
+                    computed.display !== 'none' && 
+                    computed.zIndex > 1000) {
+                    console.log('Found lingering overlay, hiding:', el.className);
+                    el.style.display = 'none';
+                }
+            });
+            
+            // Also check for any elements with dark backgrounds
+            const darkElements = document.querySelectorAll('[style*="rgba(0, 0, 0"], [style*="rgba(0,0,0"]');
+            darkElements.forEach(el => {
+                if (el.classList.contains('mobile-menu-overlay') || 
+                    el.style.position === 'fixed') {
+                    el.style.display = 'none';
+                }
+            });
+        }, 100);
+        
+    } else {
+        // OPEN MENU
+        console.log('Opening menu...');
+        mobileMenuOpen = true;
+        
+        // Show menu with explicit styles
+        mobileMenu.style.cssText = `
+            display: block !important;
+            position: fixed !important;
+            top: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            max-width: 375px !important;
+            height: 100vh !important;
+            background: #1a1a1a !important;
+            z-index: 999999 !important;
+            transform: translateX(0) !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            overflow-y: auto !important;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.3) !important;
+        `;
+        mobileMenu.classList.add('active');
+        
+        // Show overlay
+        overlay.style.display = 'block';
+        
+        // Disable body scroll
+        document.body.style.overflow = 'hidden';
+        document.body.classList.add('menu-open');
+    }
+    
+    return false;
+}
+
+// EMERGENCY Setup on page load
+window.addEventListener('load', function() {
+    console.log('Setting up EMERGENCY mobile menu handlers...');
+    
+    // FIRST: Clean up any existing overlays that might be stuck
+    const existingOverlays = document.querySelectorAll('.mobile-menu-overlay');
+    if (existingOverlays.length > 1) {
+        console.log('Found multiple overlays, removing extras...');
+        for (let i = 1; i < existingOverlays.length; i++) {
+            existingOverlays[i].remove();
+        }
+    }
+    
+    // Ensure any overlay is hidden on load
+    existingOverlays.forEach(overlay => {
+        overlay.style.display = 'none';
+        overlay.style.visibility = 'hidden';
+        overlay.style.opacity = '0';
+        overlay.classList.remove('active');
+    });
+    
+    // Force toggle button to work
+    const toggleBtn = document.querySelector('.navbar-mobile-toggle');
+    if (toggleBtn) {
+        console.log('Found toggle button, adding handlers...');
+        
+        // Remove ALL existing handlers
+        const newBtn = toggleBtn.cloneNode(true);
+        toggleBtn.parentNode.replaceChild(newBtn, toggleBtn);
+        
+        // Add new handlers
+        newBtn.onclick = function(e) {
+            console.log('Toggle clicked!');
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMobileMenu();
+            return false;
+        };
+        
+        // Also add touch handler for mobile
+        newBtn.addEventListener('touchstart', function(e) {
+            console.log('Toggle touched!');
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMobileMenu();
+        }, { passive: false });
+    }
+    
+    // Setup close button
+    const closeBtn = document.querySelector('.mobile-close-btn');
+    if (closeBtn) {
+        closeBtn.onclick = function(e) {
+            console.log('Close clicked!');
+            e.preventDefault();
+            toggleMobileMenu();
+            return false;
+        };
+    }
+    
+    // Setup overlay click to close
+    const overlay = document.querySelector('.mobile-menu-overlay');
+    if (overlay) {
+        overlay.onclick = function() {
+            console.log('Overlay clicked!');
+            toggleMobileMenu();
+        };
+    }
+    
+    // Close menu when clicking on menu links
+    const mobileLinks = document.querySelectorAll('.mobile-menu a[href^="#"]');
+    mobileLinks.forEach(link => {
+        link.onclick = function(e) {
+            console.log('Menu link clicked!');
+            setTimeout(toggleMobileMenu, 100);
+        };
+    });
+    
+    // Debug info
+    console.log('Mobile menu setup complete. Found:', {
+        toggleButton: !!document.querySelector('.navbar-mobile-toggle'),
+        mobileMenu: !!document.querySelector('.mobile-menu'),
+        closeButton: !!document.querySelector('.mobile-close-btn'),
+        overlay: !!document.querySelector('.mobile-menu-overlay')
+    });
+    
+    // ULTIMATE FALLBACK: Create a simple test to ensure menu can open
+    if (window.innerWidth <= 768) {
+        setTimeout(() => {
+            console.log('Running mobile menu diagnostic...');
+            const menu = document.querySelector('.mobile-menu');
+            if (menu) {
+                // Check if menu has proper initial styles
+                const computed = window.getComputedStyle(menu);
+                console.log('Menu initial state:', {
+                    position: computed.position,
+                    display: computed.display,
+                    transform: computed.transform,
+                    right: computed.right,
+                    zIndex: computed.zIndex
+                });
+                
+                // Force initial hidden state
+                menu.style.right = '-100%';
+                menu.style.display = 'block';
+                menu.classList.remove('active');
+            }
+        }, 1000);
+    }
+});
+
+// Also try to set it up immediately
+document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.querySelector('.navbar-mobile-toggle');
+    if (btn) {
+        // Clear all existing handlers
+        btn.onclick = null;
+        btn.removeEventListener('click', toggleMobileMenu);
+        
+        // Add new handler
+        btn.addEventListener('click', function(e) {
+            console.log('Button clicked via addEventListener');
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMobileMenu();
+            return false;
+        });
+    }
+});
+
+// Make toggleMobileMenu globally accessible for testing
+window.toggleMobileMenu = toggleMobileMenu;
+
+// EMERGENCY FAILSAFE: Remove any stuck overlays
+window.clearOverlays = function() {
+    console.log('Clearing all overlays...');
+    const overlays = document.querySelectorAll('.mobile-menu-overlay, [class*="overlay"]');
+    overlays.forEach(el => {
+        if (el.style.position === 'fixed' || el.classList.contains('mobile-menu-overlay')) {
+            el.style.display = 'none';
+            el.style.visibility = 'hidden';
+            el.style.opacity = '0';
+            el.remove();
+        }
+    });
+    document.body.style.overflow = '';
+    document.body.classList.remove('menu-open');
+};
+
+// Auto-clear any stuck overlays after menu interactions
+document.addEventListener('click', function(e) {
+    // If clicking anywhere except menu-related elements
+    if (!e.target.closest('.mobile-menu') && 
+        !e.target.closest('.navbar-mobile-toggle') && 
+        !e.target.closest('.mobile-menu-overlay')) {
+        
+        // Check if there's a stuck overlay
+        setTimeout(() => {
+            const overlay = document.querySelector('.mobile-menu-overlay');
+            const menu = document.querySelector('.mobile-menu');
+            
+            if (overlay && overlay.style.display !== 'none' && 
+                (!menu || !menu.classList.contains('active'))) {
+                console.log('Found stuck overlay, removing...');
+                overlay.style.display = 'none';
+                overlay.style.visibility = 'hidden';
+                overlay.style.opacity = '0';
+                document.body.style.overflow = '';
+                document.body.classList.remove('menu-open');
+            }
+        }, 300);
+    }
+});
+</script>
 </body>
 </html>
