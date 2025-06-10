@@ -681,7 +681,7 @@
                 <a href="#about" class="navbar-link">About</a>
                 <a href="#contact" class="navbar-link">Contact</a>
             </div>
-            <button class="navbar-mobile-toggle" aria-label="Toggle navigation" onclick="window.forceToggleMenu(); return false;" ontouchend="window.forceToggleMenu(); return false;">
+            <button class="navbar-mobile-toggle" id="mobile-menu-btn" aria-label="Toggle navigation">
                 <span class="hamburger"></span>
                 <span class="sr-only">Menu</span>
             </button>
@@ -4614,59 +4614,60 @@ function toggleMobileMenu() {
     return false;
 }
 
-// EMERGENCY Setup on page load
+// RELIABLE Mobile Menu Setup - Single Event Handler
 window.addEventListener('load', function() {
-    console.log('Setting up EMERGENCY mobile menu handlers...');
+    console.log('Setting up RELIABLE mobile menu...');
     
-    // FIRST: Clean up any existing overlays that might be stuck
+    // Clean up any existing overlays
     const existingOverlays = document.querySelectorAll('.mobile-menu-overlay');
-    if (existingOverlays.length > 1) {
-        console.log('Found multiple overlays, removing extras...');
-        for (let i = 1; i < existingOverlays.length; i++) {
-            existingOverlays[i].remove();
-        }
-    }
-    
-    // Ensure any overlay is hidden on load
     existingOverlays.forEach(overlay => {
         overlay.style.display = 'none';
-        overlay.style.visibility = 'hidden';
-        overlay.style.opacity = '0';
-        overlay.classList.remove('active');
+        overlay.remove();
     });
     
-    // Force toggle button to work
-    const toggleBtn = document.querySelector('.navbar-mobile-toggle');
-    if (toggleBtn) {
-        console.log('Found toggle button, adding handlers...');
-        
-        // Remove ALL existing handlers
-        const newBtn = toggleBtn.cloneNode(true);
-        toggleBtn.parentNode.replaceChild(newBtn, toggleBtn);
-        
-        // Add new handlers
-        newBtn.onclick = function(e) {
-            console.log('Toggle clicked!');
-            e.preventDefault();
-            e.stopPropagation();
-            toggleMobileMenu();
-            return false;
-        };
-        
-        // Add touch handlers for iOS compatibility
-        newBtn.addEventListener('touchstart', function(e) {
-            console.log('Toggle touched!');
-            e.preventDefault();
-            e.stopPropagation();
-        }, { passive: false });
-        
-        newBtn.addEventListener('touchend', function(e) {
-            console.log('Touch ended, toggling menu...');
-            e.preventDefault();
-            e.stopPropagation();
-            toggleMobileMenu();
-        }, { passive: false });
+    // Get the button by ID to ensure we have the right one
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    if (!menuBtn) {
+        console.error('Mobile menu button not found!');
+        return;
     }
+    
+    console.log('Found menu button, setting up single reliable handler...');
+    
+    // Remove ALL existing event listeners by cloning
+    const newBtn = menuBtn.cloneNode(true);
+    menuBtn.parentNode.replaceChild(newBtn, menuBtn);
+    
+    // Add ONE reliable event handler that works for both click and touch
+    let isHandling = false; // Prevent double-firing
+    
+    function handleMenuToggle(e) {
+        if (isHandling) {
+            console.log('Already handling, skipping...');
+            return;
+        }
+        
+        isHandling = true;
+        console.log('Menu toggle triggered:', e.type);
+        
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Call the force toggle function
+        window.forceToggleMenu();
+        
+        // Reset flag after short delay
+        setTimeout(() => {
+            isHandling = false;
+        }, 300);
+        
+        return false;
+    }
+    
+    // Add the handler to multiple events
+    newBtn.addEventListener('click', handleMenuToggle, true);
+    newBtn.addEventListener('touchend', handleMenuToggle, { passive: false });
+    newBtn.onclick = handleMenuToggle;
     
     // Setup close button
     const closeBtn = document.querySelector('.mobile-close-btn');
@@ -4787,60 +4788,30 @@ window.addEventListener('load', function() {
     }
 });
 
-// iOS-specific setup
+// Simplified DOMContentLoaded backup (in case load event fails)
 document.addEventListener('DOMContentLoaded', function() {
-    const btn = document.querySelector('.navbar-mobile-toggle');
-    if (btn) {
-        console.log('Setting up iOS-compatible handlers...');
-        
-        // Check if this is iOS
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
-                      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-        
-        if (isIOS) {
-            console.log('iOS detected, using touch handlers');
-            
-            // For iOS, use touchend instead of click
-            btn.addEventListener('touchend', function(e) {
-                console.log('iOS touch end');
+    console.log('DOM loaded, ensuring menu button works...');
+    
+    // Only set up if the load event hasn't run yet
+    setTimeout(() => {
+        const btn = document.getElementById('mobile-menu-btn');
+        if (btn && !btn.onclick) {
+            console.log('Adding backup handler...');
+            btn.onclick = function(e) {
                 e.preventDefault();
-                e.stopPropagation();
-                setTimeout(() => toggleMobileMenu(), 50);
+                window.forceToggleMenu();
                 return false;
-            }, { passive: false });
-            
-            // Prevent default behavior on touchstart
-            btn.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-            }, { passive: false });
-            
-        } else {
-            // For other devices, use click
-            btn.addEventListener('click', function(e) {
-                console.log('Non-iOS click');
-                e.preventDefault();
-                e.stopPropagation();
-                toggleMobileMenu();
-                return false;
-            });
+            };
         }
-        
-        // Fallback onclick for all devices
-        btn.onclick = function(e) {
-            console.log('Fallback onclick triggered');
-            e.preventDefault();
-            toggleMobileMenu();
-            return false;
-        };
-    }
+    }, 100);
 });
 
 // Make toggleMobileMenu globally accessible for testing
 window.toggleMobileMenu = toggleMobileMenu;
 
-// NUCLEAR OPTION: Simple force toggle for iPhone
+// RELIABLE Force Toggle - No conflicts, no intermittent issues
 window.forceToggleMenu = function() {
-    console.log('FORCE TOGGLE CALLED');
+    console.log('=== FORCE TOGGLE CALLED ===');
     
     const menu = document.querySelector('.mobile-menu');
     if (!menu) {
@@ -4848,20 +4819,41 @@ window.forceToggleMenu = function() {
         return;
     }
     
-    // Simple toggle using visibility
-    const isVisible = menu.style.right === '0px' || menu.classList.contains('active');
+    // Use a more reliable way to check if menu is open
+    const computed = window.getComputedStyle(menu);
+    const isVisible = menu.classList.contains('active') || 
+                     computed.right === '0px' || 
+                     menu.style.right === '0px';
+    
+    console.log('Menu currently visible:', isVisible);
     
     if (isVisible) {
+        console.log('Hiding menu...');
         // Hide menu
-        menu.style.right = '-100%';
+        menu.style.cssText = `
+            position: fixed !important;
+            top: 0 !important;
+            right: -100% !important;
+            width: 100% !important;
+            max-width: 375px !important;
+            height: 100vh !important;
+            background: #1a1a1a !important;
+            z-index: 999999 !important;
+            transition: right 0.3s ease !important;
+        `;
         menu.classList.remove('active');
         document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
         
-        // Hide any overlays
+        // Hide overlays
         const overlays = document.querySelectorAll('.mobile-menu-overlay');
-        overlays.forEach(o => o.style.display = 'none');
+        overlays.forEach(o => {
+            o.style.display = 'none';
+            o.remove();
+        });
         
     } else {
+        console.log('Showing menu...');
         // Show menu
         menu.style.cssText = `
             position: fixed !important;
@@ -4875,31 +4867,34 @@ window.forceToggleMenu = function() {
             display: block !important;
             visibility: visible !important;
             opacity: 1 !important;
+            transition: right 0.3s ease !important;
         `;
         menu.classList.add('active');
         document.body.style.overflow = 'hidden';
+        document.body.classList.add('menu-open');
         
-        // Create simple overlay
-        let overlay = document.querySelector('.mobile-menu-overlay');
-        if (!overlay) {
-            overlay = document.createElement('div');
-            overlay.className = 'mobile-menu-overlay';
-            overlay.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.5);
-                z-index: 999998;
-                display: block;
-            `;
-            overlay.onclick = () => window.forceToggleMenu();
-            document.body.appendChild(overlay);
-        } else {
-            overlay.style.display = 'block';
-        }
+        // Remove any existing overlays first
+        const existingOverlays = document.querySelectorAll('.mobile-menu-overlay');
+        existingOverlays.forEach(o => o.remove());
+        
+        // Create fresh overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'mobile-menu-overlay';
+        overlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999998;
+            display: block;
+        `;
+        overlay.onclick = () => window.forceToggleMenu();
+        document.body.appendChild(overlay);
     }
+    
+    console.log('=== TOGGLE COMPLETE ===');
 };
 
 // EMERGENCY FAILSAFE: Remove any stuck overlays
