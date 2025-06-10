@@ -4444,7 +4444,7 @@ body.menu-open {
     overflow: hidden !important;
 }
 
-/* Ensure toggle button is clickable */
+/* Ensure toggle button is clickable - iOS specific fixes */
 .navbar-mobile-toggle {
     position: relative !important;
     z-index: 999997 !important;
@@ -4452,6 +4452,28 @@ body.menu-open {
     pointer-events: auto !important;
     touch-action: manipulation !important;
     -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    outline: none !important;
+    -webkit-appearance: none !important;
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .navbar-mobile-toggle {
+        cursor: pointer !important;
+        touch-action: manipulation !important;
+    }
+    
+    .mobile-menu {
+        -webkit-transform: translateX(100%) !important;
+        -webkit-transition: -webkit-transform 0.3s ease !important;
+    }
+    
+    .mobile-menu.active {
+        -webkit-transform: translateX(0) !important;
+    }
 }
 
 /* Force mobile menu content to be visible */
@@ -4631,9 +4653,15 @@ window.addEventListener('load', function() {
             return false;
         };
         
-        // Also add touch handler for mobile
+        // Add touch handlers for iOS compatibility
         newBtn.addEventListener('touchstart', function(e) {
             console.log('Toggle touched!');
+            e.preventDefault();
+            e.stopPropagation();
+        }, { passive: false });
+        
+        newBtn.addEventListener('touchend', function(e) {
+            console.log('Touch ended, toggling menu...');
             e.preventDefault();
             e.stopPropagation();
             toggleMobileMenu();
@@ -4698,26 +4726,96 @@ window.addEventListener('load', function() {
                 menu.style.display = 'block';
                 menu.classList.remove('active');
             }
+            
+            // EMERGENCY: Add visible test button for iPhone
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            if (isIOS) {
+                const testBtn = document.createElement('div');
+                testBtn.innerHTML = 'TAP TO TEST MENU';
+                testBtn.style.cssText = `
+                    position: fixed;
+                    bottom: 20px;
+                    left: 20px;
+                    background: #ff0000;
+                    color: white;
+                    padding: 15px 20px;
+                    border-radius: 10px;
+                    z-index: 999999;
+                    font-weight: bold;
+                    font-size: 14px;
+                    cursor: pointer;
+                    touch-action: manipulation;
+                    -webkit-tap-highlight-color: transparent;
+                `;
+                testBtn.onclick = function() {
+                    console.log('Emergency test button clicked!');
+                    toggleMobileMenu();
+                };
+                testBtn.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    console.log('Emergency test button touched!');
+                    toggleMobileMenu();
+                }, { passive: false });
+                
+                document.body.appendChild(testBtn);
+                console.log('Added emergency test button for iOS');
+                
+                // Remove after 10 seconds
+                setTimeout(() => {
+                    if (testBtn.parentNode) {
+                        testBtn.remove();
+                    }
+                }, 10000);
+            }
         }, 1000);
     }
 });
 
-// Also try to set it up immediately
+// iOS-specific setup
 document.addEventListener('DOMContentLoaded', function() {
     const btn = document.querySelector('.navbar-mobile-toggle');
     if (btn) {
-        // Clear all existing handlers
-        btn.onclick = null;
-        btn.removeEventListener('click', toggleMobileMenu);
+        console.log('Setting up iOS-compatible handlers...');
         
-        // Add new handler
-        btn.addEventListener('click', function(e) {
-            console.log('Button clicked via addEventListener');
+        // Check if this is iOS
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        
+        if (isIOS) {
+            console.log('iOS detected, using touch handlers');
+            
+            // For iOS, use touchend instead of click
+            btn.addEventListener('touchend', function(e) {
+                console.log('iOS touch end');
+                e.preventDefault();
+                e.stopPropagation();
+                setTimeout(() => toggleMobileMenu(), 50);
+                return false;
+            }, { passive: false });
+            
+            // Prevent default behavior on touchstart
+            btn.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+            }, { passive: false });
+            
+        } else {
+            // For other devices, use click
+            btn.addEventListener('click', function(e) {
+                console.log('Non-iOS click');
+                e.preventDefault();
+                e.stopPropagation();
+                toggleMobileMenu();
+                return false;
+            });
+        }
+        
+        // Fallback onclick for all devices
+        btn.onclick = function(e) {
+            console.log('Fallback onclick triggered');
             e.preventDefault();
-            e.stopPropagation();
             toggleMobileMenu();
             return false;
-        });
+        };
     }
 });
 
