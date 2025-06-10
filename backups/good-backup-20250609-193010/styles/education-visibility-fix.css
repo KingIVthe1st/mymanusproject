@@ -1,0 +1,110 @@
+/* Education Section Visibility Fixes - Enhanced */
+
+/* Ensure all education cards have proper contrast and visibility */
+#education .education-card {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Fix all text elements to be fully visible */
+#education .education-card h3,
+#education .education-card p,
+#education .education-card .text-gray-600,
+#education .education-card .text-gray-800,
+#education .education-card .text-2xl,
+#education .education-card .text-lg {
+    color: #111827 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    text-shadow: none !important;
+}
+
+/* Fix icon containers to be fully visible */
+#education .education-card .inline-block.p-4 {
+    background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
+    opacity: 1 !important;
+}
+
+/* Ensure all FontAwesome icons are visible */
+#education .fas,
+#education .fab,
+#education i {
+    color: white !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    -webkit-text-fill-color: white !important;
+}
+
+/* Fix button visibility and styling */
+#education .education-card a,
+#education .education-card button {
+    background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+    color: white !important;
+    text-decoration: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Fix button icon colors */
+#education .education-card a i,
+#education .education-card button i {
+    color: white !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: white !important;
+}
+
+/* Override any animation or transition effects that might cause fading */
+#education .education-card,
+#education .education-card * {
+    animation: none !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Fix hover states */
+#education .education-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+#education .education-card a:hover,
+#education .education-card button:hover {
+    background: linear-gradient(135deg, #6d28d9, #db2777) !important;
+    transform: scale(1.02) !important;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+    #education .education-card {
+        background: rgba(255, 255, 255, 0.98) !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    #education .education-card h3 {
+        font-size: 1.5rem !important;
+        color: #111827 !important;
+    }
+    
+    #education .education-card p {
+        color: #374151 !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Force visibility for any elements that might be hidden */
+#education .group-hover\:scale-105 {
+    opacity: 1 !important;
+}
+
+/* Specific gradient background fixes */
+#education .bg-gradient-to-br {
+    opacity: 1 !important;
+}
+
+/* Ensure proper text color inheritance */
+#education .education-card .text-center {
+    color: inherit !important;
+}

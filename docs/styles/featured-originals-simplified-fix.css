@@ -1,0 +1,126 @@
+/* Featured Originals Mobile Visibility Fix - Simplified Approach */
+/* This fix addresses the fading issue on mobile devices without the nuclear option */
+
+/* First, let's understand what's happening:
+   1. The artwork-overlay has transform: translateY(100%) by default
+   2. On mobile, the hover state might not work properly
+   3. There might be opacity or filter effects causing the fade
+*/
+
+@media (max-width: 768px) {
+    /* Fix the artwork overlay to always be visible on mobile */
+    #artwork .artwork-overlay {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0)) !important;
+    }
+    
+    /* Ensure artwork cards are fully visible */
+    #artwork .artwork-card {
+        opacity: 1 !important;
+        visibility: visible !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+    
+    /* Fix images to ensure they're not faded */
+    #artwork .artwork-image,
+    #artwork .artwork-image img {
+        opacity: 1 !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+    
+    /* Make sure text is visible on the overlay */
+    #artwork .artwork-title,
+    #artwork .artwork-description {
+        color: white !important;
+        opacity: 1 !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+    }
+    
+    /* Fix the View Details buttons */
+    #artwork .artwork-button {
+        background: white !important;
+        color: #7c3aed !important;
+        padding: 0.5rem 1.5rem !important;
+        border-radius: 50px !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        display: inline-block !important;
+        margin-top: 0.5rem !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Fix the View All Originals button */
+    .view-all-originals-btn {
+        opacity: 1 !important;
+        visibility: visible !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+        transform: none !important;
+        pointer-events: auto !important;
+    }
+    
+    /* Remove any animations that might cause issues */
+    #artwork * {
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        transition-duration: 0s !important;
+        transition-delay: 0s !important;
+    }
+    
+    /* Ensure proper z-index layering */
+    #artwork .artwork-card {
+        position: relative !important;
+        z-index: 1 !important;
+    }
+    
+    #artwork .artwork-overlay {
+        position: absolute !important;
+        z-index: 2 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+    }
+    
+    /* Fix any glass-card effects that might be causing issues */
+    #artwork .glass-card {
+        background: white !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+}
+
+/* Additional specificity for the last two cards if they're still having issues */
+@media (max-width: 768px) {
+    #artwork .grid > div:nth-child(5),
+    #artwork .grid > div:nth-child(6) {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    #artwork .grid > div:nth-child(5) .artwork-overlay,
+    #artwork .grid > div:nth-child(6) .artwork-overlay {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+    }
+}
+
+/* iOS-specific fixes */
+@supports (-webkit-touch-callout: none) {
+    @media (max-width: 768px) {
+        #artwork .artwork-overlay {
+            -webkit-transform: translateY(0) !important;
+            -webkit-backface-visibility: hidden !important;
+        }
+        
+        #artwork .artwork-card,
+        #artwork .artwork-image,
+        #artwork .artwork-overlay {
+            -webkit-transform: translateZ(0) !important;
+        }
+    }
+}

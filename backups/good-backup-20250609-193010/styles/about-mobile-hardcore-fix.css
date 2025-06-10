@@ -1,0 +1,151 @@
+/* About Section Mobile HARDCORE Fix - June 9, 2025 */
+/* This WILL make the tabs visible on mobile - no exceptions */
+
+@media screen and (max-width: 767px) {
+    /* Reset ALL styling on the About section */
+    #about * {
+        visibility: visible !important;
+        opacity: 1 !important;
+        display: revert !important;
+        position: relative !important;
+        transform: none !important;
+        z-index: auto !important;
+    }
+
+    /* Main container - force vertical layout */
+    #about #about-grid {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Image container - make it normal block */
+    #about #about-image-container {
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 2rem !important;
+        position: static !important;
+        height: auto !important;
+    }
+
+    /* Portrait frame - reasonable size */
+    #about .portrait-frame {
+        display: block !important;
+        width: 100% !important;
+        max-width: 350px !important;
+        margin: 0 auto 2rem !important;
+        height: auto !important;
+    }
+
+    /* Force the second div (content area) to display */
+    #about #about-grid > div:nth-child(2),
+    #about #about-grid > div:last-child {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        position: static !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Force the grid of cards to display */
+    #about .grid,
+    #about [class*="grid"] {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+    }
+
+    /* Force individual cards to display as blocks */
+    #about .relative.group,
+    #about [class*="bg-gradient"],
+    #about .rounded-2xl {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        margin-bottom: 1rem !important;
+        padding: 1.5rem !important;
+        background: linear-gradient(to bottom right, #f3e8ff, #fce7f3) !important;
+        border-radius: 1rem !important;
+        border: 1px solid #e9d5ff !important;
+    }
+
+    /* Ensure all content is visible */
+    #about h3,
+    #about p,
+    #about span,
+    #about svg,
+    #about div {
+        display: revert !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    /* Shop Art button */
+    #about .mt-8,
+    #about a[href*="shop.amirarahim.com"] {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        margin-top: 2rem !important;
+    }
+
+    /* Remove any transforms or weird positioning */
+    #about .transform,
+    #about [class*="transform"] {
+        transform: none !important;
+    }
+
+    /* Force flex items to be blocks */
+    #about .flex {
+        display: block !important;
+    }
+
+    /* Specific fix for the cards container */
+    #about .relative.w-full {
+        display: block !important;
+        width: 100% !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    /* Override any lg: classes */
+    #about [class*="lg\\:"] {
+        all: revert !important;
+    }
+
+    /* Remove sticky positioning */
+    #about .lg\\:sticky {
+        position: relative !important;
+    }
+
+    /* Ensure proper text display */
+    #about .text-lg,
+    #about .text-gray-600,
+    #about .text-gray-800 {
+        color: #374151 !important;
+        font-size: 1rem !important;
+        line-height: 1.5rem !important;
+    }
+
+    /* Icons should be visible */
+    #about .h-6.w-6 {
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+        display: inline-block !important;
+    }
+
+    /* Remove any hiding classes */
+    #about .hidden,
+    #about .invisible,
+    #about .opacity-0 {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}

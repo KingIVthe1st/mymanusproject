@@ -1,0 +1,98 @@
+/* ====================================
+   ARTWORK IMAGE CLARITY FIX
+   Fix blurry Featured Originals images
+   ==================================== */
+
+/* Remove all filters and ensure crystal clear artwork images */
+.artwork-image img,
+.artwork-card img,
+#artwork img,
+picture img {
+    filter: none !important;
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    image-rendering: -webkit-optimize-contrast !important;
+    image-rendering: crisp-edges !important;
+    image-rendering: optimizeQuality !important;
+    -ms-interpolation-mode: bicubic !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    will-change: auto !important;
+}
+
+/* Ensure picture elements don't have any blur */
+.artwork-card picture,
+.artwork-image picture {
+    filter: none !important;
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Optimize image containers */
+.artwork-image,
+.artwork-card .artwork-image {
+    transform: none !important;
+    -webkit-transform: none !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    image-rendering: optimizeQuality !important;
+    backface-visibility: hidden !important;
+}
+
+/* Remove any transforms on hover that might cause blur */
+.artwork-card:hover img,
+.artwork-image:hover img {
+    filter: none !important;
+    -webkit-filter: none !important;
+    image-rendering: optimizeQuality !important;
+}
+
+/* Ensure overlay doesn't affect image clarity */
+.artwork-overlay {
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* Make sure the overlay blur doesn't affect the image underneath */
+.artwork-card {
+    isolation: isolate !important;
+}
+
+.artwork-image {
+    z-index: 1 !important;
+    position: relative !important;
+}
+
+.artwork-overlay {
+    z-index: 2 !important;
+    position: absolute !important;
+}
+
+/* High DPI displays optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .artwork-image img,
+    .artwork-card img {
+        image-rendering: -webkit-optimize-contrast !important;
+        image-rendering: optimizeQuality !important;
+    }
+}
+
+/* Remove any lazy loading blur effects from artwork images */
+.artwork-image img.lazy-loading,
+.artwork-card img.lazy-loading {
+    filter: none !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+/* Ensure crisp rendering on all browsers */
+.artwork-image img,
+.artwork-card img {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}

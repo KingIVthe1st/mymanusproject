@@ -1,0 +1,303 @@
+/**
+ * Advanced Font Optimization System
+ * Phase 2: Bandwidth Optimization
+ * Expected Impact: -200KB font data reduction
+ */
+
+/* Font Display Optimization */
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap; /* Immediate text render with fallback */
+    src: url('https://fonts.gstatic.com/s/playfairdisplay/v30/nuFiD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDYbtXK-F2qC0sH.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('https://fonts.gstatic.com/s/playfairdisplay/v30/nuFiD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKeFvXDYbtXK-F2qC0sH.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuOKfAZ9hiA.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Optimized Font Loading Strategy */
+.font-loading {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    visibility: hidden;
+}
+
+.font-loaded {
+    visibility: visible;
+}
+
+/* Critical Font Preloading */
+.fonts-preloaded .text-content {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.fonts-loading .text-content {
+    opacity: 0.8;
+}
+
+/* Fallback Font Stack Optimization */
+.font-stack-serif {
+    font-family: 'Playfair Display', 'Times New Roman', 'Georgia', serif;
+    font-feature-settings: 'liga' 1, 'kern' 1;
+    text-rendering: optimizeLegibility;
+}
+
+.font-stack-sans {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+    font-feature-settings: 'kern' 1;
+    text-rendering: optimizeSpeed;
+}
+
+/* Font Subset Optimization */
+.latin-only {
+    font-variant-numeric: lining-nums;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Performance-Based Font Loading */
+@media (max-width: 768px) {
+    /* Mobile-optimized font sizes */
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.1;
+        font-weight: 400; /* Use lighter weight for mobile */
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: 400;
+    }
+    
+    /* Reduce font variations on mobile */
+    .font-stack-serif {
+        font-family: 'Georgia', serif;
+    }
+}
+
+/* Connection Speed Adaptations */
+.slow-connection .font-stack-serif,
+.slow-connection .font-stack-sans {
+    font-family: system-ui, sans-serif;
+}
+
+.slow-connection .text-content {
+    font-feature-settings: normal;
+    text-rendering: auto;
+}
+
+/* Variable Font Support */
+@supports (font-variation-settings: normal) {
+    .font-stack-sans {
+        font-family: 'Inter var', system-ui, sans-serif;
+        font-variation-settings: 'wght' 400;
+        font-weight: 100 900; /* Support full weight range */
+    }
+    
+    .font-weight-light {
+        font-variation-settings: 'wght' 300;
+    }
+    
+    .font-weight-medium {
+        font-variation-settings: 'wght' 500;
+    }
+    
+    .font-weight-bold {
+        font-variation-settings: 'wght' 600;
+    }
+}
+
+/* Font Loading Performance Monitoring */
+.font-performance-good {
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'liga' 1, 'kern' 1, 'calt' 1;
+}
+
+.font-performance-poor {
+    text-rendering: optimizeSpeed;
+    font-feature-settings: normal;
+}
+
+/* FOUT Prevention */
+.font-observer-loading {
+    font-family: system-ui, sans-serif;
+    color: transparent;
+    text-shadow: 0 0 0 #333;
+}
+
+.font-observer-loaded {
+    color: inherit;
+    text-shadow: none;
+    transition: color 0.3s ease;
+}
+
+/* Critical CSS for Immediate Font Rendering */
+.critical-text {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-display: block;
+}
+
+.critical-text.fonts-ready {
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.critical-heading {
+    font-family: 'Georgia', serif;
+    font-display: block;
+}
+
+.critical-heading.fonts-ready {
+    font-family: 'Playfair Display', 'Georgia', serif;
+}
+
+/* Reduced Motion Font Loading */
+@media (prefers-reduced-motion: reduce) {
+    .font-observer-loading,
+    .font-observer-loaded {
+        transition: none;
+    }
+    
+    .fonts-loading .text-content,
+    .fonts-preloaded .text-content {
+        transition: none;
+    }
+}
+
+/* Font Metrics Matching for Layout Stability */
+.font-metrics-matched {
+    /* Match Inter's metrics for seamless transition */
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+}
+
+.heading-metrics-matched {
+    /* Match Playfair Display's metrics */
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+/* High DPI Font Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .font-stack-serif,
+    .font-stack-sans {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Dark Mode Font Adjustments */
+@media (prefers-color-scheme: dark) {
+    .font-stack-serif,
+    .font-stack-sans {
+        -webkit-font-smoothing: antialiased;
+        font-weight: 400; /* Slightly heavier in dark mode */
+    }
+}
+
+/* Font Loading States */
+.js .font-loading-indicator {
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    background: currentColor;
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.js .fonts-loaded .font-loading-indicator {
+    display: none;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+/* Font Swap Optimization */
+.font-swap-fallback {
+    font-family: system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: normal;
+}
+
+.font-swap-target {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+}
+
+/* Bandwidth-Conscious Font Loading */
+.bandwidth-saver .font-stack-serif {
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.bandwidth-saver .font-stack-sans {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Subset Character Ranges for Optimization */
+.subset-latin {
+    unicode-range: U+0020-007F; /* Basic Latin */
+}
+
+.subset-latin-extended {
+    unicode-range: U+0020-007F, U+00A0-00FF; /* Basic + Latin-1 Supplement */
+}
+
+/* Font Loading Strategy Classes */
+.strategy-immediate {
+    font-display: block;
+}
+
+.strategy-progressive {
+    font-display: swap;
+}
+
+.strategy-optional {
+    font-display: optional;
+}
+
+/* Performance Budget Enforcement */
+.performance-budget-tight .font-stack-serif,
+.performance-budget-tight .font-stack-sans {
+    font-family: system-ui, sans-serif;
+    font-feature-settings: normal;
+}

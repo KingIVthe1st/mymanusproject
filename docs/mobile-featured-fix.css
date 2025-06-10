@@ -1,0 +1,146 @@
+/**
+ * Mobile Featured Originals Fix - Final Version
+ * Fixes fading issue and improves overlay clarity
+ * Date: June 9, 2025
+ */
+
+@media (max-width: 767px) {
+  /* Force fix for all artwork cards */
+  #artwork .artwork-card,
+  #artwork .artwork-card *,
+  #artwork .grid > div,
+  #artwork .grid > div * {
+    opacity: 1 !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    visibility: visible !important;
+  }
+  
+  /* Remove backdrop filter on cards */
+  #artwork .artwork-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+  }
+  
+  /* Specific fix for images */
+  #artwork img,
+  #artwork picture,
+  #artwork picture img,
+  #artwork .artwork-image,
+  #artwork .artwork-image img {
+    opacity: 1 !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+  
+  /* Fix overlay with clearer background */
+  #artwork .artwork-overlay {
+    opacity: 1 !important;
+    background: linear-gradient(to top, 
+      rgba(0, 0, 0, 0.95) 0%, 
+      rgba(0, 0, 0, 0.85) 40%,
+      rgba(0, 0, 0, 0.7) 60%,
+      rgba(0, 0, 0, 0.3) 100%) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  /* Fix text visibility */
+  #artwork .artwork-title,
+  #artwork .artwork-description {
+    opacity: 1 !important;
+    color: white !important;
+    filter: none !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+  }
+  
+  /* Fix View Details buttons */
+  #artwork .artwork-button,
+  #artwork a.artwork-button {
+    opacity: 1 !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: none !important;
+    color: #333 !important;
+    filter: none !important;
+    pointer-events: auto !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 2rem !important;
+    border-radius: 50px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  /* Fix CTA button */
+  #artwork .btn.btn-primary,
+  #artwork a[href*="shop.amirarahim.com/collections/available-originals"] {
+    opacity: 1 !important;
+    filter: none !important;
+    background: linear-gradient(135deg, #9333ea 0%, #ec4899 100%) !important;
+    color: white !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4) !important;
+  }
+  
+  /* Remove any glass effects on mobile */
+  #artwork .glass-card {
+    background: white !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  /* Override any lazy loading styles */
+  #artwork .lazy-loading,
+  #artwork .lazy-loaded,
+  #artwork [data-lazy],
+  #artwork [loading="lazy"] {
+    opacity: 1 !important;
+    filter: none !important;
+  }
+  
+  /* Force hardware acceleration */
+  #artwork .artwork-card {
+    will-change: auto !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+  }
+  
+  /* Remove ALL animations on artwork section */
+  #artwork *,
+  #artwork *::before,
+  #artwork *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  /* Ensure grid items are visible */
+  #artwork .grid {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* Force specific nth-child visibility */
+  #artwork .artwork-card:nth-child(4),
+  #artwork .artwork-card:nth-child(5),
+  #artwork .artwork-card:nth-child(6) {
+    opacity: 1 !important;
+    filter: none !important;
+    visibility: visible !important;
+  }
+}
+
+/* Desktop hover states */
+@media (min-width: 768px) {
+  #artwork .artwork-overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  #artwork .artwork-card:hover .artwork-overlay {
+    opacity: 1;
+  }
+}

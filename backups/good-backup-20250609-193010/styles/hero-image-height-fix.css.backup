@@ -1,0 +1,51 @@
+/* Hero Image Height Reduction Fix */
+
+.portrait-frame {
+    max-height: 450px !important; /* Reduced from default but not too small */
+    overflow: visible; /* Allow full image to show */
+}
+
+.portrait-frame img {
+    height: 450px !important; /* Fixed height */
+    width: auto !important; /* Maintain aspect ratio */
+    object-fit: contain !important; /* Show full image, don't crop */
+    object-position: center !important; /* Center the image */
+}
+
+/* Also target hero-image class if it exists */
+.hero-image {
+    max-height: 450px !important;
+    overflow: visible;
+}
+
+.hero-image img {
+    height: 450px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .portrait-frame,
+    .hero-image {
+        max-height: 380px !important;
+    }
+    
+    .portrait-frame img,
+    .hero-image img {
+        height: 380px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .portrait-frame,
+    .hero-image {
+        max-height: 320px !important;
+    }
+    
+    .portrait-frame img,
+    .hero-image img {
+        height: 320px !important;
+    }
+}

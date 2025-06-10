@@ -1,0 +1,55 @@
+/* Contact Section Title Centering Fix */
+
+/* Center the "Follow My Creative World" title */
+#contact .section-header {
+    text-align: center !important;
+    margin-bottom: 2rem !important;
+}
+
+/* Style the main title that was missing proper heading tags */
+#contact .section-header h2,
+#contact .section-header .contact-title {
+    font-size: 2.5rem !important;
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 700 !important;
+    color: #1f2937 !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    line-height: 1.2 !important;
+}
+
+/* Mobile responsive for contact title */
+@media (max-width: 768px) {
+    #contact .section-header h2,
+    #contact .section-header .contact-title {
+        font-size: 2rem !important;
+    }
+}
+
+/* Ensure consistent spacing with other sections */
+#contact .section-header span.glass-pill {
+    display: inline-block !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Center any orphaned text elements in the contact section header */
+#contact .section-header > text,
+#contact .section-header > *:not(span):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+    display: block !important;
+    text-align: center !important;
+    font-size: 2.5rem !important;
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 700 !important;
+    color: #1f2937 !important;
+    margin: 0 auto !important;
+    line-height: 1.2 !important;
+}
+
+/* Override any potential text-left styles */
+#contact .section-header {
+    text-align: center !important;
+}
+
+#contact .section-header * {
+    text-align: center !important;
+}

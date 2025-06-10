@@ -1,0 +1,184 @@
+/* 
+ * Collaboration Section Symmetry Fix
+ * Ensures all three cards have equal heights with aligned buttons
+ * Author: Claude V5.0 - Token-Optimized Ultimate
+ * Date: June 5, 2025
+ */
+
+/* Main container - force equal height items */
+#collaborate .grid.grid-cols-1.lg\\:grid-cols-3 {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    align-items: stretch !important; /* KEY: Makes all items same height */
+    gap: 3rem !important;
+}
+
+/* Individual collaboration cards - flex column layout */
+#collaborate .group.relative.overflow-hidden.rounded-2xl {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important; /* Forces equal height across all cards */
+    min-height: 650px !important; /* Ensures consistent minimum height */
+}
+
+/* Image section - fixed height for consistency */
+#collaborate .relative.h-64.overflow-hidden {
+    height: 260px !important; /* Fixed height for all image sections */
+    flex-shrink: 0 !important;
+}
+
+/* Content section - flexible height */
+#collaborate .bg-white\\/80.backdrop-blur-sm,
+#collaborate .bg-white {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important; /* Takes remaining space */
+    padding: 2rem !important;
+}
+
+/* Main content area - pushes button to bottom */
+#collaborate .p-8 > *:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+#collaborate .p-8 {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    padding: 2rem !important;
+}
+
+/* Feature lists - grow to fill available space */
+#collaborate .mb-8:has(ul) {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+#collaborate .mb-8 ul {
+    flex-grow: 1 !important;
+}
+
+/* Buttons - aligned at bottom */
+#collaborate .inline-flex.items-center.justify-center.w-full {
+    margin-top: auto !important; /* KEY: Pushes buttons to bottom */
+    align-self: stretch !important;
+    flex-shrink: 0 !important;
+}
+
+/* Enhanced hover effects for symmetrical cards */
+#collaborate .group:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Image hover effects */
+#collaborate .group:hover img {
+    transform: scale(1.05) !important;
+    transition: transform 0.7s ease !important;
+}
+
+/* Button hover enhancements */
+#collaborate .group .inline-flex:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 1024px) {
+    #collaborate .grid.grid-cols-1.lg\\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
+    #collaborate .group.relative.overflow-hidden.rounded-2xl {
+        min-height: auto !important;
+    }
+    
+    #collaborate .relative.h-64.overflow-hidden {
+        height: 200px !important;
+    }
+}
+
+/* Additional visual enhancements */
+#collaborate .bg-white\\/80.backdrop-blur-sm,
+#collaborate .bg-white {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Smooth animations */
+#collaborate .group {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* BUTTON STYLING CONSISTENCY FIX */
+/* Force all collaboration buttons to have the same pill-shaped style */
+#collaborate .inline-flex.items-center.justify-center.w-full {
+    border-radius: 9999px !important; /* rounded-full equivalent */
+    padding: 0.75rem 1.5rem !important; /* py-3 px-6 equivalent */
+    font-weight: 500 !important; /* font-medium */
+    font-size: 1rem !important; /* text-base */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: none !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important; /* space between text and icon */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* Specific button background colors */
+#collaborate .group:nth-child(1) .inline-flex.items-center.justify-center.w-full {
+    background: linear-gradient(135deg, #8B5CF6, #EC4899) !important; /* purple to pink gradient */
+    color: white !important;
+}
+
+#collaborate .group:nth-child(2) .inline-flex.items-center.justify-center.w-full {
+    background: #EC4899 !important; /* pink background */
+    color: white !important;
+}
+
+#collaborate .group:nth-child(3) .inline-flex.items-center.justify-center.w-full {
+    background: #F59E0B !important; /* amber/orange background */
+    color: white !important;
+}
+
+/* Consistent hover effects for all buttons */
+#collaborate .inline-flex.items-center.justify-center.w-full:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* First button (purple) hover */
+#collaborate .group:nth-child(1) .inline-flex.items-center.justify-center.w-full:hover {
+    background: linear-gradient(135deg, #7C3AED, #DB2777) !important; /* slightly darker gradient */
+}
+
+/* Second button (pink) hover */
+#collaborate .group:nth-child(2) .inline-flex.items-center.justify-center.w-full:hover {
+    background: #DB2777 !important; /* darker pink */
+}
+
+/* Third button (orange) hover */
+#collaborate .group:nth-child(3) .inline-flex.items-center.justify-center.w-full:hover {
+    background: #D97706 !important; /* darker orange */
+}
+
+/* Icon container improvements */
+#collaborate .w-12.h-12.rounded-full,
+#collaborate .w-14.h-14.rounded-xl {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+#collaborate .group:hover .w-12.h-12.rounded-full,
+#collaborate .group:hover .w-14.h-14.rounded-xl {
+    transform: scale(1.1) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+}

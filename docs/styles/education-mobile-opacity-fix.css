@@ -1,0 +1,153 @@
+/* Mobile-specific fix for faded education section elements */
+
+/* Force full opacity for mobile education cards */
+@media (max-width: 768px) {
+    /* Fix the entire education section container */
+    #education {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Fix education cards backgrounds - much stronger opacity */
+    #education .education-card,
+    #education .group,
+    #education .rounded-2xl {
+        background: rgba(255, 255, 255, 0.98) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+    }
+    
+    /* Fix all text elements for mobile */
+    #education h3,
+    #education p,
+    #education span,
+    #education .text-gray-600,
+    #education .text-gray-800,
+    #education .text-2xl,
+    #education .text-lg,
+    #education .font-bold,
+    #education .text-center {
+        color: #111827 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        -webkit-text-fill-color: #111827 !important;
+    }
+    
+    /* Fix icon containers on mobile */
+    #education .inline-block.p-4,
+    #education .bg-gradient-to-br {
+        background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Fix all icons on mobile */
+    #education i,
+    #education .fas,
+    #education .fab,
+    #education svg {
+        color: white !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        -webkit-text-fill-color: white !important;
+        fill: white !important;
+    }
+    
+    /* Fix CTA buttons on mobile - enhanced visibility */
+    #education a.inline-flex,
+    #education button,
+    #education .cta-button,
+    #education a[href*="betterthanartschool"],
+    #education a[href*="amirarahim"],
+    #education a[href*="colors"] {
+        background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+        color: white !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        font-weight: 600 !important;
+        padding: 0.75rem 1.5rem !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+        border: none !important;
+        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3) !important;
+    }
+    
+    /* Fix button text and icons */
+    #education a.inline-flex span,
+    #education button span,
+    #education a.inline-flex i,
+    #education button i {
+        color: white !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        -webkit-text-fill-color: white !important;
+    }
+    
+    /* Remove any filters or effects that might cause fading */
+    #education * {
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+    
+    /* Override any parent opacity settings */
+    #education > div,
+    #education .container,
+    #education .grid {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Ensure decorative circles don't affect content visibility */
+    #education .decorative-circle {
+        z-index: 0 !important;
+    }
+    
+    #education .education-card {
+        z-index: 1 !important;
+        position: relative !important;
+    }
+    
+    /* Fix hover states on mobile */
+    #education .education-card:hover,
+    #education .education-card:active {
+        opacity: 1 !important;
+        transform: translateY(-2px) !important;
+    }
+    
+    #education a.inline-flex:hover,
+    #education button:hover,
+    #education a.inline-flex:active,
+    #education button:active {
+        background: linear-gradient(135deg, #6d28d9, #db2777) !important;
+        opacity: 1 !important;
+    }
+    
+    /* Fix the bottom two cards specifically */
+    #education .grid > div:nth-child(2) .education-card,
+    #education .grid > div:nth-child(3) .education-card {
+        background: rgba(255, 255, 255, 0.98) !important;
+        opacity: 1 !important;
+    }
+    
+    /* Fix the bottom CTA button */
+    #education .grid > div:nth-child(3) a.inline-flex {
+        background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+}
+
+/* Extra specificity for stubborn elements */
+@media (max-width: 768px) {
+    #education .bg-white.bg-opacity-10 {
+        background: rgba(255, 255, 255, 0.98) !important;
+        opacity: 1 !important;
+    }
+    
+    #education .backdrop-filter {
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        opacity: 1 !important;
+    }
+}

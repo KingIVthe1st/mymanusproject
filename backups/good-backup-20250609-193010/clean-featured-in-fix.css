@@ -1,0 +1,104 @@
+/* Clean Featured In Section Fix - Remove duplicates, ensure single icons display properly */
+
+/* Ensure Font Awesome loads properly */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+/* Featured In Section - Clean Icon Display */
+#featured-in .featured-item .inline-block {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 64px !important;
+    height: 64px !important;
+    border-radius: 50% !important;
+    margin-bottom: 1.5rem !important;
+    position: relative !important;
+    overflow: visible !important;
+}
+
+/* Ensure Font Awesome icons display correctly (single icons only) */
+#featured-in .fas {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    font-size: 2rem !important;
+    color: white !important;
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Icon Container Backgrounds */
+#featured-in .featured-item:nth-child(1) .inline-block {
+    /* Publications - Purple */
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4) !important;
+}
+
+#featured-in .featured-item:nth-child(2) .inline-block {
+    /* Podcasts - Pink */
+    background: linear-gradient(135deg, #ec4899 0%, #db2777 100%) !important;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4) !important;
+}
+
+#featured-in .featured-item:nth-child(3) .inline-block {
+    /* Achievements - Golden/Amber */
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4) !important;
+}
+
+/* Fix the purple "View Full Press Kit" button */
+#featured-in .featured-item:nth-child(3) a[href="#"] {
+    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%) !important;
+    color: white !important;
+    font-weight: 500 !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4) !important;
+    transition: all 0.3s ease !important;
+}
+
+#featured-in .featured-item:nth-child(3) a[href="#"]:hover {
+    background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%) !important;
+    transform: scale(1.02) !important;
+    box-shadow: 0 6px 16px rgba(139, 92, 246, 0.6) !important;
+}
+
+/* Ensure button icon displays correctly */
+#featured-in .featured-item:nth-child(3) a[href="#"] .fas {
+    color: white !important;
+    font-size: 1rem !important;
+}
+
+/* Hover effects for icon containers */
+#featured-in .featured-item:hover .inline-block {
+    transform: scale(1.05) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    #featured-in .featured-item .inline-block {
+        width: 56px !important;
+        height: 56px !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    #featured-in .fas {
+        font-size: 1.75rem !important;
+    }
+}
+
+/* Hide any potential duplicate elements */
+#featured-in .featured-item .inline-block::before,
+#featured-in .featured-item .inline-block::after {
+    display: none !important;
+}
+
+/* Ensure clean display - no extra content */
+#featured-in .featured-item .inline-block > *:not(.fas) {
+    display: none !important;
+}

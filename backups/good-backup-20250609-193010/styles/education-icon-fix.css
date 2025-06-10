@@ -1,0 +1,130 @@
+/* Education Section Icon Alignment & Visibility Fix */
+
+/* Fix main card icons (graduation cap, plane, presentation) */
+#education .education-card .inline-block.p-4 {
+    background: linear-gradient(135deg, #8b5cf6, #a855f7) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+#education .education-card:nth-child(1) .inline-block.p-4 {
+    background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
+}
+
+#education .education-card:nth-child(2) .inline-block.p-4 {
+    background: linear-gradient(135deg, #ec4899, #f472b6) !important;
+}
+
+#education .education-card:nth-child(3) .inline-block.p-4 {
+    background: linear-gradient(135deg, #f59e0b, #f97316) !important;
+}
+
+/* Fix main card icons visibility */
+#education .education-card .inline-block.p-4 i,
+#education .education-card .inline-block.p-4 .fas,
+#education .education-card .inline-block.p-4 .fab {
+    color: white !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    font-size: 2rem !important;
+    -webkit-text-fill-color: white !important;
+}
+
+/* Fix button structure and icon alignment */
+#education .education-card a,
+#education .education-card button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    padding: 0.75rem 2rem !important;
+    border-radius: 0.5rem !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Fix button text */
+#education .education-card a,
+#education .education-card button {
+    color: white !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Fix button icons (arrows, edit, ticket icons) */
+#education .education-card a i,
+#education .education-card button i,
+#education .education-card a .fas,
+#education .education-card button .fas,
+#education .education-card a .fab,
+#education .education-card button .fab {
+    color: white !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    font-size: 1rem !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    display: inline-block !important;
+    -webkit-text-fill-color: white !important;
+}
+
+/* Ensure proper gradient backgrounds for buttons */
+#education .education-card:nth-child(1) a,
+#education .education-card:nth-child(1) button {
+    background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
+}
+
+#education .education-card:nth-child(2) a,
+#education .education-card:nth-child(2) button {
+    background: linear-gradient(135deg, #ec4899, #f472b6) !important;
+}
+
+#education .education-card:nth-child(3) a,
+#education .education-card:nth-child(3) button {
+    background: linear-gradient(135deg, #f59e0b, #f97316) !important;
+}
+
+/* Force all icons to be visible and properly sized */
+#education i,
+#education .fas,
+#education .fab {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: white !important;
+}
+
+/* Specific fixes for problematic icons */
+#education .fa-graduation-cap,
+#education .fa-paper-plane,
+#education .fa-chalkboard-teacher,
+#education .fa-arrow-right,
+#education .fa-edit,
+#education .fa-ticket-alt {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: white !important;
+    -webkit-text-fill-color: white !important;
+}
+
+/* Remove any transforms or filters that might cause fading */
+#education .education-card .group-hover\:scale-105,
+#education .education-card .transition-transform {
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    #education .education-card a,
+    #education .education-card button {
+        padding: 0.65rem 1.5rem !important;
+        font-size: 0.9rem !important;
+    }
+    
+    #education .education-card a i,
+    #education .education-card button i {
+        font-size: 0.9rem !important;
+    }
+}

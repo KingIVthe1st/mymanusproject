@@ -1,0 +1,71 @@
+/* 🎨 LIVING GRADIENT BACKGROUND SYSTEM
+ * Subtle morphing gradient representing the dynamic nature of art
+ * Created: June 5, 2025
+ * Purpose: Add artistic movement without overwhelming the design
+ */
+
+.living-gradient-bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    -45deg,
+    #fef3c7, /* Warm yellow */
+    #fde68a,
+    #fbbf24,
+    #f59e0b,
+    #ec4899, /* Pink */
+    #db2777,
+    #9333ea, /* Purple */
+    #7c3aed
+  );
+  background-size: 800% 800%;
+  animation: gradientShift 30s ease infinite;
+  opacity: 0.06; /* Subtle but visible - perfect balance */
+  z-index: -2; /* Behind all content and decorative elements */
+  pointer-events: none; /* Ensure it doesn't interfere with interactions */
+  will-change: background-position;
+  transform: translateZ(0); /* Force GPU acceleration */
+}
+
+@keyframes gradientShift {
+  0% { 
+    background-position: 0% 50%; 
+  }
+  50% { 
+    background-position: 100% 50%; 
+  }
+  100% { 
+    background-position: 0% 50%; 
+  }
+}
+
+/* Enhanced version for hero section with slightly more presence */
+.hero .living-gradient-bg {
+  opacity: 0.08;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .living-gradient-bg {
+    animation: none;
+    background-position: 0% 50%;
+  }
+}
+
+/* Mobile optimization - lighter animation on smaller devices */
+@media (max-width: 768px) {
+  .living-gradient-bg {
+    animation-duration: 45s; /* Slower on mobile for better performance */
+    opacity: 0.04; /* Subtle on mobile */
+  }
+}
+
+/* Developer test - temporarily add border for verification */
+/* Remove this after confirming it works */
+.living-gradient-bg {
+  /* Uncomment the line below to see the gradient element boundaries for testing */
+  /* border: 2px solid red; */
+}

@@ -1,0 +1,98 @@
+/* Fix Collaborate Section Overlay Badges */
+
+/* Override existing badge styling to match Featured Originals buttons */
+.group .absolute.bottom-0 span,
+.group .absolute span[class*="inline-flex"] {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 8px 16px !important;
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Specific targeting for collaboration section badges */
+.collaboration-card .absolute span,
+[data-component-name*="section"] .absolute span {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 8px 16px !important;
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Enhanced hover effects for badges */
+.group:hover .absolute span {
+    background: rgba(255, 255, 255, 0.25) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Ensure proper contrast for all badge text */
+.absolute span {
+    color: #FFFFFF !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Badge positioning improvements */
+.absolute.bottom-0.left-0.right-0 {
+    padding: 24px !important;
+}
+
+/* Specific badge colors for each section */
+.group:nth-child(1) .absolute span {
+    border-color: rgba(139, 92, 246, 0.4) !important; /* Purple for Licensing */
+}
+
+.group:nth-child(2) .absolute span {
+    border-color: rgba(236, 72, 153, 0.4) !important; /* Pink for Custom Artwork */
+}
+
+.group:nth-child(3) .absolute span {
+    border-color: rgba(245, 158, 11, 0.4) !important; /* Amber for Media & Speaking */
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .group .absolute span {
+        font-size: 10px !important;
+        padding: 6px 12px !important;
+        letter-spacing: 0.03em !important;
+    }
+    
+    .absolute.bottom-0.left-0.right-0 {
+        padding: 16px !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .group .absolute span {
+        background: rgba(0, 0, 0, 0.8) !important;
+        border: 2px solid #FFFFFF !important;
+        color: #FFFFFF !important;
+    }
+}
+
+/* Focus states for accessibility */
+.group:focus-within .absolute span {
+    outline: 2px solid rgba(255, 255, 255, 0.5) !important;
+    outline-offset: 2px !important;
+}

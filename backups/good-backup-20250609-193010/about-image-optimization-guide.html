@@ -1,0 +1,103 @@
+<!-- ABOUT ARTIST IMAGE OPTIMIZATION INSTRUCTIONS
+     Created: June 8, 2025
+     Purpose: Make the About the Artist section image load much faster
+-->
+
+<!-- STEP 1: ADD THESE LINES TO THE <head> SECTION (around line 40, after the existing preload directives) -->
+
+    <!-- About Artist Image Preload - Add this after other preloads -->
+    <link rel="preload" href="images/optimized/amira-about-desktop.webp" as="image" type="image/webp" media="(min-width: 1024px)">
+    <link rel="preload" href="images/optimized/amira-about-tablet.webp" as="image" type="image/webp" media="(min-width: 768px) and (max-width: 1023px)">
+    <link rel="preload" href="images/optimized/amira-about-mobile.webp" as="image" type="image/webp" media="(max-width: 767px)">
+    
+    <!-- If browser supports AVIF, these will be used instead -->
+    <link rel="preload" href="images/optimized/amira-about-desktop.avif" as="image" type="image/avif" media="(min-width: 1024px)">
+    <link rel="preload" href="images/optimized/amira-about-tablet.avif" as="image" type="image/avif" media="(min-width: 768px) and (max-width: 1023px)">
+    <link rel="preload" href="images/optimized/amira-about-mobile.avif" as="image" type="image/avif" media="(max-width: 767px)">
+
+
+<!-- STEP 2: ADD THE CSS FILE LINK (in the head section with other CSS files, around line 65) -->
+
+    <link rel="stylesheet" href="styles/about-image-optimization.css">
+
+
+<!-- STEP 3: ADD THE JAVASCRIPT FILE (before closing </body> tag or with other scripts) -->
+
+    <script src="scripts/about-image-optimization.js"></script>
+
+
+<!-- STEP 4: UPDATE THE ABOUT SECTION IMAGE (around line 1164-1180) -->
+
+<!-- FIND THIS: -->
+                <div class="lg:sticky lg:top-8">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all hover:scale-[1.01] group h-full">
+                        <picture>
+                            <source srcset="images/optimized/amira-about-desktop.avif" type="image/avif" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/amira-about-desktop.webp" type="image/webp" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/amira-about-tablet.avif" type="image/avif" media="(min-width: 768px)">
+                            <source srcset="images/optimized/amira-about-tablet.webp" type="image/webp" media="(min-width: 768px)">
+                            <source srcset="images/optimized/amira-about-mobile.avif" type="image/avif" media="(max-width: 767px)">
+                            <source srcset="images/optimized/amira-about-mobile.webp" type="image/webp" media="(max-width: 767px)">
+                            <img 
+                                src="images/amira-about.png" 
+                                alt="Amira Rahim" 
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                loading="lazy"
+                                style="min-height: 500px;"
+                            >
+                        </picture>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-70"></div>
+                    </div>
+                </div>
+
+<!-- REPLACE WITH THIS: -->
+                <div class="lg:sticky lg:top-8">
+                    <div class="portrait-frame relative rounded-2xl overflow-hidden shadow-2xl transform transition-all hover:scale-[1.01] group h-full">
+                        <picture>
+                            <source srcset="images/optimized/amira-about-desktop.avif" type="image/avif" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/amira-about-desktop.webp" type="image/webp" media="(min-width: 1024px)">
+                            <source srcset="images/optimized/amira-about-tablet.avif" type="image/avif" media="(min-width: 768px)">
+                            <source srcset="images/optimized/amira-about-tablet.webp" type="image/webp" media="(min-width: 768px)">
+                            <source srcset="images/optimized/amira-about-mobile.avif" type="image/avif" media="(max-width: 767px)">
+                            <source srcset="images/optimized/amira-about-mobile.webp" type="image/webp" media="(max-width: 767px)">
+                            <img 
+                                src="images/amira-about.png" 
+                                alt="Amira Rahim - Abstract Expressionist Artist" 
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                loading="eager"
+                                fetchpriority="high"
+                                width="800"
+                                height="1067"
+                            >
+                        </picture>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-70"></div>
+                    </div>
+                </div>
+
+<!-- KEY CHANGES MADE:
+     1. Added 'portrait-frame' class to the container div
+     2. Changed loading="lazy" to loading="eager" 
+     3. Added fetchpriority="high" to prioritize this image
+     4. Added width and height attributes to prevent layout shift
+     5. Removed inline style min-height
+     6. Enhanced alt text for better SEO
+-->
+
+
+<!-- ADDITIONAL OPTIMIZATION (OPTIONAL BUT RECOMMENDED) -->
+
+<!-- Add this inline CSS in the <head> section for even faster initial render: -->
+<style>
+    /* Critical CSS for About Image */
+    #about .portrait-frame {
+        aspect-ratio: 3/4;
+        min-height: 400px;
+        background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    }
+    @media (max-width: 767px) {
+        #about .portrait-frame {
+            min-height: 300px;
+            aspect-ratio: 4/5;
+        }
+    }
+</style>

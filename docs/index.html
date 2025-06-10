@@ -589,11 +589,50 @@
     }
     </style>
     
-    <!-- Featured Originals Nuclear Fix -->
-    <link rel="stylesheet" href="styles/featured-originals-nuclear-fix.css">
-    <link rel="stylesheet" href="styles/featured-originals-gradient-fix.css">
-    <script src="scripts/featured-originals-nuclear-fix.js"></script>
-    <script src="scripts/remove-gradient-overlays.js"></script>
+    <!-- Featured Originals Simplified Fix -->
+    <link rel="stylesheet" href="styles/featured-originals-simplified-fix.css">
+    <script src="scripts/featured-originals-simplified-fix.js"></script>
+    
+    <!-- Featured Originals Ultimate Mobile Fix -->
+    <link rel="stylesheet" href="styles/featured-originals-ultimate-mobile-fix.css">
+    <script src="scripts/featured-originals-ultimate-mobile-fix.js"></script>
+    
+    <!-- Mobile Z-Index Layering Fix -->
+    <link rel="stylesheet" href="styles/featured-originals-mobile-zindex-fix.css">
+    <script src="scripts/debug-mobile-layering.js"></script>
+    
+    <!-- NUCLEAR MOBILE FIX - HIGHEST PRIORITY -->
+    <link rel="stylesheet" href="styles/nuclear-mobile-fix.css">
+    <style>
+        /* Inline nuclear fix for absolute highest priority */
+        @media (max-width: 768px) {
+            /* Force fix the specific problem items */
+            #artwork .grid > div:nth-child(5),
+            #artwork .grid > div:nth-child(6),
+            #artwork .grid > a:nth-child(5),
+            #artwork .grid > a:nth-child(6) {
+                position: relative !important;
+                z-index: 99999 !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                transform: translateZ(0) !important;
+            }
+            
+            /* Force the button to be clickable */
+            .view-all-originals-btn {
+                position: relative !important;
+                z-index: 999999 !important;
+                pointer-events: auto !important;
+                touch-action: manipulation !important;
+            }
+            
+            /* Hide section dividers */
+            .section-divider {
+                display: none !important;
+            }
+        }
+    </style>
+
 </head>
 <body>
     <!-- Living Gradient Background -->
@@ -3772,8 +3811,8 @@ if (window.innerWidth <= 767) {
 <!-- Education Mobile Opacity Fix -->
 <script src="scripts/education-mobile-opacity-fix.js"></script>
 
-<!-- Featured Originals Mobile Opacity Fix -->
-<script src="scripts/featured-originals-mobile-fix.js"></script>
+<!-- Featured Originals Mobile Opacity Fix - DISABLED -->
+<!-- <script src="scripts/featured-originals-mobile-fix.js"></script> -->
 
 <!-- EMERGENCY Hero CTA Purple Background Fix - June 9, 2025 -->
 <style>
@@ -4327,6 +4366,9 @@ window.addEventListener('load', function() {
     }
 });
 </script>
+
+<!-- FINAL NUCLEAR FIX - Must run last -->
+<script src="scripts/final-nuclear-fix.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Loading Screen Cache</title>
+</head>
+<body>
+    <h1>Clearing loading screen cache...</h1>
+    <script>
+        // Clear all loading screen session storage
+        sessionStorage.removeItem('loaderShown');
+        sessionStorage.removeItem('galleryLoaderShown');
+        sessionStorage.clear();
+        
+        // Redirect to main site
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 1000);
+    </script>
+    <p>Redirecting to main site with new gallery loading screen...</p>
+</body>
+</html>

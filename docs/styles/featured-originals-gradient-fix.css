@@ -1,0 +1,85 @@
+/* Fix for Featured Originals Mobile - Remove Dark Overlay Gradient */
+
+@media (max-width: 768px) {
+    /* Remove or lighten the dark gradient overlay on cards */
+    #artwork .artwork-card::before,
+    #artwork .artwork-card::after,
+    #artwork .relative::before,
+    #artwork .relative::after,
+    .artwork-card .absolute.inset-0,
+    .artwork-card .bg-gradient-to-t,
+    .artwork-card .bg-gradient-to-b,
+    .artwork-card [class*="gradient"] {
+        background: transparent !important;
+        opacity: 0 !important;
+    }
+    
+    /* Ensure text containers have solid backgrounds */
+    #artwork .artwork-card .absolute.bottom-0,
+    #artwork .artwork-card .p-6,
+    #artwork .artwork-card .text-white,
+    #artwork .artwork-card h3,
+    #artwork .artwork-card p,
+    #artwork .artwork-card a {
+        background: rgba(255, 255, 255, 0.95) !important;
+        color: #1f2937 !important; /* Dark gray text */
+        z-index: 10 !important;
+        position: relative !important;
+    }
+    
+    /* Fix the View Details buttons */
+    #artwork .artwork-card a[href*="shop.amirarahim.com"] {
+        background: #7c3aed !important;
+        color: white !important;
+        padding: 0.75rem 2rem !important;
+        border-radius: 9999px !important;
+        display: inline-block !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Make sure card info section has proper background */
+    #artwork .artwork-card .absolute.bottom-0.left-0.right-0 {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px) !important;
+        padding: 1.5rem !important;
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+    }
+    
+    /* Remove any dark overlays from the entire card */
+    #artwork .group.relative.overflow-hidden.rounded-2xl {
+        background: white !important;
+    }
+    
+    /* Ensure images are visible but don't have overlays */
+    #artwork .artwork-card img {
+        opacity: 1 !important;
+        filter: none !important;
+    }
+    
+    /* Fix the CTA button */
+    .text-center a[href*="shop.amirarahim.com/collections/available-originals-1"] {
+        background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+        color: white !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        padding: 1rem 2rem !important;
+        font-weight: 600 !important;
+    }
+}
+
+/* Extra specificity for stubborn gradient overlays */
+@media (max-width: 768px) {
+    #artwork .group > .absolute.inset-0.bg-gradient-to-t.from-black.via-black\\/50.to-transparent {
+        display: none !important;
+    }
+    
+    #artwork .group > .absolute.inset-0[class*="from-black"] {
+        display: none !important;
+    }
+}

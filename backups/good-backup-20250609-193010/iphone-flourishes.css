@@ -1,0 +1,334 @@
+/* Additional iPhone-specific luxury flourishes */
+
+/* Glassmorphism Cards */
+.glassmorphism-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Animated Gradient Borders */
+.gradient-border {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  background: linear-gradient(45deg, 
+    var(--color-primary), 
+    var(--color-secondary), 
+    #3b82f6, 
+    var(--color-primary));
+  background-size: 400% 400%;
+  border-radius: 18px;
+  animation: gradient-border-animation 4s ease infinite;
+}
+
+@keyframes gradient-border-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating Elements */
+.floating-element {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Luxury Scrollbar for iOS */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+  border-radius: 10px;
+}
+
+/* Neumorphic Elements */
+.neumorphic {
+  background: #f0f0f3;
+  box-shadow: 
+    10px 10px 20px rgba(0, 0, 0, 0.05),
+    -10px -10px 20px rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+}
+
+.neumorphic-inset {
+  background: #f0f0f3;
+  box-shadow: 
+    inset 5px 5px 10px rgba(0, 0, 0, 0.05),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+}
+
+/* Shiny Button Effect */
+.btn-shiny {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shiny::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  animation: shiny-effect 3s ease-in-out infinite;
+}
+
+@keyframes shiny-effect {
+  0% { transform: rotate(30deg) translateX(-300%); }
+  100% { transform: rotate(30deg) translateX(300%); }
+}
+
+/* Magnetic Buttons */
+.magnetic-btn {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animated Underlines */
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.animated-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Glow Effect */
+.glow-on-hover {
+  position: relative;
+  z-index: 1;
+}
+
+.glow-on-hover::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  filter: blur(8px);
+  transform: scale(1.05);
+}
+
+.glow-on-hover:hover::before {
+  opacity: 0.7;
+}
+
+/* iPhone-specific optimizations */
+@media (max-width: 428px) {
+  /* Enhanced hero section */
+  .hero {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(249, 245, 235, 0.9));
+  }
+  
+  .hero-content {
+    padding: 0 1.5rem;
+  }
+  
+  .hero-title {
+    font-size: 2.6rem;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  
+  /* Apply glassmorphism to cards */
+  .artwork-item, .course-card, .collab-card, .contact-form {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Apply floating effect to important elements */
+  .portrait-frame, .about-quote, .btn-primary {
+    animation: floating 3s ease-in-out infinite;
+  }
+  
+  /* Apply gradient borders to featured items */
+  .artwork-item.spotlight {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  
+  .artwork-item.spotlight::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+    background: linear-gradient(45deg, 
+      var(--color-primary), 
+      var(--color-secondary), 
+      #3b82f6, 
+      var(--color-primary));
+    background-size: 400% 400%;
+    border-radius: 18px;
+    animation: gradient-border-animation 4s ease infinite;
+  }
+  
+  /* Apply shiny effect to buttons */
+  .btn {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    animation: shiny-effect 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  /* Apply animated underlines to links */
+  .navbar-link, .footer-link {
+    position: relative;
+  }
+  
+  .navbar-link::after, .footer-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+  }
+  
+  .navbar-link:hover::after, .footer-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
+  /* Apply glow effect to important elements */
+  .btn-primary, .hero-label {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .btn-primary::before, .hero-label::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    filter: blur(8px);
+    transform: scale(1.05);
+  }
+  
+  .btn-primary:hover::before, .hero-label:hover::before {
+    opacity: 0.7;
+  }
+  
+  /* Enhanced section transitions */
+  section {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.5s ease-out;
+  }
+  
+  /* Improved spacing for iPhone */
+  .my-20 {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+  
+  .py-16 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .gap-12 {
+    gap: 2rem;
+  }
+  
+  /* Enhanced form elements */
+  input, textarea, select {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+}

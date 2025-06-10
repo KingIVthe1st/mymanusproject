@@ -1,0 +1,52 @@
+/* Logo Blur Fix - Ensures logo is always crisp and clear */
+
+/* Override any inherited blur effects */
+.navbar .navbar-logo,
+.navbar .logo-image,
+.mobile-menu .logo-image,
+.mobile-logo .logo-image {
+    filter: none !important;
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Ensure logo container doesn't inherit blur */
+.navbar-container > .navbar-logo {
+    isolation: isolate;
+}
+
+/* Force sharp rendering */
+.logo-image {
+    image-rendering: -webkit-optimize-contrast !important;
+    image-rendering: -moz-crisp-edges !important;
+    image-rendering: crisp-edges !important;
+    image-rendering: pixelated !important;
+    -ms-interpolation-mode: nearest-neighbor !important;
+}
+
+/* For WebP format specifically */
+.logo-image[src$=".webp"] {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+}
+
+/* Ensure logo stays sharp during animations */
+.logo-image {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Mobile specific fixes */
+@media (max-width: 768px) {
+    .mobile-menu .logo-image,
+    .navbar .logo-image {
+        filter: none !important;
+        transform: translateZ(0) !important;
+    }
+}

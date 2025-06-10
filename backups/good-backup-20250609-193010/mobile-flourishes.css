@@ -1,0 +1,243 @@
+/* Mobile design flourishes and micro-animations (no parallax) */
+
+/* Subtle fade-in animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Subtle scale animations */
+@keyframes subtleScale {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+/* Button hover/tap effect */
+@keyframes buttonPulse {
+  0% { box-shadow: 0 4px 10px rgba(246, 195, 71, 0.3); }
+  50% { box-shadow: 0 4px 15px rgba(246, 195, 71, 0.5); }
+  100% { box-shadow: 0 4px 10px rgba(246, 195, 71, 0.3); }
+}
+
+/* Subtle gradient animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Ripple effect for buttons */
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Mobile enhancements */
+@media (max-width: 768px) {
+  /* Fade in sections on load */
+  section {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  /* Stagger section animations */
+  section:nth-child(2) { animation-delay: 0.1s; }
+  section:nth-child(3) { animation-delay: 0.2s; }
+  section:nth-child(4) { animation-delay: 0.3s; }
+  section:nth-child(5) { animation-delay: 0.4s; }
+  
+  /* Button enhancements */
+  .btn {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+  
+  .btn-primary {
+    animation: buttonPulse 2s infinite;
+  }
+  
+  /* Ripple effect on tap */
+  .ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+  }
+  
+  /* Featured logos subtle animation */
+  .featured-logo-item {
+    transition: transform 0.3s ease;
+  }
+  
+  .featured-logo-item:active {
+    transform: scale(1.05);
+  }
+  
+  /* Artwork item enhancements */
+  .artwork-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .artwork-item:active {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Gradient backgrounds (static, no parallax) */
+  .hero-bg {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(249, 245, 235, 0.9));
+  }
+  
+  /* Subtle gradient animation for hero label */
+  .hero-label {
+    background: linear-gradient(90deg, var(--color-primary), #f59e0b, var(--color-primary));
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease infinite;
+  }
+  
+  /* Micro-interaction for form elements */
+  input:focus, textarea:focus, select:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Enhanced card shadows */
+  .media-card, .course-card, .collab-card {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .media-card:active, .course-card:active, .collab-card:active {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Subtle hover effect for links */
+  a {
+    transition: color 0.3s ease;
+  }
+  
+  /* Animated underline for links */
+  .animated-link {
+    position: relative;
+  }
+  
+  .animated-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+  }
+  
+  .animated-link:active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
+  /* Subtle scale animation for portrait */
+  .portrait-frame img {
+    transition: transform 0.5s ease;
+  }
+  
+  .portrait-frame:active img {
+    transform: scale(1.02);
+  }
+  
+  /* Subtle border animation */
+  .border-animation {
+    position: relative;
+  }
+  
+  .border-animation::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 2px solid transparent;
+    border-radius: inherit;
+    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary)) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .border-animation:active::before {
+    opacity: 1;
+  }
+  
+  /* Subtle loading animation for images */
+  img {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  img.loaded {
+    opacity: 1;
+  }
+  
+  /* Subtle text animations */
+  .text-reveal {
+    overflow: hidden;
+  }
+  
+  .text-reveal span {
+    display: inline-block;
+    transform: translateY(100%);
+    animation: textReveal 0.5s forwards;
+  }
+  
+  @keyframes textReveal {
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Staggered text reveal */
+  .text-reveal span:nth-child(2) { animation-delay: 0.1s; }
+  .text-reveal span:nth-child(3) { animation-delay: 0.2s; }
+  .text-reveal span:nth-child(4) { animation-delay: 0.3s; }
+  
+  /* Subtle icon animations */
+  .icon-pulse {
+    animation: subtleScale 2s infinite;
+  }
+}
+
+/* iPhone-specific enhancements */
+@media (max-width: 428px) {
+  /* Enhance touch feedback */
+  .btn:active, .artwork-item:active, .featured-logo-item:active {
+    transform: scale(0.97);
+  }
+  
+  /* Enhance form elements */
+  input, textarea, select {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Enhance card shadows */
+  .media-card, .course-card, .collab-card {
+    border-radius: 16px;
+  }
+}

@@ -1,0 +1,120 @@
+/* Emergency Z-Index Fix for Featured Originals Mobile */
+/* This specifically fixes the bottom images and CTA button layering issue */
+
+@media (max-width: 768px) {
+    /* Force the artwork section to have proper stacking context */
+    #artwork {
+        position: relative !important;
+        z-index: 1 !important;
+        isolation: isolate !important;
+    }
+    
+    /* Remove ANY possible overlays from the section */
+    #artwork::before,
+    #artwork::after {
+        display: none !important;
+        pointer-events: none !important;
+        z-index: -1 !important;
+    }
+    
+    /* Force the grid container to be on top */
+    #artwork .grid {
+        position: relative !important;
+        z-index: 10 !important;
+        transform: translateZ(0) !important;
+    }
+    
+    /* Specifically target the last two grid items */
+    #artwork .grid > div:nth-child(5),
+    #artwork .grid > div:nth-child(6),
+    #artwork .grid > a:nth-child(5),
+    #artwork .grid > a:nth-child(6) {
+        position: relative !important;
+        z-index: 100 !important;
+        opacity: 1 !important;
+        transform: translateZ(0) !important;
+        isolation: isolate !important;
+    }
+    
+    /* Force all artwork cards to be interactive */
+    #artwork .artwork-card {
+        position: relative !important;
+        z-index: 50 !important;
+        pointer-events: auto !important;
+        opacity: 1 !important;
+        background: white !important;
+        transform: translateZ(0) !important;
+    }
+    
+    /* Remove overlay blocking */
+    #artwork .artwork-overlay {
+        pointer-events: none !important;
+        z-index: 1 !important;
+    }
+    
+    /* Ensure all links are clickable */
+    #artwork a,
+    #artwork .artwork-card a,
+    #artwork .artwork-overlay a {
+        pointer-events: auto !important;
+        position: relative !important;
+        z-index: 200 !important;
+    }
+    
+    /* Fix the View All Originals button container */
+    #view-all-originals-container,
+    #artwork .text-center {
+        position: relative !important;
+        z-index: 1000 !important;
+        pointer-events: auto !important;
+        transform: translateZ(0) !important;
+        isolation: isolate !important;
+    }
+    
+    /* Fix the View All Originals button itself */
+    .view-all-originals-btn,
+    #artwork .view-all-originals-btn,
+    #artwork a[href*="shop.amirarahim.com/collections/available-originals-1"]:last-child {
+        position: relative !important;
+        z-index: 9999 !important;
+        pointer-events: auto !important;
+        opacity: 1 !important;
+        display: inline-flex !important;
+        transform: translateZ(0) !important;
+        isolation: isolate !important;
+    }
+    
+    /* Remove any blocking elements from parent containers */
+    section,
+    main,
+    body > div {
+        overflow: visible !important;
+    }
+    
+    /* Check for any absolutely positioned elements that might be covering */
+    .bg-shape,
+    .decorative-circle,
+    .living-gradient-bg,
+    .scroll-progress {
+        pointer-events: none !important;
+        z-index: -1 !important;
+    }
+    
+    /* Nuclear option - force everything in the last part of the grid to be on top */
+    #artwork .grid > *:nth-last-child(1),
+    #artwork .grid > *:nth-last-child(2) {
+        position: relative !important;
+        z-index: 500 !important;
+        pointer-events: auto !important;
+        opacity: 1 !important;
+        filter: none !important;
+        transform: translateZ(0) !important;
+    }
+    
+    /* Force remove glass effects that might cause issues */
+    #artwork .glass-card {
+        background: white !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+}
