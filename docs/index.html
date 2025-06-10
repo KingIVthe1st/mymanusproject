@@ -1035,14 +1035,23 @@
             
             // Toggle active classes
             if (mobileToggle) mobileToggle.classList.toggle('active');
-            // Ensure we remove Tailwind 'hidden' so menu can be visible when opening
+            
+            // Force display block/none to ensure visibility regardless of other styles
             if (isOpening) {
                 mobileMenu.classList.remove('hidden');
+                mobileMenu.style.display = 'block';
+                mobileMenu.style.visibility = 'visible';
+                mobileMenu.style.opacity = '1';
             }
+            
             mobileMenu.classList.toggle('active');
+            
             if (!isOpening) {
                 // After animation completes (~400ms), hide again for better a11y
-                setTimeout(() => mobileMenu.classList.add('hidden'), 450);
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.style.display = 'none';
+                }, 450);
             }
             if (mobileOverlay) mobileOverlay.classList.toggle('active');
             
@@ -1140,13 +1149,17 @@
                 // Remove any existing handlers
                 mobileToggle.onclick = null;
                 
-                // Add new handler
-                mobileToggle.addEventListener('click', function(e) {
+                // Force direct onclick handler for maximum compatibility
+                mobileToggle.onclick = function(e) {
                     console.log('Mobile toggle clicked!');
-                    e.preventDefault();
-                    e.stopPropagation();
+                    if (e) {
+                        e.preventDefault();
+                        if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                        else if (e.stopPropagation) e.stopPropagation();
+                    }
                     toggleMenu(e);
-                });
+                    return false;
+                };
             } else {
                 console.error('Mobile toggle button not found');
             }
