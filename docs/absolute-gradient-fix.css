@@ -1,0 +1,109 @@
+/* 
+ * Absolute Menu Link Fix
+ * This CSS forces mobile menu links to be clickable by setting pointer-events and z-index
+ * explicitly while overriding any interfering styles
+ */
+
+/* Make sure the main menu container is clickable */
+.mobile-menu {
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+
+.mobile-menu.active {
+  pointer-events: auto !important;
+}
+
+/* Ensure the menu overlay doesn't block clicks */
+.mobile-menu-overlay {
+  pointer-events: none !important;
+}
+
+/* Make the navigation container accessible */
+.mobile-nav {
+  z-index: 10000 !important;
+  pointer-events: auto !important;
+  position: relative !important;
+}
+
+/* Ensure nav links container is clickable */
+.nav-links {
+  z-index: 10001 !important;
+  pointer-events: auto !important;
+  position: relative !important;
+}
+
+/* Critical fix for mobile links */
+.mobile-nav-link {
+  /* Essential clickability styles */
+  z-index: 10002 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  position: relative !important;
+  
+  /* Ensure the link is visible */
+  opacity: 1 !important;
+  visibility: visible !important;
+  
+  /* Ensure background doesn't interfere */
+  background: rgba(255, 255, 255, 0.15) !important;
+  
+  /* Make it stand out slightly more */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+  transform: none !important;
+}
+
+/* Ensure children of links are also clickable */
+.mobile-nav-link * {
+  pointer-events: auto !important;
+  z-index: 10003 !important;
+  position: relative !important;
+}
+
+/* Fix for hover state */
+.mobile-nav-link:hover {
+  pointer-events: auto !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Make sure ::before pseudo-elements don't interfere */
+.mobile-nav-link::before {
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
+
+/* Fix close button */
+.mobile-close-btn {
+  z-index: 10004 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+/* Handle any glass morphism elements to ensure they don't block clicks */
+.mobile-shooting-stars,
+.mobile-menu-container::before,
+.mobile-menu-container::after {
+  pointer-events: none !important;
+}
+
+/* Additional declaration to prevent any other elements from overlaying the menu */
+.mobile-menu.active .mobile-nav-link {
+  display: flex !important;
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 10005 !important;
+}
+
+/* Fix for animations that might interfere with clickability */
+@keyframes fixedFadeInRight {
+  from {
+    opacity: 0.5;
+    transform: translateX(10px);
+    pointer-events: auto;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+}

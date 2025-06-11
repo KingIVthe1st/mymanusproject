@@ -71,9 +71,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
     
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="absolute-gradient-fix.css">
     <!-- Font Awesome - Deferred -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+    
+    <!-- Mobile Menu Fix - New Approach -->
+    <script src="mobile-menu-fix.js"></script>
+    <!-- Force Link Click Handler - Absolute Highest Priority -->
+    <script src="force-link-click.js"></script>
+    <!-- Menu Replacement Script - Highest Priority -->
+    <script src="menu-replacement.js"></script>
+    <!-- Direct Menu Fix Script - Priority Loading -->
+    <script src="direct-style-injection.js"></script>
     
     <!-- Tailwind CSS - Deferred -->
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -5251,6 +5262,8 @@ document.addEventListener('click', function(e) {
     }
 });
 </script>
+    <script src="iframe-menu-controller.js"></script>
     <script src="remove-podcast-text.js"></script>
+    <script src="scripts/menu-fix.js"></script>
 </body>
 </html>
