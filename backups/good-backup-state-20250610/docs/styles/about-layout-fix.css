@@ -1,0 +1,144 @@
+/* About Section Layout Fix - Completely Redesigned */
+/* Fix the squished content issue with a more balanced approach */
+
+@media (min-width: 1024px) {
+    /* Reset the grid to be more balanced */
+    #about-grid {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Make image container proportional but not too large */
+    #about-image-container {
+        flex: 0 0 400px !important;
+        max-width: 400px !important;
+        margin-right: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    /* Optimize image sizing */
+    #about-image-container .portrait-frame {
+        min-height: 500px !important;
+        max-height: 550px !important;
+        aspect-ratio: 3/4 !important;
+        width: 100% !important;
+    }
+    
+    /* Give content area proper flex space */
+    #about .relative.w-full {
+        flex: 1 1 auto !important;
+        min-width: 600px !important;
+        max-width: none !important;
+    }
+    
+    /* Ensure content grid has proper spacing */
+    #about .grid.grid-cols-1.md\\:grid-cols-2 {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.5rem !important;
+        min-width: 600px !important;
+        width: 100% !important;
+    }
+    
+    /* Ensure cards have proper height and spacing */
+    #about .relative.group {
+        height: auto !important;
+        min-height: 200px !important;
+        padding: 1.5rem !important;
+    }
+}
+
+@media (min-width: 1280px) {
+    /* On larger screens, give even more space */
+    #about-grid {
+        gap: 3rem !important;
+        max-width: 1400px !important;
+    }
+    
+    #about-image-container {
+        flex: 0 0 450px !important;
+        max-width: 450px !important;
+    }
+    
+    #about-image-container .portrait-frame {
+        min-height: 550px !important;
+        max-height: 600px !important;
+    }
+    
+    #about .relative.w-full {
+        min-width: 700px !important;
+    }
+    
+    #about .grid.grid-cols-1.md\\:grid-cols-2 {
+        min-width: 700px !important;
+        gap: 2rem !important;
+    }
+}
+
+/* Maintain responsive behavior on tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #about-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+    }
+    
+    #about-image-container {
+        flex: none !important;
+        max-width: 100% !important;
+    }
+    
+    #about-image-container .portrait-frame {
+        min-height: 450px !important;
+        max-height: 500px !important;
+    }
+}
+
+/* Keep mobile sizing unchanged */
+@media (max-width: 767px) {
+    #about-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+    
+    #about-image-container .portrait-frame {
+        min-height: 400px !important;
+        max-height: 450px !important;
+        aspect-ratio: 4/5 !important;
+    }
+}
+
+/* Enhance the visual quality */
+#about-image-container .portrait-frame {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 
+                0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+}
+
+/* Maintain hover effects */
+#about-image-container .portrait-frame:hover {
+    transform: translateY(-4px) scale(1.02) !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 
+                0 15px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Fix content cards spacing and appearance */
+#about .relative.group.bg-gradient-to-br {
+    background: linear-gradient(135deg, rgba(245,240,255,0.9), rgba(235,230,250,0.9)) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(211, 195, 247, 0.7) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+    border-radius: 16px !important;
+    transition: all 0.3s ease !important;
+}
+
+#about .relative.group.bg-gradient-to-br:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+    border-color: #C5A8F0 !important;
+}

@@ -1,0 +1,183 @@
+/* Ultimate Fix for Featured Originals Mobile Layering Issue */
+/* This fix addresses the fading and unclickable images on mobile */
+
+@media (max-width: 768px) {
+    /* STEP 1: Remove glass morphism effects on mobile for artwork cards */
+    #artwork .artwork-card.glass-card {
+        background: white !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        opacity: 1 !important;
+        border: 1px solid #e5e7eb !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    /* STEP 2: Make artwork overlay completely transparent or hide it */
+    #artwork .artwork-overlay {
+        /* Option 1: Make overlay transparent but keep text visible */
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent) !important;
+        /* Option 2: Hide overlay completely on mobile - uncomment below */
+        /* display: none !important; */
+        
+        /* Ensure overlay doesn't block clicks */
+        pointer-events: none !important;
+    }
+    
+    /* Make overlay interactive elements clickable */
+    #artwork .artwork-overlay .artwork-button,
+    #artwork .artwork-overlay a {
+        pointer-events: auto !important;
+    }
+    
+    /* STEP 3: Ensure images are fully visible */
+    #artwork .artwork-image,
+    #artwork .artwork-image img,
+    #artwork .artwork-image picture {
+        opacity: 1 !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+        transform: none !important;
+    }
+    
+    /* STEP 4: Fix z-index layering */
+    #artwork .artwork-card {
+        position: relative !important;
+        z-index: 1 !important;
+    }
+    
+    #artwork .artwork-image {
+        position: relative !important;
+        z-index: 1 !important;
+    }
+    
+    #artwork .artwork-overlay {
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 2 !important;
+    }
+    
+    /* STEP 5: Specifically target the last two cards (Bloom and Radiance) */
+    #artwork .grid > div:nth-child(5),
+    #artwork .grid > div:nth-child(6),
+    #artwork .grid > div:nth-last-child(1),
+    #artwork .grid > div:nth-last-child(2) {
+        opacity: 1 !important;
+        visibility: visible !important;
+        filter: none !important;
+    }
+    
+    #artwork .grid > div:nth-child(5) *,
+    #artwork .grid > div:nth-child(6) *,
+    #artwork .grid > div:nth-last-child(1) *,
+    #artwork .grid > div:nth-last-child(2) * {
+        opacity: 1 !important;
+        filter: none !important;
+        visibility: visible !important;
+    }
+    
+    /* STEP 6: Fix View All Originals button */
+    .view-all-originals-btn,
+    #artwork a[href*="shop.amirarahim.com/collections/available-originals-1"] {
+        opacity: 1 !important;
+        visibility: visible !important;
+        filter: none !important;
+        pointer-events: auto !important;
+        position: relative !important;
+        z-index: 10 !important;
+        display: inline-flex !important;
+    }
+    
+    /* STEP 7: Remove any animations that might cause issues */
+    #artwork * {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    /* STEP 8: Ensure grid container doesn't have any overlays */
+    #artwork .grid {
+        position: relative !important;
+        z-index: 1 !important;
+    }
+    
+    #artwork .grid::before,
+    #artwork .grid::after {
+        display: none !important;
+    }
+    
+    /* STEP 9: Force hardware acceleration for better rendering */
+    #artwork .artwork-card,
+    #artwork .artwork-image {
+        transform: translateZ(0) !important;
+        -webkit-transform: translateZ(0) !important;
+        will-change: auto !important;
+    }
+    
+    /* STEP 10: Alternative approach - show text below image on mobile */
+    #artwork .artwork-card {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    #artwork .artwork-overlay {
+        position: static !important;
+        background: transparent !important;
+        padding: 1rem !important;
+        text-align: center !important;
+    }
+    
+    #artwork .artwork-title {
+        color: #1f2937 !important;
+        font-size: 1.25rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    #artwork .artwork-description {
+        color: #6b7280 !important;
+        font-size: 0.875rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    #artwork .artwork-button {
+        background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+        color: white !important;
+        padding: 0.75rem 1.5rem !important;
+        border-radius: 50px !important;
+        text-decoration: none !important;
+        display: inline-block !important;
+        font-weight: 600 !important;
+        opacity: 1 !important;
+    }
+}
+
+/* iOS-specific fixes */
+@supports (-webkit-touch-callout: none) {
+    @media (max-width: 768px) {
+        #artwork .artwork-card {
+            -webkit-transform: translateZ(0) !important;
+            -webkit-backface-visibility: hidden !important;
+            -webkit-perspective: 1000px !important;
+        }
+        
+        #artwork .artwork-image {
+            -webkit-transform: translateZ(0) !important;
+            -webkit-filter: none !important;
+        }
+    }
+}
+
+/* Ultra High Priority Override - Nuclear Option */
+@media (max-width: 768px) {
+    body #artwork .artwork-card.glass-card,
+    body #artwork .artwork-card {
+        background: white !important;
+        opacity: 1 !important;
+    }
+    
+    body #artwork .artwork-image,
+    body #artwork .artwork-image img {
+        opacity: 1 !important;
+        filter: none !important;
+    }
+}

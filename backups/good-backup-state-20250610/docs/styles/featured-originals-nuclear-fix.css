@@ -1,0 +1,130 @@
+/* Nuclear Option - Force Featured Originals Mobile Visibility */
+/* This aggressive fix forces all elements to be fully visible on mobile */
+
+@media (max-width: 768px) {
+    /* Target the entire artwork section and all descendants */
+    #artwork,
+    #artwork *,
+    #artwork * *,
+    #artwork * * *,
+    #artwork * * * * {
+        opacity: 1 !important;
+        visibility: visible !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    /* Specifically target grid items by position */
+    #artwork .grid > *:nth-child(5),
+    #artwork .grid > *:nth-child(6),
+    #artwork .grid > *:nth-last-child(1),
+    #artwork .grid > *:nth-last-child(2),
+    #artwork .grid > div:nth-child(5),
+    #artwork .grid > div:nth-child(6),
+    #artwork .grid > div:nth-last-child(1),
+    #artwork .grid > div:nth-last-child(2) {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Target all possible card selectors */
+    .artwork-card,
+    .artwork-item,
+    .portfolio-item,
+    .gallery-item,
+    [class*="artwork"],
+    [class*="portfolio"],
+    [class*="gallery"] {
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+    }
+    
+    /* Force all images to be visible */
+    #artwork img,
+    #artwork picture,
+    #artwork source,
+    .artwork-card img,
+    .artwork-item img {
+        opacity: 1 !important;
+        visibility: visible !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+    
+    /* Force all links and buttons */
+    #artwork a,
+    #artwork button,
+    .artwork-card a,
+    .artwork-card button {
+        opacity: 1 !important;
+        visibility: visible !important;
+        color: #7c3aed !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        border: 1px solid rgba(124, 58, 237, 0.3) !important;
+    }
+    
+    /* CTA button specific fix */
+    .text-center a[href*="shop.amirarahim.com"],
+    a.bg-gradient-to-r,
+    .cta-button,
+    [class*="cta"] {
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+        color: white !important;
+        display: inline-block !important;
+    }
+    
+    /* Remove any animations that might cause fading */
+    @keyframes fadeIn { to { opacity: 1 !important; } }
+    @keyframes fadeInUp { to { opacity: 1 !important; transform: none !important; } }
+    @keyframes reveal { to { opacity: 1 !important; } }
+    
+    /* Override any animation delays */
+    #artwork [style*="animation-delay"],
+    #artwork [style*="transition-delay"] {
+        animation-delay: 0s !important;
+        transition-delay: 0s !important;
+    }
+}
+
+/* Even more specific targeting for the last two cards */
+@media (max-width: 768px) {
+    /* Use attribute selectors for images */
+    img[alt*="Bloom"],
+    img[alt*="Radiance"],
+    img[src*="bloom"],
+    img[src*="radiance"] {
+        opacity: 1 !important;
+        filter: none !important;
+    }
+    
+    /* Target by heading content */
+    h3:contains("Bloom"),
+    h3:contains("Radiance") {
+        opacity: 1 !important;
+    }
+    
+    /* Their parent containers */
+    :has(> img[alt*="Bloom"]),
+    :has(> img[alt*="Radiance"]) {
+        opacity: 1 !important;
+    }
+}
+
+/* Final nuclear option - inline important styles */
+@media (max-width: 768px) {
+    #artwork {
+        --opacity: 1 !important;
+        --visibility: visible !important;
+    }
+    
+    #artwork * {
+        opacity: var(--opacity) !important;
+        visibility: var(--visibility) !important;
+    }
+}

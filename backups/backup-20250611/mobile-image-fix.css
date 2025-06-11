@@ -1,0 +1,50 @@
+/**
+ * Fix for faded images and buttons on mobile
+ * This addresses blur and opacity issues specific to mobile devices
+ */
+
+/**
+ * Aggressive fix for faded/blurred elements in #artwork section on mobile.
+ */
+@media (max-width: 767px) {
+  /* Ensure the entire artwork card and its direct children are fully opaque */
+  #artwork .artwork-card,
+  #artwork .artwork-card > div { /* Targets .artwork-image and .artwork-overlay if they are direct children */
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important; /* Attempt to clear any filter on the card itself or main containers */
+  }
+
+  /* Specifically target the image container and the image itself */
+  #artwork .artwork-card .artwork-image,
+  #artwork .artwork-card .artwork-image img {
+    opacity: 1 !important;
+    filter: blur(0px) !important; /* Force no blur on the image */
+    transform: scale(1) !important; /* Reset any scaling */
+    transition: none !important; /* Disable transitions that might interfere */
+  }
+
+  /* Ensure the overlay and all its textual and button children are fully opaque */
+  #artwork .artwork-card .artwork-overlay,
+  #artwork .artwork-card .artwork-overlay * { /* Wildcard for all children of overlay */
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    color: inherit !important; /* Ensure text color isn't faded */
+  }
+
+  /* Re-ensure buttons within the overlay are solid */
+  #artwork .artwork-card .artwork-overlay .btn {
+    opacity: 1 !important;
+    filter: none !important;
+    pointer-events: auto !important;
+  }
+
+  /* For the main 'View All Originals' button */
+  #artwork > .text-center > a.btn.btn-primary.glass-button[href*="available-originals-1"] {
+    opacity: 1 !important;
+    filter: none !important;
+    pointer-events: auto !important;
+  }
+}
+

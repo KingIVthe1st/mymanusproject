@@ -1,0 +1,49 @@
+/* Update collaborate section tabs to match featured originals artwork button styling */
+
+/* Apply frosted glass styling to all collaborate section badges */
+#collaborate .glass-card .inline-flex.items-center.px-4.py-1.rounded-full,
+.collaborate-badge {
+  /* Frosted glass style to match artwork buttons */
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Hover effects for badges */
+#collaborate .glass-card:hover .inline-flex.items-center.px-4.py-1.rounded-full,
+.collaborate-badge:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Specific targeting for the three badges in collaborate section */
+#collaborate .grid .glass-card .absolute.bottom-0 span.inline-flex {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Hover effects for the specific badges */
+#collaborate .grid .glass-card:hover .absolute.bottom-0 span.inline-flex {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Ensure the colored dots in badges maintain visibility */
+#collaborate .glass-card span.inline-flex span.w-1.rounded-full {
+  opacity: 0.8 !important;
+}

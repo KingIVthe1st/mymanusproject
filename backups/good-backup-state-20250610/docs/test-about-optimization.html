@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Image Optimization Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .test-results {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .status {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .status-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+        .success {
+            background: #4CAF50;
+        }
+        .warning {
+            background: #FF9800;
+        }
+        .error {
+            background: #F44336;
+        }
+        .loading {
+            background: #2196F3;
+        }
+        .info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-left: 4px solid #2196F3;
+            margin: 20px 0;
+        }
+        code {
+            background: #f5f5f5;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>About Artist Image Optimization Test</h1>
+    
+    <div class="info">
+        <h3>What This Test Checks:</h3>
+        <ul>
+            <li>Preload directives are working</li>
+            <li>Image format selection (AVIF > WebP > PNG)</li>
+            <li>Loading performance metrics</li>
+            <li>Layout shift prevention</li>
+        </ul>
+    </div>
+    
+    <div class="test-results" id="results">
+        <h2>Test Results:</h2>
+        <div id="test-output">
+            <div class="status">
+                <div class="status-icon loading"></div>
+                <span>Running tests...</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-results">
+        <h2>Performance Metrics:</h2>
+        <div id="metrics">
+            <p>Collecting metrics...</p>
+        </div>
+    </div>
+    
+    <div class="test-results">
+        <h2>Instructions:</h2>
+        <ol>
+            <li>Open your main site at <a href="http://localhost:8105" target="_blank">http://localhost:8105</a></li>
+            <li>Open DevTools (F12) and go to the Network tab</li>
+            <li>Clear cache and hard reload (Cmd+Shift+R on Mac, Ctrl+Shift+R on Windows)</li>
+            <li>Look for <code>amira-about-*.webp</code> or <code>amira-about-*.avif</code> files loading</li>
+            <li>Scroll to the About section and verify the image loads smoothly</li>
+            <li>Check the Lighthouse performance score</li>
+        </ol>
+    </div>
+    
+    <script>
+        const output = document.getElementById('test-output');
+        const metrics = document.getElementById('metrics');
+        
+        function addStatus(message, type = 'loading') {
+            const status = document.createElement('div');
+            status.className = 'status';
+            status.innerHTML = `
+                <div class="status-icon ${type}"></div>
+                <span>${message}</span>
+            `;
+            output.appendChild(status);
+        }
+        
+        // Clear initial loading message
+        output.innerHTML = '';
+        
+        // Check for WebP/AVIF support
+        function checkImageSupport() {
+            const webP = new Image();
+            webP.onload = webP.onerror = function() {
+                if (webP.height === 2) {
+                    addStatus('✓ WebP support detected', 'success');
+                } else {
+                    addStatus('✗ WebP not supported (will use JPG fallback)', 'warning');
+                }
+            };
+            webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+            
+            // Check AVIF support
+            const avif = new Image();
+            avif.onload = avif.onerror = function() {
+                if (avif.height === 2) {
+                    addStatus('✓ AVIF support detected (best compression!)', 'success');
+                } else {
+                    addStatus('✗ AVIF not supported (will use WebP/JPG)', 'warning');
+                }
+            };
+            avif.src = 'data:image/avif;base64,AAAAFGZ0eXBhdmlmAAAAAG1pZjEAAACgbWV0YQAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAC8AAAAGwAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAARWlwcnAAAAAoaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A==';
+        }
+        
+        // Check preload links
+        function checkPreloads() {
+            const preloads = document.querySelectorAll('link[rel="preload"][href*="amira-about"]');
+            if (preloads.length > 0) {
+                addStatus(`✓ Found ${preloads.length} preload directives for About image`, 'success');
+                preloads.forEach(link => {
+                    addStatus(`  - ${link.href.split('/').pop()} (${link.media || 'all'})`, 'success');
+                });
+            } else {
+                addStatus('✗ No preload directives found', 'error');
+            }
+        }
+        
+        // Check if optimization files exist
+        async function checkFiles() {
+            try {
+                const cssResponse = await fetch('styles/about-image-optimization.css');
+                if (cssResponse.ok) {
+                    addStatus('✓ Optimization CSS file loaded', 'success');
+                } else {
+                    addStatus('✗ Optimization CSS file not found', 'error');
+                }
+                
+                const jsResponse = await fetch('scripts/about-image-optimization.js');
+                if (jsResponse.ok) {
+                    addStatus('✓ Optimization JS file loaded', 'success');
+                } else {
+                    addStatus('✗ Optimization JS file not found', 'error');
+                }
+            } catch (error) {
+                addStatus('✗ Error checking files: ' + error.message, 'error');
+            }
+        }
+        
+        // Performance metrics
+        function showMetrics() {
+            if (window.performance && window.performance.timing) {
+                const timing = window.performance.timing;
+                const loadTime = timing.loadEventEnd - timing.navigationStart;
+                const domContentLoaded = timing.domContentLoadedEventEnd - timing.navigationStart;
+                
+                metrics.innerHTML = `
+                    <p><strong>Page Load Time:</strong> ${loadTime}ms</p>
+                    <p><strong>DOM Content Loaded:</strong> ${domContentLoaded}ms</p>
+                    <p><strong>Browser:</strong> ${navigator.userAgent.match(/Chrome|Firefox|Safari|Edge/)?.[0] || 'Unknown'}</p>
+                    <p><strong>Connection:</strong> ${navigator.connection?.effectiveType || 'Unknown'}</p>
+                `;
+            }
+        }
+        
+        // Run all tests
+        checkImageSupport();
+        checkPreloads();
+        checkFiles();
+        
+        // Wait for page load to show metrics
+        window.addEventListener('load', () => {
+            setTimeout(showMetrics, 100);
+        });
+    </script>
+</body>
+</html>

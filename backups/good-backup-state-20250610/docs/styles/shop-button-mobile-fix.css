@@ -1,0 +1,139 @@
+/* Shop Art Button Mobile Fix - December 2024 */
+
+/* Target the shop button in the about section on mobile */
+@media screen and (max-width: 767px) {
+    /* Shop Art button container */
+    #about .mt-8.group {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin-top: 2rem !important;
+        width: 100% !important;
+    }
+
+    /* Shop Art button link - fix color and prevent fade */
+    #about a[href*="shop.amirarahim.com"] {
+        /* Reset any conflicting styles */
+        all: revert !important;
+        
+        /* Apply the correct styles */
+        display: block !important;
+        width: 100% !important;
+        background: linear-gradient(to right, #ec4899, #a855f7) !important;
+        background-image: linear-gradient(to right, #ec4899, #a855f7) !important;
+        color: white !important;
+        text-align: center !important;
+        font-weight: 600 !important;
+        padding: 1rem 1.5rem !important;
+        border-radius: 0.75rem !important;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease !important;
+        transform: scale(1.05) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        appearance: none !important;
+        filter: none !important;
+        mix-blend-mode: normal !important;
+    }
+
+    /* Force the gradient and colors */
+    #about a[href*="shop.amirarahim.com"]::before {
+        display: none !important;
+    }
+
+    #about a[href*="shop.amirarahim.com"]::after {
+        display: none !important;
+    }
+
+    /* Hover state */
+    #about a[href*="shop.amirarahim.com"]:hover {
+        background: linear-gradient(to right, #db2777, #9333ea) !important;
+        background-image: linear-gradient(to right, #db2777, #9333ea) !important;
+        transform: scale(1.05) !important;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+        color: white !important;
+        opacity: 1 !important;
+    }
+
+    /* Inner content styling */
+    #about a[href*="shop.amirarahim.com"] .flex {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.5rem !important;
+    }
+
+    #about a[href*="shop.amirarahim.com"] span {
+        color: white !important;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+        opacity: 1 !important;
+    }
+
+    #about a[href*="shop.amirarahim.com"] svg {
+        width: 1.25rem !important;
+        height: 1.25rem !important;
+        color: white !important;
+        fill: none !important;
+        stroke: currentColor !important;
+        opacity: 1 !important;
+    }
+
+    #about a[href*="shop.amirarahim.com"] p {
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-size: 0.875rem !important;
+        font-weight: normal !important;
+        margin-top: 0.25rem !important;
+        opacity: 0.9 !important;
+    }
+
+    /* Override any inherited opacity or filter effects */
+    #about .mt-8.group * {
+        opacity: 1 !important;
+        filter: none !important;
+    }
+
+    /* Force proper layering */
+    #about a[href*="shop.amirarahim.com"] {
+        position: relative !important;
+        z-index: 10 !important;
+    }
+
+    /* Disable any animations that might cause flickering */
+    #about a[href*="shop.amirarahim.com"],
+    #about a[href*="shop.amirarahim.com"] * {
+        animation: none !important;
+        animation-delay: 0s !important;
+        animation-duration: 0s !important;
+    }
+
+    /* Target Tailwind gradient classes specifically */
+    #about .bg-gradient-to-r.from-pink-500.to-purple-600 {
+        background: linear-gradient(to right, #ec4899, #a855f7) !important;
+        opacity: 1 !important;
+    }
+
+    /* Force override any CSS variables that might be affecting colors */
+    #about a[href*="shop.amirarahim.com"] {
+        --tw-gradient-from: #ec4899 !important;
+        --tw-gradient-to: #a855f7 !important;
+        --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+    }
+}
+
+/* Desktop styles to ensure consistency */
+@media screen and (min-width: 768px) {
+    #about a[href*="shop.amirarahim.com"] {
+        background: linear-gradient(to right, #ec4899, #a855f7) !important;
+        opacity: 1 !important;
+        filter: none !important;
+    }
+    
+    #about a[href*="shop.amirarahim.com"]:hover {
+        background: linear-gradient(to right, #db2777, #9333ea) !important;
+        opacity: 1 !important;
+    }
+}

@@ -1,0 +1,99 @@
+/* Featured Originals Mobile Opacity Fix */
+/* Specifically targets the bottom two images and CTA button on mobile */
+
+@media (max-width: 768px) {
+    /* Fix all artwork cards to ensure none are faded */
+    #artwork .artwork-card {
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: rgba(255, 255, 255, 0.98) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+    }
+    
+    /* Fix all images in the artwork section */
+    #artwork .artwork-card img,
+    #artwork .artwork-image img,
+    #artwork img {
+        opacity: 1 !important;
+        visibility: visible !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+    
+    /* Specifically target the last two artwork cards (bottom row on mobile) */
+    #artwork .grid > div:nth-last-child(1) .artwork-card,
+    #artwork .grid > div:nth-last-child(2) .artwork-card {
+        opacity: 1 !important;
+        background: rgba(255, 255, 255, 0.98) !important;
+    }
+    
+    #artwork .grid > div:nth-last-child(1) img,
+    #artwork .grid > div:nth-last-child(2) img {
+        opacity: 1 !important;
+        filter: none !important;
+    }
+    
+    /* Fix all View Details buttons */
+    #artwork .artwork-card a,
+    #artwork .artwork-button,
+    #artwork a[href*="shop.amirarahim.com"] {
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        color: #7c3aed !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(147, 51, 234, 0.3) !important;
+    }
+    
+    /* Fix the View All Originals CTA button */
+    #artwork .cta-button,
+    #artwork a.bg-gradient-to-r,
+    #artwork + div a[href*="shop.amirarahim.com"],
+    .text-center a[href*="shop.amirarahim.com/collections/available-originals-1"] {
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+        color: white !important;
+        font-weight: 600 !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+        box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4) !important;
+    }
+    
+    /* Ensure no parent elements are causing the fade */
+    #artwork,
+    #artwork .container,
+    #artwork .grid {
+        opacity: 1 !important;
+        filter: none !important;
+    }
+    
+    /* Remove any transforms or effects that might cause issues */
+    #artwork * {
+        transform: none !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+    
+    /* Maintain hover effects */
+    #artwork .artwork-card:hover {
+        transform: translateY(-4px) !important;
+        opacity: 1 !important;
+    }
+}
+
+/* Extra specificity for stubborn elements */
+@media (max-width: 768px) {
+    body #artwork .grid > div:nth-child(5) *,
+    body #artwork .grid > div:nth-child(6) * {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Target View All Originals button more specifically */
+    body .text-center .inline-block.px-8.py-4 {
+        opacity: 1 !important;
+        background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+    }
+}

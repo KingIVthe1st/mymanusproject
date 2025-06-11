@@ -1,0 +1,142 @@
+/* About Section Layout Balance Fix - June 9, 2025 */
+/* Fix for tabs appearing below image instead of to the right */
+
+/* Target the About section flexbox layout - FORCE desktop side-by-side */
+#about #about-grid {
+    display: flex !important;
+    align-items: stretch !important;
+    gap: 3rem !important;
+    min-height: auto !important;
+    flex-direction: row !important; /* Force horizontal layout on desktop */
+}
+
+/* Image container - reduced width to make space for content */
+#about #about-image-container {
+    flex: 0 0 40% !important; /* Reduced from 50% to 40% */
+    display: flex !important;
+    align-items: stretch !important;
+    min-height: auto !important;
+    max-width: 40% !important; /* Ensure it doesn't grow */
+}
+
+/* Content area - increased width for tabs */
+#about #about-grid > div:last-child {
+    flex: 1 1 60% !important; /* Increased from 50% to 60% */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    min-height: auto !important;
+    max-width: 60% !important; /* Ensure proper width */
+}
+
+/* Override any Tailwind classes that might force column layout */
+#about #about-grid.flex-col {
+    flex-direction: row !important;
+}
+
+/* Force the lg:grid to behave as flex on large screens */
+@media (min-width: 1024px) {
+    #about #about-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        grid-template-columns: none !important;
+    }
+}
+
+/* Portrait frame takes full height of container */
+#about .portrait-frame {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: auto !important;
+}
+
+/* Image fills portrait frame properly */
+#about .portrait-frame img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    border-radius: 20px !important;
+    min-height: auto !important;
+}
+
+/* Cards grid - ensure proper spacing */
+#about .grid.grid-cols-1.md\:grid-cols-2 {
+    height: auto !important;
+    min-height: auto !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: auto auto !important;
+    gap: 1.5rem !important;
+    margin-bottom: 2rem !important;
+}
+
+/* Individual cards - consistent height */
+#about .grid.grid-cols-1.md\:grid-cols-2 > div {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    min-height: 280px !important;
+    padding: 1.5rem !important;
+}
+
+/* Shop Art button - stays at bottom */
+#about .mt-8.group {
+    margin-top: auto !important;
+    padding-top: 2rem !important;
+    flex-shrink: 0 !important;
+}
+
+/* Responsive adjustments - ONLY apply column layout on mobile */
+@media (max-width: 1023px) {
+    #about #about-grid {
+        flex-direction: column !important;
+        gap: 3rem !important;
+    }
+    
+    #about #about-image-container {
+        flex: none !important;
+        max-width: none !important;
+        min-height: 500px !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    #about #about-grid > div:last-child {
+        max-width: none !important;
+    }
+    
+    #about .portrait-frame {
+        min-height: 500px !important;
+    }
+    
+    #about .portrait-frame img {
+        min-height: 500px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    #about #about-image-container {
+        min-height: 400px !important;
+    }
+    
+    #about .portrait-frame {
+        min-height: 400px !important;
+    }
+    
+    #about .portrait-frame img {
+        min-height: 400px !important;
+    }
+    
+    #about .grid.grid-cols-1.md\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    #about .grid.grid-cols-1.md\:grid-cols-2 > div {
+        min-height: 200px !important;
+        padding: 1.25rem !important;
+    }
+}

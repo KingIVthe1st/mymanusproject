@@ -1,0 +1,64 @@
+/* Hero Mobile Background Fix - Remove Purple Background Behind Buttons */
+
+/* Target mobile devices specifically */
+@media (max-width: 768px) {
+    /* Remove any background from hero CTA container */
+    .hero-cta {
+        background: none !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        background-gradient: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* Remove backgrounds from any parent elements that might be causing the purple */
+    .hero-cta::before,
+    .hero-cta::after {
+        display: none !important;
+        background: none !important;
+    }
+    
+    /* Ensure buttons themselves maintain their styling but container is transparent */
+    .hero-cta .btn {
+        /* Let individual buttons keep their own styling */
+        position: relative !important;
+        z-index: 10 !important;
+    }
+    
+    /* Override any purple gradient or background that might be applied to hero content area */
+    .hero-content {
+        background: none !important;
+        background-color: transparent !important;
+        background-image: none !important;
+    }
+    
+    /* Remove purple from any glass effects in hero section on mobile */
+    .hero .glass-pill,
+    .hero .glass-button {
+        background: rgba(255, 255, 255, 0.9) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    /* Override any purple backgrounds from living gradient or other effects */
+    .hero::before,
+    .hero::after,
+    .hero-bg {
+        background: none !important;
+        background-image: none !important;
+    }
+}
+
+/* Make sure desktop maintains normal styling */
+@media (min-width: 769px) {
+    .hero-cta {
+        /* Keep desktop styling intact */
+        background: transparent !important;
+    }
+}

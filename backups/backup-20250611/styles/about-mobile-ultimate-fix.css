@@ -1,0 +1,136 @@
+/* About Section Mobile Ultimate Fix - June 9, 2025 */
+/* Ensures mobile stacking with highest priority */
+
+/* Mobile Layout - Force vertical stacking */
+@media (max-width: 767px) {
+    /* Main container fix */
+    #about #about-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 2rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Image container - full width on mobile */
+    #about #about-image-container {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: relative !important;
+        top: auto !important;
+        order: 1 !important;
+    }
+
+    /* Portrait frame - centered and reasonable size */
+    #about .portrait-frame {
+        width: 100% !important;
+        max-width: 350px !important;
+        margin: 0 auto !important;
+        height: auto !important;
+        aspect-ratio: 3/4 !important;
+    }
+
+    /* Content container - full width below image */
+    #about #about-grid > div:last-child,
+    #about .relative.w-full {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        order: 2 !important;
+        display: block !important;
+        position: relative !important;
+    }
+
+    /* Tab cards grid - single column on mobile */
+    #about .grid.grid-cols-1.md\\:grid-cols-2 {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Individual cards - full width */
+    #about .relative.group.bg-gradient-to-br {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 1.25rem !important;
+        display: block !important;
+    }
+
+    /* Shop Art CTA - full width */
+    #about .mt-8.group {
+        width: 100% !important;
+        margin-top: 1.5rem !important;
+    }
+
+    #about .mt-8.group > a {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    /* Ensure content is visible */
+    #about * {
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: none !important;
+        position: relative !important;
+    }
+
+    /* Prevent horizontal overflow */
+    #about .max-w-5xl {
+        overflow-x: hidden !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
+
+/* Tablet - keep side by side but adjust proportions */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #about #about-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 2rem !important;
+        align-items: flex-start !important;
+    }
+
+    #about #about-image-container {
+        flex: 0 0 35% !important;
+        max-width: 35% !important;
+    }
+
+    #about #about-grid > div:last-child {
+        flex: 1 1 65% !important;
+        max-width: 65% !important;
+    }
+}
+
+/* Desktop - maintain side by side */
+@media (min-width: 1024px) {
+    #about #about-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 3rem !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+    }
+
+    #about #about-image-container {
+        flex: 0 0 45% !important;
+        max-width: 45% !important;
+    }
+
+    #about #about-grid > div:last-child {
+        flex: 1 1 55% !important;
+        max-width: 55% !important;
+    }
+}

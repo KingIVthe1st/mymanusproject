@@ -1,0 +1,59 @@
+/* About Section Force Side-by-Side Layout - June 9, 2025 */
+/* Aggressive override to ensure image and tabs are side-by-side on desktop */
+
+/* Target the specific HTML structure and force side-by-side layout */
+#about .max-w-5xl .flex.flex-col.lg\\:grid.lg\\:grid-cols-2 {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    gap: 3rem !important;
+}
+
+/* More specific targeting for the about grid */
+section#about div[id="about-grid"] {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    gap: 3rem !important;
+}
+
+/* Force image container to stay on the left */
+section#about div[id="about-image-container"] {
+    flex: 0 0 45% !important; /* Increased from 40% for better balance */
+    max-width: 45% !important;
+    order: 1 !important;
+}
+
+/* Force content area to stay on the right */
+section#about #about-grid > div:last-child {
+    flex: 1 1 55% !important; /* Adjusted from 60% */
+    max-width: 55% !important;
+    order: 2 !important;
+}
+
+/* Override all responsive Tailwind classes that might interfere */
+@media (min-width: 768px) {
+    #about #about-grid {
+        display: flex !important;
+        flex-direction: row !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    #about #about-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        grid-template-columns: none !important;
+    }
+}
+
+/* Ensure no column layout on desktop */
+#about #about-grid.lg\\:grid {
+    display: flex !important;
+    grid-template-columns: none !important;
+}
+
+#about #about-grid.lg\\:grid-cols-2 {
+    display: flex !important;
+    grid-template-columns: none !important;
+}

@@ -1,0 +1,81 @@
+/* Education Section Button Perfect Fix */
+
+/* Target all button elements specifically */
+#education .education-card a[class*="bg-gradient"],
+#education .education-card button[class*="bg-gradient"],
+#education .education-card .inline-block[class*="bg-gradient"] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: white !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+}
+
+/* Fix button text specifically */
+#education .education-card a span,
+#education .education-card button span,
+#education .education-card a:not(i),
+#education .education-card button:not(i) {
+    color: white !important;
+    opacity: 1 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Fix FontAwesome icons specifically */
+#education .education-card a .fas,
+#education .education-card a .fab,
+#education .education-card button .fas,
+#education .education-card button .fab,
+#education .education-card a i,
+#education .education-card button i {
+    color: white !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    font-size: 1rem !important;
+    margin-left: 0.5rem !important;
+}
+
+/* Ensure proper button gradients */
+#education .education-card:nth-child(1) a,
+#education .education-card:nth-child(1) button {
+    background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
+    border: none !important;
+}
+
+#education .education-card:nth-child(2) a,
+#education .education-card:nth-child(2) button {
+    background: linear-gradient(135deg, #ec4899, #f472b6) !important;
+    border: none !important;
+}
+
+#education .education-card:nth-child(3) a,
+#education .education-card:nth-child(3) button {
+    background: linear-gradient(135deg, #f59e0b, #f97316) !important;
+    border: none !important;
+}
+
+/* Override any Tailwind classes that might interfere */
+#education .text-white {
+    color: white !important;
+}
+
+#education .font-medium {
+    font-weight: 500 !important;
+}
+
+/* Ensure hover states work properly */
+#education .education-card a:hover,
+#education .education-card button:hover {
+    opacity: 0.9 !important;
+    transform: translateY(-1px) !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Force visibility on any hidden elements */
+#education * {
+    opacity: 1 !important;
+}

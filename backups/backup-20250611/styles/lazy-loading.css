@@ -1,0 +1,325 @@
+/**
+ * Advanced Lazy Loading System
+ * Phase 2: Bandwidth Optimization
+ * Expected Impact: -2MB initial load
+ */
+
+/* Lazy Loading Base Styles */
+.lazy-loading {
+    opacity: 0.3;
+    transform: scale(0.95);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(45deg, #f6c347, #ec4899);
+    background-size: 400% 400%;
+    animation: shimmer 2s ease-in-out infinite;
+}
+
+.lazy-loaded {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Shimmer loading animation */
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Progressive JPEG loading */
+.progressive-loading {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+}
+
+.progressive-loaded {
+    filter: blur(0);
+}
+
+/* Responsive Image Container */
+.responsive-image-container {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(246, 195, 71, 0.1), rgba(236, 72, 153, 0.1));
+    border-radius: inherit;
+}
+
+.responsive-image-container::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border: 3px solid rgba(246, 195, 71, 0.3);
+    border-radius: 50%;
+    border-top-color: #f6c347;
+    animation: spin 1s ease-in-out infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.responsive-image-container.loading::before {
+    opacity: 1;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* WebP Support Detection */
+.no-webp .webp-image {
+    display: none;
+}
+
+.webp .fallback-image {
+    display: none;
+}
+
+/* Artwork Gallery Lazy Loading */
+.artwork-card {
+    position: relative;
+}
+
+.artwork-card .artwork-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f6c347, #ec4899, #9333ea);
+    background-size: 400% 400%;
+    animation: artworkShimmer 3s ease-in-out infinite;
+}
+
+.artwork-card .artwork-image.loaded {
+    background: none;
+    animation: none;
+}
+
+@keyframes artworkShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Intersection Observer Optimizations */
+.lazy-observer-target {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Critical Path Optimizations */
+.critical-image {
+    /* Skip lazy loading for above-fold images */
+    opacity: 1;
+    transform: none;
+}
+
+/* Below-fold Image Optimizations */
+.below-fold {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.below-fold.in-viewport {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile-Specific Optimizations */
+@media (max-width: 768px) {
+    .lazy-loading {
+        transition-duration: 0.4s;
+    }
+    
+    .responsive-image-container::before {
+        width: 30px;
+        height: 30px;
+        margin: -15px 0 0 -15px;
+    }
+    
+    /* Reduce animation complexity on mobile */
+    .artwork-card .artwork-image {
+        animation-duration: 2s;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .lazy-loading,
+    .lazy-loaded,
+    .below-fold {
+        transition: none;
+        animation: none;
+    }
+    
+    .responsive-image-container::before {
+        animation: none;
+    }
+    
+    .artwork-card .artwork-image {
+        animation: none;
+        background: rgba(246, 195, 71, 0.1);
+    }
+}
+
+/* High Performance Mode */
+.performance-mode .lazy-loading {
+    transition: opacity 0.3s ease;
+    transform: none;
+    background: rgba(246, 195, 71, 0.2);
+    animation: none;
+}
+
+.performance-mode .artwork-card .artwork-image {
+    animation: none;
+    background: linear-gradient(135deg, rgba(246, 195, 71, 0.1), rgba(236, 72, 153, 0.1));
+}
+
+/* Connection Speed Adaptations */
+.slow-connection .lazy-loading {
+    background: #f5f5f5;
+    animation: none;
+}
+
+.slow-connection .responsive-image-container::before {
+    display: none;
+}
+
+/* Preload Hints for Critical Images */
+.preload-hint {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Loading State Indicators */
+.loading-indicator {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #666;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.loading-indicator.visible {
+    opacity: 1;
+}
+
+/* Bandwidth Savings Display */
+.bandwidth-savings {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-family: monospace;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.bandwidth-savings.visible {
+    opacity: 1;
+}
+
+/* Image Format Support Classes */
+.supports-webp .webp-only {
+    display: block;
+}
+
+.no-webp .webp-only {
+    display: none;
+}
+
+.supports-webp .no-webp-fallback {
+    display: none;
+}
+
+.no-webp .no-webp-fallback {
+    display: block;
+}
+
+/* Progressive Enhancement */
+.js .no-js-fallback {
+    display: none;
+}
+
+.no-js .js-enhanced {
+    display: none;
+}
+
+/* Portrait Frame Lazy Loading */
+.portrait-frame {
+    position: relative;
+    background: linear-gradient(135deg, rgba(246, 195, 71, 0.1), rgba(236, 72, 153, 0.1));
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.portrait-frame.loading {
+    background: linear-gradient(45deg, #f6c347, #ec4899, #9333ea);
+    background-size: 400% 400%;
+    animation: portraitShimmer 2.5s ease-in-out infinite;
+}
+
+.portrait-frame.loaded {
+    background: transparent;
+    animation: none;
+}
+
+@keyframes portraitShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    33% { background-position: 50% 0%; }
+    66% { background-position: 100% 50%; }
+}
+
+/* Featured In Section Lazy Loading */
+.featured-in .glass-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.featured-in .glass-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger animation delays */
+.featured-in .glass-card:nth-child(1) { transition-delay: 0.1s; }
+.featured-in .glass-card:nth-child(2) { transition-delay: 0.2s; }
+.featured-in .glass-card:nth-child(3) { transition-delay: 0.3s; }
+
+/* Error State Handling */
+.image-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    color: #6b7280;
+    font-size: 14px;
+    min-height: 200px;
+    border-radius: 12px;
+}
+
+.image-error::before {
+    content: '🖼️';
+    font-size: 24px;
+    margin-right: 8px;
+}

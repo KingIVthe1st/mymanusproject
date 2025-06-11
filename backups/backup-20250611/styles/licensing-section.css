@@ -1,0 +1,49 @@
+/* Licensing Section Styles */
+.decorative-circle-licensing-1 {
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(125, 110, 255, 0.1), rgba(200, 150, 255, 0.1));
+    animation: float 15s ease-in-out infinite;
+    z-index: 0;
+}
+
+.decorative-circle-licensing-2 {
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(200, 150, 255, 0.1), rgba(255, 130, 220, 0.1));
+    animation: float 20s ease-in-out infinite reverse;
+    z-index: 0;
+}
+
+#licensing .glass-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 255, 0.8));
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(211, 195, 247, 0.3);
+}
+
+#licensing img.w-full.h-full.object-cover {
+    height: 500px;
+    object-position: center;
+}
+
+@media (max-width: 768px) {
+    #licensing img.w-full.h-full.object-cover {
+        height: 350px;
+    }
+    
+    #licensing .absolute.-top-6.-right-6 {
+        top: -10px;
+        right: -10px;
+        width: 80px;
+        height: 80px;
+        font-size: 0.8em;
+    }
+}

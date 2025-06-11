@@ -1,0 +1,117 @@
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* iPhone-specific optimizations */
+@media (max-width: 428px) { /* iPhone Pro Max width */
+    .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hero-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .portrait-frame {
+        order: 1;
+        margin: 0 auto;
+        width: 100%;
+    }
+    
+    .hero-content {
+        order: 2;
+        text-align: center;
+        margin-top: 2rem;
+    }
+    
+    .hero-cta {
+        order: 3;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    
+    .portrait-frame {
+        margin: 2rem auto 0;
+        max-width: 90%;
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    
+    .portrait-frame img {
+        border-radius: 24px;
+    }
+    
+    /* Improved card layouts for iPhone */
+    .grid {
+        gap: 1.5rem !important;
+    }
+    
+    .artwork-item {
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Enhanced touch feedback */
+    .btn:active {
+        transform: scale(0.98);
+    }
+    
+    /* Improved spacing for mobile reading */
+    p, .text-gray-700 {
+        line-height: 1.7;
+    }
+    
+    /* Luxury scrollbar for iOS */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.05);
+        border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+        border-radius: 10px;
+    }
+    
+    /* Improved form elements for iPhone */
+    input, textarea, select, button {
+        border-radius: 12px !important;
+        padding: 0.8rem 1rem !important;
+    }
+    
+    /* Improved footer for iPhone */
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        text-align: center;
+    }
+}

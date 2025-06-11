@@ -1,0 +1,205 @@
+/* About Section Mobile Tabs Visibility Fix - June 9, 2025 */
+/* Ensures tabs/cards are visible below the image on mobile */
+
+/* Desktop layout - restore original 2x2 grid to the right of image */
+@media screen and (min-width: 768px) {
+    /* Ensure about grid shows side by side on desktop */
+    #about-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 2rem !important;
+        align-items: start !important;
+    }
+    
+    /* Image container on left */
+    #about-image-container {
+        grid-column: 1 !important;
+    }
+    
+    /* Content area on right */
+    #about-grid > div:nth-child(2),
+    #about-grid > .relative.w-full {
+        grid-column: 2 !important;
+        display: block !important;
+    }
+    
+    /* Cards grid - 2x2 layout on desktop */
+    #about-grid .grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    /* Individual cards on desktop */
+    #about-grid .relative.group.bg-gradient-to-br {
+        display: block !important;
+        height: auto !important;
+        min-height: 140px !important;
+    }
+}
+
+/* Mobile layout - single column with tabs below image */
+@media screen and (max-width: 767px) {
+    /* Ensure the about section allows overflow */
+    #about {
+        overflow: visible !important;
+        height: auto !important;
+        min-height: 1200px !important;
+    }
+    
+    /* Force the about grid to be visible and vertical */
+    #about-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        overflow: visible !important;
+        height: auto !important;
+        min-height: 800px !important;
+    }
+    
+    /* Image container */
+    #about-image-container {
+        width: 100% !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    /* The container with the tabs - force visibility */
+    #about-grid > div:last-child,
+    #about-grid > .relative.w-full {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        position: static !important;
+        transform: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        height: auto !important;
+        min-height: 500px !important;
+    }
+    
+    /* The grid of cards inside - MORE SPECIFIC SELECTOR */
+    #about-grid .grid,
+    #about-grid [class*="grid-cols"] {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin-bottom: 2rem !important;
+        width: 100% !important;
+    }
+    
+    /* Individual cards - SUPER SPECIFIC for all 4 cards */
+    #about-grid .relative.group.bg-gradient-to-br,
+    #about-grid .relative.group[class*="from-purple-50"],
+    #about-grid .relative.group[class*="from-blue-50"],
+    #about-grid .relative.group[class*="from-yellow-50"],
+    #about-grid .relative.group[class*="from-green-50"] {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: none !important;
+        position: relative !important;
+        width: 100% !important;
+        padding: 1.5rem !important;
+        margin: 0 0 1rem 0 !important;
+        border-radius: 1rem !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+        height: auto !important;
+        min-height: unset !important;
+    }
+    
+    /* Force ALL direct children of the grid to be visible */
+    #about-grid .grid > * {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        position: relative !important;
+        z-index: 1 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Specifically target each card by its position */
+    #about-grid .grid > div:nth-child(1),
+    #about-grid .grid > div:nth-child(2),
+    #about-grid .grid > div:nth-child(3),
+    #about-grid .grid > div:nth-child(4) {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
+        min-height: 100px !important;
+    }
+    
+    /* Card content */
+    #about-grid .flex.items-start {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 1rem !important;
+    }
+    
+    /* Icon containers */
+    #about-grid .flex-shrink-0 {
+        flex-shrink: 0 !important;
+        display: block !important;
+    }
+    
+    /* Text content in cards */
+    #about-grid h3,
+    #about-grid p {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Shop Art button container */
+    #about-grid .mt-8.group {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin-top: 2rem !important;
+    }
+    
+    /* Shop Art link */
+    #about-grid a[href*="shop.amirarahim.com"] {
+        display: block !important;
+        width: 100% !important;
+        padding: 1rem 1.5rem !important;
+        text-align: center !important;
+    }
+    
+    /* Remove any conflicting styles */
+    #about .lg\\:grid,
+    #about .lg\\:grid-cols-2 {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* Override any Tailwind responsive classes */
+    #about [class*="md\\:"],
+    #about [class*="lg\\:"] {
+        all: revert !important;
+    }
+    
+    /* Ensure nothing is hidden */
+    #about .hidden,
+    #about .lg\\:hidden,
+    #about .md\\:hidden,
+    #about [style*="display: none"],
+    #about [style*="visibility: hidden"],
+    #about [style*="opacity: 0"] {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Ensure proper spacing at the bottom */
+    #about {
+        padding-bottom: 3rem !important;
+    }
+}

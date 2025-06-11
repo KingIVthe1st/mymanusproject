@@ -1,0 +1,120 @@
+/* About Section Image Height Match Fix */
+/* Make image container height match the content area height for symmetrical balance */
+
+/* Target the specific About section with ID */
+#about #about-grid {
+    display: flex !important;
+    align-items: stretch !important;
+    gap: 5rem !important;
+    min-height: 800px !important;
+}
+
+#about #about-image-container {
+    flex: 0 0 50% !important;
+    display: flex !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    min-height: 800px !important;
+}
+
+#about .portrait-frame {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 800px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+#about .portrait-frame img {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 800px !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    border-radius: 20px !important;
+}
+
+/* Content area to match image height */
+#about #about-grid > div:last-child {
+    flex: 1 1 50% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    min-height: 800px !important;
+}
+
+/* Make the grid container fill full height */
+#about .grid.grid-cols-1.md\\:grid-cols-2 {
+    height: 100% !important;
+    min-height: 600px !important;
+    align-content: start !important;
+    gap: 2rem !important;
+    display: grid !important;
+    grid-template-rows: 1fr 1fr !important;
+}
+
+/* Each card should take equal space */
+#about .grid.grid-cols-1.md\\:grid-cols-2 > div {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    min-height: 280px !important;
+    height: 100% !important;
+}
+
+/* Ensure Shop Art button fills remaining space */
+#about .mt-8.group {
+    margin-top: auto !important;
+    padding-top: 2rem !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1023px) {
+    #about #about-grid {
+        flex-direction: column !important;
+        min-height: auto !important;
+        gap: 3rem !important;
+    }
+    
+    #about #about-image-container {
+        flex: none !important;
+        min-height: 600px !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    #about .portrait-frame {
+        min-height: 600px !important;
+    }
+    
+    #about .portrait-frame img {
+        min-height: 600px !important;
+    }
+    
+    #about #about-grid > div:last-child {
+        min-height: auto !important;
+    }
+    
+    #about .grid.grid-cols-1.md\\:grid-cols-2 {
+        min-height: auto !important;
+        grid-template-rows: auto !important;
+    }
+    
+    #about .grid.grid-cols-1.md\\:grid-cols-2 > div {
+        min-height: auto !important;
+    }
+}
+
+@media (max-width: 767px) {
+    #about #about-image-container {
+        min-height: 450px !important;
+    }
+    
+    #about .portrait-frame {
+        min-height: 450px !important;
+    }
+    
+    #about .portrait-frame img {
+        min-height: 450px !important;
+    }
+}

@@ -1,0 +1,421 @@
+class EnhancedRainbowCursor {
+  constructor() {
+    this.canvas = document.createElement('canvas');
+    this.ctx = this.canvas.getContext('2d');
+    this.particles = [];
+    this.trailParticles = [];
+    this.maxParticles = 120; // Increased from 50
+    this.maxTrailParticles = 80; // New trail system
+    this.hue = 0;
+    this.lastX = 0;
+    this.lastY = 0;
+    this.isDrawing = false;
+    this.frameCount = 0;
+    this.quality = this.getDeviceQuality();
+    
+    this.init();
+  }
+
+  getDeviceQuality() {
+    // Optimize based on device capabilities
+    const pixelRatio = window.devicePixelRatio || 1;
+    const width = window.innerWidth;
+    const isHighEnd = pixelRatio >= 2 && width >= 1200;
+    const isMobile = width < 768;
+    
+    return {
+      particleMultiplier: isMobile ? 0.7 : isHighEnd ? 1.3 : 1,
+      qualityLevel: isMobile ? 'mobile' : isHighEnd ? 'high' : 'medium',
+      renderEveryFrame: !isMobile
+    };
+  }
+
+  init() {
+    this.resizeCanvas();
+    window.addEventListener('resize', () => this.resizeCanvas());
+    
+    // Enhanced canvas setup
+    this.canvas.style.position = 'fixed';
+    this.canvas.style.top = '0';
+    this.canvas.style.left = '0';
+    this.canvas.style.width = '100%';
+    this.canvas.style.height = '100%';
+    this.canvas.style.pointerEvents = 'none';
+    this.canvas.style.zIndex = '9999';
+    this.canvas.style.mixBlendMode = 'screen'; // Enhanced blend mode
+    document.body.appendChild(this.canvas);
+
+    // Enhanced event listeners
+    document.addEventListener('mousemove', (e) => this.onMouseMove(e));
+    document.addEventListener('mousedown', () => { 
+      this.isDrawing = true; 
+      this.createBurst(this.lastX, this.lastY);
+    });
+    document.addEventListener('mouseup', () => { this.isDrawing = false; });
+    
+    // Artwork hover detection for special effects
+    this.setupArtworkHover();
+    
+    this.animate();
+  }
+
+  setupArtworkHover() {
+    const artworkCards = document.querySelectorAll('.artwork-card, .featured-artwork');
+    artworkCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        this.hue = 280; // Purple/blue for artwork
+      });
+      card.addEventListener('mouseleave', () => {
+        this.hue = this.frameCount * 2; // Back to cycling
+      });
+    });
+  }
+
+  resizeCanvas() {
+    const pixelRatio = window.devicePixelRatio || 1;
+    this.canvas.width = window.innerWidth * pixelRatio;
+    this.canvas.height = window.innerHeight * pixelRatio;
+    this.canvas.style.width = window.innerWidth + 'px';
+    this.canvas.style.height = window.innerHeight + 'px';
+    this.ctx.scale(pixelRatio, pixelRatio);
+  }
+
+  onMouseMove(e) {
+    const x = e.clientX;
+    const y = e.clientY;
+    
+    const dx = x - this.lastX;
+    const dy = y - this.lastY;
+    const velocity = Math.sqrt(dx * dx + dy * dy);
+    const distance = Math.min(velocity, 50);
+    
+    // Enhanced particle creation based on velocity
+    if (velocity > 0.5) {
+      const baseCount = Math.min(Math.floor(distance / 1.5), 8);
+      const particleCount = Math.floor(baseCount * this.quality.particleMultiplier);
+      
+      // Create main particles
+      for (let i = 0; i < particleCount; i++) {
+        this.createParticle(x, y, dx, dy, velocity, 'main');
+      }
+      
+      // Create trail particles for smooth following
+      if (velocity > 2) {
+        const trailCount = Math.floor(particleCount * 0.6);
+        for (let i = 0; i < trailCount; i++) {
+          this.createTrailParticle(x, y, dx, dy, velocity);
+        }
+      }
+      
+      // Sparkle effect on fast movement
+      if (velocity > 15) {
+        this.createSparkle(x, y, velocity);
+      }
+    }
+    
+    this.lastX = x;
+    this.lastY = y;
+  }
+
+  createParticle(x, y, dx, dy, velocity, type = 'main') {
+    const spread = type === 'trail' ? 5 : 15;
+    const sizeMultiplier = type === 'trail' ? 0.7 : 1;
+    
+    const particle = {
+      x: x + (Math.random() - 0.5) * spread,
+      y: y + (Math.random() - 0.5) * spread,
+      size: (1.5 + Math.random() * 2.5) * sizeMultiplier,
+      speed: 0.3 + Math.random() * 1.5,
+      angle: Math.atan2(dy, dx) + (Math.random() - 0.5) * 0.8,
+      rotation: Math.random() * Math.PI * 2,
+      rotationSpeed: (Math.random() - 0.5) * 0.3,
+      color: this.getParticleColor(velocity),
+      life: 60 + Math.random() * 40,
+      maxLife: 60 + Math.random() * 40,
+      decay: 0.8 + Math.random() * 1.2,
+      velocity: velocity * 0.05,
+      type: type,
+      pulsePhase: Math.random() * Math.PI * 2,
+      gravityStrength: 0.05 + Math.random() * 0.1
+    };
+    
+    if (type === 'trail') {
+      this.trailParticles.push(particle);
+      if (this.trailParticles.length > this.maxTrailParticles) {
+        this.trailParticles.shift();
+      }
+    } else {
+      this.particles.push(particle);
+      if (this.particles.length > this.maxParticles) {
+        this.particles.shift();
+      }
+    }
+  }
+
+  createTrailParticle(x, y, dx, dy, velocity) {
+    // Create smaller, more subtle trail particles
+    const particle = {
+      x: x + (Math.random() - 0.5) * 8,
+      y: y + (Math.random() - 0.5) * 8,
+      size: 0.8 + Math.random() * 1.5,
+      speed: 0.2 + Math.random() * 0.8,
+      angle: Math.atan2(dy, dx) + (Math.random() - 0.5) * 0.3,
+      rotation: 0,
+      rotationSpeed: 0,
+      color: this.getTrailColor(),
+      life: 40 + Math.random() * 20,
+      maxLife: 40 + Math.random() * 20,
+      decay: 1.2 + Math.random() * 0.8,
+      velocity: velocity * 0.03,
+      type: 'trail',
+      pulsePhase: Math.random() * Math.PI * 2,
+      gravityStrength: 0.02
+    };
+    
+    this.trailParticles.push(particle);
+    if (this.trailParticles.length > this.maxTrailParticles) {
+      this.trailParticles.shift();
+    }
+  }
+
+  createSparkle(x, y, velocity) {
+    // Create sparkle effect for fast movement
+    for (let i = 0; i < 3; i++) {
+      const sparkle = {
+        x: x + (Math.random() - 0.5) * 20,
+        y: y + (Math.random() - 0.5) * 20,
+        size: 1 + Math.random() * 2,
+        speed: 0.1,
+        angle: Math.random() * Math.PI * 2,
+        rotation: 0,
+        rotationSpeed: (Math.random() - 0.5) * 0.5,
+        color: `hsl(${(this.hue + Math.random() * 60) % 360}, 100%, 80%)`,
+        life: 30 + Math.random() * 20,
+        maxLife: 30 + Math.random() * 20,
+        decay: 1.5 + Math.random(),
+        velocity: 0,
+        type: 'sparkle',
+        pulsePhase: Math.random() * Math.PI * 2,
+        gravityStrength: 0
+      };
+      
+      this.particles.push(sparkle);
+    }
+  }
+
+  createBurst(x, y) {
+    // Enhanced click burst effect
+    const burstCount = 12 + Math.random() * 8;
+    for (let i = 0; i < burstCount; i++) {
+      const angle = (Math.PI * 2 * i) / burstCount + Math.random() * 0.5;
+      const speed = 2 + Math.random() * 3;
+      
+      const burst = {
+        x: x + (Math.random() - 0.5) * 5,
+        y: y + (Math.random() - 0.5) * 5,
+        size: 2 + Math.random() * 3,
+        speed: speed,
+        angle: angle,
+        rotation: Math.random() * Math.PI * 2,
+        rotationSpeed: (Math.random() - 0.5) * 0.4,
+        color: this.getBurstColor(),
+        life: 80 + Math.random() * 40,
+        maxLife: 80 + Math.random() * 40,
+        decay: 0.6 + Math.random() * 0.8,
+        velocity: speed,
+        type: 'burst',
+        pulsePhase: Math.random() * Math.PI * 2,
+        gravityStrength: 0.08
+      };
+      
+      this.particles.push(burst);
+    }
+  }
+
+  getParticleColor(velocity) {
+    const saturation = Math.min(100, 70 + velocity);
+    const lightness = Math.min(70, 50 + velocity * 0.5);
+    return `hsl(${this.hue % 360}, ${saturation}%, ${lightness}%)`;
+  }
+
+  getTrailColor() {
+    const trailHue = (this.hue + 30) % 360;
+    return `hsl(${trailHue}, 80%, 60%)`;
+  }
+
+  getBurstColor() {
+    const burstHue = (this.hue + Math.random() * 120) % 360;
+    return `hsl(${burstHue}, 100%, 65%)`;
+  }
+
+  updateParticles() {
+    // Update main particles
+    for (let i = this.particles.length - 1; i >= 0; i--) {
+      const p = this.particles[i];
+      this.updateSingleParticle(p);
+      
+      if (p.life <= 0) {
+        this.particles.splice(i, 1);
+      }
+    }
+    
+    // Update trail particles
+    for (let i = this.trailParticles.length - 1; i >= 0; i--) {
+      const p = this.trailParticles[i];
+      this.updateSingleParticle(p);
+      
+      if (p.life <= 0) {
+        this.trailParticles.splice(i, 1);
+      }
+    }
+  }
+
+  updateSingleParticle(p) {
+    // Enhanced physics
+    p.x += Math.cos(p.angle) * p.speed;
+    p.y += Math.sin(p.angle) * p.speed;
+    
+    // Apply gravity based on particle type
+    p.y += p.gravityStrength;
+    
+    // Update rotation
+    p.rotation += p.rotationSpeed;
+    
+    // Add subtle oscillation
+    p.pulsePhase += 0.1;
+    const oscillation = Math.sin(p.pulsePhase) * 0.5;
+    p.x += oscillation;
+    
+    // Slow down over time
+    p.speed *= 0.995;
+    
+    // Update life
+    p.life -= p.decay;
+  }
+
+  drawParticles() {
+    // Clear with slight trail effect for smoother appearance
+    this.ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    
+    // Draw trail particles first (behind main particles)
+    this.drawParticleSet(this.trailParticles, 0.6);
+    
+    // Draw main particles
+    this.drawParticleSet(this.particles, 1);
+  }
+
+  drawParticleSet(particleSet, baseAlpha) {
+    for (const p of particleSet) {
+      this.ctx.save();
+      this.ctx.translate(p.x, p.y);
+      this.ctx.rotate(p.rotation);
+      
+      // Enhanced alpha calculation with pulsing
+      const lifeRatio = p.life / p.maxLife;
+      const pulse = 0.8 + 0.2 * Math.sin(p.pulsePhase);
+      const alpha = Math.max(0, lifeRatio * baseAlpha * pulse);
+      
+      this.ctx.globalAlpha = alpha;
+      
+      // Enhanced particle rendering
+      if (p.type === 'sparkle') {
+        this.drawSparkleParticle(p);
+      } else if (p.type === 'trail') {
+        this.drawTrailParticle(p);
+      } else {
+        this.drawMainParticle(p);
+      }
+      
+      this.ctx.restore();
+    }
+  }
+
+  drawMainParticle(p) {
+    // Gradient particle with glow
+    const gradient = this.ctx.createRadialGradient(0, 0, 0, 0, 0, p.size);
+    gradient.addColorStop(0, p.color);
+    gradient.addColorStop(0.7, p.color.replace(')', ', 0.7)').replace('hsl', 'hsla'));
+    gradient.addColorStop(1, 'transparent');
+    
+    this.ctx.fillStyle = gradient;
+    this.ctx.beginPath();
+    this.ctx.arc(0, 0, p.size, 0, Math.PI * 2);
+    this.ctx.fill();
+  }
+
+  drawTrailParticle(p) {
+    // Simple solid circle for trail
+    this.ctx.fillStyle = p.color;
+    this.ctx.beginPath();
+    this.ctx.arc(0, 0, p.size, 0, Math.PI * 2);
+    this.ctx.fill();
+  }
+
+  drawSparkleParticle(p) {
+    // Star-like sparkle
+    this.ctx.fillStyle = p.color;
+    this.ctx.strokeStyle = p.color;
+    this.ctx.lineWidth = 0.5;
+    
+    // Draw sparkle shape
+    this.ctx.beginPath();
+    this.ctx.moveTo(0, -p.size);
+    this.ctx.lineTo(p.size * 0.3, 0);
+    this.ctx.lineTo(p.size, 0);
+    this.ctx.lineTo(p.size * 0.3, 0);
+    this.ctx.lineTo(0, p.size);
+    this.ctx.lineTo(-p.size * 0.3, 0);
+    this.ctx.lineTo(-p.size, 0);
+    this.ctx.lineTo(-p.size * 0.3, 0);
+    this.ctx.closePath();
+    this.ctx.fill();
+    this.ctx.stroke();
+  }
+
+  animate() {
+    this.frameCount++;
+    
+    // Update hue for color cycling
+    if (this.frameCount % 2 === 0) { // Slower hue change
+      this.hue = (this.hue + 1) % 360;
+    }
+    
+    // Performance optimization: skip some frames on mobile
+    if (this.quality.renderEveryFrame || this.frameCount % 2 === 0) {
+      this.updateParticles();
+      this.drawParticles();
+    }
+    
+    requestAnimationFrame(() => this.animate());
+  }
+
+  // Performance monitoring
+  destroy() {
+    if (this.canvas && this.canvas.parentNode) {
+      this.canvas.parentNode.removeChild(this.canvas);
+    }
+  }
+}
+
+// Initialize enhanced cursor effect
+window.addEventListener('load', () => {
+  // Only initialize on non-touch devices
+  if (!('ontouchstart' in window || navigator.maxTouchPoints)) {
+    // Remove old cursor if it exists
+    const existingCanvas = document.querySelector('canvas[style*="z-index: 9999"]');
+    if (existingCanvas) {
+      existingCanvas.remove();
+    }
+    
+    // Initialize enhanced version
+    window.enhancedCursor = new EnhancedRainbowCursor();
+  }
+});
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', () => {
+  if (window.enhancedCursor) {
+    window.enhancedCursor.destroy();
+  }
+});

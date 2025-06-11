@@ -1,0 +1,40 @@
+/* Gradient Text Effect for Amira Rahim */
+.text-gradient {
+  background: linear-gradient(
+    90deg,
+    #FF3366 0%,    /* Pink */
+    #FF6B6B 20%,   /* Coral */
+    #FFA07A 40%,   /* Light Salmon */
+    #FFD166 60%,   /* Gold */
+    #06D6A0 80%,   /* Mint Green */
+    #118AB2 100%   /* Blue */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-size: 200% auto;
+  animation: gradientFlow 8s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Ensure the gradient is visible on all backgrounds */
+.text-gradient {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}

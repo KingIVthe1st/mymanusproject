@@ -1,0 +1,187 @@
+/* Ultimate Featured In Icons Fix - Clean single icon display with purple button fix */
+
+/* Force load Font Awesome if not already loaded */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+/* Clean the Featured In section - ensure only one icon per section */
+#featured-in .featured-item {
+    position: relative !important;
+}
+
+/* Icon containers - ensure proper display */
+#featured-in .featured-item .inline-block {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 64px !important;
+    height: 64px !important;
+    border-radius: 50% !important;
+    margin-bottom: 1.5rem !important;
+    position: relative !important;
+    overflow: hidden !important;
+    z-index: 1 !important;
+}
+
+/* Remove any potential duplicate content */
+#featured-in .featured-item .inline-block::before,
+#featured-in .featured-item .inline-block::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Ensure ONLY one icon displays per container */
+#featured-in .featured-item .inline-block > *:not(.fas) {
+    display: none !important;
+}
+
+/* Force Font Awesome icons to display correctly */
+#featured-in .fas {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", "fa-solid-900", "FontAwesome" !important;
+    font-weight: 900 !important;
+    font-size: 2rem !important;
+    color: white !important;
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    text-rendering: auto !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Specific icon content to ensure they display */
+#featured-in .fa-newspaper::before {
+    content: "\f1ea" !important;
+}
+
+#featured-in .fa-microphone::before {
+    content: "\f130" !important;
+}
+
+#featured-in .fa-trophy::before {
+    content: "\f091" !important;
+}
+
+/* Icon Container Backgrounds with enhanced styling */
+#featured-in .featured-item:nth-child(1) .inline-block {
+    /* Publications - Purple */
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+#featured-in .featured-item:nth-child(2) .inline-block {
+    /* Podcasts - Pink */
+    background: linear-gradient(135deg, #ec4899 0%, #db2777 100%) !important;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+#featured-in .featured-item:nth-child(3) .inline-block {
+    /* Achievements - Golden/Amber */
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* CRITICAL: Fix the purple "View Full Press Kit" button */
+#featured-in .featured-item:nth-child(3) .inline-block + h4 + ul + a,
+#featured-in .featured-item:nth-child(3) a[href="#"],
+#featured-in .achievements-section a,
+a[href="#"]:has(i.fas.fa-folder-open) {
+    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4) !important;
+    transition: all 0.3s ease !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    font-size: 14px !important;
+    letter-spacing: 0.5px !important;
+    text-transform: none !important;
+}
+
+#featured-in .featured-item:nth-child(3) a[href="#"]:hover,
+a[href="#"]:has(i.fas.fa-folder-open):hover {
+    background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.6) !important;
+}
+
+/* Ensure button icon displays correctly */
+#featured-in .featured-item:nth-child(3) a[href="#"] .fas,
+a[href="#"]:has(i.fas.fa-folder-open) .fas {
+    color: white !important;
+    font-size: 1rem !important;
+    margin-right: 0 !important;
+}
+
+/* Hover effects for icon containers */
+#featured-in .featured-item:hover .inline-block {
+    transform: scale(1.05) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    #featured-in .featured-item .inline-block {
+        width: 56px !important;
+        height: 56px !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    #featured-in .fas {
+        font-size: 1.75rem !important;
+    }
+    
+    #featured-in .featured-item:nth-child(3) a[href="#"] {
+        padding: 10px 20px !important;
+        font-size: 13px !important;
+    }
+}
+
+/* Fallback for Font Awesome loading issues */
+#featured-in .featured-item:nth-child(1) .inline-block .fas:not(:before):not(:after) {
+    font-family: monospace !important;
+    content: "📰" !important;
+}
+
+#featured-in .featured-item:nth-child(2) .inline-block .fas:not(:before):not(:after) {
+    font-family: monospace !important;
+    content: "🎤" !important;
+}
+
+#featured-in .featured-item:nth-child(3) .inline-block .fas:not(:before):not(:after) {
+    font-family: monospace !important;
+    content: "🏆" !important;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    #featured-in .fas {
+        color: #ffffff !important;
+        text-shadow: 0 0 2px #000000 !important;
+    }
+    
+    #featured-in .featured-item .inline-block {
+        border-width: 3px !important;
+    }
+}
+
+/* Force clean display - no extra elements */
+#featured-in .featured-item .inline-block > span:not(.fas),
+#featured-in .featured-item .inline-block > div:not(.fas),
+#featured-in .featured-item .inline-block > em:not(.fas),
+#featured-in .featured-item .inline-block > strong:not(.fas) {
+    display: none !important;
+}

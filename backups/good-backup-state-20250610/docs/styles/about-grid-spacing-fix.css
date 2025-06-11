@@ -1,0 +1,59 @@
+/* About Section Grid Spacing Fix - Add padding between image and tabs on desktop */
+
+/* Direct targeting of the about section grid */
+#about .flex.flex-col {
+    gap: 2rem;
+}
+
+/* Desktop spacing */
+@media (min-width: 1024px) {
+    /* Force grid layout and spacing on desktop */
+    #about .flex.flex-col[class*="grid"] {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 5rem !important;
+        column-gap: 5rem !important;
+        align-items: start !important;
+    }
+    
+    /* Add margin to the portrait frame container */
+    #about .portrait-frame {
+        margin-right: 1.5rem !important;
+    }
+    
+    /* Add padding to the tabs/cards container */
+    #about .relative.w-full {
+        padding-left: 1rem !important;
+    }
+}
+
+/* Extra large screens */
+@media (min-width: 1280px) {
+    #about .flex.flex-col[class*="grid"] {
+        gap: 6rem !important;
+        column-gap: 6rem !important;
+    }
+    
+    #about .portrait-frame {
+        margin-right: 2rem !important;
+    }
+}
+
+/* Ensure the sticky container doesn't interfere with spacing */
+@media (min-width: 1024px) {
+    #about div[class*="sticky"] {
+        position: sticky;
+        top: 2rem;
+    }
+}
+
+/* High specificity override for Tailwind's gap-8 */
+#about .gap-8 {
+    gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+    #about .gap-8 {
+        gap: 5rem !important;
+    }
+}

@@ -1,0 +1,16 @@
+/* Fix Orange Decorative Circle Position */
+
+.decorative-circle-education-2 {
+    bottom: -10% !important; /* Moved down more from -5% to -10% */
+    right: 3% !important; /* Moved right from 8% to 3% */
+    width: 250px !important;
+    height: 250px !important;
+    background: linear-gradient(135deg, #ec4899, #f59e0b) !important;
+    animation-delay: 2s !important;
+}
+
+/* Ensure the circle stays in proper position */
+#education .decorative-circle-education-2 {
+    bottom: -10% !important;
+    right: 3% !important;
+}

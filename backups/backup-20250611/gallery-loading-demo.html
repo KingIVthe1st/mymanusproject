@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Loading Demo - The Color Poet</title>
+    
+    <!-- Gallery Paint Loader CSS -->
+    <link rel="stylesheet" href="styles/gallery-paint-loader.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: #FEFEF8;
+            color: #1f2937;
+        }
+        
+        .main-content {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 5s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+        
+        .tagline {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #EC4899;
+            margin-bottom: 2rem;
+        }
+        
+        p {
+            font-size: 1.125rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #EC4899;
+            box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: linear-gradient(135deg, #EC4899, #8B5CF6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+        
+        .feature-card p {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin: 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #EC4899, #8B5CF6);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 1rem;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1>Welcome to The Gallery</h1>
+        <p class="tagline">Where Art Comes to Life</p>
+        <p>
+            You've just experienced the elegant gallery-style loading screen designed 
+            specifically for Amira Rahim - The Color Poet. This creates the perfect 
+            first impression for collectors and students alike.
+        </p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Paint Stroke Animation</h3>
+                <p>Organic brushstrokes appear one by one, building an abstract composition</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>Gallery Lighting</h3>
+                <p>Soft spotlight effects create an authentic gallery atmosphere</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🖌️</div>
+                <h3>Artist's Palette Progress</h3>
+                <p>Loading progress shown through paint dots filling with color</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Elegant Typography</h3>
+                <p>Hand-painted letter effect with beautiful script for "The Color Poet"</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Brand Alignment</h3>
+                <p>Perfect for luxury art collectors and aspiring artists</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💎</div>
+                <h3>Premium Experience</h3>
+                <p>Sets expectations for a high-end art portfolio from the first moment</p>
+            </div>
+        </div>
+        
+        <div>
+            <a href="#" class="cta-button" onclick="location.reload(); return false;">Experience Again</a>
+            <a href="index.html" class="cta-button">Visit Main Site</a>
+        </div>
+    </main>
+    
+    <!-- Gallery Paint Loader Script -->
+    <script src="scripts/gallery-paint-loader.js"></script>
+    
+    <script>
+        // Force show loader for demo
+        sessionStorage.removeItem('galleryLoaderShown');
+    </script>
+</body>
+</html>

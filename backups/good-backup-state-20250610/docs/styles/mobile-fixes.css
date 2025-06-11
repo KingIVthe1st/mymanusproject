@@ -1,0 +1,131 @@
+/* Mobile structure fixes for iPhone */
+@media (max-width: 428px) { /* iPhone Pro Max width */
+    /* Featured In section fixes */
+    .featured-logos-container {
+        padding: 1.25rem 1rem;
+        margin: 0 0.5rem;
+    }
+    
+    .featured-logo-item {
+        width: 100%;
+        padding: 0.75rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+    
+    .featured-logo-item div {
+        font-size: 0.875rem;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+        font-weight: 700;
+    }
+    
+    /* Podcast & Interviews section fixes */
+    .media-card {
+        margin-bottom: 2rem;
+    }
+    
+    /* Artwork grid fixes */
+    .artwork-grid {
+        gap: 1.5rem !important;
+    }
+    
+    .artwork-item {
+        margin-bottom: 1rem;
+    }
+    
+    /* Button fixes */
+    .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 0.875rem 1.5rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+    }
+    
+    /* Section spacing fixes */
+    section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
+    
+    /* Text size adjustments */
+    h3.text-2xl {
+        font-size: 1.75rem;
+    }
+    
+    /* Card layout fixes */
+    .grid {
+        row-gap: 2rem !important;
+    }
+    
+    /* Form element fixes */
+    input, textarea, select {
+        font-size: 16px !important;
+        padding: 0.75rem !important;
+    }
+    
+    /* Navigation fixes */
+    .navbar-container {
+        padding: 0.75rem 1rem;
+    }
+    
+    /* Footer fixes */
+    .footer-content {
+        text-align: center;
+        gap: 2rem !important;
+    }
+    
+    /* Hero section fixes */
+    .hero-content {
+        padding: 0 1rem;
+    }
+    
+    /* About section fixes */
+    .about-content {
+        gap: 2rem !important;
+    }
+    
+    /* Fix grid layouts */
+    .grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    
+    .grid-cols-3 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    
+    /* Fix text overflow issues */
+    p, h1, h2, h3, h4, h5, h6, span, div {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        -ms-word-break: break-all;
+        word-break: break-word;
+        -ms-hyphens: auto;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
+    
+    /* Fix spacing in collaboration section */
+    .collab-card {
+        padding: 2rem 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Fix contact form on mobile */
+    .contact-form {
+        padding: 2rem 1.5rem;
+    }
+    
+    /* Fix social icons spacing */
+    .social-link {
+        margin: 0 0.5rem;
+    }
+}

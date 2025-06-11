@@ -1,0 +1,265 @@
+/**
+ * TESTIMONIALS PERFORMANCE OPTIMIZATION CSS
+ * =========================================
+ * 
+ * Optimizations for faster loading and smoother scrolling:
+ * - GPU acceleration for smooth animations
+ * - Optimized layout rendering
+ * - Reduced repaints and layout shifts
+ * - Mobile-first responsive optimizations
+ */
+
+/* ===== CONTAINER OPTIMIZATIONS ===== */
+.testimonials-container {
+    /* GPU Acceleration */
+    transform: translateZ(0) !important;
+    will-change: scroll-position !important;
+    
+    /* Optimized Scrolling */
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    
+    /* Layout Containment */
+    contain: layout style paint !important;
+    
+    /* Smooth Scroll Bars */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(139, 69, 19, 0.3) transparent;
+}
+
+.testimonials-container::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+}
+
+.testimonials-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.testimonials-container::-webkit-scrollbar-thumb {
+    background: rgba(139, 69, 19, 0.3);
+    border-radius: 2px;
+}
+
+.testimonials-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 69, 19, 0.5);
+}
+
+/* ===== TESTIMONIAL CARDS OPTIMIZATIONS ===== */
+.testimonial-card {
+    /* GPU Acceleration */
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    will-change: transform !important;
+    
+    /* Optimized Rendering */
+    contain: layout style !important;
+    
+    /* Prevent Layout Shifts */
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+    
+    /* Smooth Transitions */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.testimonial-card:hover {
+    transform: translateZ(0) scale(1.02) !important;
+}
+
+/* ===== TESTIMONIAL TRACK OPTIMIZATIONS ===== */
+.testimonials-track {
+    /* Flexbox Performance */
+    display: flex !important;
+    align-items: stretch !important;
+    
+    /* GPU Acceleration */
+    transform: translateZ(0) !important;
+    will-change: transform !important;
+    
+    /* Layout Containment */
+    contain: layout !important;
+    
+    /* Prevent Layout Shifts */
+    min-width: max-content !important;
+}
+
+/* ===== AVATAR OPTIMIZATIONS ===== */
+.customer-avatar {
+    /* GPU Acceleration */
+    transform: translateZ(0) !important;
+    
+    /* Optimized Rendering */
+    contain: layout style paint !important;
+    
+    /* Prevent Layout Shifts */
+    flex-shrink: 0 !important;
+}
+
+/* ===== NAVIGATION DOTS OPTIMIZATIONS ===== */
+.testimonials-navigation {
+    /* GPU Acceleration */
+    transform: translateZ(0) !important;
+    
+    /* Layout Containment */
+    contain: layout !important;
+}
+
+.nav-dot {
+    /* GPU Acceleration */
+    transform: translateZ(0) !important;
+    
+    /* Smooth Transitions */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    
+    /* Optimized Rendering */
+    contain: layout style !important;
+}
+
+/* ===== LOADING STATE OPTIMIZATIONS ===== */
+.testimonials-loading {
+    /* Skeleton Loading Animation */
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: testimonials-skeleton 1.5s infinite;
+}
+
+@keyframes testimonials-skeleton {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS FOR DIFFERENT DEVICES ===== */
+
+/* High-end devices - Full effects */
+@media (min-width: 1024px) and (min-resolution: 144dpi) {
+    .testimonials-container {
+        scroll-snap-type: x mandatory;
+        scroll-padding: 2rem;
+    }
+    
+    .testimonial-card {
+        scroll-snap-align: start;
+    }
+}
+
+/* Mid-range devices - Reduced effects */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .testimonial-card {
+        will-change: auto !important;
+    }
+    
+    .testimonials-container {
+        contain: layout !important;
+    }
+}
+
+/* Low-end/mobile devices - Minimal effects */
+@media (max-width: 767px) {
+    .testimonial-card {
+        transform: none !important;
+        will-change: auto !important;
+        contain: layout !important;
+    }
+    
+    .testimonials-container {
+        scroll-behavior: auto !important;
+        contain: none !important;
+    }
+    
+    .testimonial-card:hover {
+        transform: none !important;
+    }
+}
+
+/* ===== ACCESSIBILITY OPTIMIZATIONS ===== */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .testimonials-container {
+        scroll-behavior: auto !important;
+    }
+    
+    .testimonial-card {
+        transition: none !important;
+        transform: none !important;
+        will-change: auto !important;
+    }
+    
+    .nav-dot {
+        transition: none !important;
+    }
+    
+    .testimonials-loading {
+        animation: none !important;
+        background: #f0f0f0 !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .testimonials-container::-webkit-scrollbar-thumb {
+        background: #000 !important;
+    }
+    
+    .nav-dot {
+        border: 2px solid currentColor !important;
+    }
+}
+
+/* ===== FOCUS IMPROVEMENTS ===== */
+.testimonial-card:focus-within {
+    outline: 2px solid #007acc !important;
+    outline-offset: 2px !important;
+    z-index: 10 !important;
+}
+
+/* ===== LAZY LOADING OPTIMIZATION ===== */
+.testimonials-section {
+    /* Intersection Observer Root */
+    contain: layout !important;
+}
+
+/* ===== PRINT OPTIMIZATIONS ===== */
+@media print {
+    .testimonials-container {
+        overflow: visible !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .testimonials-track {
+        flex-wrap: wrap !important;
+    }
+    
+    .testimonial-card {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+    
+    .testimonials-navigation {
+        display: none !important;
+    }
+}
+
+/* ===== CONTENT VISIBILITY OPTIMIZATION ===== */
+@supports (content-visibility: auto) {
+    .testimonial-card {
+        content-visibility: auto;
+        contain-intrinsic-size: 320px 200px;
+    }
+}
+
+/* ===== LAYER OPTIMIZATION ===== */
+@supports (will-change: transform) {
+    .testimonials-container {
+        isolation: isolate;
+    }
+}
+
+/* ===== SMOOTH SCROLLING FALLBACKS ===== */
+@supports not (scroll-behavior: smooth) {
+    .testimonials-container {
+        /* JavaScript will handle smooth scrolling */
+        scroll-behavior: auto !important;
+    }
+}

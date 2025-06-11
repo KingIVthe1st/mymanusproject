@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Paint Loading - Amira Rahim</title>
+    
+    <!-- Ultimate Paint Loader CSS -->
+    <link rel="stylesheet" href="styles/ultimate-paint-loader.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: white;
+            cursor: none;
+        }
+        
+        .main-content {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 4s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ff6384, #36a2eb, #ffce56, #9966ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 0 20px rgba(255, 99, 132, 0.5));
+        }
+        
+        p {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 99, 132, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 99, 132, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 20px currentColor);
+        }
+        
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-card p {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #ff6384, #9966ff);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 99, 132, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                cursor: auto;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1>Experience the Ultimate</h1>
+        <p>
+            You've just witnessed the next evolution in loading experiences. 
+            Liquid paint animations, organic shapes, and cutting-edge effects 
+            that put your site in a league of its own.
+        </p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Liquid Canvas Animation</h3>
+                <p>Real-time paint physics with organic blob shapes and dynamic connections</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>WebGL-Style Effects</h3>
+                <p>GPU-accelerated animations with liquid distortion and morphing gradients</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🌊</div>
+                <h3>Interactive Paint Drops</h3>
+                <p>Mouse-reactive paint trails with velocity-based physics and organic movement</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Custom Cursor Experience</h3>
+                <p>Premium cursor effects that respond to movement and create paint trails</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>Performance Optimized</h3>
+                <p>60fps animations with intelligent rendering and mobile optimization</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💎</div>
+                <h3>Award-Winning Quality</h3>
+                <p>Agency-level design that sets your brand apart from the competition</p>
+            </div>
+        </div>
+        
+        <div>
+            <a href="#" class="cta-button" onclick="location.reload(); return false;">Experience Again</a>
+            <a href="index.html" class="cta-button">Visit Main Site</a>
+        </div>
+    </main>
+    
+    <!-- Ultimate Paint Loader Script -->
+    <script src="scripts/ultimate-paint-loader.js"></script>
+    
+    <script>
+        // Force show loader for demo
+        sessionStorage.removeItem('loaderShown');
+    </script>
+</body>
+</html>

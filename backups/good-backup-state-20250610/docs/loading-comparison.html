@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Screen Comparison - The Color Poet</title>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f9fafb;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .comparison-container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 2rem auto;
+            text-align: center;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 3rem;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .option-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .option-preview {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option-preview.dark {
+            background: #0a0a0a;
+        }
+        
+        .option-preview.light {
+            background: #FEFEF8;
+        }
+        
+        .preview-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+        
+        .preview-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .preview-title.gradient {
+            background: linear-gradient(135deg, #ff6384, #36a2eb, #ffce56, #9966ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .preview-title.dark {
+            color: #1f2937;
+        }
+        
+        .preview-subtitle {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+        
+        .preview-subtitle.light-text {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .preview-subtitle.dark-text {
+            color: #EC4899;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.25rem;
+            text-transform: none;
+            letter-spacing: 0.05em;
+        }
+        
+        .option-details {
+            padding: 2rem;
+        }
+        
+        .option-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        
+        .option-description {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+            text-align: left;
+        }
+        
+        .features-list li {
+            padding: 0.5rem 0;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+        }
+        
+        .features-list li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .demo-button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-button.current {
+            background: #1f2937;
+            color: white;
+        }
+        
+        .demo-button.current:hover {
+            background: #374151;
+            transform: translateY(-2px);
+        }
+        
+        .demo-button.gallery {
+            background: linear-gradient(135deg, #EC4899, #8B5CF6);
+            color: white;
+        }
+        
+        .demo-button.gallery:hover {
+            background: linear-gradient(135deg, #DB2777, #7C3AED);
+            transform: translateY(-2px);
+        }
+        
+        .recommendation {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .recommendation h2 {
+            color: #92400e;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .recommendation p {
+            color: #78350f;
+            line-height: 1.6;
+        }
+        
+        /* Paint stroke preview animations */
+        .paint-stroke-preview {
+            position: absolute;
+            background: #EC4899;
+            opacity: 0.3;
+            border-radius: 20px;
+        }
+        
+        .stroke-preview-1 {
+            width: 120px;
+            height: 20px;
+            top: 30%;
+            left: 20%;
+            transform: rotate(-15deg);
+            background: #F6C347;
+        }
+        
+        .stroke-preview-2 {
+            width: 100px;
+            height: 25px;
+            top: 50%;
+            right: 25%;
+            transform: rotate(25deg);
+            background: #8B5CF6;
+        }
+        
+        /* Liquid blob preview */
+        .liquid-blob-preview {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(20px);
+            opacity: 0.3;
+        }
+        
+        .blob-preview-1 {
+            width: 150px;
+            height: 150px;
+            background: #ff6384;
+            top: -30px;
+            left: -30px;
+        }
+        
+        .blob-preview-2 {
+            width: 120px;
+            height: 120px;
+            background: #36a2eb;
+            bottom: -20px;
+            right: -20px;
+        }
+    </style>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="comparison-container">
+        <h1>Loading Screen Comparison</h1>
+        <p class="subtitle">Choose the perfect entrance for "The Color Poet"</p>
+        
+        <div class="options-grid">
+            <!-- Current Tech-Style Loading -->
+            <div class="option-card">
+                <div class="option-preview dark">
+                    <div class="liquid-blob-preview blob-preview-1"></div>
+                    <div class="liquid-blob-preview blob-preview-2"></div>
+                    <div class="preview-content">
+                        <h3 class="preview-title gradient">AMIRA RAHIM</h3>
+                        <p class="preview-subtitle light-text">The Color Poet</p>
+                    </div>
+                </div>
+                <div class="option-details">
+                    <h3 class="option-title">Current: Tech-Style Liquid</h3>
+                    <p class="option-description">
+                        Dark, modern, tech-focused loading experience with liquid paint effects and WebGL-style animations.
+                    </p>
+                    <ul class="features-list">
+                        <li>Dark background (#0a0a0a)</li>
+                        <li>Liquid blob animations</li>
+                        <li>Tech-style progress ring</li>
+                        <li>Neon color effects</li>
+                        <li>Canvas particle system</li>
+                    </ul>
+                    <a href="ultimate-loading-demo.html" class="demo-button current">View Current Demo</a>
+                </div>
+            </div>
+            
+            <!-- New Gallery-Style Loading -->
+            <div class="option-card">
+                <div class="option-preview light">
+                    <div class="paint-stroke-preview stroke-preview-1"></div>
+                    <div class="paint-stroke-preview stroke-preview-2"></div>
+                    <div class="preview-content">
+                        <h3 class="preview-title dark">AMIRA RAHIM</h3>
+                        <p class="preview-subtitle dark-text">The Color Poet</p>
+                    </div>
+                </div>
+                <div class="option-details">
+                    <h3 class="option-title">New: Gallery-Style Elegance</h3>
+                    <p class="option-description">
+                        Light, artistic, gallery-inspired loading experience with paint strokes and elegant typography.
+                    </p>
+                    <ul class="features-list">
+                        <li>Gallery white background</li>
+                        <li>Paint stroke animations</li>
+                        <li>Artist palette progress</li>
+                        <li>Elegant script typography</li>
+                        <li>Gallery lighting effects</li>
+                    </ul>
+                    <a href="gallery-loading-demo.html" class="demo-button gallery">View Gallery Demo</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="recommendation">
+            <h2>🎨 Recommendation</h2>
+            <p>
+                For an internationally collected artist whose work graces royal collections and commands premium prices, 
+                the <strong>Gallery-Style loading screen</strong> better represents the brand. It immediately communicates 
+                luxury, artistry, and sophistication - setting the right expectations for visitors who are either 
+                high-end collectors or aspiring artists seeking mentorship from "The Color Poet."
+            </p>
+        </div>
+    </div>
+</body>
+</html>

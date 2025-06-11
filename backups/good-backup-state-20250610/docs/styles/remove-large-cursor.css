@@ -1,0 +1,54 @@
+/* Remove Large Purple Circle Cursor Effects */
+
+/* Hide magnetic cursor if it gets created */
+.magnetic-cursor {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+/* Hide paint drops and splash effects */
+.paint-drop,
+.paint-splash {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+/* Keep small interactive particles - these are the ones we want */
+.interactive-particle {
+    /* Allow these to show - they're small and nice */
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, rgba(255,105,180,0.8) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    animation: particleFade 2s ease-out forwards;
+}
+
+@keyframes particleFade {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5) translateY(-20px);
+    }
+}
+
+/* Ensure cursor-related animations don't interfere */
+@media (prefers-reduced-motion: reduce) {
+    .magnetic-cursor,
+    .paint-drop,
+    .paint-splash {
+        display: none !important;
+    }
+    
+    .interactive-particle {
+        animation: none;
+        opacity: 0.5;
+    }
+}

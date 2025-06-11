@@ -1,0 +1,24 @@
+/* Navigation Override - Ensures black text in desktop menu */
+@media (min-width: 1024px) {
+  .navbar-link,
+  .navbar-link:hover,
+  .navbar-link:active,
+  .navbar-link:focus,
+  .navbar-link.active {
+    color: #000000 !important;
+    text-shadow: none !important;
+  }
+  
+  .navbar-link::before,
+  .navbar-link:hover::before {
+    background: #000000 !important;
+  }
+  
+  .navbar-link:hover {
+    background: rgba(0, 0, 0, 0.05) !important;
+  }
+  
+  .navbar-link.active {
+    font-weight: 700 !important;
+  }
+}
