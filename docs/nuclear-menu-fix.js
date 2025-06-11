@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Wait for everything to be loaded
     setTimeout(function() {
         // Remove any existing menu-related styles and scripts
-        const menuStyles = document.querySelectorAll('style, link[rel="stylesheet"]');
-        menuStyles.forEach(style => {
+        const existingStyles = document.querySelectorAll('style, link[rel="stylesheet"]');
+        existingStyles.forEach(style => {
             const styleContent = style.textContent || style.href || '';
             if (styleContent.includes('mobile-menu') || styleContent.includes('mobileMenu') || 
                 styleContent.includes('mobileNav') || styleContent.includes('navbar-mobile')) {
@@ -14,6 +14,33 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
+        // Add styles for menu link hover effects
+        const menuStyles = document.createElement('style');
+        menuStyles.textContent = `
+            .nuclear-menu-link:hover {
+                background: rgba(255,255,255,0.15) !important;
+                transform: translateY(-2px) !important;
+                box-shadow: 0 6px 12px rgba(0,0,0,0.15) !important;
+            }
+            
+            .nuclear-menu-link:active {
+                transform: translateY(1px) !important;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+            }
+            
+            @keyframes fadeInRight {
+                from {
+                    opacity: 0;
+                    transform: translateX(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        `;
+        document.head.appendChild(menuStyles);
+
         // Create new menu HTML
         const newMenuHTML = `
             <!-- New Mobile Menu Overlay -->
@@ -39,20 +66,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 width: 80%;
                 max-width: 400px;
                 height: 100%;
-                background: #4a3a7a;
+                background: linear-gradient(135deg, #9747FF 0%, #E8508D 100%);
                 z-index: 9999;
                 transform: translateX(100%);
                 transition: transform 0.3s ease;
                 padding: 20px;
                 overflow-y: auto;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+                box-shadow: -5px 0 25px rgba(0,0,0,0.3);
+                border-left: 1px solid rgba(255,255,255,0.1);
             ">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.2);">
                     <img src="images/logo/amira-logo.webp" alt="Amira Rahim" style="height: 40px;">
                     <button id="nuclear-menu-close" style="
                         background: none;
-                        border: none;
+                        border: 1px solid rgba(255,255,255,0.2);
                         color: white;
+                        border-radius: 50%;
                         font-size: 24px;
                         cursor: pointer;
                         padding: 10px;
@@ -69,10 +98,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         font-size: 18px;
                         padding: 12px 15px;
                         border-radius: 8px;
-                        transition: all 0.2s ease;
+                        transition: all 0.3s ease;
                         display: flex;
                         align-items: center;
                         gap: 10px;
+                        background: rgba(255,255,255,0.08);
+                        backdrop-filter: blur(5px);
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                        border: 1px solid rgba(255,255,255,0.1);
                     ">
                         <i class="fas fa-palette"></i>
                         <span>Artwork</span>
@@ -84,10 +117,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         font-size: 18px;
                         padding: 12px 15px;
                         border-radius: 8px;
-                        transition: all 0.2s ease;
+                        transition: all 0.3s ease;
                         display: flex;
                         align-items: center;
                         gap: 10px;
+                        background: rgba(255,255,255,0.08);
+                        backdrop-filter: blur(5px);
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                        border: 1px solid rgba(255,255,255,0.1);
                     ">
                         <i class="fas fa-star"></i>
                         <span>Featured In</span>
@@ -99,10 +136,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         font-size: 18px;
                         padding: 12px 15px;
                         border-radius: 8px;
-                        transition: all 0.2s ease;
+                        transition: all 0.3s ease;
                         display: flex;
                         align-items: center;
                         gap: 10px;
+                        background: rgba(255,255,255,0.08);
+                        backdrop-filter: blur(5px);
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                        border: 1px solid rgba(255,255,255,0.1);
                     ">
                         <i class="fas fa-graduation-cap"></i>
                         <span>Education</span>
@@ -114,10 +155,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         font-size: 18px;
                         padding: 12px 15px;
                         border-radius: 8px;
-                        transition: all 0.2s ease;
+                        transition: all 0.3s ease;
                         display: flex;
                         align-items: center;
                         gap: 10px;
+                        background: rgba(255,255,255,0.08);
+                        backdrop-filter: blur(5px);
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                        border: 1px solid rgba(255,255,255,0.1);
                     ">
                         <i class="fas fa-handshake"></i>
                         <span>Collaborate</span>
@@ -129,10 +174,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         font-size: 18px;
                         padding: 12px 15px;
                         border-radius: 8px;
-                        transition: all 0.2s ease;
+                        transition: all 0.3s ease;
                         display: flex;
                         align-items: center;
                         gap: 10px;
+                        background: rgba(255,255,255,0.08);
+                        backdrop-filter: blur(5px);
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                        border: 1px solid rgba(255,255,255,0.1);
                     ">
                         <i class="fas fa-user"></i>
                         <span>About</span>
@@ -144,10 +193,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         font-size: 18px;
                         padding: 12px 15px;
                         border-radius: 8px;
-                        transition: all 0.2s ease;
+                        transition: all 0.3s ease;
                         display: flex;
                         align-items: center;
                         gap: 10px;
+                        background: rgba(255,255,255,0.08);
+                        backdrop-filter: blur(5px);
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                        border: 1px solid rgba(255,255,255,0.1);
                         margin-top: 10px;
                         background: rgba(255,255,255,0.1);
                         justify-content: center;
@@ -182,6 +235,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 menuOverlay.style.opacity = '1';
                 mobileMenu.style.transform = 'translateX(0)';
                 mobileMenu.classList.add('active');
+                
+                // Animate menu items in
+                animateMenuItemsIn();
+                
+                // Add subtle gradient shine
+                mobileMenu.style.backgroundImage = 'linear-gradient(135deg, #9747FF 0%, #E8508D 100%), linear-gradient(45deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)';
+                mobileMenu.style.backgroundSize = '100% 100%, 200% 200%';
+                mobileMenu.style.backgroundPosition = '0 0, 0 0';
+                mobileMenu.style.animation = 'gradient-shift 8s infinite linear';
+                
+                // Add gradient animation
+                const gradientStyle = document.createElement('style');
+                gradientStyle.textContent = `
+                    @keyframes gradient-shift {
+                        0% { background-position: 0 0, 0 0; }
+                        50% { background-position: 0 0, 100% 100%; }
+                        100% { background-position: 0 0, 0 0; }
+                    }
+                `;
+                document.head.appendChild(gradientStyle);
             } else {
                 // Close menu
                 document.body.style.overflow = '';
@@ -189,10 +262,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 mobileMenu.style.transform = 'translateX(100%)';
                 mobileMenu.classList.remove('active');
                 
+                // Reset animations
+                const menuLinks = document.querySelectorAll('.nuclear-menu-link');
+                menuLinks.forEach(link => {
+                    link.style.opacity = '0';
+                    link.style.transform = 'translateX(20px)';
+                });
+                
                 setTimeout(() => {
                     menuOverlay.style.visibility = 'hidden';
                 }, 300);
             }
+        }
+        
+        // Apply animations to menu items
+        function applyMenuItemAnimations() {
+            const menuLinks = document.querySelectorAll('.nuclear-menu-link');
+            menuLinks.forEach((link, index) => {
+                link.style.opacity = '0';
+                link.style.transform = 'translateX(20px)';
+            });
+        }
+
+        function animateMenuItemsIn() {
+            const menuLinks = document.querySelectorAll('.nuclear-menu-link');
+            menuLinks.forEach((link, index) => {
+                setTimeout(() => {
+                    link.style.opacity = '1';
+                    link.style.transform = 'translateX(0)';
+                    link.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                }, index * 100);
+            });
         }
         
         // Set up event listeners
@@ -253,6 +353,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (existingMenu) {
             existingMenu.style.display = 'none';
         }
+        
+        // Initialize menu item animations
+        applyMenuItemAnimations();
         
     }, 500); // Give everything time to load
 });
