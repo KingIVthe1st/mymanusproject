@@ -563,6 +563,9 @@
     <link rel="stylesheet" href="nuclear-mobile-menu-fix.css">
     <script src="nuclear-mobile-menu-fix.js"></script>
     
+    <!-- REFRESH-PROOF MOBILE MENU FIX - Works every time, even on refresh -->
+    <script src="refresh-proof-menu-fix.js"></script>
+    
     <!-- Mobile Education Opacity Fix - Inline Override -->
     <style>
     @media (max-width: 768px) {
@@ -5317,56 +5320,33 @@ document.addEventListener('click', function(e) {
     <script src="final-menu-override.js?v=20250611193508" defer></script>
     <!-- INLINE MOBILE MENU FIX - DECEMBER 13, 2025 -->
     <link rel="stylesheet" href="inline-mobile-menu-fix.css">
+    
+    <!-- PERSISTENT MOBILE MENU FIX - Handles refresh issues -->
+    <script src="persistent-mobile-menu-fix.js"></script>
+    
+    <!-- MUTATION OBSERVER MOBILE MENU FIX - Prevents handler removal -->
+    <script src="mutation-observer-menu-fix.js"></script>
+    
     <script>
-    // FINAL INLINE FIX - This WILL make the menu work
+    // ADDITIONAL SAFEGUARD - Runs immediately
     (function() {
-        console.log('🚨 INLINE FIX ACTIVATED!');
+        console.log('🔐 SAFEGUARD: Preventing handler overwrites...');
         
-        // Wait a bit for all other scripts to load
-        setTimeout(function() {
-            const btn = document.getElementById('mobile-toggle-btn');
-            const menu = document.querySelector('.mobile-menu');
-            
-            if (!btn || !menu) {
-                console.error('Elements not found for inline fix');
+        // Protect our handlers from being overwritten
+        let originalAddEventListener = EventTarget.prototype.addEventListener;
+        EventTarget.prototype.addEventListener = function(type, listener, options) {
+            // If someone tries to add a click handler to our button, log it
+            if (this.id === 'mobile-toggle-btn' && type === 'click') {
+                console.log('⚠️ Something tried to add a click handler to mobile toggle button');
+                // Only allow it if it's our persistent handler
+                if (!this.dataset.persistentFixed) {
+                    return originalAddEventListener.call(this, type, listener, options);
+                }
+                console.log('🛡️ Blocked unauthorized handler');
                 return;
             }
-            
-            console.log('✅ Inline fix: Elements found, attaching handler...');
-            
-            // Remove ALL existing handlers
-            const newBtn = btn.cloneNode(true);
-            btn.parentNode.replaceChild(newBtn, btn);
-            
-            // Attach the ONLY handler that matters
-            newBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                console.log('🔥 INLINE HANDLER FIRED!');
-                
-                if (menu.classList.contains('hidden')) {
-                    console.log('Opening menu...');
-                    menu.classList.remove('hidden');
-                    newBtn.classList.add('active');
-                } else {
-                    console.log('Closing menu...');
-                    menu.classList.add('hidden');
-                    newBtn.classList.remove('active');
-                }
-            });
-            
-            // Also handle close button
-            const closeBtn = document.querySelector('.mobile-close-btn');
-            if (closeBtn) {
-                closeBtn.addEventListener('click', function() {
-                    menu.classList.add('hidden');
-                    newBtn.classList.remove('active');
-                });
-            }
-            
-            console.log('✅ Inline fix complete!');
-        }, 2000); // Wait 2 seconds to ensure we override everything
+            return originalAddEventListener.call(this, type, listener, options);
+        };
     })();
     </script>
 
