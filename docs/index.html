@@ -539,32 +539,9 @@
     <!-- Service Worker Registration -->
     <script src="scripts/sw-manager.js"></script>
     
-    <!-- ULTIMATE MOBILE MENU FIX - DECEMBER 13, 2025 - OVERRIDES ALL CONFLICTS -->
-    <link rel="stylesheet" href="mobile-menu-ultimate-fix.css">
-    <script src="mobile-menu-ultimate-fix.js"></script>
-    
-    <!-- COMPREHENSIVE MOBILE RESPONSIVE FIX - HIGHEST PRIORITY -->
-    <link rel="stylesheet" href="mobile-responsive-fix.css">
-    <script src="mobile-responsive-fix.js"></script>
-    
-    <!-- Simple Mobile Menu Fix - Override all other mobile menu scripts -->
-    <link rel="stylesheet" href="simple-mobile-menu-fix.css">
-    <script src="simple-mobile-menu-fix.js"></script>
-    
-    <!-- FINAL Mobile Menu Fix - Definitive solution -->
-    <link rel="stylesheet" href="mobile-menu-fix-final.css">
-    <script src="mobile-menu-fix-final.js"></script>
-    
-    <!-- DIAGNOSTIC AND SIMPLE FIX -->
-    <script src="mobile-menu-diagnostic.js"></script>
-    <script src="simple-direct-mobile-fix.js"></script>
-    
-    <!-- NUCLEAR MOBILE MENU FIX - FINAL SOLUTION -->
-    <link rel="stylesheet" href="nuclear-mobile-menu-fix.css">
-    <script src="nuclear-mobile-menu-fix.js"></script>
-    
-    <!-- REFRESH-PROOF MOBILE MENU FIX - Works every time, even on refresh -->
-    <script src="refresh-proof-menu-fix.js"></script>
+    <!-- SINGLE SIMPLE MOBILE MENU FIX - December 13, 2025 -->
+    <link rel="stylesheet" href="simple-menu-styles.css">
+    <script src="single-simple-menu-fix.js"></script>
     
     <!-- Mobile Education Opacity Fix - Inline Override -->
     <style>
@@ -680,6 +657,9 @@
     
     <!-- FINAL EMERGENCY MOBILE MENU FIX -->
     <script src="emergency-mobile-fix-FINAL.js"></script>
+    
+    <!-- MOBILE MENU WORKING FIX - DECEMBER 2025 -->
+    <script src="mobile-menu-working-fix.js"></script>
     
     <!-- DISABLED: NUCLEAR OPTION INLINE MOBILE MENU FIX - REPLACED BY ULTIMATE FIX -->
     <!--
@@ -5317,38 +5297,7 @@ document.addEventListener('click', function(e) {
     <!-- <script src="scripts/menu-fix.js"></script> --> <!-- DISABLED - Handled by final-menu-override.js -->
 
     <!-- ✅ FINAL MENU OVERRIDE - ABSOLUTE SINGLE SOURCE OF TRUTH (MOVED TO END OF BODY FOR RELIABILITY) -->
-    <script src="final-menu-override.js?v=20250611193508" defer></script>
-    <!-- INLINE MOBILE MENU FIX - DECEMBER 13, 2025 -->
-    <link rel="stylesheet" href="inline-mobile-menu-fix.css">
-    
-    <!-- PERSISTENT MOBILE MENU FIX - Handles refresh issues -->
-    <script src="persistent-mobile-menu-fix.js"></script>
-    
-    <!-- MUTATION OBSERVER MOBILE MENU FIX - Prevents handler removal -->
-    <script src="mutation-observer-menu-fix.js"></script>
-    
-    <script>
-    // ADDITIONAL SAFEGUARD - Runs immediately
-    (function() {
-        console.log('🔐 SAFEGUARD: Preventing handler overwrites...');
-        
-        // Protect our handlers from being overwritten
-        let originalAddEventListener = EventTarget.prototype.addEventListener;
-        EventTarget.prototype.addEventListener = function(type, listener, options) {
-            // If someone tries to add a click handler to our button, log it
-            if (this.id === 'mobile-toggle-btn' && type === 'click') {
-                console.log('⚠️ Something tried to add a click handler to mobile toggle button');
-                // Only allow it if it's our persistent handler
-                if (!this.dataset.persistentFixed) {
-                    return originalAddEventListener.call(this, type, listener, options);
-                }
-                console.log('🛡️ Blocked unauthorized handler');
-                return;
-            }
-            return originalAddEventListener.call(this, type, listener, options);
-        };
-    })();
-    </script>
+    <!-- <script src="final-menu-override.js?v=20250611193508" defer></script> --> <!-- DISABLED - Conflicting with simple menu fix -->
 
 </body>
 </html>
