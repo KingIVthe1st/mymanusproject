@@ -1,0 +1,246 @@
+/* ULTIMATE MOBILE MENU FIX - DECEMBER 13, 2025 */
+/* Overrides ALL previous mobile menu CSS with maximum specificity */
+
+/* MOBILE MENU BASE STYLES */
+.mobile-menu {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 999999 !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: stretch !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* MOBILE MENU WHEN HIDDEN */
+.mobile-menu.hidden {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* MOBILE MENU WHEN ACTIVE (OPENED) */
+.mobile-menu:not(.hidden) {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+/* MOBILE MENU CONTAINER */
+.mobile-menu .mobile-menu-container {
+    width: 85% !important;
+    max-width: 400px !important;
+    height: 100vh !important;
+    background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%) !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow-y: auto !important;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3) !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* SLIDE IN ANIMATION WHEN MENU IS ACTIVE */
+.mobile-menu:not(.hidden) .mobile-menu-container {
+    transform: translateX(0) !important;
+}
+
+/* MOBILE MENU HEADER */
+.mobile-menu .mobile-menu-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 20px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* MOBILE MENU NAVIGATION */
+.mobile-menu .mobile-nav {
+    flex: 1 !important;
+    padding: 20px !important;
+}
+
+/* MOBILE NAV LINKS */
+.mobile-nav-link {
+    display: block !important;
+    color: white !important;
+    text-decoration: none !important;
+    padding: 15px 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation !important;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+    background: rgba(255, 255, 255, 0.1) !important;
+    padding-left: 10px !important;
+}
+
+/* MOBILE CLOSE BUTTON */
+.mobile-close-btn {
+    background: none !important;
+    border: none !important;
+    color: white !important;
+    font-size: 24px !important;
+    cursor: pointer !important;
+    padding: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation !important;
+    pointer-events: auto !important;
+}
+
+/* HAMBURGER TOGGLE BUTTON */
+.navbar-mobile-toggle,
+#mobile-toggle-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    z-index: 999998 !important;
+    position: relative !important;
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation !important;
+    pointer-events: auto !important;
+}
+
+/* HAMBURGER LINES */
+.hamburger {
+    width: 24px !important;
+    height: 2px !important;
+    background: #333 !important;
+    position: relative !important;
+    transition: all 0.3s ease !important;
+    display: block !important;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '' !important;
+    position: absolute !important;
+    width: 24px !important;
+    height: 2px !important;
+    background: #333 !important;
+    transition: all 0.3s ease !important;
+    left: 0 !important;
+}
+
+.hamburger::before {
+    top: -8px !important;
+}
+
+.hamburger::after {
+    top: 8px !important;
+}
+
+/* HAMBURGER ANIMATION TO X WHEN ACTIVE */
+.navbar-mobile-toggle.active .hamburger {
+    background: transparent !important;
+}
+
+.navbar-mobile-toggle.active .hamburger::before {
+    transform: rotate(45deg) !important;
+    top: 0 !important;
+}
+
+.navbar-mobile-toggle.active .hamburger::after {
+    transform: rotate(-45deg) !important;
+    top: 0 !important;
+}
+
+/* PREVENT BODY SCROLL WHEN MENU OPEN */
+body.menu-open {
+    overflow: hidden !important;
+    height: 100vh !important;
+}
+
+/* MOBILE BREAKPOINT RULES */
+@media (max-width: 768px) {
+    .navbar-mobile-toggle {
+        display: flex !important;
+    }
+    
+    .navbar-links {
+        display: none !important;
+    }
+}
+
+/* DESKTOP BREAKPOINT RULES */
+@media (min-width: 769px) {
+    .mobile-menu {
+        display: none !important;
+    }
+    
+    .navbar-mobile-toggle {
+        display: none !important;
+    }
+    
+    .navbar-links {
+        display: flex !important;
+    }
+}
+
+/* MOBILE SOCIAL LINKS */
+.mobile-social {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    padding: 20px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.mobile-social .social-icon {
+    color: white !important;
+    font-size: 20px !important;
+    padding: 10px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+}
+
+.mobile-social .social-icon:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.1) !important;
+}
+
+/* FORCE OVERRIDE ANY CONFLICTING STYLES */
+.mobile-menu * {
+    box-sizing: border-box !important;
+}
+
+/* ACCESSIBILITY */
+.mobile-menu:focus-within {
+    outline: 2px solid white !important;
+    outline-offset: 2px !important;
+}
+
+/* SMOOTH ANIMATIONS */
+* {
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+}
