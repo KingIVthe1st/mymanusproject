@@ -555,6 +555,14 @@
     <link rel="stylesheet" href="mobile-menu-fix-final.css">
     <script src="mobile-menu-fix-final.js"></script>
     
+    <!-- DIAGNOSTIC AND SIMPLE FIX -->
+    <script src="mobile-menu-diagnostic.js"></script>
+    <script src="simple-direct-mobile-fix.js"></script>
+    
+    <!-- NUCLEAR MOBILE MENU FIX - FINAL SOLUTION -->
+    <link rel="stylesheet" href="nuclear-mobile-menu-fix.css">
+    <script src="nuclear-mobile-menu-fix.js"></script>
+    
     <!-- Mobile Education Opacity Fix - Inline Override -->
     <style>
     @media (max-width: 768px) {
@@ -5307,5 +5315,60 @@ document.addEventListener('click', function(e) {
 
     <!-- ✅ FINAL MENU OVERRIDE - ABSOLUTE SINGLE SOURCE OF TRUTH (MOVED TO END OF BODY FOR RELIABILITY) -->
     <script src="final-menu-override.js?v=20250611193508" defer></script>
+    <!-- INLINE MOBILE MENU FIX - DECEMBER 13, 2025 -->
+    <link rel="stylesheet" href="inline-mobile-menu-fix.css">
+    <script>
+    // FINAL INLINE FIX - This WILL make the menu work
+    (function() {
+        console.log('🚨 INLINE FIX ACTIVATED!');
+        
+        // Wait a bit for all other scripts to load
+        setTimeout(function() {
+            const btn = document.getElementById('mobile-toggle-btn');
+            const menu = document.querySelector('.mobile-menu');
+            
+            if (!btn || !menu) {
+                console.error('Elements not found for inline fix');
+                return;
+            }
+            
+            console.log('✅ Inline fix: Elements found, attaching handler...');
+            
+            // Remove ALL existing handlers
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode.replaceChild(newBtn, btn);
+            
+            // Attach the ONLY handler that matters
+            newBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('🔥 INLINE HANDLER FIRED!');
+                
+                if (menu.classList.contains('hidden')) {
+                    console.log('Opening menu...');
+                    menu.classList.remove('hidden');
+                    newBtn.classList.add('active');
+                } else {
+                    console.log('Closing menu...');
+                    menu.classList.add('hidden');
+                    newBtn.classList.remove('active');
+                }
+            });
+            
+            // Also handle close button
+            const closeBtn = document.querySelector('.mobile-close-btn');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    menu.classList.add('hidden');
+                    newBtn.classList.remove('active');
+                });
+            }
+            
+            console.log('✅ Inline fix complete!');
+        }, 2000); // Wait 2 seconds to ensure we override everything
+    })();
+    </script>
+
 </body>
 </html>
