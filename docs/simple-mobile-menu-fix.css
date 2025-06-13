@@ -1,0 +1,116 @@
+/* Simple Mobile Menu CSS Fix */
+/* Ensures mobile menu shows/hides properly */
+
+/* Base mobile menu styling */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Mobile menu when active */
+.mobile-menu.active {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Mobile menu when hidden */
+.mobile-menu.hidden {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Mobile menu container */
+.mobile-menu-container {
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+/* Mobile menu container when active */
+.mobile-menu.active .mobile-menu-container {
+    transform: translateX(0) !important;
+}
+
+/* Prevent body scroll when menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Mobile toggle button active state */
+.navbar-mobile-toggle.active {
+    opacity: 0.8;
+}
+
+/* Ensure mobile toggle is clickable */
+.navbar-mobile-toggle {
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation !important;
+    user-select: none !important;
+}
+
+/* Make mobile menu links clickable */
+.mobile-nav-link {
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation !important;
+}
+
+/* Close button styling */
+.mobile-close-btn {
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation !important;
+}
+
+/* Mobile menu overlay background */
+.mobile-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Ensure menu container is above overlay */
+.mobile-menu-container {
+    position: relative;
+    z-index: 2;
+    width: 80%;
+    max-width: 400px;
+    margin-left: auto;
+    height: 100vh;
+}
+
+/* Hamburger icon animations */
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    transition: all 0.3s ease;
+}
+
+.navbar-mobile-toggle.active .hamburger {
+    transform: rotate(45deg);
+}
+
+.navbar-mobile-toggle.active .hamburger::before {
+    transform: rotate(90deg);
+    top: 0;
+}
+
+.navbar-mobile-toggle.active .hamburger::after {
+    transform: rotate(90deg);
+    bottom: 0;
+}

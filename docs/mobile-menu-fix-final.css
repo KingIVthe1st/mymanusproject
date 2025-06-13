@@ -1,0 +1,154 @@
+/* FINAL Mobile Menu CSS Fix - Overrides all conflicts */
+
+/* Force mobile menu to be hidden by default */
+.mobile-menu {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    z-index: 999999 !important;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s ease !important;
+    background: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Force mobile menu to show when active */
+.mobile-menu.active {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
+/* Ensure mobile menu container slides in */
+.mobile-menu .mobile-menu-container {
+    transform: translateX(100%) !important;
+    transition: transform 0.3s ease !important;
+    width: 80% !important;
+    max-width: 400px !important;
+    margin-left: auto !important;
+    height: 100vh !important;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%) !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Slide in when active */
+.mobile-menu.active .mobile-menu-container {
+    transform: translateX(0) !important;
+}
+
+/* Make toggle button always clickable */
+.navbar-mobile-toggle,
+#mobile-toggle-btn {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation !important;
+    z-index: 999998 !important;
+    position: relative !important;
+    padding: 15px !important;
+}
+
+/* Prevent body scroll when menu open */
+body.menu-open {
+    overflow: hidden !important;
+}
+
+/* Make all mobile nav links clickable */
+.mobile-nav-link {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Make close button clickable */
+.mobile-close-btn {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation !important;
+    z-index: 999999 !important;
+}
+
+/* Hide mobile menu when hidden class is added */
+.mobile-menu.hidden {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Mobile only styles */
+@media (max-width: 768px) {
+    .navbar-mobile-toggle {
+        display: flex !important;
+    }
+    
+    .navbar-links {
+        display: none !important;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+    .mobile-menu {
+        display: none !important;
+    }
+    
+    .navbar-mobile-toggle {
+        display: none !important;
+    }
+    
+    .navbar-links {
+        display: flex !important;
+    }
+}
+
+/* Hamburger icon styling */
+.hamburger {
+    width: 25px !important;
+    height: 3px !important;
+    background: #333 !important;
+    position: relative !important;
+    transition: all 0.3s ease !important;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '' !important;
+    position: absolute !important;
+    width: 25px !important;
+    height: 3px !important;
+    background: #333 !important;
+    transition: all 0.3s ease !important;
+}
+
+.hamburger::before {
+    top: -8px !important;
+}
+
+.hamburger::after {
+    bottom: -8px !important;
+}
+
+/* Active hamburger animation */
+.navbar-mobile-toggle.active .hamburger {
+    background: transparent !important;
+}
+
+.navbar-mobile-toggle.active .hamburger::before {
+    transform: rotate(45deg) !important;
+    top: 0 !important;
+}
+
+.navbar-mobile-toggle.active .hamburger::after {
+    transform: rotate(-45deg) !important;
+    bottom: 0 !important;
+}

@@ -77,20 +77,14 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
     
-    <!-- Direct Toggle Fix - Absolute Highest Priority -->
-    <script src="direct-toggle-fix.js"></script>
-    <!-- Nuclear Menu Fix - Replaces Entire Menu -->
-    <script src="nuclear-menu-fix.js"></script>
-    <!-- Definitive Menu Fix - Highest Priority -->
-    <script src="definitive-menu-fix.js"></script>
-    <!-- Mobile Menu Fix - New Approach -->
-    <script src="mobile-menu-fix.js"></script>
-    <!-- Force Link Click Handler - Absolute Highest Priority -->
-    <script src="force-link-click.js"></script>
-    <!-- Menu Replacement Script - Highest Priority -->
-    <script src="menu-replacement.js"></script>
-    <!-- Direct Menu Fix Script - Priority Loading -->
-    <script src="direct-style-injection.js"></script>
+    <!-- Mobile Menu Fix - New Approach (DISABLED) -->
+    <!-- <script src="mobile-menu-fix.js"></script> -->
+    <!-- Force Link Click Handler - Absolute Highest Priority (DISABLED) -->
+    <!-- <script src="force-link-click.js"></script> -->
+    <!-- Menu Replacement Script - Highest Priority (DISABLED) -->
+    <!-- <script src="menu-replacement.js"></script> -->
+    <!-- Direct Menu Fix Script - Priority Loading (DISABLED) -->
+    <!-- <script src="direct-menu-fix.js"></script> -->
     
     <!-- Tailwind CSS - Deferred -->
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -544,6 +538,14 @@
     
     <!-- Service Worker Registration -->
     <script src="scripts/sw-manager.js"></script>
+    
+    <!-- Simple Mobile Menu Fix - Override all other mobile menu scripts -->
+    <link rel="stylesheet" href="simple-mobile-menu-fix.css">
+    <script src="simple-mobile-menu-fix.js"></script>
+    
+    <!-- FINAL Mobile Menu Fix - Definitive solution -->
+    <link rel="stylesheet" href="mobile-menu-fix-final.css">
+    <script src="mobile-menu-fix-final.js"></script>
     
     <!-- Mobile Education Opacity Fix - Inline Override -->
     <style>
@@ -1009,6 +1011,7 @@
     }
 
     // Initialize everything when DOM is ready
+/*
     document.addEventListener('DOMContentLoaded', function() {
         console.log('DOMContentLoaded fired');
         
@@ -1230,6 +1233,7 @@
             fixNavigation();
         }, 150));
     });
+*/
     
     // Apply fixes on window resize
     window.addEventListener('resize', fixNavigation);
@@ -4295,6 +4299,7 @@ body:not(.menu-open) .container {
         closeBtn = newCloseBtn;
         
         // Ensure menu is hidden initially
+/*
         menu.style.cssText = 'position: fixed !important; top: 0 !important; right: -100% !important; width: 100% !important; max-width: 375px !important; height: 100vh !important; background: #1a1a1a !important; z-index: 999999 !important; display: block !important; transition: right 0.3s ease !important;';
         
         // Add SINGLE event listener to prevent conflicts
@@ -4331,6 +4336,7 @@ body:not(.menu-open) .container {
             e.stopPropagation();
             closeMenu();
         }, true);
+*/
         
         // Close menu when clicking nav links
         var navLinks = document.querySelectorAll('.mobile-nav-link');
@@ -4732,6 +4738,7 @@ body.menu-open {
     user-select: none !important;
     outline: none !important;
     -webkit-appearance: none !important;
+    appearance: none !important;
 }
 
 /* iOS Safari specific fixes */
@@ -4743,11 +4750,14 @@ body.menu-open {
     
     .mobile-menu {
         -webkit-transform: translateX(100%) !important;
+        transform: translateX(100%) !important;
         -webkit-transition: -webkit-transform 0.3s ease !important;
+        transition: transform 0.3s ease !important;
     }
     
     .mobile-menu.active {
         -webkit-transform: translateX(0) !important;
+        transform: translateX(0) !important;
     }
 }
 
@@ -5268,8 +5278,11 @@ document.addEventListener('click', function(e) {
     }
 });
 </script>
-    <script src="iframe-menu-controller.js"></script>
+    <!-- <script src="iframe-menu-controller.js"></script> --> <!-- DISABLED - Handled by final-menu-override.js -->
     <script src="remove-podcast-text.js"></script>
-    <script src="scripts/menu-fix.js"></script>
+    <!-- <script src="scripts/menu-fix.js"></script> --> <!-- DISABLED - Handled by final-menu-override.js -->
+
+    <!-- ✅ FINAL MENU OVERRIDE - ABSOLUTE SINGLE SOURCE OF TRUTH (MOVED TO END OF BODY FOR RELIABILITY) -->
+    <script src="final-menu-override.js?v=20250611193508" defer></script>
 </body>
 </html>
