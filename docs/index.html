@@ -30,6 +30,9 @@
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
+    <!-- CRITICAL: Viewport Detection Fix - Must load FIRST -->
+    <script src="viewport-detection-fix.js"></script>
+    
     <!-- Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,6 +96,7 @@
     <!-- Critical CSS files only - defer the rest -->
     <link rel="stylesheet" href="styles/main.css?v=1.2">
     <link rel="stylesheet" href="styles/nav-styles.css">
+    <link rel="stylesheet" href="styles/viewport-detection.css">
     <link rel="stylesheet" href="styles/mobile-menu-luxury.css">
     <link rel="stylesheet" href="styles/hero-styles.css">
     <link rel="stylesheet" href="styles/about-section.css">

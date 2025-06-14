@@ -1,0 +1,144 @@
+/**
+ * VIEWPORT DETECTION CSS - December 2025
+ * Ensures proper mobile/desktop navigation display
+ */
+
+/* Default mobile-first approach */
+@media screen and (max-width: 1024px) {
+    /* Force mobile layout */
+    .navbar-links {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+    
+    .navbar-mobile-toggle,
+    #mobile-toggle-btn {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        z-index: 999 !important;
+    }
+    
+    /* Ensure mobile menu container behavior */
+    .navbar-container {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+}
+
+/* Desktop layout */
+@media screen and (min-width: 1025px) {
+    /* Force desktop layout */
+    .navbar-links {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        gap: 2rem !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    .navbar-mobile-toggle,
+    #mobile-toggle-btn {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+    
+    /* Ensure desktop grid layout */
+    .navbar-container {
+        display: grid !important;
+        grid-template-columns: 200px 1fr 200px !important;
+        align-items: center !important;
+    }
+}
+
+/* Mobile-specific overrides using body class */
+body.is-mobile-viewport .navbar-links {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+body.is-mobile-viewport .navbar-mobile-toggle,
+body.is-mobile-viewport #mobile-toggle-btn {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+body.is-mobile-viewport .navbar-container {
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+/* Desktop-specific overrides using body class */
+body.is-desktop-viewport .navbar-links {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+body.is-desktop-viewport .navbar-mobile-toggle,
+body.is-desktop-viewport #mobile-toggle-btn {
+    display: none !important;
+}
+
+body.is-desktop-viewport .navbar-container {
+    display: grid !important;
+    grid-template-columns: 200px 1fr 200px !important;
+}
+
+/* Mobile menu should start hidden */
+.mobile-menu {
+    display: none !important;
+}
+
+.mobile-menu.active {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Touch device specific styles */
+@media (hover: none) and (pointer: coarse) {
+    .navbar-links {
+        display: none !important;
+    }
+    
+    .navbar-mobile-toggle,
+    #mobile-toggle-btn {
+        display: flex !important;
+    }
+}
+
+/* Small device failsafe */
+@media screen and (max-width: 768px) {
+    .navbar-links {
+        display: none !important;
+    }
+    
+    .navbar-mobile-toggle,
+    #mobile-toggle-btn {
+        display: flex !important;
+    }
+}
+
+/* Portrait orientation mobile */
+@media screen and (max-width: 1024px) and (orientation: portrait) {
+    .navbar-links {
+        display: none !important;
+    }
+    
+    .navbar-mobile-toggle,
+    #mobile-toggle-btn {
+        display: flex !important;
+    }
+}
