@@ -1,0 +1,142 @@
+/**
+ * MOBILE NAVBAR INITIAL LOAD FIX - December 2025
+ * Fixes navbar display issues on first load on mobile devices
+ */
+
+/* Ensure navbar has correct initial state */
+.navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 60px !important;
+    z-index: 1000 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    transition: none !important; /* Disable transitions on initial load */
+}
+
+/* Mobile-specific navbar container */
+@media (max-width: 1024px) {
+    .navbar {
+        height: 60px !important;
+        padding: 0 !important;
+    }
+    
+    .navbar-container {
+        height: 60px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0 1rem !important;
+        margin: 0 !important;
+    }
+    
+    /* Logo positioning */
+    .navbar-logo {
+        display: flex !important;
+        align-items: center !important;
+        height: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .navbar-logo img,
+    .logo-image {
+        height: 40px !important;
+        width: auto !important;
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Mobile toggle button positioning */
+    .navbar-mobile-toggle,
+    #mobile-toggle-btn {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 40px !important;
+        width: 40px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* Hamburger icon */
+    .hamburger {
+        width: 24px !important;
+        height: 2px !important;
+        background-color: #333 !important;
+        position: relative !important;
+        transition: all 0.3s ease !important;
+        margin: 0 !important;
+    }
+    
+    .hamburger::before,
+    .hamburger::after {
+        content: '' !important;
+        position: absolute !important;
+        width: 24px !important;
+        height: 2px !important;
+        background-color: #333 !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .hamburger::before {
+        top: -8px !important;
+    }
+    
+    .hamburger::after {
+        bottom: -8px !important;
+    }
+}
+
+/* iPhone-specific fixes */
+@media screen and (max-width: 428px) {
+    .navbar {
+        height: 60px !important;
+        min-height: 60px !important;
+    }
+    
+    .navbar-container {
+        height: 60px !important;
+        min-height: 60px !important;
+    }
+}
+
+/* Ensure hero section starts below navbar */
+.hero-section,
+.hero,
+#app > section:first-of-type {
+    margin-top: 60px !important;
+    padding-top: 2rem !important;
+}
+
+/* Fix for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    .navbar {
+        position: fixed !important;
+        transform: translate3d(0, 0, 0) !important;
+        -webkit-transform: translate3d(0, 0, 0) !important;
+    }
+}
+
+/* Prevent navbar from being hidden initially */
+body {
+    padding-top: 0 !important;
+}
+
+/* Ensure navbar is visible on page load */
+.navbar {
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+/* After page loads, re-enable transitions */
+body.page-loaded .navbar {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
