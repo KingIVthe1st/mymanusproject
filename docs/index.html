@@ -73,6 +73,16 @@
         *{margin:0;padding:0;box-sizing:border-box}html{font-size:16px;-webkit-font-smoothing:antialiased}body{font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.6;color:#333;background:#fff;overflow-x:hidden}.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);height:60px}.navbar-container{max-width:1400px;margin:0 auto;padding:0 1rem;height:100%;display:flex;align-items:center;justify-content:space-between}.logo-image{height:40px;width:auto;filter:none!important}section{padding:5rem 2rem;max-width:1400px;margin:0 auto}.hero-section{min-height:70vh;display:flex;align-items:center;margin-top:60px}h1,h2,h3{font-family:'Playfair Display',serif;font-weight:400;line-height:1.2}h1{font-size:3rem}h2{font-size:2.5rem}h3{font-size:2rem}@media(max-width:768px){h1{font-size:2rem}h2{font-size:1.75rem}section{padding:3rem 1rem}.navbar{height:60px}.logo-image{height:40px}.navbar-container{padding:0 1rem}}
         /* iOS Navbar Fix */
         @media(max-width:428px){.navbar{position:fixed!important;top:0!important;transform:none!important;opacity:1!important}.navbar-container{height:60px!important}.navbar-logo{height:40px!important}.navbar-mobile-toggle{display:flex!important}.navbar-links{display:none!important}}
+        
+        /* CRITICAL MOBILE MENU FIX - Ensure hamburger is visible on load */
+        @media(max-width:1024px){
+            .navbar{opacity:1!important;visibility:visible!important;transform:translateY(0)!important}
+            .navbar-mobile-toggle,#mobile-toggle-btn{display:flex!important;opacity:1!important;visibility:visible!important}
+            .navbar-mobile-toggle .hamburger{display:block!important;width:24px!important;height:2px!important;background:#333!important;position:relative!important}
+            .navbar-mobile-toggle .hamburger::before,.navbar-mobile-toggle .hamburger::after{content:''!important;display:block!important;position:absolute!important;width:24px!important;height:2px!important;background:#333!important;left:0!important}
+            .navbar-mobile-toggle .hamburger::before{top:-8px!important}
+            .navbar-mobile-toggle .hamburger::after{top:8px!important}
+        }
     </style>
     
     <!-- Google Fonts - Optimized subset -->
@@ -688,6 +698,10 @@
     <link rel="stylesheet" href="styles/mobile-menu-visibility-fix.css">
     <script src="mobile-menu-visibility-fix.js"></script>
     
+    <!-- MOBILE MENU ALWAYS VISIBLE - December 2025 ULTIMATE FIX -->
+    <link rel="stylesheet" href="styles/mobile-menu-always-visible.css">
+    <script src="mobile-menu-always-visible.js"></script>
+    
 </head>
 <body>
     <!-- Living Gradient Background -->
@@ -819,6 +833,15 @@
             if (!isScrolling) {
                 window.requestAnimationFrame(function() {
                     if (!navbar) return;
+                    
+                    // MOBILE FIX: Always keep navbar visible on mobile
+                    if (window.innerWidth <= 1024) {
+                        navbar.style.transform = 'translateY(0)';
+                        navbar.style.opacity = '1';
+                        navbar.style.visibility = 'visible';
+                        isScrolling = false;
+                        return;
+                    }
                     
                     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                     
