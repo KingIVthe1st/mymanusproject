@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Fix Test Page</title>
+    
+    <!-- Include the fix files -->
+    <link rel="stylesheet" href="styles/mobile-fix-december2025.css">
+    <script src="mobile-fix-december2025.js"></script>
+    
+    <!-- Test script -->
+    <script src="mobile-fix-test.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 200vh; /* Make page scrollable */
+            background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .navbar-mobile-toggle {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hamburger {
+            width: 24px;
+            height: 2px;
+            background: white;
+            position: relative;
+        }
+        
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background: white;
+            left: 0;
+        }
+        
+        .hamburger::before {
+            top: -8px;
+        }
+        
+        .hamburger::after {
+            top: 8px;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 9999;
+        }
+        
+        .mobile-menu-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background: #8b5cf6;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            padding: 20px;
+            color: white;
+        }
+        
+        .mobile-menu.active .mobile-menu-container {
+            transform: translateX(0);
+        }
+        
+        .mobile-close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            padding: 15px;
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .content {
+            padding: 80px 20px 20px;
+        }
+        
+        .test-info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .scroll-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-logo">Test Site</div>
+        <button class="navbar-mobile-toggle" id="mobile-toggle-btn">
+            <span class="hamburger"></span>
+        </button>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu hidden">
+        <div class="mobile-menu-container">
+            <button class="mobile-close-btn">×</button>
+            <nav>
+                <a href="#" class="mobile-nav-link">Home</a>
+                <a href="#" class="mobile-nav-link">About</a>
+                <a href="#" class="mobile-nav-link">Services</a>
+                <a href="#" class="mobile-nav-link">Contact</a>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Content -->
+    <div class="content">
+        <div class="test-info">
+            <h1>Mobile Fix Test Page</h1>
+            <p>This page tests the December 2025 mobile fixes:</p>
+            <ul>
+                <li><strong>Scroll Test:</strong> Try scrolling down the page. You should be able to scroll freely.</li>
+                <li><strong>Menu Test:</strong> Click the hamburger menu button. The menu should slide in from the right.</li>
+                <li><strong>Browser Test:</strong> Test in both Safari and Chrome on mobile devices.</li>
+            </ul>
+            <p>Open the browser console to see test results.</p>
+        </div>
+        
+        <div class="test-info">
+            <h2>Debug Information</h2>
+            <p id="user-agent">User Agent: Loading...</p>
+            <p id="window-size">Window Size: Loading...</p>
+            <p id="touch-support">Touch Support: Loading...</p>
+        </div>
+        
+        <div class="test-info">
+            <h2>Scroll Test Content</h2>
+            <p>Keep scrolling down to test if scrolling is working properly...</p>
+            <p style="margin-top: 50px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p style="margin-top: 50px;">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p style="margin-top: 50px;">Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+            <p style="margin-top: 50px;">Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+        </div>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" id="scroll-indicator">
+        Scroll: 0px
+    </div>
+    
+    <script>
+        // Update debug info
+        document.getElementById('user-agent').textContent = 'User Agent: ' + navigator.userAgent;
+        document.getElementById('window-size').textContent = 'Window Size: ' + window.innerWidth + ' x ' + window.innerHeight;
+        document.getElementById('touch-support').textContent = 'Touch Support: ' + ('ontouchstart' in window ? 'Yes' : 'No');
+        
+        // Update scroll indicator
+        window.addEventListener('scroll', function() {
+            document.getElementById('scroll-indicator').textContent = 'Scroll: ' + window.scrollY + 'px';
+        });
+        
+        // Window resize handler
+        window.addEventListener('resize', function() {
+            document.getElementById('window-size').textContent = 'Window Size: ' + window.innerWidth + ' x ' + window.innerHeight;
+        });
+    </script>
+</body>
+</html>
