@@ -1,161 +1,115 @@
-/**
- * MOBILE MENU INITIAL VISIBILITY FIX - December 2025
- * Ensures mobile menu hamburger is visible on page load
- */
+// Mobile Menu Visibility Fix - December 2025
+// Disables scroll-based navbar hiding on mobile devices
 
 (function() {
     'use strict';
     
-    console.log('🍄 Mobile Menu Initial Visibility Fix - Loading...');
+    // Check if mobile device (including tablets)
+    function isMobile() {
+        return window.innerWidth <= 1024 || 
+               window.matchMedia('(max-width: 1024px)').matches ||
+               /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
     
-    // Function to ensure mobile menu toggle is visible
-    function ensureMobileMenuVisible() {
-        const navbar = document.querySelector('.navbar');
-        const mobileToggle = document.querySelector('.navbar-mobile-toggle, #mobile-toggle-btn');
+    // Force navbar to be visible
+    function forceNavbarVisible() {
+        const navbar = document.querySelector('.navbar') || document.getElementById('main-navbar');
+        if (!navbar) return;
         
-        if (!navbar || !mobileToggle) {
-            console.log('⏳ Waiting for navbar elements...');
-            setTimeout(ensureMobileMenuVisible, 50);
-            return;
+        // Remove any transform that hides the navbar
+        navbar.style.transform = 'translateY(0)';
+        navbar.style.webkitTransform = 'translateY(0)';
+        navbar.style.opacity = '1';
+        navbar.style.visibility = 'visible';
+        navbar.style.display = 'flex';
+        navbar.style.top = '0';
+        navbar.style.position = 'fixed';
+        
+        // Ensure hamburger is visible
+        const hamburger = navbar.querySelector('.navbar-mobile-toggle') || 
+                         navbar.querySelector('#mobile-toggle-btn');
+        if (hamburger) {
+            hamburger.style.display = 'flex';
+            hamburger.style.opacity = '1';
+            hamburger.style.visibility = 'visible';
+            hamburger.style.pointerEvents = 'auto';
         }
+    }
+    
+    // Override scroll behavior on mobile
+    function disableMobileScrollHiding() {
+        if (!isMobile()) return;
         
-        // Check if we're on mobile
-        const isMobile = window.innerWidth <= 768;
+        // Initial visibility
+        forceNavbarVisible();
         
-        if (isMobile) {
-            console.log('📱 Mobile device detected - ensuring hamburger menu visibility');
-            
-            // Force navbar to be visible
-            navbar.style.opacity = '1';
-            navbar.style.visibility = 'visible';
-            navbar.style.display = 'block';
-            navbar.style.position = 'fixed';
-            navbar.style.top = '0';
-            navbar.style.left = '0';
-            navbar.style.right = '0';
-            navbar.style.zIndex = '1000';
-            
-            // Force mobile toggle to be visible
-            mobileToggle.style.display = 'flex';
-            mobileToggle.style.opacity = '1';
-            mobileToggle.style.visibility = 'visible';
-            mobileToggle.style.position = 'relative';
-            mobileToggle.style.zIndex = '1001';
-            
-            // Ensure hamburger lines are visible
-            const hamburger = mobileToggle.querySelector('.hamburger');
-            if (hamburger) {
-                hamburger.style.opacity = '1';
-                hamburger.style.visibility = 'visible';
+        // Override any existing scroll handlers
+        const originalAddEventListener = window.addEventListener;
+        window.addEventListener = function(event, handler, options) {
+            if (event === 'scroll' && isMobile()) {
+                // Wrap the handler to prevent navbar hiding
+                const wrappedHandler = function(e) {
+                    handler.call(this, e);
+                    // Force navbar visible after any scroll handler
+                    requestAnimationFrame(forceNavbarVisible);
+                };
+                return originalAddEventListener.call(this, event, wrappedHandler, options);
+            }
+            return originalAddEventListener.call(this, event, handler, options);
+        };
+        
+        // Monitor for any style changes and correct them
+        const navbar = document.querySelector('.navbar') || document.getElementById('main-navbar');
+        if (navbar) {
+            const observer = new MutationObserver(function(mutations) {
+                if (!isMobile()) return;
                 
-                // Also check for pseudo elements
-                const styles = window.getComputedStyle(hamburger, '::before');
-                if (!styles.content || styles.content === 'none') {
-                    // If pseudo elements aren't working, create real elements
-                    if (!hamburger.querySelector('.hamburger-line')) {
-                        hamburger.innerHTML = '';
-                        
-                        // Create three lines
-                        for (let i = 0; i < 3; i++) {
-                            const line = document.createElement('span');
-                            line.className = 'hamburger-line';
-                            line.style.display = 'block';
-                            line.style.width = '24px';
-                            line.style.height = '2px';
-                            line.style.backgroundColor = '#333';
-                            line.style.margin = '4px 0';
-                            line.style.borderRadius = '2px';
-                            line.style.transition = 'all 0.3s ease';
-                            hamburger.appendChild(line);
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                        const transform = navbar.style.transform || navbar.style.webkitTransform;
+                        if (transform && transform.includes('translateY(-')) {
+                            forceNavbarVisible();
                         }
                     }
-                }
-            }
+                });
+            });
             
-            // Hide desktop nav links on mobile
-            const navLinks = document.querySelector('.navbar-links');
-            if (navLinks) {
-                navLinks.style.display = 'none';
-            }
-            
-            console.log('✅ Mobile menu hamburger visibility ensured');
-        }
-    }
-    
-    // Function to handle scroll events
-    function handleScroll() {
-        const navbar = document.querySelector('.navbar');
-        const mobileToggle = document.querySelector('.navbar-mobile-toggle, #mobile-toggle-btn');
-        
-        if (navbar && mobileToggle && window.innerWidth <= 768) {
-            // Ensure visibility on scroll
-            navbar.style.opacity = '1';
-            navbar.style.visibility = 'visible';
-            mobileToggle.style.display = 'flex';
-            mobileToggle.style.opacity = '1';
-            mobileToggle.style.visibility = 'visible';
-        }
-    }
-    
-    // Run immediately
-    ensureMobileMenuVisible();
-    
-    // Run when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', ensureMobileMenuVisible);
-    } else {
-        // DOM already loaded
-        setTimeout(ensureMobileMenuVisible, 0);
-    }
-    
-    // Run when window loads (all resources loaded)
-    window.addEventListener('load', ensureMobileMenuVisible);
-    
-    // Handle scroll events
-    let scrollTimer;
-    window.addEventListener('scroll', function() {
-        if (scrollTimer) clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(handleScroll, 50);
-    }, { passive: true });
-    
-    // Handle resize events
-    let resizeTimer;
-    window.addEventListener('resize', function() {
-        if (resizeTimer) clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(ensureMobileMenuVisible, 250);
-    });
-    
-    // Mutation observer to catch any changes that might hide the menu
-    const observer = new MutationObserver(function(mutations) {
-        const mobileToggle = document.querySelector('.navbar-mobile-toggle, #mobile-toggle-btn');
-        if (mobileToggle && window.innerWidth <= 768) {
-            const display = window.getComputedStyle(mobileToggle).display;
-            const visibility = window.getComputedStyle(mobileToggle).visibility;
-            const opacity = window.getComputedStyle(mobileToggle).opacity;
-            
-            if (display === 'none' || visibility === 'hidden' || opacity === '0') {
-                console.log('🔧 Mobile menu was hidden - fixing...');
-                ensureMobileMenuVisible();
-            }
-        }
-    });
-    
-    // Start observing once navbar exists
-    function startObserving() {
-        const navbar = document.querySelector('.navbar');
-        if (navbar) {
             observer.observe(navbar, {
                 attributes: true,
-                attributeFilter: ['style', 'class'],
-                childList: true,
-                subtree: true
+                attributeFilter: ['style']
             });
-        } else {
-            setTimeout(startObserving, 100);
         }
     }
     
-    startObserving();
+    // Initialize on DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', disableMobileScrollHiding);
+    } else {
+        disableMobileScrollHiding();
+    }
     
-    console.log('🍄 Mobile Menu Initial Visibility Fix - Loaded');
+    // Re-check on window resize
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+            if (isMobile()) {
+                forceNavbarVisible();
+            }
+        }, 100);
+    });
+    
+    // Force visibility check every 500ms for the first 3 seconds
+    // This catches any delayed JavaScript that might hide the navbar
+    let checks = 0;
+    const visibilityInterval = setInterval(function() {
+        if (isMobile()) {
+            forceNavbarVisible();
+        }
+        checks++;
+        if (checks > 6) { // 3 seconds
+            clearInterval(visibilityInterval);
+        }
+    }, 500);
+    
 })();

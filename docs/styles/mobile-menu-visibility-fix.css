@@ -1,150 +1,145 @@
-/**
- * MOBILE MENU INITIAL VISIBILITY CSS - December 2025
- * Ensures mobile menu hamburger is visible on page load
- */
+/* Mobile Menu Visibility Fix - December 2025 */
+/* Ensures hamburger menu is ALWAYS visible on mobile, especially on initial page load */
 
-/* Force navbar visibility on mobile */
-@media (max-width: 768px) {
-    .navbar {
+/* Force navbar to be visible on mobile devices */
+@media (max-width: 1024px) {
+    /* Override any transform that hides the navbar */
+    .navbar,
+    #main-navbar {
+        transform: translateY(0) !important;
         opacity: 1 !important;
         visibility: visible !important;
-        display: block !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
-        z-index: 1000 !important;
-        background: rgba(255, 255, 255, 0.95) !important;
-        backdrop-filter: blur(10px) !important;
-        -webkit-backdrop-filter: blur(10px) !important;
-        height: 60px !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        transform: none !important;
-    }
-    
-    .navbar-container {
-        height: 100% !important;
         display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 0 1rem !important;
+        top: 0 !important;
+        position: fixed !important;
+        z-index: 1000 !important;
+        /* Disable transform transitions on mobile to prevent hiding animations */
+        transition: background 0.3s ease, box-shadow 0.3s ease !important;
     }
     
-    /* Force mobile toggle visibility */
+    /* Ensure hamburger button is always visible and clickable */
     .navbar-mobile-toggle,
     #mobile-toggle-btn {
         display: flex !important;
         opacity: 1 !important;
         visibility: visible !important;
+        pointer-events: auto !important;
         position: relative !important;
         z-index: 1001 !important;
-        width: 40px !important;
-        height: 40px !important;
-        align-items: center !important;
-        justify-content: center !important;
-        cursor: pointer !important;
-        background: transparent !important;
-        border: none !important;
-        padding: 8px !important;
-        -webkit-tap-highlight-color: transparent !important;
     }
     
-    /* Hamburger styling */
-    .navbar-mobile-toggle .hamburger,
-    #mobile-toggle-btn .hamburger {
-        display: block !important;
-        width: 24px !important;
-        height: 2px !important;
-        background-color: #333 !important;
-        position: relative !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        transition: all 0.3s ease !important;
-    }
-    
-    .navbar-mobile-toggle .hamburger::before,
-    .navbar-mobile-toggle .hamburger::after,
-    #mobile-toggle-btn .hamburger::before,
-    #mobile-toggle-btn .hamburger::after {
-        content: '' !important;
-        display: block !important;
-        position: absolute !important;
-        width: 24px !important;
-        height: 2px !important;
-        background-color: #333 !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        left: 0 !important;
-        transition: all 0.3s ease !important;
-    }
-    
-    .navbar-mobile-toggle .hamburger::before,
-    #mobile-toggle-btn .hamburger::before {
-        transform: translateY(-8px) !important;
-    }
-    
-    .navbar-mobile-toggle .hamburger::after,
-    #mobile-toggle-btn .hamburger::after {
-        transform: translateY(8px) !important;
-    }
-    
-    /* Fallback hamburger lines if pseudo elements fail */
-    .hamburger-line {
-        display: block !important;
-        width: 24px !important;
-        height: 2px !important;
-        background-color: #333 !important;
-        margin: 4px 0 !important;
-        border-radius: 2px !important;
-        transition: all 0.3s ease !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
-    
-    /* Hide desktop nav links on mobile */
-    .navbar-links {
-        display: none !important;
-    }
-    
-    /* Logo styling */
-    .navbar-logo {
-        display: flex !important;
-        align-items: center !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
-    
-    .navbar-logo img,
-    .logo-image {
-        height: 40px !important;
-        width: auto !important;
-        display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
-}
-
-/* Ensure smooth transitions */
-.navbar,
-.navbar-mobile-toggle,
-.navbar-logo {
-    transition: opacity 0.3s ease, visibility 0.3s ease !important;
-}
-
-/* Override any conflicting styles */
-body:not(.menu-open) .navbar {
-    transform: translateY(0) !important;
-}
-
-/* Prevent navbar from being hidden on scroll */
-@media (max-width: 768px) {
-    .navbar.navbar-hidden,
-    .navbar.hide,
-    .navbar.scrolled-down {
+    /* Prevent any scroll-based hiding on mobile */
+    .navbar.scrolled,
+    .navbar.hidden,
+    .navbar.scroll-hide {
         transform: translateY(0) !important;
         opacity: 1 !important;
+    }
+    
+    /* Keep navbar visible even when scrolling */
+    body .navbar {
+        min-height: 60px !important;
+        height: 60px !important;
+    }
+}
+
+/* Extra specificity for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    @media (max-width: 1024px) {
+        .navbar {
+            transform: translateY(0) !important;
+            -webkit-transform: translateY(0) !important;
+            opacity: 1 !important;
+            position: fixed !important;
+            top: 0 !important;
+        }
+    }
+}
+
+/* Ensure navbar container doesn't hide content */
+@media (max-width: 1024px) {
+    .navbar-container {
+        opacity: 1 !important;
         visibility: visible !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        height: 100% !important;
+    }
+    
+    /* Logo always visible */
+    .navbar-logo,
+    .navbar-logo img {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+    }
+}
+
+/* Force mobile menu button styles */
+@media (max-width: 1024px) {
+    .navbar-mobile-toggle .hamburger {
+        display: block !important;
+        width: 24px !important;
+        height: 2px !important;
+        background: #000 !important;
+        position: relative !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .navbar-mobile-toggle .hamburger::before,
+    .navbar-mobile-toggle .hamburger::after {
+        content: '' !important;
+        display: block !important;
+        width: 24px !important;
+        height: 2px !important;
+        background: #000 !important;
+        position: absolute !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .navbar-mobile-toggle .hamburger::before {
+        top: -8px !important;
+    }
+    
+    .navbar-mobile-toggle .hamburger::after {
+        top: 8px !important;
+    }
+}
+
+/* Override any JavaScript-applied inline styles on page load */
+@media (max-width: 1024px) {
+    .navbar[style*="translateY(-100%)"],
+    .navbar[style*="translateY(-100%)"] {
+        transform: translateY(0) !important;
+    }
+    
+    .navbar[style*="opacity: 0"],
+    .navbar[style*="opacity:0"] {
+        opacity: 1 !important;
+    }
+}
+
+/* Ensure content doesn't overlap with navbar */
+@media (max-width: 1024px) {
+    .hero-section,
+    section:first-child,
+    #app > section:first-child {
+        margin-top: 60px !important;
+        padding-top: 1rem !important;
+    }
+}
+
+/* Nuclear option - use animation to force visibility */
+@media (max-width: 1024px) {
+    @keyframes forceVisible {
+        from, to {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+        }
+    }
+    
+    .navbar {
+        animation: forceVisible 0.1s infinite !important;
     }
 }

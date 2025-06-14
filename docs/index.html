@@ -810,12 +810,27 @@
         // Other anchor links might still work with default browser behavior.
         if (!navbar) {
             console.warn('Navigation element not found for smooth scroll offset calculation.');
+            return;
+        }
+        
+        // Check if mobile
+        function isMobile() {
+            return window.innerWidth <= 1024;
         }
 
-        // Add transition to navbar for smooth animations
-        navbar.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        // Add transition to navbar for smooth animations (desktop only)
+        if (!isMobile()) {
+            navbar.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        }
         
         function handleScroll() {
+            // Skip scroll hiding on mobile
+            if (isMobile()) {
+                navbar.style.transform = 'translateY(0)';
+                navbar.style.opacity = '1';
+                return;
+            }
+            
             if (!isScrolling) {
                 window.requestAnimationFrame(function() {
                     if (!navbar) return;
@@ -829,7 +844,7 @@
                     
                     if (scrollTop > 100) { // Start hiding after 100px scroll
                         if (scrollTop > lastScrollTop && Math.abs(scrollTop - lastScrollTop) > 5) {
-                            // Scrolling down - hide navbar
+                            // Scrolling down - hide navbar (desktop only)
                             navbar.style.transform = 'translateY(-100%)';
                             navbar.style.opacity = '0.8';
                         } else if (scrollTop < lastScrollTop && Math.abs(scrollTop - lastScrollTop) > 5) {
@@ -873,19 +888,21 @@
         // Add scroll event listener
         window.addEventListener('scroll', throttledScroll, { passive: true });
         
-        // Show navbar on mouse movement near top
+        // Show navbar on mouse movement near top (desktop only)
         document.addEventListener('mousemove', function(e) {
-            if (e.clientY < 100 && navbar) {
+            if (!isMobile() && e.clientY < 100 && navbar) {
                 navbar.style.transform = 'translateY(0)';
                 navbar.style.opacity = '1';
             }
         });
         
-        // Always show navbar when hovering over it
+        // Always show navbar when hovering over it (desktop only)
         if (navbar) {
             navbar.addEventListener('mouseenter', function() {
-                navbar.style.transform = 'translateY(0)';
-                navbar.style.opacity = '1';
+                if (!isMobile()) {
+                    navbar.style.transform = 'translateY(0)';
+                    navbar.style.opacity = '1';
+                }
             });
         }
     }
@@ -1257,6 +1274,16 @@
         
         // Initialize other features
         fixNavigation();
+        
+        // Ensure navbar is visible on mobile on page load
+        const navbar = document.getElementById('main-navbar');
+        if (navbar && window.innerWidth <= 1024) {
+            navbar.style.transform = 'translateY(0)';
+            navbar.style.opacity = '1';
+            navbar.style.visibility = 'visible';
+            navbar.style.display = 'flex';
+        }
+        
         setTimeout(initializeScrollBehavior, 100);
         initializeDesktopSmoothScroll();
         updateNavLayout();
