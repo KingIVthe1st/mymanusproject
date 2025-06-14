@@ -688,6 +688,267 @@
     <link rel="stylesheet" href="styles/mobile-menu-visibility-fix.css">
     <script src="mobile-menu-visibility-fix.js"></script>
     
+    <!-- MOBILE MENU INITIAL LOAD FIX - December 15, 2025 - TARGETED SOLUTION -->
+    <link rel="stylesheet" href="styles/mobile-menu-initial-load-fix.css">
+    
+    <!-- CRITICAL INLINE CSS FOR IMMEDIATE MOBILE MENU VISIBILITY -->
+    <style>
+        /* EMERGENCY MOBILE MENU VISIBILITY - MAXIMUM PRIORITY */
+        @media (max-width: 1024px) {
+            /* Force navbar and hamburger to be visible immediately on mobile */
+            .navbar,
+            #main-navbar {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                z-index: 1000 !important;
+                display: flex !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: translateY(0) !important;
+                -webkit-transform: translateY(0) !important;
+                height: 60px !important;
+                background: rgba(255, 255, 255, 0.95) !important;
+                backdrop-filter: blur(20px) saturate(200%) !important;
+                -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+                animation: none !important;
+                transition: background 0.3s ease, box-shadow 0.3s ease !important;
+            }
+            
+            .navbar-mobile-toggle,
+            #mobile-toggle-btn {
+                display: flex !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                pointer-events: auto !important;
+                position: relative !important;
+                z-index: 1001 !important;
+                cursor: pointer !important;
+                padding: 15px !important;
+                -webkit-tap-highlight-color: transparent !important;
+                touch-action: manipulation !important;
+                min-width: 44px !important;
+                min-height: 44px !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            
+            .navbar-container {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                width: 100% !important;
+                max-width: 1200px !important;
+                margin: 0 auto !important;
+                padding: 0 2rem !important;
+                height: 100% !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            .navbar-logo,
+            .navbar-logo img {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                height: 50px !important;
+                width: auto !important;
+            }
+            
+            .navbar-links {
+                display: none !important;
+            }
+            
+            /* Force hamburger icon styling */
+            .navbar-mobile-toggle .hamburger,
+            #mobile-toggle-btn .hamburger {
+                display: block !important;
+                width: 24px !important;
+                height: 2px !important;
+                background: #000 !important;
+                position: relative !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            .navbar-mobile-toggle .hamburger::before,
+            .navbar-mobile-toggle .hamburger::after,
+            #mobile-toggle-btn .hamburger::before,
+            #mobile-toggle-btn .hamburger::after {
+                content: '' !important;
+                display: block !important;
+                width: 24px !important;
+                height: 2px !important;
+                background: #000 !important;
+                position: absolute !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            .navbar-mobile-toggle .hamburger::before,
+            #mobile-toggle-btn .hamburger::before {
+                top: -8px !important;
+            }
+            
+            .navbar-mobile-toggle .hamburger::after,
+            #mobile-toggle-btn .hamburger::after {
+                top: 8px !important;
+            }
+        }
+        
+        /* Override any inline styles that might hide the menu */
+        @media (max-width: 1024px) {
+            .navbar[style*="translateY(-100%)"],
+            #main-navbar[style*="translateY(-100%)"] {
+                transform: translateY(0) !important;
+                -webkit-transform: translateY(0) !important;
+            }
+            
+            .navbar[style*="opacity: 0"],
+            .navbar[style*="opacity:0"],
+            #main-navbar[style*="opacity: 0"],
+            #main-navbar[style*="opacity:0"] {
+                opacity: 1 !important;
+            }
+            
+            .navbar[style*="visibility: hidden"],
+            .navbar[style*="visibility:hidden"],
+            #main-navbar[style*="visibility: hidden"],
+            #main-navbar[style*="visibility:hidden"] {
+                visibility: visible !important;
+            }
+            
+            .navbar[style*="display: none"],
+            .navbar[style*="display:none"],
+            #main-navbar[style*="display: none"],
+            #main-navbar[style*="display:none"] {
+                display: flex !important;
+            }
+        }
+    </style>
+    
+    <!-- IMMEDIATE JAVASCRIPT FOR MOBILE MENU VISIBILITY -->
+    <script>
+        // Run immediately - no waiting for DOM
+        (function() {
+            'use strict';
+            
+            function isMobile() {
+                return window.innerWidth <= 1024 || 
+                       window.matchMedia('(max-width: 1024px)').matches ||
+                       'ontouchstart' in window ||
+                       navigator.maxTouchPoints > 0;
+            }
+            
+            function forceNavbarVisible() {
+                if (!isMobile()) return;
+                
+                const navbars = [
+                    document.querySelector('.navbar'),
+                    document.querySelector('#main-navbar'),
+                    document.getElementById('main-navbar')
+                ].filter(Boolean);
+                
+                navbars.forEach(navbar => {
+                    if (navbar) {
+                        navbar.style.cssText = `
+                            position: fixed !important;
+                            top: 0 !important;
+                            left: 0 !important;
+                            right: 0 !important;
+                            width: 100% !important;
+                            z-index: 1000 !important;
+                            display: flex !important;
+                            opacity: 1 !important;
+                            visibility: visible !important;
+                            transform: translateY(0) !important;
+                            -webkit-transform: translateY(0) !important;
+                            height: 60px !important;
+                            background: rgba(255, 255, 255, 0.95) !important;
+                            backdrop-filter: blur(20px) saturate(200%) !important;
+                            -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
+                            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+                            border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+                        `;
+                        
+                        const container = navbar.querySelector('.navbar-container');
+                        if (container) {
+                            container.style.cssText = `
+                                display: flex !important;
+                                justify-content: space-between !important;
+                                align-items: center !important;
+                                width: 100% !important;
+                                max-width: 1200px !important;
+                                margin: 0 auto !important;
+                                padding: 0 2rem !important;
+                                height: 100% !important;
+                                opacity: 1 !important;
+                                visibility: visible !important;
+                            `;
+                        }
+                        
+                        const hamburgers = [
+                            navbar.querySelector('.navbar-mobile-toggle'),
+                            navbar.querySelector('#mobile-toggle-btn'),
+                            document.querySelector('#mobile-toggle-btn')
+                        ].filter(Boolean);
+                        
+                        hamburgers.forEach(hamburger => {
+                            if (hamburger) {
+                                hamburger.style.cssText = `
+                                    display: flex !important;
+                                    opacity: 1 !important;
+                                    visibility: visible !important;
+                                    pointer-events: auto !important;
+                                    position: relative !important;
+                                    z-index: 1001 !important;
+                                    cursor: pointer !important;
+                                    padding: 15px !important;
+                                    -webkit-tap-highlight-color: transparent !important;
+                                    touch-action: manipulation !important;
+                                    min-width: 44px !important;
+                                    min-height: 44px !important;
+                                    align-items: center !important;
+                                    justify-content: center !important;
+                                `;
+                            }
+                        });
+                    }
+                });
+            }
+            
+            // Run immediately
+            if (isMobile()) {
+                forceNavbarVisible();
+            }
+            
+            // Run again on resize
+            window.addEventListener('resize', function() {
+                if (isMobile()) {
+                    forceNavbarVisible();
+                }
+            });
+            
+            // Run periodically for first 2 seconds
+            let attempts = 0;
+            const interval = setInterval(function() {
+                if (isMobile()) {
+                    forceNavbarVisible();
+                }
+                attempts++;
+                if (attempts >= 4) { // 2 seconds
+                    clearInterval(interval);
+                }
+            }, 500);
+            
+        })();
+    </script>
+    
+    <!-- LOAD COMPREHENSIVE MOBILE MENU INITIAL LOAD FIX -->
+    <script src="mobile-menu-initial-load-fix.js"></script>
+    
 </head>
 <body>
     <!-- Living Gradient Background -->
